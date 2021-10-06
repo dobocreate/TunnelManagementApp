@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27BFE8A13957A291446026A1 /* Pods_TunnelManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */; };
+		4650AD96270B545A000073F4 /* InputKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4650AD95270B545A000073F4 /* InputKirihaViewController.swift */; };
 		4659838E270B26E700898FDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838D270B26E700898FDF /* AppDelegate.swift */; };
 		46598390270B26E700898FDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838F270B26E700898FDF /* SceneDelegate.swift */; };
 		46598392270B26E700898FDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46598391270B26E700898FDF /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TunnelManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F118CDFCFED6439D2791225 /* Pods-TunnelManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.release.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.release.xcconfig"; sourceTree = "<group>"; };
+		4650AD95270B545A000073F4 /* InputKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputKirihaViewController.swift; sourceTree = "<group>"; };
 		4659838A270B26E700898FDF /* TunnelManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TunnelManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4659838D270B26E700898FDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4659838F270B26E700898FDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
 				465983A3270B28B800898FDF /* HomeViewController.swift */,
 				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
+				4650AD95270B545A000073F4 /* InputKirihaViewController.swift */,
 				465983A9270B441C00898FDF /* kirihaRecord.swift */,
 				465983A5270B293700898FDF /* SettingViewController.swift */,
 				46598393270B26E700898FDF /* Main.storyboard */,
@@ -224,6 +227,7 @@
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				4659838E270B26E700898FDF /* AppDelegate.swift in Sources */,
+				4650AD96270B545A000073F4 /* InputKirihaViewController.swift in Sources */,
 				465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
