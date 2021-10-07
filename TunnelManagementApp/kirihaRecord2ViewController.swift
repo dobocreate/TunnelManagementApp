@@ -128,10 +128,11 @@ class kirihaRecord2ViewController: UIViewController, UITableViewDataSource, UITa
         // 再利用可能な cell を得る、tableCellのIDでUITableViewCellのインスタンスを生成
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        // セルの文字色を指定する
-        cell.textLabel?.textColor = UIColor.black
-        cell.backgroundColor = UIColor.white
+        // 選択時に色を変える設定をオフにする
+        cell.selectionStyle = .none
         
+        // セルの背景色を白色に設定する
+        cell.backgroundColor = .white
         
         // cellに値を設定する
         if indexPath.section == 0 {

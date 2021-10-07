@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="MRA-kj-iy2" detailTextLabel="RPe-Vm-dEo" style="IBUITableViewCellStyleSubtitle" id="wEu-J6-hXc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="MRA-kj-iy2" style="IBUITableViewCellStyleDefault" id="wEu-J6-hXc">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wEu-J6-hXc" id="l8x-en-1Pr">
@@ -28,16 +28,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MRA-kj-iy2">
-                                                    <rect key="frame" x="20" y="6" width="25" height="14.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RPe-Vm-dEo">
-                                                    <rect key="frame" x="20" y="22.5" width="40.5" height="13.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -92,21 +85,84 @@
             </objects>
             <point key="canvasLocation" x="677" y="2073"/>
         </scene>
-        <!--分析-->
+        <!--地山等級の選定-->
         <scene sceneID="JBC-i6-LqX">
             <objects>
-                <viewController id="kbt-OV-aSl" sceneMemberID="viewController">
+                <viewController id="kbt-OV-aSl" customClass="ChartsViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xgh-Ph-Scn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wly-qz-0ys">
+                                <rect key="frame" x="0.0" y="88" width="404" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="3T2-df-fb7"/>
+                                </constraints>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="W3I-b6-6cf" style="IBUITableViewCellStyleDefault" id="C2w-U5-nw8">
+                                        <rect key="frame" x="0.0" y="24.5" width="404" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C2w-U5-nw8" id="NQV-OZ-IMd">
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W3I-b6-6cf">
+                                                    <rect key="frame" x="20" y="0.0" width="364" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AIによる支保パターンの採用確率" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2O-pp-ZOb">
+                                <rect key="frame" x="0.0" y="498" width="414" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="lFW-L4-1eP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bW8-Zf-dQO" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="533" width="414" height="280"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rvd-of-kqT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wly-qz-0ys" firstAttribute="top" secondItem="rvd-of-kqT" secondAttribute="top" id="3up-ee-oRm"/>
+                            <constraint firstItem="rvd-of-kqT" firstAttribute="trailing" secondItem="bW8-Zf-dQO" secondAttribute="trailing" id="COk-P9-U1i"/>
+                            <constraint firstItem="bW8-Zf-dQO" firstAttribute="top" secondItem="Q2O-pp-ZOb" secondAttribute="bottom" constant="10" id="SQv-fB-KoL"/>
+                            <constraint firstItem="Q2O-pp-ZOb" firstAttribute="top" secondItem="Wly-qz-0ys" secondAttribute="bottom" constant="10" id="VDz-CF-Jec"/>
+                            <constraint firstItem="rvd-of-kqT" firstAttribute="trailing" secondItem="Q2O-pp-ZOb" secondAttribute="trailing" id="c4Y-V7-d2x"/>
+                            <constraint firstItem="bW8-Zf-dQO" firstAttribute="leading" secondItem="rvd-of-kqT" secondAttribute="leading" id="eYl-FH-3VL"/>
+                            <constraint firstItem="rvd-of-kqT" firstAttribute="trailing" secondItem="Wly-qz-0ys" secondAttribute="trailing" constant="10" id="esu-tN-FPq"/>
+                            <constraint firstItem="Wly-qz-0ys" firstAttribute="leading" secondItem="rvd-of-kqT" secondAttribute="leading" id="khG-DR-eMl"/>
+                            <constraint firstItem="bW8-Zf-dQO" firstAttribute="bottom" secondItem="rvd-of-kqT" secondAttribute="bottom" id="lVo-bG-9Kw"/>
+                            <constraint firstItem="Q2O-pp-ZOb" firstAttribute="leading" secondItem="rvd-of-kqT" secondAttribute="leading" id="sKa-RW-gDF"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="分析" image="setting" id="4oO-nZ-YAk"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="KMM-fg-Ao0"/>
+                    <navigationItem key="navigationItem" title="地山等級の選定" id="d9i-He-f9u">
+                        <barButtonItem key="leftBarButtonItem" title="help" id="AnR-eI-efK"/>
+                        <barButtonItem key="rightBarButtonItem" title="save" id="IVj-FH-yYm"/>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="pieChart" destination="bW8-Zf-dQO" id="Ywg-Qi-zUj"/>
+                        <outlet property="tableView" destination="Wly-qz-0ys" id="HD3-J8-FSA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh3-ZH-qGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="2882"/>
+            <point key="canvasLocation" x="1586.9565217391305" y="2881.4732142857142"/>
         </scene>
         <!--Kiriha Record2 View Controller-->
         <scene sceneID="PG1-Ym-yg3">
@@ -607,7 +663,7 @@
                     <connections>
                         <segue destination="8EB-fv-6QJ" kind="relationship" relationship="viewControllers" id="cPt-Z4-jtR"/>
                         <segue destination="lBt-XT-xRU" kind="relationship" relationship="viewControllers" id="zuo-E5-ykt"/>
-                        <segue destination="kbt-OV-aSl" kind="relationship" relationship="viewControllers" id="ySn-Ur-tWx"/>
+                        <segue destination="Kqf-sH-ORE" kind="relationship" relationship="viewControllers" id="ySn-Ur-tWx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgi-kY-eTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -632,6 +688,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgY-1d-aFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="677" y="1229"/>
+        </scene>
+        <!--分析-->
+        <scene sceneID="Bcs-ly-YHC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kqf-sH-ORE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="分析" image="setting" id="4oO-nZ-YAk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YfW-OD-tNy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kbt-OV-aSl" kind="relationship" relationship="rootViewController" id="dte-7x-0CI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lX5-2V-72V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="676.81159420289862" y="2881.4732142857142"/>
         </scene>
     </scenes>
     <resources>
