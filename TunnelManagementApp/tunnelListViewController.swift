@@ -1,31 +1,31 @@
 //
-//  HomeViewController.swift
+//  tunnelListViewController.swift
 //  TunnelManagementApp
 //
-//  Created by 岸田展明 on 2021/10/04.
+//  Created by 岸田展明 on 2021/10/08.
 //
 
 import UIKit
 
-// HomeViewControllerは、UIViewControllerを継承するとともに、UITableViewDelegateとUITableViewDataSourceのプロトコルに準拠する
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+class tunnelListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     @IBOutlet weak var tableView: UITableView!
     
-    // デリゲートメソッド：データ数を返す関数
+    let tunnelList:[String] = ["渡島トンネル", "内浦トンネル"]
+    
+    // デリゲートメソッド：データ数を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // 5個のデータがあるという意味
+        return tunnelList.count
     }
 
-    // デリゲートメソッド：セルの表示内容
+    // デリゲートメソッド：セルの表示内容を返すメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // 再利用可能な cell を得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         // 値を設定する.
-        cell.textLabel!.text = "Row \(indexPath.row)"
+        cell.textLabel!.text = tunnelList[indexPath.row]   // "Row \(indexPath.row)"
 
         return cell
     }
@@ -42,21 +42,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Segue IDを指定して画面遷移させる
-        performSegue(withIdentifier: "cellSegue2",sender: nil)
+        //
+        performSegue(withIdentifier: "cellSegue",sender: nil)
     }
     
-    // 画面遷移後に１度呼ばれる
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         // デリゲートの指定。ここで、selfとはViewController
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
     
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
