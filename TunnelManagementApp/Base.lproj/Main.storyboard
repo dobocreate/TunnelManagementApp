@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--切羽観察記録一覧-->
         <scene sceneID="XCg-1A-tcV">
             <objects>
                 <viewController storyboardIdentifier="Home" id="xCK-pn-AOY" customClass="HomeViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <constraint firstItem="kia-li-19a" firstAttribute="leading" secondItem="kgP-7I-IBV" secondAttribute="leading" id="y4G-W9-iHh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="l98-om-Jwg">
+                    <navigationItem key="navigationItem" title="切羽観察記録一覧" id="l98-om-Jwg">
                         <barButtonItem key="leftBarButtonItem" title="設定" image="setting" id="efE-9C-SlH">
                             <connections>
                                 <segue destination="Egg-8p-Pcd" kind="show" id="bnp-m8-izu"/>
@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4U-Rc-WeY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1629" y="949"/>
+            <point key="canvasLocation" x="-4804" y="1608"/>
         </scene>
         <!--Photo-->
         <scene sceneID="HOF-8f-Qc6">
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmG-r0-SoG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="2073"/>
+            <point key="canvasLocation" x="-3481" y="785"/>
         </scene>
         <!--地山等級の選定-->
         <scene sceneID="JBC-i6-LqX">
@@ -162,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh3-ZH-qGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586.9565217391305" y="2881.4732142857142"/>
+            <point key="canvasLocation" x="-2059" y="1625"/>
         </scene>
         <!--Kiriha Record2 View Controller-->
         <scene sceneID="PG1-Ym-yg3">
@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsd-A7-Jx0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3719" y="1229"/>
+            <point key="canvasLocation" x="-4804" y="3443"/>
         </scene>
         <!--Remarks View Controller-->
         <scene sceneID="e8V-Ue-TM5">
@@ -265,12 +265,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQP-Aq-SFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612" y="1229"/>
+            <point key="canvasLocation" x="-3384" y="3443"/>
         </scene>
-        <!--Login View Controller-->
+        <!--View Controller-->
         <scene sceneID="q4d-yC-CYS">
             <objects>
-                <viewController storyboardIdentifier="Login" id="GBs-ot-RhY" customClass="LoginViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GBs-ot-RhY" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mdv-oH-QxW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-XE-SfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640.579710144928" y="1229.4642857142856"/>
+            <point key="canvasLocation" x="-4804" y="2529"/>
         </scene>
         <!--Item-->
         <scene sceneID="b6v-hj-Rde">
@@ -648,12 +648,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dg5-lI-w1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2641" y="446"/>
+            <point key="canvasLocation" x="-6174" y="2529"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yvG-Mi-PCX">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Cdq-qg-n4c" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Cdq-qg-n4c" customClass="TabBarController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8jr-Z7-ZVT">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -668,7 +668,85 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgi-kY-eTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-567" y="2073"/>
+            <point key="canvasLocation" x="-3481" y="-236"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="xjA-Y9-hwD">
+            <objects>
+                <viewController storyboardIdentifier="Login" modalPresentationStyle="fullScreen" id="Znc-7h-1g3" customClass="LoginViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4bc-kn-Nga">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-5c-Xpc">
+                                <rect key="frame" x="57" y="124" width="300" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="beb-52-n15"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6SZ-JK-BBj">
+                                <rect key="frame" x="57" y="168" width="300" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Mz6-hp-o39"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="氏名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hm-4a-Gan">
+                                <rect key="frame" x="57" y="212" width="300" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6kR-sr-h3U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8O-YS-Kcc">
+                                <rect key="frame" x="57" y="276" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="GW3-pZ-vC8"/>
+                                </constraints>
+                                <state key="normal" title="ログイン" backgroundImage="btn"/>
+                                <connections>
+                                    <action selector="handleLoginButton:" destination="Znc-7h-1g3" eventType="touchUpInside" id="2OU-uP-FJT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-2U-WQ7">
+                                <rect key="frame" x="57" y="337" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="gTd-5f-itN"/>
+                                </constraints>
+                                <state key="normal" title="アカウント作成" backgroundImage="btn"/>
+                                <connections>
+                                    <action selector="handleCreateAccountButton:" destination="Znc-7h-1g3" eventType="touchUpInside" id="uCv-3i-xmX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="imK-6T-Jcm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N8O-YS-Kcc" firstAttribute="centerX" secondItem="4bc-kn-Nga" secondAttribute="centerX" id="9JJ-qE-a1p"/>
+                            <constraint firstItem="WdI-2U-WQ7" firstAttribute="centerX" secondItem="4bc-kn-Nga" secondAttribute="centerX" id="EOm-tr-ckK"/>
+                            <constraint firstItem="HfT-5c-Xpc" firstAttribute="centerX" secondItem="4bc-kn-Nga" secondAttribute="centerX" id="Kdg-Rr-7f7"/>
+                            <constraint firstItem="N8O-YS-Kcc" firstAttribute="top" secondItem="0hm-4a-Gan" secondAttribute="bottom" constant="30" id="MLz-vj-USe"/>
+                            <constraint firstItem="6SZ-JK-BBj" firstAttribute="top" secondItem="HfT-5c-Xpc" secondAttribute="bottom" constant="10" id="T9O-Eu-IU1"/>
+                            <constraint firstItem="6SZ-JK-BBj" firstAttribute="centerX" secondItem="4bc-kn-Nga" secondAttribute="centerX" id="WPS-VF-sRi"/>
+                            <constraint firstItem="WdI-2U-WQ7" firstAttribute="top" secondItem="N8O-YS-Kcc" secondAttribute="bottom" constant="20" id="ato-fS-8e7"/>
+                            <constraint firstItem="0hm-4a-Gan" firstAttribute="top" secondItem="6SZ-JK-BBj" secondAttribute="bottom" constant="10" id="prn-2i-5SF"/>
+                            <constraint firstItem="HfT-5c-Xpc" firstAttribute="top" secondItem="imK-6T-Jcm" secondAttribute="top" constant="80" id="uPc-LR-clR"/>
+                            <constraint firstItem="0hm-4a-Gan" firstAttribute="centerX" secondItem="4bc-kn-Nga" secondAttribute="centerX" id="xdA-ni-fBX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="0hm-4a-Gan" id="Jes-Ug-DuQ"/>
+                        <outlet property="mailAddressTextField" destination="HfT-5c-Xpc" id="gk5-QE-OCb"/>
+                        <outlet property="passwordTextField" destination="6SZ-JK-BBj" id="KGt-g6-RCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FF3-Hu-ert" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2059" y="-236"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="Dlo-gv-qLM">
@@ -687,7 +765,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgY-1d-aFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="1229"/>
+            <point key="canvasLocation" x="-4804" y="785"/>
         </scene>
         <!--分析-->
         <scene sceneID="Bcs-ly-YHC">
@@ -706,10 +784,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lX5-2V-72V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676.81159420289862" y="2881.4732142857142"/>
+            <point key="canvasLocation" x="-2058" y="785"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btn" width="300" height="40"/>
         <image name="camera" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="setting" width="25" height="25"/>

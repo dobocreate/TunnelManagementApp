@@ -26,6 +26,8 @@
 		46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB5221270E8D1900D489DE /* RemarksData.swift */; };
 		46AB5224270EC37B00D489DE /* RemarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB5223270EC37B00D489DE /* RemarksViewController.swift */; };
 		46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB837270F04660047BF61 /* ChartsViewController.swift */; };
+		46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */; };
+		46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DC270FD0E70047BF61 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		46AB5221270E8D1900D489DE /* RemarksData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksData.swift; sourceTree = "<group>"; };
 		46AB5223270EC37B00D489DE /* RemarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksViewController.swift; sourceTree = "<group>"; };
 		46EFB837270F04660047BF61 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		46EFB8DC270FD0E70047BF61 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D271247BA9F3B1658E4D8663 /* Pods-TunnelManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +103,7 @@
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
+				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
 				46EFB837270F04660047BF61 /* ChartsViewController.swift */,
 				465983A9270B441C00898FDF /* kirihaRecord.swift */,
 				465983A5270B293700898FDF /* SettingViewController.swift */,
@@ -106,6 +111,7 @@
 				46598396270B26E800898FDF /* Assets.xcassets */,
 				46598398270B26E800898FDF /* LaunchScreen.storyboard */,
 				4659839B270B26E800898FDF /* Info.plist */,
+				46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */,
 			);
 			path = TunnelManagementApp;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			files = (
 				4659839A270B26E800898FDF /* LaunchScreen.storyboard in Resources */,
 				46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */,
+				46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */,
 				46598397270B26E800898FDF /* Assets.xcassets in Resources */,
 				46598395270B26E700898FDF /* Main.storyboard in Resources */,
 			);
@@ -245,6 +252,7 @@
 				465983A4270B28B800898FDF /* HomeViewController.swift in Sources */,
 				46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
+				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */,
 				4659838E270B26E700898FDF /* AppDelegate.swift in Sources */,
