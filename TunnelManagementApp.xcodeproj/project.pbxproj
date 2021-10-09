@@ -31,6 +31,8 @@
 		46EFB8DF271050E00047BF61 /* tunnelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */; };
 		46EFB8E12710C5290047BF61 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E02710C5290047BF61 /* LogoutViewController.swift */; };
 		46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */; };
+		46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */; };
+		46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E8271112640047BF61 /* PostRockViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tunnelListViewController.swift; sourceTree = "<group>"; };
 		46EFB8E02710C5290047BF61 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
+		46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostKirihaViewController.swift; sourceTree = "<group>"; };
+		46EFB8E8271112640047BF61 /* PostRockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRockViewController.swift; sourceTree = "<group>"; };
 		D271247BA9F3B1658E4D8663 /* Pods-TunnelManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,10 +112,12 @@
 				46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */,
 				46AB5221270E8D1900D489DE /* RemarksData.swift */,
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
+				46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */,
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
 				46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */,
 				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
+				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
 				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
 				46EFB837270F04660047BF61 /* ChartsViewController.swift */,
 				465983A9270B441C00898FDF /* kirihaRecord.swift */,
@@ -261,9 +267,11 @@
 				465983A4270B28B800898FDF /* HomeViewController.swift in Sources */,
 				46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
+				46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */,
 				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				46EFB8E12710C5290047BF61 /* LogoutViewController.swift in Sources */,
+				46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */,
 				46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */,
 				46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */,
 				4659838E270B26E700898FDF /* AppDelegate.swift in Sources */,

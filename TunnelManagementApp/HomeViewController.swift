@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Segue IDを指定して画面遷移させる
-        performSegue(withIdentifier: "cellSegue2",sender: nil)
+        performSegue(withIdentifier: "cellSegue3",sender: nil)
     }
     
     // 画面遷移後に１度呼ばれる
