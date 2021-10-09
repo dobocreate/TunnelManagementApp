@@ -146,6 +146,9 @@
                                     <constraint firstAttribute="width" constant="50" id="WmF-h6-ylV"/>
                                 </constraints>
                                 <state key="normal" title="修正"/>
+                                <connections>
+                                    <action selector="rockSelectButton2:" destination="amu-gZ-u4j" eventType="touchUpInside" id="bGw-gl-UoE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3f2-dD-yJx">
                                 <rect key="frame" x="57" y="694" width="300" height="40"/>
