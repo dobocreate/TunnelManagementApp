@@ -33,6 +33,7 @@
 		46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */; };
 		46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */; };
 		46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E8271112640047BF61 /* PostRockViewController.swift */; };
+		46EFB8EB271268920047BF61 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8EA271268920047BF61 /* Const.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
 		46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostKirihaViewController.swift; sourceTree = "<group>"; };
 		46EFB8E8271112640047BF61 /* PostRockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRockViewController.swift; sourceTree = "<group>"; };
+		46EFB8EA271268920047BF61 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		D271247BA9F3B1658E4D8663 /* Pods-TunnelManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
 				46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */,
+				46EFB8EA271268920047BF61 /* Const.swift */,
 				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
 				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
 				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
@@ -284,6 +287,7 @@
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,
 				46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */,
+				46EFB8EB271268920047BF61 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
