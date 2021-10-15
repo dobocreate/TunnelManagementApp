@@ -29,8 +29,5 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             // 第一引数：遷移先のUIViewController、第二引数：アニメーションの指定、第三引数：コールバック関数
             self.present(loginViewController!, animated: true, completion: nil)
         }
-        
     }
-
-
 }

@@ -20,6 +20,8 @@
 		465983A6270B293700898FDF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A5270B293700898FDF /* SettingViewController.swift */; };
 		465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A7270B3B8D00898FDF /* PhotoViewController.swift */; };
 		465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A9270B441C00898FDF /* kirihaRecord.swift */; };
+		466308CA2718F67600214303 /* tunInitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* tunInitialData.swift */; };
+		466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CB2718FAAB00214303 /* FirestorePathList.swift */; };
 		46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */; };
 		46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */; };
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
@@ -33,7 +35,6 @@
 		46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */; };
 		46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */; };
 		46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E8271112640047BF61 /* PostRockViewController.swift */; };
-		46EFB8EB271268920047BF61 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8EA271268920047BF61 /* Const.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		465983A5270B293700898FDF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		465983A7270B3B8D00898FDF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		465983A9270B441C00898FDF /* kirihaRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord.swift; sourceTree = "<group>"; };
+		466308C92718F67600214303 /* tunInitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tunInitialData.swift; sourceTree = "<group>"; };
+		466308CB2718FAAB00214303 /* FirestorePathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePathList.swift; sourceTree = "<group>"; };
 		46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord2ViewController.swift; sourceTree = "<group>"; };
 		46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksTableViewCell.swift; sourceTree = "<group>"; };
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
@@ -66,7 +69,6 @@
 		46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
 		46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostKirihaViewController.swift; sourceTree = "<group>"; };
 		46EFB8E8271112640047BF61 /* PostRockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRockViewController.swift; sourceTree = "<group>"; };
-		46EFB8EA271268920047BF61 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		D271247BA9F3B1658E4D8663 /* Pods-TunnelManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,13 +114,14 @@
 				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
 				4650AD95270B545A000073F4 /* InputKirihaViewController.swift */,
 				46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */,
+				466308CB2718FAAB00214303 /* FirestorePathList.swift */,
+				466308C92718F67600214303 /* tunInitialData.swift */,
 				46AB5221270E8D1900D489DE /* RemarksData.swift */,
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
 				46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */,
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
 				46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */,
-				46EFB8EA271268920047BF61 /* Const.swift */,
 				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
 				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
 				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
@@ -270,10 +273,12 @@
 				465983A4270B28B800898FDF /* HomeViewController.swift in Sources */,
 				46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
+				466308CA2718F67600214303 /* tunInitialData.swift in Sources */,
 				46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */,
 				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				46EFB8E12710C5290047BF61 /* LogoutViewController.swift in Sources */,
+				466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */,
 				46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */,
 				46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */,
 				46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */,
@@ -287,7 +292,6 @@
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,
 				46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */,
-				46EFB8EB271268920047BF61 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

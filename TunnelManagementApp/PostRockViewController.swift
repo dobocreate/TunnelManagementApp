@@ -20,15 +20,16 @@ class PostRockViewController: UIViewController {
     @IBOutlet weak var rockNameLabel: UILabel!
     
     // 結果の送信ボタンがプッシュされたら実行される
+    /*
     @IBAction func resultUploadButton(_ sender: Any) {
         
         // 画像をJPEG形式に変換する
         let imageData = image.jpegData(compressionQuality: 0.75)    // 圧縮率２５％
         
         // 画像と投稿データの保存場所を定義する
-        let postRef = Firestore.firestore().collection(Const.PostPath).document()
+        let obsRecordRef = Firestore.firestore().collection(Const.obsRecordPath).document()
         
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(obsRecordRef.documentID + ".jpg")
         
         // HUDで投稿処理中の表示を開始
         SVProgressHUD.show()
@@ -61,7 +62,7 @@ class PostRockViewController: UIViewController {
                 "date": FieldValue.serverTimestamp(),
                 ] as [String : Any]
             
-            postRef.setData(postDic)
+            obsRecordRef.setData(postDic)
             
             // HUDで投稿完了を表示する
             SVProgressHUD.showSuccess(withStatus: "投稿しました")
@@ -70,6 +71,7 @@ class PostRockViewController: UIViewController {
            UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
         }
     }
+    */
     
     // キャンセルボタンをプッシュされたら実行される
     @IBAction func cancelButton(_ sender: Any) {
