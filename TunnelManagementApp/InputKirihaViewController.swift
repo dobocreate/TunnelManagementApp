@@ -22,13 +22,13 @@ class InputKirihaViewController: UIViewController {
     
     @IBOutlet weak var tunnelTypeSegmentedControl2: UISegmentedControl!
     
-    var tunnelType:String?      // 様式タイプ名
+    var tunnelType: Int = 2      // 様式タイプ名
     
     // 観察記録の様式タイプを選択する
     @IBAction func tunnelTypeSegmentedControl(_ sender: UISegmentedControl) {
         
         // 選択されたボタンのタイトルを取得する
-        self.tunnelType = sender.titleForSegment(at: sender.selectedSegmentIndex)
+        self.tunnelType = sender.selectedSegmentIndex
         
         print(sender.titleForSegment(at: sender.selectedSegmentIndex)!)
     }
@@ -40,8 +40,6 @@ class InputKirihaViewController: UIViewController {
         
         // トンネルデータの保存場所
         let tunnelListRef = Firestore.firestore().collection(FirestorePathList.tunnelListPath).document()
-        
-        let tunnelId: String! = "oshima"
         
         // stationNoの計算
         let stationNo1: Float?
@@ -55,31 +53,35 @@ class InputKirihaViewController: UIViewController {
         // 保存するデータを辞書に格納する
         let tunnelDic = [
             
-            "tunnelId": tunnelId!,
+            "tunnelId": tunnelIdTextField.text!,
             "tunnelName": tunnelNameTextField.text!,
             "stationNo1": stationNo1!,
             "stationNo2": stationNo2!,
-            "tunnelType": tunnelType!,
+            "tunnelType": tunnelType,
             "date": FieldValue.serverTimestamp()
         ] as [String: Any]
      
         // Firestoreにデータを保存
         tunnelListRef.setData(tunnelDic)
         
-        // 画面を戻る
+        // StoryboardIDを指定して画面遷移する
+        let tunnelListViewController = self.storyboard?.instantiateViewController(withIdentifier: "tunnelList") as! tunnelListViewController
         
+        navigationController?.pushViewController(tunnelListViewController, animated: true)      // プッシュ画面遷移
+        // self.present(tunnelListViewController, animated: true, completion: nil)              // モーダル画面遷移
     }
     
     // 画面遷移時に一度だけ実行される
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         
         // tunnelTypeの初期値の設定
-        let tunnelTypeIndex = 2
+        let tunnelTypeIndex = 2         // 様式A：0、様式B：1、様式C：2
         tunnelTypeSegmentedControl2.selectedSegmentIndex = tunnelTypeIndex
-        self.tunnelType = tunnelTypeSegmentedControl2.titleForSegment(at: tunnelTypeIndex)
+        
+        print("tunnelType: \(tunnelTypeIndex)")
+        // self.tunnelType = tunnelTypeSegmentedControl2.titleForSegment(at: tunnelTypeIndex)
         
     }
     

@@ -22,6 +22,7 @@
 		465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A9270B441C00898FDF /* kirihaRecord.swift */; };
 		466308CA2718F67600214303 /* tunInitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* tunInitialData.swift */; };
 		466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CB2718FAAB00214303 /* FirestorePathList.swift */; };
+		466308CE27196AFF00214303 /* UpdateTunSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */; };
 		46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */; };
 		46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */; };
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
@@ -56,6 +57,7 @@
 		465983A9270B441C00898FDF /* kirihaRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord.swift; sourceTree = "<group>"; };
 		466308C92718F67600214303 /* tunInitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tunInitialData.swift; sourceTree = "<group>"; };
 		466308CB2718FAAB00214303 /* FirestorePathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePathList.swift; sourceTree = "<group>"; };
+		466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTunSettingViewController.swift; sourceTree = "<group>"; };
 		46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord2ViewController.swift; sourceTree = "<group>"; };
 		46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksTableViewCell.swift; sourceTree = "<group>"; };
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				46EFB8E02710C5290047BF61 /* LogoutViewController.swift */,
 				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
 				4650AD95270B545A000073F4 /* InputKirihaViewController.swift */,
+				466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */,
 				46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */,
 				466308CB2718FAAB00214303 /* FirestorePathList.swift */,
 				466308C92718F67600214303 /* tunInitialData.swift */,
@@ -286,6 +289,7 @@
 				4650AD96270B545A000073F4 /* InputKirihaViewController.swift in Sources */,
 				46AB5224270EC37B00D489DE /* RemarksViewController.swift in Sources */,
 				465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */,
+				466308CE27196AFF00214303 /* UpdateTunSettingViewController.swift in Sources */,
 				46EFB8DF271050E00047BF61 /* tunnelListViewController.swift in Sources */,
 				46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,

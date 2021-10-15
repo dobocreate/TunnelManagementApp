@@ -17,7 +17,7 @@ class tunInitialData: NSObject {
     var tunnelName: String?     // トンネル名
     var stationNo1: Float?      // 開始測点
     var stationNo2: Float?      // 完了測点
-    var tunnelType: String?     // 記録様式
+    var tunnelType: Int?     // 記録様式
     var date: Date?             // 保存日時
     
     // 初期化メソッド
@@ -32,7 +32,7 @@ class tunInitialData: NSObject {
         self.tunnelName = tunnelDataDic["tunnelName"] as? String
         self.stationNo1 = tunnelDataDic["stationNo1"] as? Float
         self.stationNo2 = tunnelDataDic["stationNo2"] as? Float
-        self.tunnelType = tunnelDataDic["tunnelType"] as? String
+        self.tunnelType = tunnelDataDic["tunnelType"] as? Int
         
         let timestamp = tunnelDataDic["date"] as? Timestamp
         

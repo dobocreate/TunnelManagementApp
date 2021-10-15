@@ -634,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-XE-SfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4978.2608695652179" y="2528.5714285714284"/>
+            <point key="canvasLocation" x="-5888" y="2529"/>
         </scene>
         <!--Item-->
         <scene sceneID="b6v-hj-Rde">
@@ -902,7 +902,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dg5-lI-w1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5989.8550724637689" y="2528.5714285714284"/>
+            <point key="canvasLocation" x="-7814" y="2529"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yvG-Mi-PCX">
@@ -1086,11 +1086,12 @@
                     <connections>
                         <outlet property="tableView" destination="Myh-gt-o0D" id="WnS-o6-D05"/>
                         <segue destination="xCK-pn-AOY" kind="show" identifier="cellSegue" id="d8M-qH-oJU"/>
+                        <segue destination="6m4-Ud-hqa" kind="presentation" identifier="updateTunSettingSegue" id="URZ-6Z-6xz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33V-Ks-CRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6900" y="1608"/>
+            <point key="canvasLocation" x="-7814" y="1608"/>
         </scene>
         <!--分析-->
         <scene sceneID="Bcs-ly-YHC">
@@ -1130,16 +1131,16 @@
             </objects>
             <point key="canvasLocation" x="-4804" y="785"/>
         </scene>
-        <!--Input Kiriha View Controller-->
+        <!--Update Tun Setting View Controller-->
         <scene sceneID="2yZ-dE-4I9">
             <objects>
-                <viewController id="6m4-Ud-hqa" customClass="InputKirihaViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="updateTunSetting" id="6m4-Ud-hqa" customClass="UpdateTunSettingViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XKQ-Ce-xgl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　トンネル名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-cS-BLY">
-                                <rect key="frame" x="0.0" y="178" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="srU-YT-8ft"/>
@@ -1149,7 +1150,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　始点位置（トンネル坑口）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wn-Uf-ynm">
-                                <rect key="frame" x="0.0" y="268" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="180" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="8V9-5Y-HUE"/>
@@ -1159,7 +1160,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VzC-Av-KeD">
-                                <rect key="frame" x="20" y="303" width="330" height="35"/>
+                                <rect key="frame" x="20" y="215" width="330" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="測点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMG-Ww-4GO">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
@@ -1213,7 +1214,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　終点位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KC-qg-tf0">
-                                <rect key="frame" x="0.0" y="358" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="270" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="qFr-2a-TvU"/>
@@ -1223,7 +1224,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bcf-79-Ka3">
-                                <rect key="frame" x="20" y="393" width="330" height="35"/>
+                                <rect key="frame" x="20" y="305" width="330" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="測点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wv-WA-8DA">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
@@ -1277,7 +1278,7 @@
                                 </constraints>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="V8Z-ff-uVd">
-                                <rect key="frame" x="20" y="483" width="374" height="36"/>
+                                <rect key="frame" x="20" y="395" width="374" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="AFv-Zl-JHm"/>
                                 </constraints>
@@ -1287,11 +1288,11 @@
                                     <segment title="様式C"/>
                                 </segments>
                                 <connections>
-                                    <action selector="tunnelTypeSegmentedControl:" destination="6m4-Ud-hqa" eventType="valueChanged" id="ToM-fY-52X"/>
+                                    <action selector="tunnelTypeSegmentedControl:" destination="6m4-Ud-hqa" eventType="valueChanged" id="Cl2-8t-wQK"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　観察記録様式タイプ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhC-DV-rJ6">
-                                <rect key="frame" x="0.0" y="448" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="360" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="jjc-D9-hW2"/>
@@ -1301,7 +1302,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　トンネルID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bf-ws-npJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="4OH-eB-3zK"/>
@@ -1311,7 +1312,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VGy-ur-hkN">
-                                <rect key="frame" x="20" y="123" width="294" height="35"/>
+                                <rect key="frame" x="20" y="35" width="294" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Pc5-Zh-RdP"/>
                                     <constraint firstAttribute="height" constant="35" id="po1-A7-ISg"/>
@@ -1320,7 +1321,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZr-aU-gaT">
-                                <rect key="frame" x="324" y="123" width="80" height="35"/>
+                                <rect key="frame" x="324" y="35" width="80" height="35"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="5rT-Z6-YTb"/>
@@ -1329,13 +1330,25 @@
                                 <state key="normal" title="チェック"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzG-5S-9zQ">
-                                <rect key="frame" x="20" y="213" width="374" height="35"/>
+                                <rect key="frame" x="20" y="125" width="374" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="rsc-wO-YxD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xc-sM-LpY">
+                                <rect key="frame" x="57" y="480" width="300" height="40"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="DAs-rb-Ra7"/>
+                                    <constraint firstAttribute="height" constant="40" id="jm8-Es-7nH"/>
+                                </constraints>
+                                <state key="normal" title="更　新"/>
+                                <connections>
+                                    <action selector="updateButton2:" destination="6m4-Ud-hqa" eventType="touchUpInside" id="D6l-Jp-xTm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gpT-b8-dLF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1343,12 +1356,14 @@
                             <constraint firstItem="0bf-ws-npJ" firstAttribute="top" secondItem="gpT-b8-dLF" secondAttribute="top" id="02T-Ix-Yaz"/>
                             <constraint firstItem="8KC-qg-tf0" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="1QA-Qy-z3J"/>
                             <constraint firstItem="VzC-Av-KeD" firstAttribute="top" secondItem="2wn-Uf-ynm" secondAttribute="bottom" constant="10" id="4mU-T2-7Le"/>
+                            <constraint firstItem="4Xc-sM-LpY" firstAttribute="centerX" secondItem="XKQ-Ce-xgl" secondAttribute="centerX" id="7cg-9E-37w"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="2wn-Uf-ynm" secondAttribute="trailing" id="CQq-Kx-INn"/>
                             <constraint firstItem="rzG-5S-9zQ" firstAttribute="top" secondItem="Bhe-cS-BLY" secondAttribute="bottom" constant="10" id="GKj-Le-3lI"/>
                             <constraint firstItem="VGy-ur-hkN" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" constant="20" id="JcU-Fg-dS1"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="Bhe-cS-BLY" secondAttribute="trailing" id="JeN-Ke-GJV"/>
                             <constraint firstItem="V8Z-ff-uVd" firstAttribute="top" secondItem="BhC-DV-rJ6" secondAttribute="bottom" constant="10" id="Jm0-4s-PyC"/>
                             <constraint firstItem="Bhe-cS-BLY" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="MqX-vk-g6d"/>
+                            <constraint firstItem="4Xc-sM-LpY" firstAttribute="top" secondItem="V8Z-ff-uVd" secondAttribute="bottom" constant="50" id="N7f-PX-V1t"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="BhC-DV-rJ6" secondAttribute="trailing" id="QFg-YC-cnP"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="rzG-5S-9zQ" secondAttribute="trailing" constant="20" id="QvT-fp-23v"/>
                             <constraint firstItem="BhC-DV-rJ6" firstAttribute="top" secondItem="Bcf-79-Ka3" secondAttribute="bottom" constant="20" id="Ro6-Ox-YXy"/>
@@ -1377,44 +1392,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nga-cX-zhF">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="xb8-I2-ZQa">
-                            <connections>
-                                <action selector="saveButton:" destination="6m4-Ud-hqa" id="swg-1h-TzC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="bOc-8g-6wX"/>
+                        <barButtonItem key="rightBarButtonItem" title="更新" id="xb8-I2-ZQa"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="stationK2TextField" destination="2Mw-Cj-ZdT" id="VZZ-7H-8Oo"/>
-                        <outlet property="stationKTextField" destination="PEh-sK-BhN" id="JbA-GE-dbI"/>
-                        <outlet property="stationM2TextField" destination="kEE-ue-098" id="Xu3-9S-OBR"/>
-                        <outlet property="stationMTextField" destination="Gin-Qm-yfv" id="phx-M8-IKY"/>
-                        <outlet property="tunnelIdTextField" destination="VGy-ur-hkN" id="qFk-kT-EUk"/>
-                        <outlet property="tunnelNameTextField" destination="rzG-5S-9zQ" id="9TP-N4-tV7"/>
-                        <outlet property="tunnelTypeSegmentedControl2" destination="V8Z-ff-uVd" id="MUl-Cb-Z7f"/>
+                        <outlet property="stationK2TextField" destination="2Mw-Cj-ZdT" id="hTB-cB-6WK"/>
+                        <outlet property="stationKTextField" destination="PEh-sK-BhN" id="LWl-5g-jDi"/>
+                        <outlet property="stationM2TextField" destination="kEE-ue-098" id="ATV-j8-Ckg"/>
+                        <outlet property="stationMTextField" destination="Gin-Qm-yfv" id="9aM-Kv-CeA"/>
+                        <outlet property="tunnelIdTextField" destination="VGy-ur-hkN" id="VtF-WJ-E6g"/>
+                        <outlet property="tunnelNameTextField" destination="rzG-5S-9zQ" id="dXc-g8-NEt"/>
+                        <outlet property="tunnelTypeSegmentedControl2" destination="V8Z-ff-uVd" id="1Dk-3w-yN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zb4-3a-eZk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7001.449275362319" y="2528.5714285714284"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="WR7-cK-PhK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VH5-dU-UQC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="n2o-lg-HND"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nve-8Y-gfJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6m4-Ud-hqa" kind="relationship" relationship="rootViewController" id="UCQ-8i-Eno"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Kk-JF-3aR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-7913.04347826087" y="2528.5714285714284"/>
+            <point key="canvasLocation" x="-6859" y="2529"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1436,6 +1429,9 @@
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

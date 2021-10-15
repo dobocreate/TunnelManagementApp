@@ -17,7 +17,23 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     // トンネルデータを格納する配列
     var tunnelDataArray:[tunInitialData] = []
     
-    // let tunnelList:[String] = ["渡島トンネル", "内浦トンネル"]
+    /*
+    // 画面遷移する際の処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "updateTunSettingSegue" {
+            
+            let updateTunSettingViewController:UpdateTunSettingViewController = segue.destination as! UpdateTunSettingViewController
+     
+            // let indexPath = self.tableView.indexPathForSelectedRow
+            
+            
+            //print("indexPath.row: \(indexPath.row!)")
+            
+            updateTunSettingViewController.tunnelData = tunnelDataArray[0]
+        }
+    }
+    */
     
     // 画面が表示される前に呼び出され、他の画面から戻ってきた場合にも呼ばれる
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +113,32 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
             // 編集処理を記述
             print("Editがタップされた")
+            
+            // 遷移先のViewControllerを取得
+            let UpdateTunSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "updateTunSetting") as! UpdateTunSettingViewController
+            
+            // 現在のセルの番号を取得する
+            //let indexPath = self.tableView.indexPathForSelectedRow
+            
+            print("indexPath.row: \(indexPath.row)")
+            
+            // 遷移先の変数に値を渡す
+            UpdateTunSettingViewController.tunnelData = self.tunnelDataArray[indexPath.row]
+        
+            print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelName!)")
+            
+            // Segueを指定して画面遷移する
+            //self.performSegue(withIdentifier: "updateTunSettingSegue", sender: nil)
+            
+            self.present(UpdateTunSettingViewController, animated: true, completion: nil)
+            
+            /*
+            // StoryboardIDを指定して画面遷移する
+            let UpdateTunSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "updateTunSetting") as! UpdateTunSettingViewController
+            
+            //self.navigationController?.pushViewController(UpdateTunSettingViewController, animated: true)      // プッシュ画面遷移
+            self.present(UpdateTunSettingViewController, animated: true, completion: nil)              // モーダル画面遷移
+            */
 
             // 実行結果に関わらず記述
             completionHandler(true)
@@ -147,19 +189,4 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         //
         performSegue(withIdentifier: "cellSegue",sender: nil)
     }
-    
-    
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
