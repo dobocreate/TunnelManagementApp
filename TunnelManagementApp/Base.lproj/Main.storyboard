@@ -11,7 +11,7 @@
         <!--記録一覧-->
         <scene sceneID="XCg-1A-tcV">
             <objects>
-                <viewController id="xCK-pn-AOY" customClass="HomeViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="kirihaList" id="xCK-pn-AOY" customClass="KirihaListViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pUJ-sv-dgL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="kia-li-19a" id="cMo-fj-kn4"/>
+                        <outlet property="tableView" destination="kia-li-19a" id="Pdf-BI-yVk"/>
                         <segue destination="GBs-ot-RhY" kind="show" identifier="cellSegue2" id="ORK-QV-jZt"/>
                         <segue destination="JVu-0C-icr" kind="show" identifier="cellSegue3" id="sdo-4x-jfy"/>
                     </connections>
@@ -625,7 +625,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="諸元" id="dqt-aA-7AD">
-                        <barButtonItem key="rightBarButtonItem" title="観察記録" id="JNG-4L-Ptv">
+                        <barButtonItem key="rightBarButtonItem" title="新規作成" id="JNG-4L-Ptv">
                             <connections>
                                 <segue destination="Jyx-ZY-Skk" kind="show" id="hgS-aF-lTU"/>
                             </connections>
@@ -884,7 +884,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="x60-wI-zRt"/>
                     <navigationItem key="navigationItem" id="JsS-eT-hyX">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="ROg-TB-W0Z">
+                        <barButtonItem key="rightBarButtonItem" title="新規作成" id="ROg-TB-W0Z">
                             <connections>
                                 <action selector="saveButton:" destination="Egg-8p-Pcd" id="CXX-eW-Gay"/>
                             </connections>
@@ -918,7 +918,6 @@
                         <segue destination="XC5-FK-qS0" kind="relationship" relationship="viewControllers" id="ynz-Mc-kA1"/>
                         <segue destination="lBt-XT-xRU" kind="relationship" relationship="viewControllers" id="zuo-E5-ykt"/>
                         <segue destination="Kqf-sH-ORE" kind="relationship" relationship="viewControllers" id="ySn-Ur-tWx"/>
-                        <segue destination="snk-Mo-Kpv" kind="relationship" relationship="viewControllers" id="MW3-wr-dsg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgi-kY-eTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

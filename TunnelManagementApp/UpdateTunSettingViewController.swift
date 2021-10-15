@@ -25,6 +25,8 @@ class UpdateTunSettingViewController: UIViewController {
     
     var tunnelData: tunInitialData?   // データの受け渡し用
     
+    var tunnelId: String!
+    
     // 画面遷移時に一度だけ実行される
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +58,9 @@ class UpdateTunSettingViewController: UIViewController {
                 
                 let a = floor(stationNo1 / 1000)
                 let b = stationNo1 - a * 1000
+                let c: Int = Int(a)
                 
-                stationKTextField.text! = String(a)
+                stationKTextField.text! = String(c)
                 stationMTextField.text! = String(b)
             }
             
@@ -66,8 +69,9 @@ class UpdateTunSettingViewController: UIViewController {
                 
                 let a = floor(stationNo2 / 1000)
                 let b = stationNo2 - a * 1000
+                let c: Int = Int(a)
                 
-                stationK2TextField.text! = String(a)
+                stationK2TextField.text! = String(c)
                 stationM2TextField.text! = String(b)
             }
             
@@ -78,6 +82,8 @@ class UpdateTunSettingViewController: UIViewController {
                 
                 tunnelTypeSegmentedControl2.selectedSegmentIndex = tunnelTypeIndex
             }
+            
+            self.tunnelId = tunnelData?.id
         }
     }
     
@@ -96,8 +102,7 @@ class UpdateTunSettingViewController: UIViewController {
         
         print("更新ボタンがプッシュされました")
         
-        // トンネルデータの保存場所
-        let tunnelListRef = Firestore.firestore().collection(FirestorePathList.tunnelListPath).document("sgmYhd9wDqX2r5tGEnvz")
+        
         
         // stationNoの計算
         let stationNo1: Float?
@@ -117,9 +122,15 @@ class UpdateTunSettingViewController: UIViewController {
             "tunnelType": tunnelType!,
             "date": FieldValue.serverTimestamp()
         ] as [String: Any]
+        
+        print("textField : \(tunnelIdTextField.text!)")
      
-        // Firestoreにデータを保存
-        tunnelListRef.updateData(tunnelDic) { err in
+        // Firestoreにデータを上書き保存
+        // トンネルデータの保存場所（更新する場合は、既存のdocumentIdを設定する）
+        let tunnelListRef = Firestore.firestore().collection(FirestorePathList.tunnelListPath).document(self.tunnelId)
+        
+        // データを上書き保存する場合は、merge: trueとする
+        tunnelListRef.setData(tunnelDic, merge: true) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {

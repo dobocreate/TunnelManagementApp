@@ -16,13 +16,14 @@
 		46598397270B26E800898FDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46598396270B26E800898FDF /* Assets.xcassets */; };
 		4659839A270B26E800898FDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46598398270B26E800898FDF /* LaunchScreen.storyboard */; };
 		465983A2270B28A900898FDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A1270B28A900898FDF /* LoginViewController.swift */; };
-		465983A4270B28B800898FDF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A3270B28B800898FDF /* HomeViewController.swift */; };
+		465983A4270B28B800898FDF /* bk_HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A3270B28B800898FDF /* bk_HomeViewController.swift */; };
 		465983A6270B293700898FDF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A5270B293700898FDF /* SettingViewController.swift */; };
 		465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A7270B3B8D00898FDF /* PhotoViewController.swift */; };
 		465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A9270B441C00898FDF /* kirihaRecord.swift */; };
 		466308CA2718F67600214303 /* tunInitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* tunInitialData.swift */; };
 		466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CB2718FAAB00214303 /* FirestorePathList.swift */; };
 		466308CE27196AFF00214303 /* UpdateTunSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */; };
+		466308D0271A159000214303 /* KirihaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CF271A159000214303 /* KirihaListViewController.swift */; };
 		46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */; };
 		46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */; };
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
@@ -51,13 +52,14 @@
 		46598399270B26E800898FDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4659839B270B26E800898FDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		465983A1270B28A900898FDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		465983A3270B28B800898FDF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		465983A3270B28B800898FDF /* bk_HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk_HomeViewController.swift; sourceTree = "<group>"; };
 		465983A5270B293700898FDF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		465983A7270B3B8D00898FDF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		465983A9270B441C00898FDF /* kirihaRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord.swift; sourceTree = "<group>"; };
 		466308C92718F67600214303 /* tunInitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tunInitialData.swift; sourceTree = "<group>"; };
 		466308CB2718FAAB00214303 /* FirestorePathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePathList.swift; sourceTree = "<group>"; };
 		466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTunSettingViewController.swift; sourceTree = "<group>"; };
+		466308CF271A159000214303 /* KirihaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaListViewController.swift; sourceTree = "<group>"; };
 		46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord2ViewController.swift; sourceTree = "<group>"; };
 		46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksTableViewCell.swift; sourceTree = "<group>"; };
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
@@ -111,7 +113,7 @@
 				4659838F270B26E700898FDF /* SceneDelegate.swift */,
 				46598391270B26E700898FDF /* ViewController.swift */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
-				465983A3270B28B800898FDF /* HomeViewController.swift */,
+				465983A3270B28B800898FDF /* bk_HomeViewController.swift */,
 				46EFB8E02710C5290047BF61 /* LogoutViewController.swift */,
 				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
 				4650AD95270B545A000073F4 /* InputKirihaViewController.swift */,
@@ -119,6 +121,7 @@
 				46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */,
 				466308CB2718FAAB00214303 /* FirestorePathList.swift */,
 				466308C92718F67600214303 /* tunInitialData.swift */,
+				466308CF271A159000214303 /* KirihaListViewController.swift */,
 				46AB5221270E8D1900D489DE /* RemarksData.swift */,
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
 				46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */,
@@ -273,10 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				465983A4270B28B800898FDF /* HomeViewController.swift in Sources */,
+				465983A4270B28B800898FDF /* bk_HomeViewController.swift in Sources */,
 				46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
 				466308CA2718F67600214303 /* tunInitialData.swift in Sources */,
+				466308D0271A159000214303 /* KirihaListViewController.swift in Sources */,
 				46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */,
 				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,

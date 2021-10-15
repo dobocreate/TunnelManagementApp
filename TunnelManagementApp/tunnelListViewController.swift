@@ -18,7 +18,7 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     var tunnelDataArray:[tunInitialData] = []
     
     /*
-    // 画面遷移する際の処理
+    // 画面遷移する際の処理 -> indexPathがうまく取得できない。なぜ？
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "updateTunSettingSegue" {
@@ -26,7 +26,6 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
             let updateTunSettingViewController:UpdateTunSettingViewController = segue.destination as! UpdateTunSettingViewController
      
             // let indexPath = self.tableView.indexPathForSelectedRow
-            
             
             //print("indexPath.row: \(indexPath.row!)")
             
@@ -83,6 +82,7 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
 
         // デリゲートの指定。ここで、selfとはViewController
+        // デリゲートを指定することで、データ数を返すメソッドなどが使えるようになると考える
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -101,7 +101,6 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // 値を設定する
         cell.textLabel!.text = tunnelDataArray[indexPath.row].tunnelName!
-        // cell.textLabel!.text = tunnelList[indexPath.row]   // "Row \(indexPath.row)"
 
         return cell
     }
@@ -111,14 +110,12 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // 編集処理
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
+            
             // 編集処理を記述
             print("Editがタップされた")
             
             // 遷移先のViewControllerを取得
             let UpdateTunSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "updateTunSetting") as! UpdateTunSettingViewController
-            
-            // 現在のセルの番号を取得する
-            //let indexPath = self.tableView.indexPathForSelectedRow
             
             print("indexPath.row: \(indexPath.row)")
             
@@ -127,18 +124,11 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         
             print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelName!)")
             
-            // Segueを指定して画面遷移する
+            // Segueを指定して画面遷移する　-> Segueを指定してもデータの受け渡しがうまくいかない。なぜ？
             //self.performSegue(withIdentifier: "updateTunSettingSegue", sender: nil)
             
+            // モーダル遷移
             self.present(UpdateTunSettingViewController, animated: true, completion: nil)
-            
-            /*
-            // StoryboardIDを指定して画面遷移する
-            let UpdateTunSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "updateTunSetting") as! UpdateTunSettingViewController
-            
-            //self.navigationController?.pushViewController(UpdateTunSettingViewController, animated: true)      // プッシュ画面遷移
-            self.present(UpdateTunSettingViewController, animated: true, completion: nil)              // モーダル画面遷移
-            */
 
             // 実行結果に関わらず記述
             completionHandler(true)
@@ -149,6 +139,7 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // 削除処理
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            
             //削除処理を記述
             print("Deleteがタップされた")
             
@@ -169,7 +160,27 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         // 定義したアクションをセット
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
+
+    // 各セルを選択した時に実行されるメソッド
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("セルがタップされた")
+        
+        // 遷移先のViewControllerを取得
+        let KirihaListViewController = self.storyboard?.instantiateViewController(withIdentifier: "kirihaList") as! KirihaListViewController
+        
+        print("indexPath.row: \(indexPath.row)")
+        
+        // 遷移先の変数に値を渡す
+        KirihaListViewController.tunnelData = self.tunnelDataArray[indexPath.row]
     
+        print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelName!)")
+        
+        self.navigationController?.pushViewController(KirihaListViewController, animated: true)
+        
+        // Segueで画面遷移
+        // performSegue(withIdentifier: "cellSegue",sender: nil)
+    }
     
     /*
     // セルが削除が可能なことを伝えるメソッド
@@ -183,10 +194,5 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     */
     
-    // 各セルを選択した時に実行されるメソッド
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //
-        performSegue(withIdentifier: "cellSegue",sender: nil)
-    }
+
 }
