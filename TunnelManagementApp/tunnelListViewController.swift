@@ -105,6 +105,14 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    let cellHeight: CGFloat = 50
+    
+    // セルの高さ
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return self.cellHeight
+    }
+    
     // スワイプした時に表示するアクションの定義
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
