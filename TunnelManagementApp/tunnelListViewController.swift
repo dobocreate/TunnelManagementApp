@@ -73,6 +73,7 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("DEBUG_PRINT: viewWillDisappear")
+        
         // listenerを削除して監視を停止する
         listener?.remove()
     }

@@ -19,6 +19,9 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     // トンネルデータを格納する配列
     var tunnelData: tunInitialData?
     
+    // 切羽観察記録を格納する配列
+    var kirihaRecordDataArray: [KirihaRecordData] = []
+    
     // トンネルID
     var tunnelPath: String?
     
@@ -30,14 +33,10 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         
-        if let tunId = tunnelData?.tunnelId {
-            
-            self.tunnelPath = tunId
-            print("tunnelId KirihaListCV: \(tunId)")
-        }
+        print("KirihaListVC tunnelPath: \(tunnelData?.tunnelId)")
     }
     
-    /*
+    
     // 画面が表示される前に呼び出され、他の画面から戻ってきた場合にも呼ばれる
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,46 +45,52 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // ログイン済みか確認
         if Auth.auth().currentUser != nil {         // ログイン済みの場合
-            
+                        
             // listenerを登録して投稿データの更新を監視する
-            let postsRef = Firestore.firestore().collection(FirestorePathList.tunnelListPath).order(by: "date", descending: true)
-            
-            listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
-                if let error = error {
-                    print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
-                    
-                    return
-                }
+            if let tunnelId = self.tunnelData?.tunnelId {
                 
-                // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
-                self.tunnelDataArray = querySnapshot!.documents.map { document in
-                    print("DEBUG_PRINT: document取得 \(document.documentID)")
+                // listenerを登録して投稿データの更新を監視する
+                let postsRef = Firestore.firestore().collection(tunnelId).order(by: "date", descending: true)
+            
+                listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
+                    if let error = error {
+                        print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
+                        
+                        return
+                    }
                     
-                    let tunnelData = tunInitialData(document: document)
-                    
-                    return tunnelData
+                    // 取得したdocumentをもとにKirihaRecordDataを作成し、kirihaRecordDataArrayの配列にする。
+                    self.kirihaRecordDataArray = querySnapshot!.documents.map { document in
+                        print("DEBUG_PRINT: document取得 \(document.documentID)")
+                        
+                        let kirihaRecordData = KirihaRecordData(document: document)
+                        
+                        return kirihaRecordData
+                    }
+                    // TableViewの表示を更新する
+                    self.tableView.reloadData()
                 }
-                // TableViewの表示を更新する
-                self.tableView.reloadData()
             }
         }
         
-        print("tunnelDataArray.count : \(tunnelDataArray.count)")
+        print("kirihaRecordDataArray.count : \(kirihaRecordDataArray.count)")
     }
 
-    
     // 画面が消える前に実行される
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("DEBUG_PRINT: viewWillDisappear")
+        
         // listenerを削除して監視を停止する
         listener?.remove()
     }
-     */
+    
     
     // デリゲートメソッド：データ数を返す関数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // 5個のデータがあるという意味
+        
+        return kirihaRecordDataArray.count
+        // return 5 // 5個のデータがあるという意味
     }
 
     // デリゲートメソッド：セルの表示内容
@@ -94,8 +99,19 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         // 再利用可能な cell を得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // 値を設定する.
-        cell.textLabel!.text = "Row \(indexPath.row)"
+        // 値を設定する
+        if let stationNo = kirihaRecordDataArray[indexPath.row].stationNo {
+            
+            cell.textLabel!.text = String(stationNo)
+        }
+        else if let date =  kirihaRecordDataArray[indexPath.row].date {
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+            
+            let dateString:String = formatter.string(from: date)
+            cell.textLabel!.text = String("測点未設定　") + dateString
+        }
 
         return cell
     }
@@ -112,10 +128,22 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print("セルがタップされました")
+        
         // Segue IDを指定して画面遷移させる
         performSegue(withIdentifier: "cellSegue3",sender: nil)
     }
     
-
+    // 画面を閉じる前に実行される
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "kirihaRecordSegue" {
+            
+            let kirihaRecord2VC:kirihaRecord2ViewController = segue.destination as! kirihaRecord2ViewController
+            
+            kirihaRecord2VC.tunnelData = self.tunnelData
+        }
+    }
+    
 
 }

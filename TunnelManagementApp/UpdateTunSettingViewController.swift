@@ -102,8 +102,6 @@ class UpdateTunSettingViewController: UIViewController {
         
         print("更新ボタンがプッシュされました")
         
-        
-        
         // stationNoの計算
         let stationNo1: Float?
         let stationNo2: Float?
