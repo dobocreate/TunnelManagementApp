@@ -33,6 +33,10 @@
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
 		46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB5221270E8D1900D489DE /* RemarksData.swift */; };
 		46AB5224270EC37B00D489DE /* RemarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB5223270EC37B00D489DE /* RemarksViewController.swift */; };
+		46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */; };
+		46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */; };
+		46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */; };
+		46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */; };
 		46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB837270F04660047BF61 /* ChartsViewController.swift */; };
 		46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */; };
 		46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DC270FD0E70047BF61 /* TabBarController.swift */; };
@@ -72,6 +76,10 @@
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
 		46AB5221270E8D1900D489DE /* RemarksData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksData.swift; sourceTree = "<group>"; };
 		46AB5223270EC37B00D489DE /* RemarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksViewController.swift; sourceTree = "<group>"; };
+		46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaSpecViewController.swift; sourceTree = "<group>"; };
+		46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
+		46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions.png; sourceTree = "<group>"; };
+		46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockTypeInstructionsViewController.swift; sourceTree = "<group>"; };
 		46EFB837270F04660047BF61 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46EFB8DC270FD0E70047BF61 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -115,6 +123,7 @@
 		4659838C270B26E700898FDF /* TunnelManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */,
 				4659838D270B26E700898FDF /* AppDelegate.swift */,
 				4659838F270B26E700898FDF /* SceneDelegate.swift */,
 				46598391270B26E700898FDF /* ViewController.swift */,
@@ -133,14 +142,17 @@
 				46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */,
 				466308D3271A5D6800214303 /* ItemNameChangeViewController.swift */,
 				466308DB271ABFD300214303 /* RockNameSettingViewController.swift */,
+				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
 				466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */,
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
+				46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */,
 				46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */,
 				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
 				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
 				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
 				46EFB837270F04660047BF61 /* ChartsViewController.swift */,
+				46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */,
 				465983A9270B441C00898FDF /* kirihaRecord.swift */,
 				465983A5270B293700898FDF /* SettingViewController.swift */,
 				46598393270B26E700898FDF /* Main.storyboard */,
@@ -229,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4659839A270B26E800898FDF /* LaunchScreen.storyboard in Resources */,
+				46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */,
 				46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */,
 				46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */,
 				46598397270B26E800898FDF /* Assets.xcassets in Resources */,
@@ -296,6 +309,7 @@
 				466308D4271A5D6800214303 /* ItemNameChangeViewController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
+				46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */,
 				466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */,
 				46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */,
 				46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */,
@@ -304,6 +318,7 @@
 				4650AD96270B545A000073F4 /* InputKirihaViewController.swift in Sources */,
 				46AB5224270EC37B00D489DE /* RemarksViewController.swift in Sources */,
 				465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */,
+				46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */,
 				466308CE27196AFF00214303 /* UpdateTunSettingViewController.swift in Sources */,
 				46EFB8DF271050E00047BF61 /* tunnelListViewController.swift in Sources */,
 				46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */,
@@ -312,6 +327,7 @@
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,
 				46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */,
+				46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

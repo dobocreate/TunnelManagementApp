@@ -131,7 +131,7 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         print("セルがタップされました")
         
         // Segue IDを指定して画面遷移させる
-        performSegue(withIdentifier: "cellSegue3",sender: nil)
+        performSegue(withIdentifier: "cellSegue2",sender: nil)
     }
     
     // 画面を閉じる前に実行される
