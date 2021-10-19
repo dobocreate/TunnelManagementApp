@@ -17,10 +17,13 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     var listener: ListenerRegistration?
     
     // トンネルデータを格納する配列
-    var tunnelData: tunInitialData?
+    var tunnelData: TunnelData?
     
     // 切羽観察記録を格納する配列
     var kirihaRecordDataArray: [KirihaRecordData] = []
+    
+    // データ受け渡し用の切羽観察記録
+    var kirihaRecordData: KirihaRecordData?
     
     // トンネルID
     var tunnelPath: String?
@@ -102,7 +105,12 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         // 値を設定する
         if let stationNo = kirihaRecordDataArray[indexPath.row].stationNo {
             
-            cell.textLabel!.text = String(stationNo)
+            // ダウンキャスト（より具体的な型に変換する）
+            let a = floor(stationNo / 1000)
+            let b = stationNo - a * 1000
+            let c: Int = Int(a)
+            
+            cell.textLabel!.text = "測点 " + String(c) + "k " + String(b) + "m"
         }
         else if let date =  kirihaRecordDataArray[indexPath.row].date {
             
@@ -130,8 +138,11 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         print("セルがタップされました")
         
+        // 受け渡し用データを格納する
+        kirihaRecordData = kirihaRecordDataArray[indexPath.row]
+        
         // Segue IDを指定して画面遷移させる
-        performSegue(withIdentifier: "cellSegue2",sender: nil)
+        performSegue(withIdentifier: "kirihaSpecSegue",sender: nil)
     }
     
     // 画面を閉じる前に実行される
@@ -143,7 +154,22 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
             
             kirihaRecord2VC.tunnelData = self.tunnelData
         }
+        else if segue.identifier == "kirihaSpecSegue" {
+            
+            let kirihaSpecVC: KirihaSpecViewController = segue.destination as! KirihaSpecViewController
+            
+            kirihaSpecVC.kirihaRecordData = self.kirihaRecordData
+            // kirihaSpecVC.tunnelData = self.tunnelData
+        }
     }
+    
+    /*
+    // 諸元の画面から戻る
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        
+        
+    }
+    */
     
 
 }

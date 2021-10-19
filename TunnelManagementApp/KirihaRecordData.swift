@@ -14,6 +14,7 @@ class KirihaRecordData: NSObject {
     // プロパティ
     var id: String                  // documentID
     var date: Date?                 // 保存日時
+    var tunnelId: String?           // トンネルID
     var obsDate: Date?              // 観察日時
     var obsName: String?            // 観察者（displayName）
     var stationNo: Float?           // 観察測点
@@ -33,6 +34,8 @@ class KirihaRecordData: NSObject {
         self.id = document.documentID
         
         self.date = timestamp?.dateValue()
+        
+        self.tunnelId = kirihaRecordDic["tunnelId"] as? String
         
         self.obsDate = kirihaRecordDic["obsDate"] as? Date
         

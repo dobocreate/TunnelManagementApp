@@ -12,8 +12,8 @@ class kirihaRecord2ViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tunnelData: tunInitialData?     // データ受け渡し用(トンネル設定データ)
-    var tunnelPath: String?     // トンネルID
+    var tunnelData: TunnelData?     // データ受け渡し用(トンネル設定データ)
+    // var tunnelPath: String?     // トンネルID
     
     var kirihaRecordData: KirihaRecordData?
     
@@ -78,26 +78,34 @@ class kirihaRecord2ViewController: UIViewController, UITableViewDataSource, UITa
         if let tunnelId = self.tunnelData?.tunnelId {
             
             // 画像と投稿データの保存場所を定義する
+            // 自動生成されたIDを持つドキュメントリファレンスを作成する
+            // この段階でDocumentIDが自動生成される
             let postRef = Firestore.firestore().collection(tunnelId).document()
+            
+            print("kirihaRecord2VC postRef: \(postRef.documentID)")
             
             // 保存するデータを辞書の型にまとめる
             let postDic = [
-                "date":FieldValue.serverTimestamp(),
+                "id": postRef.documentID,
+                "date": FieldValue.serverTimestamp(),
+                "tunnelId": tunnelId,
                 "obsName": obsName!,
                 "obsRecordArray": obsRecordArray
             ] as [String: Any]
             
             postRef.setData(postDic)
             
-            print("投稿しました")
+            print("新規保存しました")
             
             // 画面遷移
             
-            let KirihaListVC = self.storyboard?.instantiateViewController(identifier: "kirihaList") as! KirihaListViewController
+            // StoryboardID kirihaList に tunnelData データを渡す
+            // let KirihaListVC = self.storyboard?.instantiateViewController(identifier: "kirihaList") as! KirihaListViewController
+            // KirihaListVC.tunnelData = self.tunnelData
             
-            KirihaListVC.tunnelData = self.tunnelData
+            navigationController?.popViewController(animated: true)
             
-            self.navigationController?.pushViewController(KirihaListVC, animated: true)
+            // self.navigationController?.pushViewController(KirihaListVC, animated: true)
             
             //self.present(KirihaListVC, animated: true, completion: nil)
             

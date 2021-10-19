@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27BFE8A13957A291446026A1 /* Pods_TunnelManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */; };
-		4650AD96270B545A000073F4 /* InputKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4650AD95270B545A000073F4 /* InputKirihaViewController.swift */; };
+		4650AD96270B545A000073F4 /* bk_InputKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4650AD95270B545A000073F4 /* bk_InputKirihaViewController.swift */; };
 		4659838E270B26E700898FDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838D270B26E700898FDF /* AppDelegate.swift */; };
 		46598390270B26E700898FDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838F270B26E700898FDF /* SceneDelegate.swift */; };
 		46598392270B26E700898FDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46598391270B26E700898FDF /* ViewController.swift */; };
@@ -19,15 +19,17 @@
 		465983A6270B293700898FDF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A5270B293700898FDF /* SettingViewController.swift */; };
 		465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A7270B3B8D00898FDF /* PhotoViewController.swift */; };
 		465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A9270B441C00898FDF /* kirihaRecord.swift */; };
-		466308CA2718F67600214303 /* tunInitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* tunInitialData.swift */; };
+		466308CA2718F67600214303 /* TunnelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* TunnelData.swift */; };
 		466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CB2718FAAB00214303 /* FirestorePathList.swift */; };
-		466308CE27196AFF00214303 /* UpdateTunSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */; };
+		466308CE27196AFF00214303 /* TunnelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CD27196AFF00214303 /* TunnelSettingViewController.swift */; };
 		466308D0271A159000214303 /* KirihaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CF271A159000214303 /* KirihaListViewController.swift */; };
-		466308D2271A5A3500214303 /* TunnelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308D1271A5A3500214303 /* TunnelSettingViewController.swift */; };
+		466308D2271A5A3500214303 /* GlobalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308D1271A5A3500214303 /* GlobalSettingViewController.swift */; };
 		466308D4271A5D6800214303 /* ItemNameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308D3271A5D6800214303 /* ItemNameChangeViewController.swift */; };
 		466308D6271A5D7E00214303 /* ObsNameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */; };
 		466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308D7271A9FAD00214303 /* KirihaRecordData.swift */; };
 		466308DC271ABFD300214303 /* RockNameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308DB271ABFD300214303 /* RockNameSettingViewController.swift */; };
+		466330AC271E1FB80087FE24 /* TunnelCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */; };
+		466330AE271E416E0087FE24 /* TunnelDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466330AD271E416E0087FE24 /* TunnelDataDS.swift */; };
 		46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */; };
 		46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */; };
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
@@ -37,10 +39,13 @@
 		46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */; };
 		46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */; };
 		46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */; };
+		46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */; };
+		46C0DE47271C84E900E1E106 /* bk_KirihaRecordData2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE46271C84E900E1E106 /* bk_KirihaRecordData2.swift */; };
+		46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */; };
 		46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB837270F04660047BF61 /* ChartsViewController.swift */; };
 		46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */; };
 		46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DC270FD0E70047BF61 /* TabBarController.swift */; };
-		46EFB8DF271050E00047BF61 /* tunnelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */; };
+		46EFB8DF271050E00047BF61 /* TunnelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DE271050E00047BF61 /* TunnelListViewController.swift */; };
 		46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */; };
 		46EFB8E727110A260047BF61 /* PostKirihaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */; };
 		46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8E8271112640047BF61 /* PostRockViewController.swift */; };
@@ -49,7 +54,7 @@
 /* Begin PBXFileReference section */
 		0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TunnelManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F118CDFCFED6439D2791225 /* Pods-TunnelManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.release.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.release.xcconfig"; sourceTree = "<group>"; };
-		4650AD95270B545A000073F4 /* InputKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputKirihaViewController.swift; sourceTree = "<group>"; };
+		4650AD95270B545A000073F4 /* bk_InputKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk_InputKirihaViewController.swift; sourceTree = "<group>"; };
 		4659838A270B26E700898FDF /* TunnelManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TunnelManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4659838D270B26E700898FDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4659838F270B26E700898FDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,15 +67,17 @@
 		465983A5270B293700898FDF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		465983A7270B3B8D00898FDF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		465983A9270B441C00898FDF /* kirihaRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord.swift; sourceTree = "<group>"; };
-		466308C92718F67600214303 /* tunInitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tunInitialData.swift; sourceTree = "<group>"; };
+		466308C92718F67600214303 /* TunnelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelData.swift; sourceTree = "<group>"; };
 		466308CB2718FAAB00214303 /* FirestorePathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePathList.swift; sourceTree = "<group>"; };
-		466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTunSettingViewController.swift; sourceTree = "<group>"; };
+		466308CD27196AFF00214303 /* TunnelSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelSettingViewController.swift; sourceTree = "<group>"; };
 		466308CF271A159000214303 /* KirihaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaListViewController.swift; sourceTree = "<group>"; };
-		466308D1271A5A3500214303 /* TunnelSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelSettingViewController.swift; sourceTree = "<group>"; };
+		466308D1271A5A3500214303 /* GlobalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettingViewController.swift; sourceTree = "<group>"; };
 		466308D3271A5D6800214303 /* ItemNameChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameChangeViewController.swift; sourceTree = "<group>"; };
 		466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsNameChangeViewController.swift; sourceTree = "<group>"; };
 		466308D7271A9FAD00214303 /* KirihaRecordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordData.swift; sourceTree = "<group>"; };
 		466308DB271ABFD300214303 /* RockNameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockNameSettingViewController.swift; sourceTree = "<group>"; };
+		466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelCreateViewController.swift; sourceTree = "<group>"; };
+		466330AD271E416E0087FE24 /* TunnelDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelDataDS.swift; sourceTree = "<group>"; };
 		46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord2ViewController.swift; sourceTree = "<group>"; };
 		46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksTableViewCell.swift; sourceTree = "<group>"; };
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
@@ -80,10 +87,13 @@
 		46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
 		46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions.png; sourceTree = "<group>"; };
 		46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockTypeInstructionsViewController.swift; sourceTree = "<group>"; };
+		46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordChangeViewController.swift; sourceTree = "<group>"; };
+		46C0DE46271C84E900E1E106 /* bk_KirihaRecordData2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk_KirihaRecordData2.swift; sourceTree = "<group>"; };
+		46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordDataDS.swift; sourceTree = "<group>"; };
 		46EFB837270F04660047BF61 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46EFB8DC270FD0E70047BF61 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tunnelListViewController.swift; sourceTree = "<group>"; };
+		46EFB8DE271050E00047BF61 /* TunnelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelListViewController.swift; sourceTree = "<group>"; };
 		46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
 		46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostKirihaViewController.swift; sourceTree = "<group>"; };
 		46EFB8E8271112640047BF61 /* PostRockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRockViewController.swift; sourceTree = "<group>"; };
@@ -123,43 +133,48 @@
 		4659838C270B26E700898FDF /* TunnelManagementApp */ = {
 			isa = PBXGroup;
 			children = (
-				46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */,
 				4659838D270B26E700898FDF /* AppDelegate.swift */,
-				4659838F270B26E700898FDF /* SceneDelegate.swift */,
-				46598391270B26E700898FDF /* ViewController.swift */,
-				465983A1270B28A900898FDF /* LoginViewController.swift */,
-				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
-				4650AD95270B545A000073F4 /* InputKirihaViewController.swift */,
-				466308CD27196AFF00214303 /* UpdateTunSettingViewController.swift */,
-				46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */,
+				46598396270B26E800898FDF /* Assets.xcassets */,
+				4650AD95270B545A000073F4 /* bk_InputKirihaViewController.swift */,
+				46C0DE46271C84E900E1E106 /* bk_KirihaRecordData2.swift */,
+				46EFB837270F04660047BF61 /* ChartsViewController.swift */,
+				46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */,
 				466308CB2718FAAB00214303 /* FirestorePathList.swift */,
-				466308C92718F67600214303 /* tunInitialData.swift */,
-				466308CF271A159000214303 /* KirihaListViewController.swift */,
-				46AB5221270E8D1900D489DE /* RemarksData.swift */,
-				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
-				466308D1271A5A3500214303 /* TunnelSettingViewController.swift */,
-				466308D7271A9FAD00214303 /* KirihaRecordData.swift */,
-				46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */,
+				466308D1271A5A3500214303 /* GlobalSettingViewController.swift */,
+				46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */,
+				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
+				4659839B270B26E800898FDF /* Info.plist */,
 				466308D3271A5D6800214303 /* ItemNameChangeViewController.swift */,
-				466308DB271ABFD300214303 /* RockNameSettingViewController.swift */,
+				466308CF271A159000214303 /* KirihaListViewController.swift */,
+				465983A9270B441C00898FDF /* kirihaRecord.swift */,
+				46AB521B270DC09900D489DE /* kirihaRecord2ViewController.swift */,
+				46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */,
+				466308D7271A9FAD00214303 /* KirihaRecordData.swift */,
+				46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
+				46598398270B26E800898FDF /* LaunchScreen.storyboard */,
+				465983A1270B28A900898FDF /* LoginViewController.swift */,
+				46598393270B26E700898FDF /* Main.storyboard */,
 				466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */,
+				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
+				46EFB8E627110A260047BF61 /* PostKirihaViewController.swift */,
+				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
+				46AB5221270E8D1900D489DE /* RemarksData.swift */,
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
-				46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */,
-				46EFB8DE271050E00047BF61 /* tunnelListViewController.swift */,
-				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
-				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
-				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
-				46EFB837270F04660047BF61 /* ChartsViewController.swift */,
+				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
+				466308DB271ABFD300214303 /* RockNameSettingViewController.swift */,
+				46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */,
 				46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */,
-				465983A9270B441C00898FDF /* kirihaRecord.swift */,
+				4659838F270B26E700898FDF /* SceneDelegate.swift */,
 				465983A5270B293700898FDF /* SettingViewController.swift */,
-				46598393270B26E700898FDF /* Main.storyboard */,
-				46598396270B26E800898FDF /* Assets.xcassets */,
-				46598398270B26E800898FDF /* LaunchScreen.storyboard */,
-				4659839B270B26E800898FDF /* Info.plist */,
-				46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */,
+				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
+				466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */,
+				466308C92718F67600214303 /* TunnelData.swift */,
+				466330AD271E416E0087FE24 /* TunnelDataDS.swift */,
+				46EFB8DE271050E00047BF61 /* TunnelListViewController.swift */,
+				466308CD27196AFF00214303 /* TunnelSettingViewController.swift */,
+				46598391270B26E700898FDF /* ViewController.swift */,
 			);
 			path = TunnelManagementApp;
 			sourceTree = "<group>";
@@ -300,12 +315,15 @@
 			files = (
 				46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */,
 				466308DC271ABFD300214303 /* RockNameSettingViewController.swift in Sources */,
+				466330AC271E1FB80087FE24 /* TunnelCreateViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
-				466308CA2718F67600214303 /* tunInitialData.swift in Sources */,
+				466308CA2718F67600214303 /* TunnelData.swift in Sources */,
 				466308D0271A159000214303 /* KirihaListViewController.swift in Sources */,
+				466330AE271E416E0087FE24 /* TunnelDataDS.swift in Sources */,
 				46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */,
-				466308D2271A5A3500214303 /* TunnelSettingViewController.swift in Sources */,
+				466308D2271A5A3500214303 /* GlobalSettingViewController.swift in Sources */,
 				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
+				46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */,
 				466308D4271A5D6800214303 /* ItemNameChangeViewController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
@@ -315,12 +333,13 @@
 				46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */,
 				46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */,
 				4659838E270B26E700898FDF /* AppDelegate.swift in Sources */,
-				4650AD96270B545A000073F4 /* InputKirihaViewController.swift in Sources */,
+				4650AD96270B545A000073F4 /* bk_InputKirihaViewController.swift in Sources */,
 				46AB5224270EC37B00D489DE /* RemarksViewController.swift in Sources */,
 				465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */,
 				46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */,
-				466308CE27196AFF00214303 /* UpdateTunSettingViewController.swift in Sources */,
-				46EFB8DF271050E00047BF61 /* tunnelListViewController.swift in Sources */,
+				46C0DE47271C84E900E1E106 /* bk_KirihaRecordData2.swift in Sources */,
+				466308CE27196AFF00214303 /* TunnelSettingViewController.swift in Sources */,
+				46EFB8DF271050E00047BF61 /* TunnelListViewController.swift in Sources */,
 				46AB521C270DC09900D489DE /* kirihaRecord2ViewController.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,
 				466308D6271A5D7E00214303 /* ObsNameChangeViewController.swift in Sources */,
@@ -328,6 +347,7 @@
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,
 				46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */,
 				46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */,
+				46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

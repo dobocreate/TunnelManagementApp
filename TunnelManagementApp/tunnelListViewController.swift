@@ -8,14 +8,14 @@
 import UIKit
 import Firebase
 
-class tunnelListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TunnelListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
     var listener: ListenerRegistration?
     
     // トンネルデータを格納する配列
-    var tunnelDataArray:[tunInitialData] = []
+    var tunnelDataArray:[TunnelData] = []
     
     /*
     // 画面遷移する際の処理 -> indexPathがうまく取得できない。なぜ？
@@ -57,7 +57,7 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.tunnelDataArray = querySnapshot!.documents.map { document in
                     print("DEBUG_PRINT: document取得 \(document.documentID)")
                     
-                    let tunnelData = tunInitialData(document: document)
+                    let tunnelData = TunnelData(document: document)
                     
                     return tunnelData
                 }
@@ -124,20 +124,17 @@ class tunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
             print("Editがタップされた")
             
             // 遷移先のViewControllerを取得
-            let UpdateTunSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "updateTunSetting") as! UpdateTunSettingViewController
+            let TunnelSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "tunnelSetting") as! TunnelSettingViewController
             
             print("indexPath.row: \(indexPath.row)")
             
             // 遷移先の変数に値を渡す
-            UpdateTunSettingViewController.tunnelData = self.tunnelDataArray[indexPath.row]
+            TunnelSettingViewController.tunnelSpecData = self.tunnelDataArray[indexPath.row]
         
             print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelName!)")
             
-            // Segueを指定して画面遷移する　-> Segueを指定してもデータの受け渡しがうまくいかない。なぜ？
-            //self.performSegue(withIdentifier: "updateTunSettingSegue", sender: nil)
-            
-            // モーダル遷移
-            self.present(UpdateTunSettingViewController, animated: true, completion: nil)
+            // StoryboardIDを利用したプッシュ遷移
+            self.navigationController?.pushViewController(TunnelSettingViewController, animated: true)
 
             // 実行結果に関わらず記述
             completionHandler(true)
