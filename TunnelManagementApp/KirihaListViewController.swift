@@ -16,7 +16,7 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var listener: ListenerRegistration?
     
-    // トンネルデータを格納する配列
+    // 遷移時に受け取ったトンネルデータを格納する配列
     var tunnelData: TunnelData?
     
     // 切羽観察記録を格納する配列
@@ -159,6 +159,8 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
             let kirihaSpecVC: KirihaSpecViewController = segue.destination as! KirihaSpecViewController
             
             kirihaSpecVC.kirihaRecordData = self.kirihaRecordData
+            kirihaSpecVC.tunnelData = self.tunnelData
+            
             // kirihaSpecVC.tunnelData = self.tunnelData
         }
     }

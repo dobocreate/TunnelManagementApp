@@ -26,6 +26,9 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var kirihaRecordData2: KirihaRecordData?
     var dataArray2: [Int?] = []
     
+    var tunnelDataDS: TunnelDataDS?                 // Firestoreデータの格納用
+    var kirihaRecordDataDS: KirihaRecordDataDS?     // Firestoreデータの格納用
+    
     // datePickerViewのプロパティ
     var obsDatePickerView: UIDatePicker = UIDatePicker()
 
@@ -38,17 +41,16 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let rockTypeDataSource: [String] = ["A","B","C","D","E","F","G　表土、崩積土、崖錐など"]
     
     // 岩石名の選択リスト
-    let rockNameDataSource: [String] = ["貫入岩玄武岩", "八雲層頁岩"]
+    var rockNameDataSource: [String?] = []
     
     // 形成地質年代
-    let geoAgeDataSource: [String] = ["新第三紀中新世", "その他"]
+    var geoAgeDataSource: [String?] = []
     
     // 分析ボタンがタップされた時に実行
     @IBAction func analysisButton(_ sender: Any) {
         
         self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)
     }
-    
     
     // 保存ボタンがタップされた時に実行
     @IBAction func saveButton(_ sender: Any) {
@@ -61,24 +63,27 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
             // "dataArray[0] : \(dataArray[0])"
             
             // 観察者名
-            let obsName = Auth.auth().currentUser?.displayName
+            // let obsName = Auth.auth().currentUser?.displayName
             
             // 保存するデータを辞書の型にまとめる
             let kirihaRecordDic = [
                 "date":FieldValue.serverTimestamp(),
-                "tunnelId": tunnelId,
                 "stationNo": stationNo,
                 "obsDate": obsDateTextField.text!,
-                "obsName": obsName!,
                 "rockType": rockTypeTextField.text!,
                 "rockName": rockNameTextField.text!,
-                "geoAge": geoAgeTextField.text!,
-                "obsRecordArray": dataArray2
+                "geoAge": geoAgeTextField.text!
             ] as [String: Any]
             
             // 既存のDocumentIDの保存場所を取得
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
             
+            // データを更新する
+            kirihaRecordDataRef.updateData(kirihaRecordDic)
+            
+            print("更新しました")
+            
+            /*
             // データを上書き保存する
             kirihaRecordDataRef.setData(kirihaRecordDic, merge: true) { err in
                 if let err = err {
@@ -88,6 +93,7 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 }
             }
             print("上書きしました")
+            */
             
             // 画面遷移
             // navigationController?.popViewController(animated: true)      // 画面を閉じることで１つ前の画面に戻る
@@ -110,84 +116,143 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // 画面遷移前に実行され、画面が戻ってくるたびに実行される
+    override func viewWillAppear(_ animated: Bool) {
         
-        print("KirihaSpecVC tunnelid: \(self.kirihaRecordData?.tunnelId)")
-        print("kirihaSpecVC id: \(self.kirihaRecordData?.id)")
+        // Firestoreからデータの取得
+        if let tunnelId = self.tunnelData?.tunnelId, let id = tunnelData?.id {
+            
+            print("KirihaSpecVC tunnleId \(self.tunnelData?.tunnelId), id \(self.tunnelData?.id)")
+            
+            // 取得するドキュメントを設定
+            let tunnelSpecDataRef = Firestore.firestore().collection("tunnelLists").document(id)
+            
+            // Firestoreのdocumentを取得する
+            tunnelSpecDataRef.getDocument { (documentSnapshot, error) in
+            
+                if let error = error {
+                    print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
+                    return
+                }
+                
+                guard let document = documentSnapshot else { return }
+                
+                let tunnelDataDS = TunnelDataDS(document: document)
+                
+                self.tunnelDataDS = tunnelDataDS
+                
+                // print("FirestoreDS tunnelName: \(tunnelDataDS.tunnelName)")
+                
+                //　データを取得できた場合にテキストフィールドに代入する
+                // 岩石名
+                if let rockName = self.tunnelDataDS?.rockName {
+                    
+                    // ドラムロールの設定
+                    self.rockNameDataSource = rockName
+                    
+                    // 初期値の設定
+                    self.rockNameTextField.text = rockName[0]
+                }
+                
+                // 形成地質年代
+                if let geoAge = self.tunnelDataDS?.geoAge {
+                    
+                    // ドラムロールの設定
+                    self.geoAgeDataSource = geoAge
+                    
+                    // 初期値の設定
+                    self.geoAgeTextField.text = geoAge[0]
+                }
+            }
+        }
         
+        // Firestoreから切羽観察記録データの取得
         // tunnelIdとidのnilでない時（データの受け渡しに成功した場合）
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+            
+            print("KirihaSpecVC tunnleId \(tunnelId), id \(id)")
             
             // データを取得するドキュメントを設定
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
             
             // Firestoreのdocumentを取得する
-            kirihaRecordDataRef.getDocument { (document, error) in
-                if let document = document, document.exists {
+            kirihaRecordDataRef.getDocument { (documentSnapshot, error) in
+                if let document = documentSnapshot, document.exists {
                     
-                    // NSDictionary -> String
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    if let error = error {
+                        print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
+                        return
+                    }
                     
-                    // let rockType = document.data()?["rockType"] as? String
-                    // let rockName = document.data()?["rockName"] as? String
-                    // let geoAge = document.data()?["geoAge"] as? String
+                    guard let document = documentSnapshot else { return }
                     
+                    let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
+                    
+                    self.kirihaRecordDataDS = kirihaRecordDataDS
                     
                     let dataArray:[Int?] = document.data()?["obsRecordArray"] as! [Int?]
                     self.dataArray2 = document.data()?["obsRecordArray"] as! [Int?]
                     
-                    print("dataArray[0] : \(dataArray[0])")             // 関数内で定義、取得成功
-                    print("dataArray2[0] : \(self.dataArray2[0])")      // クラス内で定義、取得成功
-                    
                     self.kirihaRecordData2?.obsRecordArray = dataArray
                     
                     // 自分で定義したクラス内の配列には、値を代入することができない
-                    print("obsRecordArray[0] : \(self.kirihaRecordData2?.obsRecordArray[0])")
+                    // print("obsRecordArray[0] : \(self.kirihaRecordData2?.obsRecordArray[0])")
                 
-                    // 距離を測点に変換する
-                    // 始点位置
-                    if let stationNo = document.data()?["stationNo"] {
+                    // テキストフィールドに値を代入する
+                    // 切羽位置
+                    if let stationNo = kirihaRecordDataDS.stationNo {
                         
                         // Any -> Floatにダウンキャスト（より具体的な型に変換する）
-                        let d = stationNo as? Float
+                        let d = stationNo
                         
-                        let a = floor(d! / 1000)
-                        let b = d! - a * 1000
+                        let a = floor(d / 1000)
+                        let b = d - a * 1000
                         let c: Int = Int(a)
                         
                         self.stationKTextField.text! = String(c)
                         self.stationMTextField.text! = String(b)
                     }
                     
-                    // テキストフィールドに値を代入する
-                    if let obsDate = document.data()?["obsDate"] as? String {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy年MM月dd日"
+                    
+                    // 観察日
+                    if let obsDate = kirihaRecordDataDS.obsDate {
                         
-                        self.obsDateTextField.text! = obsDate
+                        self.obsDateTextField.text! = formatter.string(from: obsDate)
+                    }
+                    else if let date = kirihaRecordDataDS.date {
+                        
+                        self.obsDateTextField.text! = formatter.string(from: date)
                     }
                     
-                    
-                    if let rockType = document.data()?["rockType"] as? String {
+                    // 岩種
+                    if let rockType = kirihaRecordDataDS.rockType {
                         
                         self.rockTypeTextField.text! = rockType
                     }
-                    
-                    if let rockName = document.data()?["rockName"] as? String {
+                    else {
                         
-                        self.rockNameTextField.text! = rockName
+                        self.rockTypeTextField.text! = self.rockTypeDataSource[0]
                     }
                     
-                    if let geoAge = document.data()?["geoAge"] as? String {
-                        
-                        self.geoAgeTextField.text! = geoAge
-                    }
                 }
                 else {
                     print("Document does not exist")
                 }
             }
         }
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // print("KirihaSpecVC tunnelid: \(self.kirihaRecordData?.tunnelId)")
+        // print("kirihaSpecVC id: \(self.kirihaRecordData?.id)")
+        
+        
 
         // rockTypePickerViewをキーボードにする設定
         rockTypePickerView.tag = 1
@@ -232,7 +297,6 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
         formatter.dateFormat = "yyyy年MM月dd日"
         obsDateTextField.text = "\(formatter.string(from: obsDatePickerView.date))"
     }
-    
     
     // PickerViewの列数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

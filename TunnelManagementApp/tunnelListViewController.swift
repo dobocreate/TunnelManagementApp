@@ -14,6 +14,8 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var listener: ListenerRegistration?
     
+    var tunnelSpecData: TunnelDataDS?       // データ受け渡し用
+    
     // トンネルデータを格納する配列
     var tunnelDataArray:[TunnelData] = []
     
@@ -61,6 +63,7 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
                     
                     return tunnelData
                 }
+                
                 // TableViewの表示を更新する
                 self.tableView.reloadData()
             }
@@ -88,9 +91,11 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
     }
     
-    
     // デリゲートメソッド：データ数を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("tunnelDataArray.count : \(tunnelDataArray.count)")
+        
         return tunnelDataArray.count
     }
 
@@ -123,15 +128,42 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
             // 編集処理を記述
             print("Editがタップされた")
             
-            // 遷移先のViewControllerを取得
-            let TunnelSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "tunnelSetting") as! TunnelSettingViewController
+
             
             print("indexPath.row: \(indexPath.row)")
             
+            // TunnelData -> TunnelDataDS
+            self.tunnelSpecData?.tunnelId = self.tunnelDataArray[indexPath.row].tunnelId
+            
+            self.tunnelSpecData?.id = self.tunnelDataArray[indexPath.row].id
+            
+            self.tunnelSpecData?.tunnelName = self.tunnelDataArray[indexPath.row].tunnelName
+            
+            self.tunnelSpecData?.stationNo1 = self.tunnelDataArray[indexPath.row].stationNo1
+            
+            self.tunnelSpecData?.stationNo2 = self.tunnelDataArray[indexPath.row].stationNo2
+            
+            self.tunnelSpecData?.tunnelType = self.tunnelDataArray[indexPath.row].tunnelType
+            
+            self.tunnelSpecData?.date = self.tunnelDataArray[indexPath.row].date
+            
+            self.tunnelSpecData?.rockName = self.tunnelDataArray[indexPath.row].rockName
+            
+            self.tunnelSpecData?.geoAge = self.tunnelDataArray[indexPath.row].geoAge
+            
+            self.tunnelSpecData?.itemName = self.tunnelDataArray[indexPath.row].itemName
+            
+            // 遷移先のViewControllerを取得
+            let TunnelSettingViewController = self.storyboard?.instantiateViewController(withIdentifier: "tunnelSetting") as! TunnelSettingViewController
+            
             // 遷移先の変数に値を渡す
-            TunnelSettingViewController.tunnelSpecData = self.tunnelDataArray[indexPath.row]
+            TunnelSettingViewController.tunnelData = self.tunnelDataArray[indexPath.row]
         
-            print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelName!)")
+            print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelName) -> \(self.tunnelSpecData?.tunnelName)")
+            
+            print("tunnelName: \(self.tunnelDataArray[indexPath.row].tunnelId) -> \(self.tunnelSpecData?.tunnelId)")
+            
+            print("tunnelName: \(self.tunnelDataArray[indexPath.row].id) -> \(self.tunnelSpecData?.id)")
             
             // StoryboardIDを利用したプッシュ遷移
             self.navigationController?.pushViewController(TunnelSettingViewController, animated: true)
