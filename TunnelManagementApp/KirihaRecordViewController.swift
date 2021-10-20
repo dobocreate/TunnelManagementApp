@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class kirihaRecord2ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -112,46 +112,7 @@ class kirihaRecord2ViewController: UIViewController, UITableViewDataSource, UITa
             // self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    
-    
-    // 諸元ボタンをタップした場合に実行される
-    @IBAction func settingButton(_ sender: Any) {
-        
-        let obsName = Auth.auth().currentUser?.displayName
-        
-        if let tunnelId = self.tunnelData?.tunnelId {
-            
-            // 画像と投稿データの保存場所を定義する
-            let postRef = Firestore.firestore().collection(tunnelId).document()
-            
-            // 保存するデータを辞書の型にまとめる
-            let postDic = [
-                "date":FieldValue.serverTimestamp(),
-                "obsName": obsName!,
-                "obsRecordArray": obsRecordArray
-            ] as [String: Any]
-            
-            postRef.setData(postDic)
-            
-            print("投稿しました")
-            
-            // 画面遷移
-            
-            let KirihaListVC = self.storyboard?.instantiateViewController(identifier: "kirihaList") as! KirihaListViewController
-            
-            KirihaListVC.tunnelData = self.tunnelData
-            
-            self.navigationController?.pushViewController(KirihaListVC, animated: true)
-            
-            //self.present(KirihaListVC, animated: true, completion: nil)
-            
-            // self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    
-    
+
     // セクション数
     func numberOfSections(in tableView: UITableView) -> Int {
         

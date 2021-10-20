@@ -18,6 +18,7 @@ class KirihaRecordDataDS: NSObject {
     var obsDate: Date?              // 観察日時
     var obsName: String?            // 観察者（displayName）
     var stationNo: Float?           // 観察測点
+    var distance: Float?            // 坑口からの距離
     var overburden: Float?          // 土被り（m）
     var rockType: String?           // 岩種
     var rockName: String?           // 岩石名
@@ -47,6 +48,8 @@ class KirihaRecordDataDS: NSObject {
         }
         
         self.stationNo = kirihaRecordDic?["stationNo"] as? Float
+        
+        self.distance = kirihaRecordDic?["distance"] as? Float
         
         self.overburden = kirihaRecordDic?["overburden"] as? Float
         

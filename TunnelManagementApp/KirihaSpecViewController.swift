@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -17,6 +18,9 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBOutlet weak var stationKTextField: DoneTextFierd!    // 測点K
     @IBOutlet weak var stationMTextField: DoneTextFierd!    // 測点M
+    
+    @IBOutlet weak var distanceLabel: UILabel!              // 坑口からの距離
+    @IBOutlet weak var distanceTextField: UITextField!      // 坑口からの距離
     
     
     // データ受け渡し用
@@ -55,8 +59,32 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // 保存ボタンがタップされた時に実行
     @IBAction func saveButton(_ sender: Any) {
         
+        if stationKTextField.text == "" || stationMTextField.text == "" {
+            
+            SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
+            print("強制終了")
+            
+            return
+        }
+        
+        if distanceTextField.text == "" {
+            
+            SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
+            print("強制終了")
+            
+            
+            
+            return
+        }
+        
+        
+        
         // 測点を距離に換算する
         let stationNo = Float(stationKTextField.text!)! * 1000 + Float(stationMTextField.text!)!
+        
+        // 坑口からの距離
+        // Float()はオプショナル型のFloat型に変換するので、アンラップしてFloat型に代入する
+        let distance = Float(distanceTextField.text!)!
         
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = kirihaRecordData?.id {
             
@@ -65,6 +93,8 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
             // 観察者名
             // let obsName = Auth.auth().currentUser?.displayName
             
+            
+            
             // 保存するデータを辞書の型にまとめる
             let kirihaRecordDic = [
                 "date":FieldValue.serverTimestamp(),
@@ -72,7 +102,8 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 "obsDate": obsDateTextField.text!,
                 "rockType": rockTypeTextField.text!,
                 "rockName": rockNameTextField.text!,
-                "geoAge": geoAgeTextField.text!
+                "geoAge": geoAgeTextField.text!,
+                "distance": distance
             ] as [String: Any]
             
             // 既存のDocumentIDの保存場所を取得
@@ -163,6 +194,12 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     // 初期値の設定
                     self.geoAgeTextField.text = geoAge[0]
                 }
+                
+                // 坑口からの距離
+                if let itemName = self.tunnelDataDS?.itemName {
+                    
+                    self.distanceLabel.text = itemName[0]
+                }
             }
         }
         
@@ -236,6 +273,11 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                         self.rockTypeTextField.text! = self.rockTypeDataSource[0]
                     }
                     
+                    // 坑口からの距離
+                    if let distance = self.kirihaRecordDataDS?.distance {
+                        
+                        self.distanceTextField.text! = String(distance)
+                    }
                 }
                 else {
                     print("Document does not exist")
@@ -344,6 +386,16 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
             return
         }
     }
+    
+    // テキストフィールド以外をタップした時に実行される
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        SVProgressHUD.dismiss()
+        
+        self.view.endEditing(true)
+    }
+    
+    
     
     
 

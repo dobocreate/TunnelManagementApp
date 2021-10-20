@@ -102,4 +102,10 @@ class ItemNameChangeViewController: UIViewController {
             self.itemName.append("坑口からの距離")
         }
     }
+    
+    // テキストフィールド以外をタップした時に実行される
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+    }
 }

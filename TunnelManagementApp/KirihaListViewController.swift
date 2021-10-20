@@ -150,9 +150,9 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         if segue.identifier == "kirihaRecordSegue" {
             
-            let kirihaRecord2VC:kirihaRecord2ViewController = segue.destination as! kirihaRecord2ViewController
+            let kirihaRecordVC:KirihaRecordViewController = segue.destination as! KirihaRecordViewController
             
-            kirihaRecord2VC.tunnelData = self.tunnelData
+            kirihaRecordVC.tunnelData = self.tunnelData
         }
         else if segue.identifier == "kirihaSpecSegue" {
             

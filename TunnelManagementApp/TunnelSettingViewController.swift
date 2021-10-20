@@ -34,6 +34,11 @@ class TunnelSettingViewController: UIViewController {
         
     }
     
+    // 形成地質年代リストがタップされた時に実行される
+    @IBAction func geoAgeSettingButton(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "geoAgeSettingSegue", sender: nil)
+    }
     
     // 岩種名リストをタップされた時に実行される
     @IBAction func tunnelNameSettingButton(_ sender: Any) {
@@ -59,6 +64,14 @@ class TunnelSettingViewController: UIViewController {
             if let tunnelDataDS = self.tunnelDataDS {
                 
                 ItemNameChangeVC.tunnelSpecData = tunnelDataDS
+            }
+        } else if segue.identifier == "geoAgeSettingSegue" {
+            
+            let GeoAgeSettingVC = segue.destination as! GeoAgeSettingViewController
+            
+            if let tunnelDataDS = self.tunnelDataDS {
+                
+                GeoAgeSettingVC.tunnelSpecData = tunnelDataDS
             }
         }
     }

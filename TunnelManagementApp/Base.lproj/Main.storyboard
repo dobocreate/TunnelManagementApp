@@ -59,28 +59,11 @@
                     <connections>
                         <outlet property="tableView" destination="kia-li-19a" id="Pdf-BI-yVk"/>
                         <segue destination="GBs-ot-RhY" kind="show" identifier="kirihaSpecSegue" id="ORK-QV-jZt"/>
-                        <segue destination="JVu-0C-icr" kind="show" identifier="cellSegue3" id="sdo-4x-jfy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4U-Rc-WeY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5888.4057971014499" y="1607.8125"/>
-        </scene>
-        <!--Post Kiriha View Controller-->
-        <scene sceneID="8nZ-dT-kWz">
-            <objects>
-                <viewController id="JVu-0C-icr" customClass="PostKirihaViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E1v-gA-PCb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lsQ-tT-8WA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dXx-PS-TwN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xTr-N7-lhV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4804" y="1608"/>
         </scene>
         <!--Post Rock View Controller-->
         <scene sceneID="4DO-XS-FaE">
@@ -332,12 +315,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh3-ZH-qGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3655.0724637681164" y="3397.7678571428569"/>
+            <point key="canvasLocation" x="-2733" y="3398"/>
         </scene>
         <!--観察記録-->
         <scene sceneID="PG1-Ym-yg3">
             <objects>
-                <viewController storyboardIdentifier="kirihaRecord2" id="Jyx-ZY-Skk" customClass="kirihaRecord2ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="kirihaRecord2" id="Jyx-ZY-Skk" customClass="KirihaRecordViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eSc-Pt-SBN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,13 +374,7 @@
                             <constraint firstItem="PsA-W6-rcw" firstAttribute="top" secondItem="TX4-ti-J0p" secondAttribute="top" id="zry-Ey-qLq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="観察記録" id="UHi-w9-stH">
-                        <barButtonItem key="rightBarButtonItem" title="諸元" id="PW8-ES-jgM">
-                            <connections>
-                                <action selector="settingButton:" destination="Jyx-ZY-Skk" id="f33-32-vB4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="観察記録" id="UHi-w9-stH"/>
                     <connections>
                         <outlet property="tableView" destination="PsA-W6-rcw" id="HVb-NO-hKa"/>
                     </connections>
@@ -497,7 +474,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FvO-gd-ygc" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FvO-gd-ygc" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                         <rect key="frame" x="60" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="g7k-HN-K5z"/>
@@ -515,7 +492,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbS-ch-GQx" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbS-ch-GQx" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                         <rect key="frame" x="205" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="UeE-sd-T7e"/>
@@ -536,7 +513,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩種" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiM-HQ-Ubk">
-                                <rect key="frame" x="0.0" y="267" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="357" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="kIq-5W-bHm"/>
@@ -546,7 +523,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5NL-n5-Kjj" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="302" width="324" height="35"/>
+                                <rect key="frame" x="20" y="392" width="324" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="KoD-sB-zwi"/>
                                 </constraints>
@@ -554,7 +531,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNf-my-TdX">
-                                <rect key="frame" x="0.0" y="357" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="447" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="3QK-Cm-1OO"/>
@@ -564,7 +541,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Po-yE-j8L" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="392" width="374" height="35"/>
+                                <rect key="frame" x="20" y="482" width="374" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="sHf-Jk-68P"/>
                                 </constraints>
@@ -572,7 +549,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgv-Kd-Vhs">
-                                <rect key="frame" x="0.0" y="447" width="414" height="25"/>
+                                <rect key="frame" x="0.0" y="537" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2ye-DV-Hz2"/>
@@ -582,7 +559,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8QW-ai-8gc" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="482" width="374" height="35"/>
+                                <rect key="frame" x="20" y="572" width="374" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="fH7-c4-0fu"/>
                                 </constraints>
@@ -590,7 +567,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNt-2w-NDl">
-                                <rect key="frame" x="364" y="302" width="30" height="35"/>
+                                <rect key="frame" x="364" y="392" width="30" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="VHw-8Z-abp"/>
                                     <constraint firstAttribute="width" constant="30" id="hj5-sH-gMu"/>
@@ -621,16 +598,66 @@
                                     <action selector="analysisButton:" destination="GBs-ot-RhY" eventType="touchUpInside" id="RZY-gX-p2s"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wBp-ng-Ylk" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="80" y="302" width="100" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="YX3-RR-tsv"/>
+                                    <constraint firstAttribute="width" constant="100" id="rSC-ai-QDg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVC-7I-oPG">
+                                <rect key="frame" x="190" y="302" width="20" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="afO-LI-qd6"/>
+                                    <constraint firstAttribute="height" constant="35" id="oxz-Ng-Cw0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyI-3r-LkI">
+                                <rect key="frame" x="0.0" y="267" width="414" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-tT-47c">
+                                        <rect key="frame" x="0.0" y="0.0" width="18" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18" id="IBq-7Q-g1f"/>
+                                            <constraint firstAttribute="height" constant="25" id="sz2-Te-KHq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="坑口からの距離" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAZ-Py-EPs">
+                                        <rect key="frame" x="18" y="0.0" width="396" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="JdD-1Z-i6M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="iv5-NR-oBo"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="clc-iC-NWq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="QiM-HQ-Ubk" firstAttribute="top" secondItem="wBp-ng-Ylk" secondAttribute="bottom" constant="20" id="17P-DB-KaD"/>
                             <constraint firstItem="Y9F-nw-eJ9" firstAttribute="top" secondItem="0B6-fg-P0d" secondAttribute="bottom" constant="10" id="1rM-ab-xfc"/>
+                            <constraint firstItem="bVC-7I-oPG" firstAttribute="leading" secondItem="wBp-ng-Ylk" secondAttribute="trailing" constant="10" id="2Jt-xa-iN5"/>
+                            <constraint firstItem="XyI-3r-LkI" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" id="7jO-d3-IlP"/>
                             <constraint firstItem="QiM-HQ-Ubk" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" id="8CA-sc-hn5"/>
                             <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="C7X-ZZ-PJj" secondAttribute="trailing" id="8Uo-PZ-3Iw"/>
                             <constraint firstItem="0B6-fg-P0d" firstAttribute="top" secondItem="ydb-Bp-W5V" secondAttribute="bottom" constant="20" id="9gP-q1-Hrz"/>
                             <constraint firstItem="B9P-KQ-b2v" firstAttribute="top" secondItem="hKB-d1-Vzw" secondAttribute="bottom" constant="5" id="AWg-6P-8qi"/>
-                            <constraint firstItem="QiM-HQ-Ubk" firstAttribute="top" secondItem="Y9F-nw-eJ9" secondAttribute="bottom" constant="20" id="B3u-pP-Gyq"/>
                             <constraint firstItem="5NL-n5-Kjj" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" constant="20" id="Btm-qz-UaS"/>
                             <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="LNt-2w-NDl" secondAttribute="trailing" constant="20" id="Dw9-60-TYR"/>
                             <constraint firstItem="yNf-my-TdX" firstAttribute="top" secondItem="5NL-n5-Kjj" secondAttribute="bottom" constant="20" id="GUV-pF-GfR"/>
@@ -641,7 +668,10 @@
                             <constraint firstItem="zgv-Kd-Vhs" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" id="KmY-GC-7Ge"/>
                             <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="hKB-d1-Vzw" secondAttribute="trailing" id="LcI-x2-kGN"/>
                             <constraint firstItem="7Po-yE-j8L" firstAttribute="top" secondItem="yNf-my-TdX" secondAttribute="bottom" constant="10" id="MLC-Zj-lNJ"/>
+                            <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="XyI-3r-LkI" secondAttribute="trailing" id="Pz1-YM-dUr"/>
+                            <constraint firstItem="wBp-ng-Ylk" firstAttribute="top" secondItem="XyI-3r-LkI" secondAttribute="bottom" constant="10" id="Ske-aU-hcE"/>
                             <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="yNf-my-TdX" secondAttribute="trailing" id="TRf-An-6b5"/>
+                            <constraint firstItem="XyI-3r-LkI" firstAttribute="top" secondItem="Y9F-nw-eJ9" secondAttribute="bottom" constant="20" id="Tee-lF-c5a"/>
                             <constraint firstItem="hKB-d1-Vzw" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" id="UaV-QF-Lrx"/>
                             <constraint firstItem="5NL-n5-Kjj" firstAttribute="top" secondItem="QiM-HQ-Ubk" secondAttribute="bottom" constant="10" id="cfg-hU-jhL"/>
                             <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="ydb-Bp-W5V" secondAttribute="trailing" constant="20" id="d0d-YW-X1l"/>
@@ -653,6 +683,8 @@
                             <constraint firstItem="ydb-Bp-W5V" firstAttribute="top" secondItem="C7X-ZZ-PJj" secondAttribute="bottom" constant="10" id="h4O-Ym-Q0v"/>
                             <constraint firstItem="LNt-2w-NDl" firstAttribute="top" secondItem="QiM-HQ-Ubk" secondAttribute="bottom" constant="10" id="hiV-hg-WYL"/>
                             <constraint firstItem="0B6-fg-P0d" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" id="hlC-uw-h5y"/>
+                            <constraint firstItem="wBp-ng-Ylk" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" constant="80" id="hsQ-ce-OnJ"/>
+                            <constraint firstItem="bVC-7I-oPG" firstAttribute="top" secondItem="XyI-3r-LkI" secondAttribute="bottom" constant="10" id="laK-Jm-RLq"/>
                             <constraint firstItem="yNf-my-TdX" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" id="nEi-7M-Lfb"/>
                             <constraint firstItem="clc-iC-NWq" firstAttribute="trailing" secondItem="8QW-ai-8gc" secondAttribute="trailing" constant="20" id="o0d-Uh-dLa"/>
                             <constraint firstItem="ydb-Bp-W5V" firstAttribute="leading" secondItem="clc-iC-NWq" secondAttribute="leading" constant="20" id="oAS-vG-TLF"/>
@@ -672,6 +704,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="distanceLabel" destination="sAZ-Py-EPs" id="gAI-GG-Hcw"/>
+                        <outlet property="distanceTextField" destination="wBp-ng-Ylk" id="NaE-CK-Vcj"/>
                         <outlet property="geoAgeTextField" destination="8QW-ai-8gc" id="UCH-tu-ZCm"/>
                         <outlet property="obsDateTextField" destination="ydb-Bp-W5V" id="gMY-Md-yXd"/>
                         <outlet property="rockNameTextField" destination="7Po-yE-j8L" id="qmt-La-Rz4"/>
@@ -683,7 +717,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-XE-SfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4804" y="2529"/>
+            <point key="canvasLocation" x="-3655" y="2529"/>
         </scene>
         <!--Rock Type Instructions View Controller-->
         <scene sceneID="xcJ-Sf-XB9">
@@ -726,7 +760,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQc-gZ-b16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3655" y="2529"/>
+            <point key="canvasLocation" x="-2733" y="2529"/>
         </scene>
         <!--新規作成-->
         <scene sceneID="b6v-hj-Rde">
@@ -769,7 +803,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-v4-tPP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-v4-tPP">
                                         <rect key="frame" x="60" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="6OZ-Xg-Wjw"/>
@@ -787,7 +821,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EU0-Ki-Xm4">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EU0-Ki-Xm4">
                                         <rect key="frame" x="200" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="U4E-Ml-VZ6"/>
@@ -833,7 +867,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J1d-at-jcg">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J1d-at-jcg">
                                         <rect key="frame" x="60" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="uk0-AS-5hc"/>
@@ -851,7 +885,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-dn-5WN">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-dn-5WN">
                                         <rect key="frame" x="200" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="BZg-Vv-3VS"/>
@@ -1167,7 +1201,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJg-A9-lFF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJg-A9-lFF" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="123" width="374" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="27K-EW-d8q"/>
@@ -1228,7 +1262,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩種名の設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-PU-952">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩種名の設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-PU-952">
                                 <rect key="frame" x="0.0" y="88" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -1325,7 +1359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKW-XO-Cmf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6859.420289855073" y="3397.7678571428569"/>
+            <point key="canvasLocation" x="-7814" y="3398"/>
         </scene>
         <!--Obs Name Change View Controller-->
         <scene sceneID="0nA-yt-uQC">
@@ -1571,7 +1605,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEh-sK-BhN">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEh-sK-BhN">
                                         <rect key="frame" x="60" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="HLt-pl-UDt"/>
@@ -1589,7 +1623,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gin-Qm-yfv">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gin-Qm-yfv">
                                         <rect key="frame" x="200" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="xxQ-Jf-Hdk"/>
@@ -1635,7 +1669,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Mw-Cj-ZdT">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Mw-Cj-ZdT">
                                         <rect key="frame" x="60" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="lbH-xc-7Ln"/>
@@ -1653,7 +1687,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kEE-ue-098">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kEE-ue-098">
                                         <rect key="frame" x="200" y="0.0" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="KrG-YS-7zR"/>
@@ -1723,8 +1757,11 @@
                                     <constraint firstAttribute="height" constant="35" id="CZn-1g-grD"/>
                                 </constraints>
                                 <state key="normal" title="　形成地質年代リスト">
-                                    <color key="titleColor" systemColor="systemGray4Color"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="geoAgeSettingButton:" destination="6m4-Ud-hqa" eventType="touchUpInside" id="Th8-mw-sLF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-3b-TyV">
                                 <rect key="frame" x="0.0" y="483" width="414" height="35"/>
@@ -1786,6 +1823,7 @@
                         <outlet property="tunnelNameTextField" destination="rzG-5S-9zQ" id="dXc-g8-NEt"/>
                         <segue destination="0IV-AT-EJT" kind="show" identifier="rockNameSegue" id="Fg9-Gh-grJ"/>
                         <segue destination="Bjn-C3-rN8" kind="show" identifier="itemNameChangeSegue" id="NT9-Qr-sSM"/>
+                        <segue destination="jB5-lq-2Hr" kind="show" identifier="geoAgeSettingSegue" id="6e7-dp-oAC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zb4-3a-eZk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1856,7 +1894,114 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HS2-Wv-KVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4804" y="3398"/>
+            <point key="canvasLocation" x="-3655" y="3398"/>
+        </scene>
+        <!--Geo Age Setting View Controller-->
+        <scene sceneID="8sI-RN-nrE">
+            <objects>
+                <viewController storyboardIdentifier="geoAgeSetting" id="jB5-lq-2Hr" customClass="GeoAgeSettingViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tmR-75-Jy2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFA-yB-clb">
+                                <rect key="frame" x="0.0" y="88" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="pE2-7x-1YZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩種名リスト" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnW-yR-TfS">
+                                <rect key="frame" x="0.0" y="178" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="b9b-PF-dQq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDy-Hr-vo1">
+                                <rect key="frame" x="354" y="123" width="50" height="35"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="jda-zv-h3d"/>
+                                    <constraint firstAttribute="width" constant="50" id="puR-MD-h6Y"/>
+                                </constraints>
+                                <state key="normal" title="追加"/>
+                                <connections>
+                                    <action selector="addButton:" destination="jB5-lq-2Hr" eventType="touchUpInside" id="ILe-K7-KxH"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sHu-ND-zlc">
+                                <rect key="frame" x="0.0" y="203" width="414" height="570"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Zjq-Fx-Mbl">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zjq-Fx-Mbl" id="ztJ-2W-Rwe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-7f-b8A" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="123" width="324" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="oQJ-Y3-zVx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsp-v4-m2X">
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0ek-Uz-dJf"/>
+                                </constraints>
+                                <state key="normal" title="更　新"/>
+                                <connections>
+                                    <action selector="updateButton:" destination="jB5-lq-2Hr" eventType="touchUpInside" id="Sfg-H9-ZXj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jLo-N4-5Oi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rsp-v4-m2X" firstAttribute="top" secondItem="sHu-ND-zlc" secondAttribute="bottom" id="1PU-0e-Aow"/>
+                            <constraint firstItem="sDy-Hr-vo1" firstAttribute="leading" secondItem="Maf-7f-b8A" secondAttribute="trailing" constant="10" id="3ms-ph-PjY"/>
+                            <constraint firstItem="jLo-N4-5Oi" firstAttribute="trailing" secondItem="sDy-Hr-vo1" secondAttribute="trailing" constant="10" id="6MI-iw-hu9"/>
+                            <constraint firstItem="XnW-yR-TfS" firstAttribute="leading" secondItem="jLo-N4-5Oi" secondAttribute="leading" id="8bU-yd-a6Q"/>
+                            <constraint firstItem="jLo-N4-5Oi" firstAttribute="trailing" secondItem="FFA-yB-clb" secondAttribute="trailing" id="CON-Li-KCJ"/>
+                            <constraint firstItem="rsp-v4-m2X" firstAttribute="leading" secondItem="jLo-N4-5Oi" secondAttribute="leading" id="E7y-yL-u7R"/>
+                            <constraint firstItem="jLo-N4-5Oi" firstAttribute="bottom" secondItem="rsp-v4-m2X" secondAttribute="bottom" id="ERF-91-RPS"/>
+                            <constraint firstItem="jLo-N4-5Oi" firstAttribute="trailing" secondItem="rsp-v4-m2X" secondAttribute="trailing" id="Fnb-TS-8jH"/>
+                            <constraint firstItem="FFA-yB-clb" firstAttribute="leading" secondItem="jLo-N4-5Oi" secondAttribute="leading" id="Izt-3j-VSc"/>
+                            <constraint firstItem="jLo-N4-5Oi" firstAttribute="trailing" secondItem="XnW-yR-TfS" secondAttribute="trailing" id="R8g-xv-kRV"/>
+                            <constraint firstItem="Maf-7f-b8A" firstAttribute="leading" secondItem="jLo-N4-5Oi" secondAttribute="leading" constant="20" id="T07-pX-4ro"/>
+                            <constraint firstItem="XnW-yR-TfS" firstAttribute="top" secondItem="Maf-7f-b8A" secondAttribute="bottom" constant="20" id="aKD-lE-GEt"/>
+                            <constraint firstItem="sDy-Hr-vo1" firstAttribute="top" secondItem="FFA-yB-clb" secondAttribute="bottom" constant="10" id="edk-MS-Lij"/>
+                            <constraint firstItem="sHu-ND-zlc" firstAttribute="leading" secondItem="jLo-N4-5Oi" secondAttribute="leading" id="lfK-sx-0Zk"/>
+                            <constraint firstItem="sHu-ND-zlc" firstAttribute="top" secondItem="XnW-yR-TfS" secondAttribute="bottom" id="nnJ-ca-Gac"/>
+                            <constraint firstItem="FFA-yB-clb" firstAttribute="top" secondItem="jLo-N4-5Oi" secondAttribute="top" id="rFv-vB-0qb"/>
+                            <constraint firstItem="jLo-N4-5Oi" firstAttribute="trailing" secondItem="sHu-ND-zlc" secondAttribute="trailing" id="wD5-6W-HFB"/>
+                            <constraint firstItem="Maf-7f-b8A" firstAttribute="top" secondItem="FFA-yB-clb" secondAttribute="bottom" constant="10" id="wfs-HB-YJt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="c5a-8A-ISS"/>
+                    <connections>
+                        <outlet property="addGeoAgeTextField" destination="Maf-7f-b8A" id="ECw-Z3-vLL"/>
+                        <outlet property="tableView" destination="sHu-ND-zlc" id="B33-Ee-8bC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWO-IZ-GIc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6859" y="3398"/>
         </scene>
     </scenes>
     <resources>
