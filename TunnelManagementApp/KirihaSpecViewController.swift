@@ -22,7 +22,6 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var distanceLabel: UILabel!              // 坑口からの距離
     @IBOutlet weak var distanceTextField: UITextField!      // 坑口からの距離
     
-    
     // データ受け渡し用
     var tunnelData: TunnelData?             // トンネルデータを格納する配列
     var kirihaRecordData: KirihaRecordData?     // 切羽観察記録データを格納する配列
@@ -53,6 +52,36 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // 分析ボタンがタップされた時に実行
     @IBAction func analysisButton(_ sender: Any) {
         
+        
+        if stationKTextField.text == "" || stationMTextField.text == "" {
+            
+            SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
+            print("強制終了")
+            
+            return
+        }
+        
+        if distanceTextField.text == "" {
+            
+            SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
+            print("強制終了")
+            
+            return
+        }
+        
+        // 切羽観察項目の有無
+        if self.kirihaRecordData?.obsRecordArray.firstIndex(of: nil) != nil {
+            
+            SVProgressHUD.showError(withStatus: "切羽観察記録の入力を確認してください")
+            print("強制終了")
+            
+            return
+        }
+        
+        // print("obs[2] \(self.kirihaRecordData?.obsRecordArray[2])")
+        
+        saveFile()
+        
         self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)
     }
     
@@ -72,13 +101,14 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
             SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
             print("強制終了")
             
-            
-            
             return
         }
         
-        
-        
+        saveFile()
+    }
+    
+    func saveFile() {
+
         // 測点を距離に換算する
         let stationNo = Float(stationKTextField.text!)! * 1000 + Float(stationMTextField.text!)!
         
@@ -87,13 +117,6 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
         let distance = Float(distanceTextField.text!)!
         
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = kirihaRecordData?.id {
-            
-            // "dataArray[0] : \(dataArray[0])"
-            
-            // 観察者名
-            // let obsName = Auth.auth().currentUser?.displayName
-            
-            
             
             // 保存するデータを辞書の型にまとめる
             let kirihaRecordDic = [
@@ -114,21 +137,10 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
             
             print("更新しました")
             
-            /*
-            // データを上書き保存する
-            kirihaRecordDataRef.setData(kirihaRecordDic, merge: true) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
-                }
-            }
-            print("上書きしました")
-            */
-            
             // 画面遷移
             // navigationController?.popViewController(animated: true)      // 画面を閉じることで１つ前の画面に戻る
         }
+        
     }
     
     // 画面遷移前に実行される
@@ -144,6 +156,12 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
             print("KirihaRecordChangeVC tunnelId: \(self.kirihaRecordData?.tunnelId) ,id: \(self.kirihaRecordData?.id)")
             
             KirihaRecordChangeVC.kirihaRecordData = self.kirihaRecordData
+        }
+        else if segue.identifier == "AnalysisSegue" {
+            
+            let AnalysisVC = segue.destination as! AnalysisViewController
+            
+            AnalysisVC.kirihaRecordData = self.kirihaRecordData
         }
     }
     
@@ -182,7 +200,7 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     self.rockNameDataSource = rockName
                     
                     // 初期値の設定
-                    self.rockNameTextField.text = rockName[0]
+                    // self.rockNameTextField.text = rockName[0]
                 }
                 
                 // 形成地質年代
@@ -192,7 +210,7 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     self.geoAgeDataSource = geoAge
                     
                     // 初期値の設定
-                    self.geoAgeTextField.text = geoAge[0]
+                    // self.geoAgeTextField.text = geoAge[0]
                 }
                 
                 // 坑口からの距離
@@ -236,6 +254,19 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     // print("obsRecordArray[0] : \(self.kirihaRecordData2?.obsRecordArray[0])")
                 
                     // テキストフィールドに値を代入する
+                    // 観察日
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy年MM月dd日"
+                    
+                    if let obsDate = kirihaRecordDataDS.obsDate {
+                        
+                        self.obsDateTextField.text! = formatter.string(from: obsDate)
+                    }
+                    else if let date = kirihaRecordDataDS.date {
+                        
+                        self.obsDateTextField.text! = formatter.string(from: date)
+                    }
+                    
                     // 切羽位置
                     if let stationNo = kirihaRecordDataDS.stationNo {
                         
@@ -250,17 +281,10 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                         self.stationMTextField.text! = String(b)
                     }
                     
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy年MM月dd日"
-                    
-                    // 観察日
-                    if let obsDate = kirihaRecordDataDS.obsDate {
+                    // 坑口からの距離
+                    if let distance = self.kirihaRecordDataDS?.distance {
                         
-                        self.obsDateTextField.text! = formatter.string(from: obsDate)
-                    }
-                    else if let date = kirihaRecordDataDS.date {
-                        
-                        self.obsDateTextField.text! = formatter.string(from: date)
+                        self.distanceTextField.text! = String(distance)
                     }
                     
                     // 岩種
@@ -273,28 +297,53 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                         self.rockTypeTextField.text! = self.rockTypeDataSource[0]
                     }
                     
-                    // 坑口からの距離
-                    if let distance = self.kirihaRecordDataDS?.distance {
+                    // 岩石名
+                    if let rockName = kirihaRecordDataDS.rockName {
                         
-                        self.distanceTextField.text! = String(distance)
+                        self.rockNameTextField.text! = rockName
                     }
+                    else {
+                        
+                        // self.rockNameTextField.text! = self.rockNameDataSource[0]!
+                    }
+                    
+                    // 形成地質年代
+                    if let geoAge = kirihaRecordDataDS.geoAge {
+                        
+                        self.geoAgeTextField.text! = geoAge
+                    }
+                    else {
+                        
+                        // self.geoAgeTextField.text! = self.geoAgeDataSource[0]!
+                    }
+                    
+                    // 地山等級
+                    if let structurePattern = kirihaRecordDataDS.structurePattern {
+                        
+                        self.kirihaRecordData?.structurePattern = structurePattern
+                    }
+                    
+                    // 切羽観察記録
+                    self.kirihaRecordData?.obsRecordArray = kirihaRecordDataDS.obsRecordArray
+                    
+                    /*
+                    if let obsRecordArray:[Int?] = kirihaRecordDataDS.obsRecordArray {
+                        
+                        self.kirihaRecordData?.obsRecordArray = obsRecordArray
+                    }
+                    */
+
                 }
                 else {
                     print("Document does not exist")
                 }
             }
         }
-        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // print("KirihaSpecVC tunnelid: \(self.kirihaRecordData?.tunnelId)")
-        // print("kirihaSpecVC id: \(self.kirihaRecordData?.id)")
-        
-        
 
         // rockTypePickerViewをキーボードにする設定
         rockTypePickerView.tag = 1

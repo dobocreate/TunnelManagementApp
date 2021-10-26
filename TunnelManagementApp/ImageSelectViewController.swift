@@ -20,6 +20,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             let pickerController = UIImagePickerController()
             
             pickerController.delegate = self        // ここのselfは何を意味する？
+            
             pickerController.sourceType = .photoLibrary
             
             self.present(pickerController, animated: true, completion: nil)
@@ -35,6 +36,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             let pickerController = UIImagePickerController()
             
             pickerController.delegate = self
+            
             pickerController.sourceType = .camera
             
             self.present(pickerController, animated: true, completion: nil)
@@ -67,7 +69,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             // あとでCLImageEditorライブラリで加工する
             print("DEBUG_PRINT: image = \(image)")
             
-            // CLImageEditorにimageを渡して、加工画面を起動する。
+            // CLImageEditorにimageを渡して、加工画面を起動する
             let editor = CLImageEditor(image: image)!
             
             editor.delegate = self
@@ -80,8 +82,10 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     
     // キャンセルされた場合に実行される
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         // ImageSelectViewController画面を閉じてタブ画面に戻る
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        //self.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // CLImageEditorで加工が終わったときに呼ばれるメソッド
@@ -96,7 +100,9 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     
     // CLImageEditorの編集がキャンセルされた時に呼ばれるメソッド
     func imageEditorDidCancel(_ editor: CLImageEditor!) {
+        
         // ImageSelectViewController画面を閉じてタブ画面に戻る
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        // self.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

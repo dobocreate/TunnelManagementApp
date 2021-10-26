@@ -25,6 +25,8 @@ class KirihaRecordDataDS: NSObject {
     var geoAge: String?             // 形成地質年代
     var geoStructure: String?       // 地質構造
     var obsRecordArray:[Int?] = []  // 観察記録
+    var structurePattern: Int?      // 地山等級
+    var patternRate:[Double?] = []   // 採用確率
     
     // 初期化メソッド
     init(document: DocumentSnapshot) {
@@ -64,6 +66,13 @@ class KirihaRecordDataDS: NSObject {
         if let obsRecord = kirihaRecordDic?["obsRecordArray"] as? [Int?] {
             
             self.obsRecordArray = obsRecord
+        }
+        
+        self.structurePattern = kirihaRecordDic?["structurePattern"] as? Int
+        
+        if let patternRate = kirihaRecordDic?["patternRate"] as? [Double] {
+            
+            self.patternRate = patternRate
         }
     }
 }

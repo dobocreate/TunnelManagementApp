@@ -224,11 +224,11 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 cell.backgroundColor = MyColor.myPink
             }
             else {
-                cell.backgroundColor = .white
+                cell.backgroundColor = .clear
             }
         }
         else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .clear
         }
         
         // cellに値を設定する
@@ -326,7 +326,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             }
             else {
                 // セルの色を変更する
-                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .white
+                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .clear
             }
         }
     }

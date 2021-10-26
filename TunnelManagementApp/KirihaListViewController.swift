@@ -14,6 +14,20 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    // 地山等級のパターン
+    let structurePatternsName:[String?] = [
+        "Ⅴ N",
+        "Ⅳ N",
+        "Ⅲ N",
+        "Ⅱ N",
+        "Ⅰ N-2",
+        "Ⅰ N-1",
+        "Ⅰ L",
+        "Ⅰ S",
+        "特L、特S"
+    ]
+    
+    
     var listener: ListenerRegistration?
     
     // 遷移時に受け取ったトンネルデータを格納する配列
@@ -49,12 +63,13 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         // ログイン済みか確認
         if Auth.auth().currentUser != nil {         // ログイン済みの場合
                         
-            // listenerを登録して投稿データの更新を監視する
+            
             if let tunnelId = self.tunnelData?.tunnelId {
                 
                 // listenerを登録して投稿データの更新を監視する
                 let postsRef = Firestore.firestore().collection(tunnelId).order(by: "date", descending: true)
             
+                // listenerを登録して投稿データの更新を監視する
                 listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
                     if let error = error {
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
@@ -110,7 +125,13 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
             let b = stationNo - a * 1000
             let c: Int = Int(a)
             
-            cell.textLabel!.text = "測点 " + String(c) + "k " + String(b) + "m"
+            if let sP = kirihaRecordDataArray[indexPath.row].structurePattern, let sPN = self.structurePatternsName[sP] {
+
+                cell.textLabel!.text = "測点 " + String(c) + "k " + String(b) + "m" + " : 地山等級 " + String(sPN)
+            }
+            else {
+                cell.textLabel!.text = "測点 " + String(c) + "k " + String(b) + "m"
+            }
         }
         else if let date =  kirihaRecordDataArray[indexPath.row].date {
             
@@ -131,6 +152,33 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
 
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            // let removed = self.kirihaRecordDataArray.remove(at: indexPath.row)
+            
+            // print("\(removed)が削除されました, \(indexPath.row)")
+            
+            // 削除されたドキュメントのIDを取得する
+            
+            let documentId = self.kirihaRecordDataArray[indexPath.row].id
+            
+            print("ドキュメントID \(documentId)")
+            
+            if let tunnelId = self.tunnelData?.tunnelId {
+                
+                Firestore.firestore().collection(tunnelId).document(documentId).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed")
+                    }
+                    
+                }
+            }
+        }
+        
+        tableView.reloadData()
     }
     
     // 各セルを選択した時に実行されるメソッド

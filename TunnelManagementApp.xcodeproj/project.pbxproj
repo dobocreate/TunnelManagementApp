@@ -29,6 +29,7 @@
 		466308DC271ABFD300214303 /* RockNameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308DB271ABFD300214303 /* RockNameSettingViewController.swift */; };
 		466330AC271E1FB80087FE24 /* TunnelCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */; };
 		466330AE271E416E0087FE24 /* TunnelDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466330AD271E416E0087FE24 /* TunnelDataDS.swift */; };
+		467CF116271FEBD600324527 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467CF115271FEBD600324527 /* AnalysisViewController.swift */; };
 		46AB521C270DC09900D489DE /* KirihaRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */; };
 		46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */; };
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
@@ -41,7 +42,9 @@
 		46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */; };
 		46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */; };
 		46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */; };
-		46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB837270F04660047BF61 /* ChartsViewController.swift */; };
+		46EC69952726097800B081FC /* MyTabularClassifier_kiriha.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */; };
+		46EC69972726814C00B081FC /* Analysis2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC69962726814C00B081FC /* Analysis2ViewController.swift */; };
+		46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */; };
 		46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */; };
 		46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DC270FD0E70047BF61 /* TabBarController.swift */; };
 		46EFB8DF271050E00047BF61 /* TunnelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFB8DE271050E00047BF61 /* TunnelListViewController.swift */; };
@@ -75,6 +78,7 @@
 		466308DB271ABFD300214303 /* RockNameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockNameSettingViewController.swift; sourceTree = "<group>"; };
 		466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelCreateViewController.swift; sourceTree = "<group>"; };
 		466330AD271E416E0087FE24 /* TunnelDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelDataDS.swift; sourceTree = "<group>"; };
+		467CF115271FEBD600324527 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordViewController.swift; sourceTree = "<group>"; };
 		46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksTableViewCell.swift; sourceTree = "<group>"; };
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
@@ -87,7 +91,9 @@
 		46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordChangeViewController.swift; sourceTree = "<group>"; };
 		46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordDataDS.swift; sourceTree = "<group>"; };
 		46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAgeSettingViewController.swift; sourceTree = "<group>"; };
-		46EFB837270F04660047BF61 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyTabularClassifier_kiriha.mlmodel; sourceTree = "<group>"; };
+		46EC69962726814C00B081FC /* Analysis2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis2ViewController.swift; sourceTree = "<group>"; };
+		46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyTabularClassifierKiriha.mlmodel; sourceTree = "<group>"; };
 		46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46EFB8DC270FD0E70047BF61 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		46EFB8DE271050E00047BF61 /* TunnelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelListViewController.swift; sourceTree = "<group>"; };
@@ -129,11 +135,15 @@
 		4659838C270B26E700898FDF /* TunnelManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */,
+				46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */,
+				467CF115271FEBD600324527 /* AnalysisViewController.swift */,
+				46EC69962726814C00B081FC /* Analysis2ViewController.swift */,
 				4659838D270B26E700898FDF /* AppDelegate.swift */,
 				46598396270B26E800898FDF /* Assets.xcassets */,
-				46EFB837270F04660047BF61 /* ChartsViewController.swift */,
 				46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */,
 				466308CB2718FAAB00214303 /* FirestorePathList.swift */,
+				46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */,
 				466308D1271A5A3500214303 /* GlobalSettingViewController.swift */,
 				46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */,
 				46EFB8E22710DC260047BF61 /* ImageSelectViewController.swift */,
@@ -141,10 +151,10 @@
 				466308D3271A5D6800214303 /* ItemNameChangeViewController.swift */,
 				466308CF271A159000214303 /* KirihaListViewController.swift */,
 				465983A9270B441C00898FDF /* kirihaRecord.swift */,
-				46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */,
 				46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */,
 				466308D7271A9FAD00214303 /* KirihaRecordData.swift */,
 				46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */,
+				46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
 				46598398270B26E800898FDF /* LaunchScreen.storyboard */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
@@ -157,7 +167,6 @@
 				46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */,
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
 				466308DB271ABFD300214303 /* RockNameSettingViewController.swift */,
-				46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */,
 				46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */,
 				46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */,
 				4659838F270B26E700898FDF /* SceneDelegate.swift */,
@@ -307,7 +316,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46EFB838270F04660047BF61 /* ChartsViewController.swift in Sources */,
 				466308DC271ABFD300214303 /* RockNameSettingViewController.swift in Sources */,
 				466330AC271E1FB80087FE24 /* TunnelCreateViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
@@ -319,7 +327,9 @@
 				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
 				46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */,
 				466308D4271A5D6800214303 /* ItemNameChangeViewController.swift in Sources */,
+				467CF116271FEBD600324527 /* AnalysisViewController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
+				46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
 				46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */,
 				466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */,
@@ -337,9 +347,11 @@
 				466308D6271A5D7E00214303 /* ObsNameChangeViewController.swift in Sources */,
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,
+				46EC69972726814C00B081FC /* Analysis2ViewController.swift in Sources */,
 				46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */,
 				46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */,
 				46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */,
+				46EC69952726097800B081FC /* MyTabularClassifier_kiriha.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +506,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -514,6 +527,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
