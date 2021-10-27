@@ -100,23 +100,23 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         print("AnalysisVC A: \(kirihaRecordData?.obsRecordArray[0]), rockType: \(kirihaRecordData?.rockType)")
         // print("AnalysisVC structurePattern \(kirihaRecordData?.structurePattern)")
         
-        let model = MyTabularClassifierKiriha()
+        let model = KirihaDataTabularClassifier_1028()
         
         guard let rockType = kirihaRecordData?.rockType else { return }
         guard let obsRecordArray = kirihaRecordData?.obsRecordArray else { return }
         
         guard let output = try? model.prediction(
             rockType: rockType,
-                A: Double(obsRecordArray[0]!),
-                B: Double(obsRecordArray[1]!),
-                C: Double(obsRecordArray[2]!),
-                D: Double(obsRecordArray[3]!),
-                E: Double(obsRecordArray[4]!),
-                F: Double(obsRecordArray[5]!),
-                G: Double(obsRecordArray[6]!),
-                H: Double(obsRecordArray[7]!),
-                I: Double(obsRecordArray[8]!),
+                A: Double(obsRecordArray[1]!),
+                B: Double(obsRecordArray[2]!),
+                C: Double(obsRecordArray[3]!),
+                D: Double(obsRecordArray[4]!),
+                E: Double(obsRecordArray[5]!),
+                F: Double(obsRecordArray[6]!),
+                G: Double(obsRecordArray[7]!),
+                H: Double(obsRecordArray[8]!),
                 I_1: Double(obsRecordArray[9]!),
+                I_2: Double(0),
                 J: Double(obsRecordArray[10]!),
                 K: Double(obsRecordArray[11]!),
                 L: Double(obsRecordArray[12]!)
