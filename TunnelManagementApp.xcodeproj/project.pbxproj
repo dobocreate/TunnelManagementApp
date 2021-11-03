@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27BFE8A13957A291446026A1 /* Pods_TunnelManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */; };
+		4637568B27334749008FFB28 /* KirihaSpec2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */; };
+		4637568D273358A7008FFB28 /* WaterRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637568C273358A7008FFB28 /* WaterRecordViewController.swift */; };
 		4659838E270B26E700898FDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838D270B26E700898FDF /* AppDelegate.swift */; };
 		46598390270B26E700898FDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838F270B26E700898FDF /* SceneDelegate.swift */; };
 		46598392270B26E700898FDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46598391270B26E700898FDF /* ViewController.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TunnelManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F118CDFCFED6439D2791225 /* Pods-TunnelManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.release.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.release.xcconfig"; sourceTree = "<group>"; };
+		4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaSpec2ViewController.swift; sourceTree = "<group>"; };
+		4637568C273358A7008FFB28 /* WaterRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecordViewController.swift; sourceTree = "<group>"; };
 		4659838A270B26E700898FDF /* TunnelManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TunnelManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4659838D270B26E700898FDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4659838F270B26E700898FDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */,
 				46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
+				4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */,
+				4637568C273358A7008FFB28 /* WaterRecordViewController.swift */,
 				46598398270B26E800898FDF /* LaunchScreen.storyboard */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
 				46598393270B26E700898FDF /* Main.storyboard */,
@@ -335,6 +341,7 @@
 				46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
 				46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */,
+				4637568B27334749008FFB28 /* KirihaSpec2ViewController.swift in Sources */,
 				466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */,
 				46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */,
 				46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */,
@@ -354,6 +361,7 @@
 				46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */,
 				46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */,
 				46EC69A12729EF3200B081FC /* KirihaDataTabularClassifier_1028.mlmodel in Sources */,
+				4637568D273358A7008FFB28 /* WaterRecordViewController.swift in Sources */,
 				46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */,
 				46EC69952726097800B081FC /* MyTabularClassifier_kiriha.mlmodel in Sources */,
 			);

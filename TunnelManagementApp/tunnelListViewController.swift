@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class TunnelListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -128,7 +129,7 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
             // 編集処理を記述
             print("Editがタップされた")
             
-
+            
             
             print("indexPath.row: \(indexPath.row)")
             
@@ -175,12 +176,16 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
         // 編集ボタンの背景色を青色にする
         editAction.backgroundColor = UIColor.blue
 
+        /*
         // 削除処理
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             
             //削除処理を記述
             print("Deleteがタップされた")
             
+            SVProgressHUD.showError(withStatus: "トンネルデータを削除することはできません")
+            
+            /*
             // Firestore内に保存されているトンネルリストから、タップしたセルに対応するドキュメントデータを削除する
             Firestore.firestore().collection(FirestorePathList.tunnelListPath).document(self.tunnelDataArray[indexPath.row].id).delete() { err in
                 if let err = err {
@@ -190,13 +195,13 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("Document successfully removed!")
                 }
             }
-
-            // 実行結果に関わらず記述
-            completionHandler(true)
+            */
         }
+        */
 
         // 定義したアクションをセット
-        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        // return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return UISwipeActionsConfiguration(actions: [editAction])
     }
 
     // 各セルを選択した時に実行されるメソッド
@@ -232,5 +237,13 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     */
     
-
+    // テキストフィールド以外をタップした時に実行される
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        print("タップされました")
+        
+        SVProgressHUD.dismiss()
+        
+        // self.view.endEditing(true)
+    }
 }

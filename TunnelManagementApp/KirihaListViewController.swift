@@ -190,7 +190,7 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         kirihaRecordData = kirihaRecordDataArray[indexPath.row]
         
         // Segue IDを指定して画面遷移させる
-        performSegue(withIdentifier: "kirihaSpecSegue",sender: nil)
+        performSegue(withIdentifier: "kirihaSpec2Segue",sender: nil)
     }
     
     // 画面を閉じる前に実行される
@@ -202,9 +202,9 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
             
             kirihaRecordVC.tunnelData = self.tunnelData
         }
-        else if segue.identifier == "kirihaSpecSegue" {
+        else if segue.identifier == "kirihaSpec2Segue" {
             
-            let kirihaSpecVC: KirihaSpecViewController = segue.destination as! KirihaSpecViewController
+            let kirihaSpecVC: KirihaSpec2ViewController = segue.destination as! KirihaSpec2ViewController
             
             kirihaSpecVC.kirihaRecordData = self.kirihaRecordData
             kirihaSpecVC.tunnelData = self.tunnelData
