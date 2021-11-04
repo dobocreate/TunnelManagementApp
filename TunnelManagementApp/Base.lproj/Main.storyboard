@@ -707,7 +707,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="tintColor" systemColor="systemGray2Color"/>
-                                                <state key="normal" title="Button" image="camera" catalog="system"/>
+                                                <state key="normal" image="camera" catalog="system"/>
                                             </button>
                                         </subviews>
                                         <constraints>
