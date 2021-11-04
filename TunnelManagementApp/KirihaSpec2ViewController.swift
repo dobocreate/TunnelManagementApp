@@ -449,9 +449,4 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         self.view.endEditing(true)
     }
-    
-    
-    
-    
-
 }
