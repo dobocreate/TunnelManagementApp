@@ -10,6 +10,7 @@
 		27BFE8A13957A291446026A1 /* Pods_TunnelManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0F821B140E042D6DDA2BC3 /* Pods_TunnelManagementApp.framework */; };
 		4637568B27334749008FFB28 /* KirihaSpec2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */; };
 		4637568D273358A7008FFB28 /* WaterRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637568C273358A7008FFB28 /* WaterRecordViewController.swift */; };
+		4637568F2733C29A008FFB28 /* TunnelCreate2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637568E2733C29A008FFB28 /* TunnelCreate2ViewController.swift */; };
 		4659838E270B26E700898FDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838D270B26E700898FDF /* AppDelegate.swift */; };
 		46598390270B26E700898FDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659838F270B26E700898FDF /* SceneDelegate.swift */; };
 		46598392270B26E700898FDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46598391270B26E700898FDF /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		0F118CDFCFED6439D2791225 /* Pods-TunnelManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelManagementApp.release.xcconfig"; path = "Target Support Files/Pods-TunnelManagementApp/Pods-TunnelManagementApp.release.xcconfig"; sourceTree = "<group>"; };
 		4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaSpec2ViewController.swift; sourceTree = "<group>"; };
 		4637568C273358A7008FFB28 /* WaterRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecordViewController.swift; sourceTree = "<group>"; };
+		4637568E2733C29A008FFB28 /* TunnelCreate2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelCreate2ViewController.swift; sourceTree = "<group>"; };
 		4659838A270B26E700898FDF /* TunnelManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TunnelManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4659838D270B26E700898FDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4659838F270B26E700898FDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
 				4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */,
 				4637568C273358A7008FFB28 /* WaterRecordViewController.swift */,
+				4637568E2733C29A008FFB28 /* TunnelCreate2ViewController.swift */,
 				46598398270B26E800898FDF /* LaunchScreen.storyboard */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
 				46598393270B26E700898FDF /* Main.storyboard */,
@@ -354,6 +357,7 @@
 				46AB521C270DC09900D489DE /* KirihaRecordViewController.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,
 				46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */,
+				4637568F2733C29A008FFB28 /* TunnelCreate2ViewController.swift in Sources */,
 				466308D6271A5D7E00214303 /* ObsNameChangeViewController.swift in Sources */,
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,

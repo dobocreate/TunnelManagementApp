@@ -54,7 +54,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         ["１．なし、滲水程度", "２．滴水程度", "３．集中湧水", "４．全面湧水", "湧水量の入力"],
         ["１．なし", "２．緩みを生ず", "３．軟弱化", "４．流出"],
         ["１．水平（0° < θ < １０°）", "２．さし目（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．さし目（３０° ≦ θ < ６０°）", "４．流れ目（６０° > θ ≧ ３０°）", "５．流れ目（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）"],
-        ["１．水平（0° < θ < １０°）", "２．右上からさし目（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．右上からさし目（３０° ≦ θ < ６０°）", "４．左上から流れ目（６０° > θ ≧ ３０°）", "５．左上から流れ目（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）"]
+        ["１．水平（0° < θ < １０°）", "２．右から左（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．右から左（３０° ≦ θ < ６０°）", "４．左から右（６０° > θ ≧ ３０°）", "５．左から右（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）"]
     ]
     
     // カラークラスを定義する
@@ -66,14 +66,9 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
-    // 
-    
-    // 画面遷移が行われた時に１度だけ実行される
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        tableView.delegate = self
-        tableView.dataSource = self
+    // 画面が表示される前に実行される
+    // 他の画面から遷移して戻ってきた時にも呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
         
         // Firestoreからデータの取得
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
@@ -96,11 +91,11 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 
                 let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
                 
-                print("Firestore document.data \(document.data())")
+                // print("Firestore document.data \(document.data())")
                 
                 self.kirihaRecordFireDataDS = kirihaRecordDataDS
                 
-                print("FirestoreDS obsRecordArray \(self.kirihaRecordFireDataDS?.obsRecordArray)")
+                // print("FirestoreDS obsRecordArray \(self.kirihaRecordFireDataDS?.obsRecordArray)")
                 
                 // Firestoreから取得したデータを代入する
                 if let array = self.kirihaRecordFireDataDS?.obsRecordArray {
@@ -108,13 +103,15 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                     self.obsRecordArray = array
                 }
                 
-                print("FirestoreDS obsName \(self.kirihaRecordFireDataDS?.obsName)")
+                print("FirestoreDS データを取得しました \(self.kirihaRecordFireDataDS?.water)")
                 
                 // tableViewのデータをリロードする
                 self.tableView.reloadData()
             }
         }
+        
     }
+
     
     // 保存ボタンがタップされた時に実行される
     @IBAction func saveButton(_ sender: Any) {
@@ -307,9 +304,19 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         let cellSection = indexPath.section
         let cellRow = indexPath.row
         
+        // 湧水量の入力をタップされた時
+        // 色を変えずに、obsArrayに保存もしない
+        if cellSection == 9 && cellRow == 4 {
+            
+            // SegueIDを指定して、湧水量の記録画面に遷移
+            performSegue(withIdentifier: "waterRecordSegue", sender: nil)
+            
+            return
+        }
+        
+        
         // セクションごとに選択されたセルのデータを格納する
         obsRecordArray[cellSection] = cellRow
-        // print("保存、Section: \(cellSection) row: \(cellRow)  \(obsRecordArray[cellSection])")
         
         // 選択したセルのセクションにおいて、同セクションのセルの数だけ繰り返して、
         // 選択したセルの色だけピンクに変更する
@@ -329,7 +336,23 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .clear
             }
         }
+        
+
     }
+    
+    // 画面を閉じる前に実行される
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "waterRecordSegue" {
+            
+            let waterRecordVC:WaterRecordViewController = segue.destination as! WaterRecordViewController
+            
+            waterRecordVC.kirihaRecordData = self.kirihaRecordData
+            waterRecordVC.waterValue = self.kirihaRecordFireDataDS?.water
+        }
+        
+    }
+    
 
     // セルが削除が可能なことを伝えるメソッド
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)-> UITableViewCell.EditingStyle {
@@ -340,17 +363,13 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
+    // 画面遷移が行われた時に１度だけ実行される
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+    }
 
 }

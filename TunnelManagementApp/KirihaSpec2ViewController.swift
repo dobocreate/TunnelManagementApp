@@ -172,7 +172,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // Firestoreからデータの取得
         if let tunnelId = self.tunnelData?.tunnelId, let id = tunnelData?.id {
             
-            print("KirihaSpecVC tunnleId \(self.tunnelData?.tunnelId), id \(self.tunnelData?.id)")
+            print("KirihaSpecVC tunnelData tunnleId \(self.tunnelData?.tunnelId), id \(self.tunnelData?.id)")
             
             // 取得するドキュメントを設定
             let tunnelSpecDataRef = Firestore.firestore().collection("tunnelLists").document(id)
@@ -226,7 +226,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // tunnelIdとidのnilでない時（データの受け渡しに成功した場合）
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
             
-            print("KirihaSpecVC tunnleId \(tunnelId), id \(id)")
+            print("KirihaSpecVC kirihaRecordData tunnleId \(tunnelId), id \(id)")
             
             // データを取得するドキュメントを設定
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
@@ -333,6 +333,11 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         self.kirihaRecordData?.obsRecordArray = obsRecordArray
                     }
                     */
+                    
+                    // 湧水量の取得
+                    self.kirihaRecordData?.water = kirihaRecordDataDS.water
+                    
+                    print("KirihaSpec2VC water \(self.kirihaRecordData?.water)")
 
                 }
                 else {

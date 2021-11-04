@@ -27,6 +27,7 @@ class KirihaRecordDataDS: NSObject {
     var obsRecordArray:[Int?] = []  // 観察記録
     var structurePattern: Int?      // 地山等級
     var patternRate:[Double?] = []   // 採用確率
+    var water: Float?              // 湧水量
     
     // 初期化メソッド
     init(document: DocumentSnapshot) {
@@ -74,5 +75,7 @@ class KirihaRecordDataDS: NSObject {
             
             self.patternRate = patternRate
         }
+        
+        self.water = kirihaRecordDic?["water"] as? Float
     }
 }
