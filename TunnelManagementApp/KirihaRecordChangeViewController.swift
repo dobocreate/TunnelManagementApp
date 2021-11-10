@@ -11,6 +11,7 @@ import Firebase
 class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var kirihaImageView: UIImageView!
     
     // var tunnelData: tunInitialData?     // データ受け渡し用(トンネル設定データ)
     // var tunnelPath: String?     // トンネルID
@@ -369,6 +370,10 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // 画像を設定
+        let kirihaImage = UIImage(named: "tunnelImage.jpeg")
+        kirihaImageView.image = kirihaImage
         
     }
 

@@ -14,6 +14,9 @@ import CoreML
 class AnalysisViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pieChartsView: PieChartView!
+    
+    var prob:[Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     
     var tunnelData: TunnelData?
     var kirihaRecordData: KirihaRecordData?
@@ -107,23 +110,26 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         
         guard let output = try? model.prediction(
             rockType: rockType,
-                A: Double(obsRecordArray[1]!),
-                B: Double(obsRecordArray[2]!),
-                C: Double(obsRecordArray[3]!),
-                D: Double(obsRecordArray[4]!),
-                E: Double(obsRecordArray[5]!),
-                F: Double(obsRecordArray[6]!),
-                G: Double(obsRecordArray[7]!),
-                H: Double(obsRecordArray[8]!),
-                I_1: Double(obsRecordArray[9]!),
-                I_2: Double(0),
-                J: Double(obsRecordArray[10]!),
-                K: Double(obsRecordArray[11]!),
-                L: Double(obsRecordArray[12]!)
-        ) else {
+            A: Double(obsRecordArray[1]!),
+            B: Double(obsRecordArray[2]!),
+            C: Double(obsRecordArray[3]!),
+            D: Double(obsRecordArray[4]!),
+            E: Double(obsRecordArray[5]!),
+            F: Double(obsRecordArray[6]!),
+            G: Double(obsRecordArray[7]!),
+            H: Double(obsRecordArray[8]!),
+            I_1: Double(obsRecordArray[9]!),
+            I_2: Double(0),
+            J: Double(obsRecordArray[10]!),
+            K: Double(obsRecordArray[11]!),
+            L: Double(obsRecordArray[12]!)
+        )
+        else {
             
             fatalError("Unexpected runtime error.")
         }
+        
+        print(output.patternProbability[4])
         
         let aiPattern = output.pattern
         aiSelectedNumber = Int(aiPattern)
@@ -131,6 +137,51 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         let bunnsuu = output.featureValue(for: "pattern")
         
         print("aiPattern: \(aiPattern), \(bunnsuu)")
+        
+        
+        if let prob4 = output.patternProbability[4] {
+         
+            self.prob[4] = prob4
+        }
+        
+        if let prob5 = output.patternProbability[5] {
+         
+            self.prob[5] = prob5
+        }
+        
+        if let prob7 = output.patternProbability[7] {
+         
+            self.prob[7] = prob7
+        }
+        
+        // グラフの表示
+        let dataEntries = [
+        
+            PieChartDataEntry(value: self.prob[4], label: "IN-2"),
+            PieChartDataEntry(value: self.prob[5], label: "IN-1"),
+            PieChartDataEntry(value: self.prob[7], label: "IS")
+        ]
+        
+        let dataSet = PieChartDataSet(entries: dataEntries, label: "AI判定結果")
+        
+        // グラフの色
+        dataSet.colors = ChartColorTemplates.vordiplom()
+        // グラフのデータの値の色
+        dataSet.valueTextColor = UIColor.black
+        // グラフのデータのタイトルの色
+        dataSet.entryLabelColor = UIColor.black
+        
+        self.pieChartsView.data = PieChartData(dataSet: dataSet)
+        
+        // データを％表示にする
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
+        formatter.multiplier = 1.0
+        self.pieChartsView.data?.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+        self.pieChartsView.usePercentValuesEnabled = true
+        
+        view.addSubview(self.pieChartsView)
     }
     
     // 画面遷移時に１度だけ実行される
@@ -140,6 +191,11 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         // デリゲート
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        
+        
+        
     }
     
     // データの数（＝セルの数）を返すメソッド
