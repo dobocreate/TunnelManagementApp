@@ -98,23 +98,24 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             self.structurePattern = sp
         }
         
-        
-        // AIによる判定結果
+        // AIによる判定
         print("AnalysisVC A: \(kirihaRecordData?.obsRecordArray[0]), rockType: \(kirihaRecordData?.rockType)")
         // print("AnalysisVC structurePattern \(kirihaRecordData?.structurePattern)")
         
-        let model = KirihaDataTabularClassifier_1028()
+        // let model = KirihaDataTabularClassifier_1028()
+        let model = KirihaDataTabularClassifier_1123_33()
         
         guard let rockType = kirihaRecordData?.rockType else { return }
         guard let obsRecordArray = kirihaRecordData?.obsRecordArray else { return }
         
         guard let output = try? model.prediction(
             rockType: rockType,
+            rockName: "Ls",
+            rockGroup: Double(obsRecordArray[0]!),
             A: Double(obsRecordArray[1]!),
             B: Double(obsRecordArray[2]!),
             C: Double(obsRecordArray[3]!),
             D: Double(obsRecordArray[4]!),
-            E: Double(obsRecordArray[5]!),
             F: Double(obsRecordArray[6]!),
             G: Double(obsRecordArray[7]!),
             H: Double(obsRecordArray[8]!),
@@ -191,11 +192,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         // デリゲート
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-        
-        
-        
     }
     
     // データの数（＝セルの数）を返すメソッド

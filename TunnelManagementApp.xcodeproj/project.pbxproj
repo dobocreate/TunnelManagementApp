@@ -46,6 +46,7 @@
 		46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */; };
 		46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */; };
 		46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */; };
+		46E3FD4B2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46E3FD4A2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel */; };
 		46EC69952726097800B081FC /* MyTabularClassifier_kiriha.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */; };
 		46EC69972726814C00B081FC /* Analysis2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC69962726814C00B081FC /* Analysis2ViewController.swift */; };
 		46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */; };
@@ -100,6 +101,7 @@
 		46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordChangeViewController.swift; sourceTree = "<group>"; };
 		46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordDataDS.swift; sourceTree = "<group>"; };
 		46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAgeSettingViewController.swift; sourceTree = "<group>"; };
+		46E3FD4A2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KirihaDataTabularClassifier_1123_33.mlmodel; sourceTree = "<group>"; };
 		46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyTabularClassifier_kiriha.mlmodel; sourceTree = "<group>"; };
 		46EC69962726814C00B081FC /* Analysis2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis2ViewController.swift; sourceTree = "<group>"; };
 		46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyTabularClassifierKiriha.mlmodel; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				46EC69A02729EF3200B081FC /* KirihaDataTabularClassifier_1028.mlmodel */,
+				46E3FD4A2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel */,
 				46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */,
 				46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */,
 				4656C46F27350E3C0088A83B /* tunnelImage.jpeg */,
@@ -348,6 +351,7 @@
 				46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
 				46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */,
+				46E3FD4B2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel in Sources */,
 				4637568B27334749008FFB28 /* KirihaSpec2ViewController.swift in Sources */,
 				466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */,
 				46EFB8E32710DC260047BF61 /* ImageSelectViewController.swift in Sources */,
@@ -527,7 +531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -549,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
