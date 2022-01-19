@@ -140,6 +140,11 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         print("aiPattern: \(aiPattern), \(bunnsuu)")
         
         
+        if let prob3 = output.patternProbability[3] {
+         
+            self.prob[3] = prob3
+        }
+        
         if let prob4 = output.patternProbability[4] {
          
             self.prob[4] = prob4
@@ -158,6 +163,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         // グラフの表示
         let dataEntries = [
         
+            PieChartDataEntry(value: self.prob[3], label: "Ⅱ N"),
             PieChartDataEntry(value: self.prob[4], label: "IN-2"),
             PieChartDataEntry(value: self.prob[5], label: "IN-1"),
             PieChartDataEntry(value: self.prob[7], label: "IS")

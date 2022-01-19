@@ -160,9 +160,19 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
         else if segue.identifier == "AnalysisSegue" {
             
+            print("KirihaSpecVC prepare: AnalysisSegue")
+            
             let AnalysisVC = segue.destination as! AnalysisViewController
             
             AnalysisVC.kirihaRecordData = self.kirihaRecordData
+            
+            self.kirihaRecordData?.rockType = rockTypeTextField.text
+            
+            print("KirihaSpecVC rockType:\(self.kirihaRecordData?.rockType)")
+            
+            
+            
+            
         }
     }
     
