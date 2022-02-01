@@ -9,6 +9,8 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
+
+
 class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
 
@@ -23,8 +25,11 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var distanceLabel: UILabel!              // 坑口からの距離
     @IBOutlet weak var distanceTextField: UITextField!      // 坑口からの距離
     
+    @IBOutlet weak var overburdenTextField: UITextField!    // 土被り高さ
+    
+    
     // データ受け渡し用
-    var tunnelData: TunnelData?             // トンネルデータを格納する配列
+    var tunnelData: TunnelData?                 // トンネルデータを格納する配列
     var kirihaRecordData: KirihaRecordData?     // 切羽観察記録データを格納する配列
     
     var kirihaRecordData2: KirihaRecordData?
@@ -54,21 +59,21 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func analysisButton(_ sender: Any) {
         
         
-        if stationKTextField.text == "" || stationMTextField.text == "" {
-            
-            SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
-            print("強制終了")
-            
-            return
-        }
-        
-        if distanceTextField.text == "" {
-            
-            SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
-            print("強制終了")
-            
-            return
-        }
+//        if stationKTextField.text == "" || stationMTextField.text == "" {
+//
+//            SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
+//            print("強制終了")
+//
+//            return
+//        }
+//
+//        if distanceTextField.text == "" {
+//
+//            SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
+//            print("強制終了")
+//
+//            return
+//        }
         
         // 切羽観察項目の有無
         if self.kirihaRecordData?.obsRecordArray.firstIndex(of: nil) != nil {
@@ -105,11 +110,27 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             return
         }
         
+        if overburdenTextField.text == "" {
+            
+            SVProgressHUD.showError(withStatus: "土被り高さを入力してください")
+            print("強制終了")
+            
+            return
+        }
+        
         saveFile()
     }
     
     func saveFile() {
 
+        // 観察日を文字列から日付に変換する
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        
+        let obsDate = dateFormatter.date(from: obsDateTextField.text!)
+        
+        print("obsDate : \(obsDate)")
+        
         // 測点を距離に換算する
         let stationNo = Float(stationKTextField.text!)! * 1000 + Float(stationMTextField.text!)!
         
@@ -117,17 +138,21 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // Float()はオプショナル型のFloat型に変換するので、アンラップしてFloat型に代入する
         let distance = Float(distanceTextField.text!)!
         
+        // 土被り高さ
+        let overburden = Float(overburdenTextField.text!)!
+        
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = kirihaRecordData?.id {
             
             // 保存するデータを辞書の型にまとめる
             let kirihaRecordDic = [
                 "date":FieldValue.serverTimestamp(),
                 "stationNo": stationNo,
-                "obsDate": obsDateTextField.text!,
+                "obsDate": obsDate,
                 "rockType": rockTypeTextField.text!,
                 "rockName": rockNameTextField.text!,
                 "geoAge": geoAgeTextField.text!,
-                "distance": distance
+                "distance": distance,
+                "overburden": overburden
             ] as [String: Any]
             
             // 既存のDocumentIDの保存場所を取得
@@ -169,10 +194,6 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.kirihaRecordData?.rockType = rockTypeTextField.text
             
             print("KirihaSpecVC rockType:\(self.kirihaRecordData?.rockType)")
-            
-            
-            
-            
         }
     }
     
@@ -269,13 +290,19 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     let formatter = DateFormatter()
                     formatter.dateFormat = "yyyy年MM月dd日"
                     
+                    print("obsDate: \(kirihaRecordDataDS.obsDate)")
+                    
                     if let obsDate = kirihaRecordDataDS.obsDate {
                         
                         self.obsDateTextField.text! = formatter.string(from: obsDate)
+                        
+                        print("obsDate input: \(obsDate)")
                     }
                     else if let date = kirihaRecordDataDS.date {
                         
                         self.obsDateTextField.text! = formatter.string(from: date)
+                        
+                        print("Date input")
                     }
                     
                     // 切羽位置
@@ -296,6 +323,12 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     if let distance = self.kirihaRecordDataDS?.distance {
                         
                         self.distanceTextField.text! = String(distance)
+                    }
+                    
+                    // 土被り高さ
+                    if let overburden = self.kirihaRecordDataDS?.overburden {
+                        
+                        self.overburdenTextField.text! = String(overburden)
                     }
                     
                     // 岩種
@@ -454,9 +487,15 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     // テキストフィールド以外をタップした時に実行される
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+
+        print("touchesBegan!")
+
         SVProgressHUD.dismiss()
-        
+
         self.view.endEditing(true)
     }
 }
+
+
+
+

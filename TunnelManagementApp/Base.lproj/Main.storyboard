@@ -171,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gdj-ly-k5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733" y="785"/>
+            <point key="canvasLocation" x="-2626" y="785"/>
         </scene>
         <!--カメラ-->
         <scene sceneID="HOF-8f-Qc6">
@@ -492,7 +492,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hen-uK-JDK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Hen-uK-JDK">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4h-Z9-4QY" userLabel="ContentView">
@@ -707,8 +707,10 @@
                                             <constraint firstAttribute="width" constant="30" id="Fi7-pJ-Pal"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="tintColor" systemColor="systemGray2Color"/>
                                         <state key="normal" image="camera" catalog="system"/>
+                                        <connections>
+                                            <segue destination="zgW-Vc-X8Y" kind="show" id="jAF-G3-S5X"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　土被り高さ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdf-qD-QxK">
                                         <rect key="frame" x="0.0" y="269" width="414" height="25"/>
@@ -720,7 +722,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAT-cd-piM">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAT-cd-piM" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                         <rect key="frame" x="80" y="304" width="100" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="0Od-dC-oV5"/>
@@ -852,6 +854,7 @@
                         <outlet property="distanceTextField" destination="6Vv-h6-EGh" id="Kcy-Lx-kHD"/>
                         <outlet property="geoAgeTextField" destination="yGZ-sC-f5b" id="W8N-n0-oAj"/>
                         <outlet property="obsDateTextField" destination="aYA-VO-7OC" id="0X0-ba-rvg"/>
+                        <outlet property="overburdenTextField" destination="xAT-cd-piM" id="kcb-aX-29y"/>
                         <outlet property="rockNameTextField" destination="dXi-Yw-wyW" id="Xld-Gt-9QP"/>
                         <outlet property="rockTypeTextField" destination="YbM-2G-2K6" id="i4h-Kp-6lT"/>
                         <outlet property="stationKTextField" destination="SaB-mC-AfX" id="ykZ-MU-Cdv"/>
@@ -861,7 +864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vou-3D-54N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3772" y="2529"/>
+            <point key="canvasLocation" x="-3587" y="2529"/>
         </scene>
         <!--特記事項-->
         <scene sceneID="e8V-Ue-TM5">
@@ -907,6 +910,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQP-Aq-SFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7814" y="4317"/>
+        </scene>
+        <!--Rcok Type Vision Object Recognition View Controller-->
+        <scene sceneID="ePt-IA-KBi">
+            <objects>
+                <viewController id="zgW-Vc-X8Y" customClass="RcokTypeVisionObjectRecognitionViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VKB-Im-Ibg" userLabel="previewView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="2Vu-6P-XY2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bjt-cS-j82"/>
+                    <connections>
+                        <outlet property="previewView" destination="VKB-Im-Ibg" id="dy2-Ua-GFd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6r-To-87g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2375" y="2529"/>
         </scene>
         <!--諸元-->
         <scene sceneID="q4d-yC-CYS">
@@ -1232,7 +1254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQc-gZ-b16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733" y="2529"/>
+            <point key="canvasLocation" x="-2517" y="1608"/>
         </scene>
         <!--新規作成-->
         <scene sceneID="IGx-Ej-i3B">
@@ -2615,6 +2637,17 @@
                                     <action selector="itemNameSettingButton:" destination="6m4-Ud-hqa" eventType="touchUpInside" id="tru-uS-rjh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58p-fI-R2z">
+                                <rect key="frame" x="0.0" y="528" width="414" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="lcV-wX-I1h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="　土被りの設定">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gpT-b8-dLF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2626,6 +2659,7 @@
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="2wn-Uf-ynm" secondAttribute="trailing" id="CQq-Kx-INn"/>
                             <constraint firstItem="4Xc-sM-LpY" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="EhK-t1-Wpa"/>
                             <constraint firstItem="rzG-5S-9zQ" firstAttribute="top" secondItem="Bhe-cS-BLY" secondAttribute="bottom" constant="10" id="GKj-Le-3lI"/>
+                            <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="58p-fI-R2z" secondAttribute="trailing" id="I9v-pi-mtl"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="Bhe-cS-BLY" secondAttribute="trailing" id="JeN-Ke-GJV"/>
                             <constraint firstItem="Bhe-cS-BLY" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="MqX-vk-g6d"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="yFH-Y8-vfY" secondAttribute="trailing" id="O6I-ng-VsH"/>
@@ -2636,6 +2670,7 @@
                             <constraint firstItem="BhC-DV-rJ6" firstAttribute="top" secondItem="Bcf-79-Ka3" secondAttribute="bottom" constant="20" id="Ro6-Ox-YXy"/>
                             <constraint firstItem="Bcf-79-Ka3" firstAttribute="top" secondItem="8KC-qg-tf0" secondAttribute="bottom" constant="10" id="TuK-hD-XpO"/>
                             <constraint firstItem="8KC-qg-tf0" firstAttribute="top" secondItem="VzC-Av-KeD" secondAttribute="bottom" constant="20" id="UQm-rH-eV1"/>
+                            <constraint firstItem="58p-fI-R2z" firstAttribute="top" secondItem="ZEg-3b-TyV" secondAttribute="bottom" constant="10" id="Y2h-Qz-Ild"/>
                             <constraint firstItem="VzC-Av-KeD" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" constant="20" id="Y4G-Q6-TPd"/>
                             <constraint firstItem="cIr-w8-dzT" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="YMx-oO-RUM"/>
                             <constraint firstItem="ZEg-3b-TyV" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="aEW-mB-uta"/>
@@ -2647,6 +2682,7 @@
                             <constraint firstItem="yFH-Y8-vfY" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="kEa-sO-QWr"/>
                             <constraint firstItem="Bhe-cS-BLY" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="mZx-5K-YA5"/>
                             <constraint firstItem="ZEg-3b-TyV" firstAttribute="top" secondItem="cIr-w8-dzT" secondAttribute="bottom" constant="10" id="nN6-Tf-W0V"/>
+                            <constraint firstItem="58p-fI-R2z" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" id="pUW-8X-BHs"/>
                             <constraint firstItem="gpT-b8-dLF" firstAttribute="trailing" secondItem="8KC-qg-tf0" secondAttribute="trailing" id="rRd-oh-pvP"/>
                             <constraint firstItem="yFH-Y8-vfY" firstAttribute="top" secondItem="BhC-DV-rJ6" secondAttribute="bottom" constant="10" id="vcV-7A-fi9"/>
                             <constraint firstItem="rzG-5S-9zQ" firstAttribute="leading" secondItem="gpT-b8-dLF" secondAttribute="leading" constant="20" id="y5X-xC-oAo"/>
@@ -2950,9 +2986,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

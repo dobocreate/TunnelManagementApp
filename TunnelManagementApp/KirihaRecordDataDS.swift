@@ -42,7 +42,11 @@ class KirihaRecordDataDS: NSObject {
         
         self.tunnelId = kirihaRecordDic?["tunnelId"] as? String
         
-        self.obsDate = kirihaRecordDic?["obsDate"] as? Date
+        let obstimestamp = kirihaRecordDic?["obsDate"] as? Timestamp
+        
+        self.obsDate = obstimestamp?.dateValue()
+        
+        //self.obsDate = kirihaRecordDic?["obsDate"] as? Date
         
         // 観察者名をアカウント作成時に設定した表示名にする
         if let displayName = Auth.auth().currentUser?.displayName {

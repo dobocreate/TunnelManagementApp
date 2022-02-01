@@ -11,7 +11,6 @@ import Firebase
 // UIViewControllerを継承するとともに、UITableViewDelegateとUITableViewDataSourceのプロトコルに準拠する
 class KirihaListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     @IBOutlet weak var tableView: UITableView!
     
     // 地山等級のパターン
