@@ -170,9 +170,9 @@ class RcokTypeVisionObjectRecognitionViewController: RockTypeViewController {
         var rockLabel: String?
         
         if identifier == "lava" {
-            rockLabel = "フレベシ自破砕溶岩"
+            rockLabel = "自破砕溶岩"
         } else {
-            rockLabel = "フレベシ凝灰角礫岩"
+            rockLabel = "凝灰角礫岩"
         }
         
         // \nは、改行
