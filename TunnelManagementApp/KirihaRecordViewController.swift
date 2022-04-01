@@ -49,13 +49,13 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         ["１．互層（層状含む）", "２．不整合", "３．岩脈貫入", "４．褶曲", "５．断層", "６．その他", "特記事項　"],
         ["１．安定", "２．鏡面から岩塊が抜け落ちる", "３．鏡面の押出しを生じる", "４．鏡面は自立せず崩落あるいは流出", "特記事項　"],
         ["１．自立", "２．時間が経つと緩み、肌落ちする", "３．自立困難。掘削後早期に支保する", "４．掘削に先行して山を受けておく必要有り", "特記事項　"],
-        ["１．ハンマー打撃で跳ね返る", "２．ハンマー打撃で砕ける", "３．ハンマーの軽い打撃で砕ける", "４．ハンマーの刃先がくい込む", "特記事項　"],
+        ["１．ハンマー打撃で跳ね返る, 100MPa以上", "２．ハンマー打撃で砕ける, 100〜20MPa", "３．ハンマーの軽い打撃で砕ける, 20〜5MPa", "４．ハンマーの刃先がくい込む, 5MPa以下", "特記事項　"],
         ["１．なし・健全", "２．岩目に沿って変色、強度やや低下", "３．全体に変色、強度相当に低下", "４．土砂状、粘土状、礫状、当初より未固結", "特記事項　"],
         ["１．破砕 < ５％", "２．５％ ≦ 破砕 < ２０％", "３．２０％ ≦ 破砕 < ５０％", "４．切羽面の大部分が破砕されている状態", "特記事項　"],
         ["１．d ≧ 1m", "２．1m > d ≧ 20cm", "３．20cm > d ≧ 5cm", "４．5cm > d 破砕、当初より未固結", "特記事項　"],
         ["１．密着", "２．部分的に開口", "３．開口", "４．粘土を挟む、当初より未固結", "特記事項　"],
         ["１．ランダム方形", "２．柱状", "３．層状、片状、板状", "４．土砂状、細片状、当初より未固結", "特記事項　"],
-        ["１．なし、滲水程度", "２．滴水程度", "３．集中湧水", "４．全面湧水", "湧水量の入力"],
+        ["１．なし、滲水程度", "２．滴水程度", "３．集中湧水", "４．全面湧水", "特記事項　", "湧水量の入力"],
         ["１．なし", "２．緩みを生ず", "３．軟弱化", "４．流出"],
         ["１．水平（0° < θ < １０°）", "２．さし目（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．さし目（３０° ≦ θ < ６０°）", "４．流れ目（６０° > θ ≧ ３０°）", "５．流れ目（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）", "７．なし。あるいは判断が難しい"],
         ["１．水平（0° < θ < １０°）", "２．右から左（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．右から左（３０° ≦ θ < ６０°）", "４．左から右（６０° > θ ≧ ３０°）", "５．左から右（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）", "７．なし。あるいは判断が難しい"]
@@ -70,7 +70,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    
+    // 保存ボタンがプッシュされたときに実行されるメソッド
     @IBAction func saveButton(_ sender: Any) {
         
         let obsName = Auth.auth().currentUser?.displayName
@@ -280,10 +280,28 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         
         // 湧水量の入力をタップされた時
         // 色を変えずに、obsArrayに保存もしない
-        if cellSection == 9 && cellRow == 4 {
+        if cellSection == 9 && cellRow == 5 {
+            
+            print("\(cellSection), \(cellRow) をタップ")
             
             // SegueIDを指定して、湧水量の記録画面に遷移
             performSegue(withIdentifier: "waterRecordSegue", sender: nil)
+            
+            return
+        }
+        
+        // 特記事項をタップされた時
+        // 色を変えずに、obsArrayに保存もしない
+        if cellSection == 0 && cellRow == 6 || cellSection == 1 && cellRow == 4 ||
+            cellSection == 2 && cellRow == 4 || cellSection == 3 && cellRow == 4 ||
+            cellSection == 4 && cellRow == 4 || cellSection == 5 && cellRow == 4 ||
+            cellSection == 6 && cellRow == 4 || cellSection == 7 && cellRow == 4 ||
+            cellSection == 8 && cellRow == 4 || cellSection == 9 && cellRow == 4
+        {
+            print("\(cellSection), \(cellRow) をタップ")
+            
+            // SegueIDを指定して、特記事項の記録画面に遷移
+            performSegue(withIdentifier: "otherRecordSegue", sender: nil)
             
             return
         }
@@ -329,7 +347,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         
     }
 
-    // 画面を閉じる前に実行される
+    // Segueでの画面遷移時に呼ばれる。画面を閉じる前に実行される
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "waterRecordSegue" {
@@ -340,6 +358,10 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             waterRecordVC.waterValue = self.kirihaRecordData?.water
         }
         
+        if segue.identifier == "otherRecordSegue" {
+            
+            print("otherRecordSegue")
+        }
     }
     
     

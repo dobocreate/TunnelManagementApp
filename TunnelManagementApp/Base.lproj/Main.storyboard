@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cdq-qg-n4c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cdq-qg-n4c">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -171,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gdj-ly-k5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2626" y="785"/>
+            <point key="canvasLocation" x="-2507" y="785"/>
         </scene>
         <!--カメラ-->
         <scene sceneID="HOF-8f-Qc6">
@@ -355,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbr-FM-kfO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733.3333333333335" y="3397.7678571428569"/>
+            <point key="canvasLocation" x="-2507" y="3398"/>
         </scene>
         <!--観察記録-->
         <scene sceneID="PG1-Ym-yg3">
@@ -418,11 +418,12 @@
                     <connections>
                         <outlet property="tableView" destination="PsA-W6-rcw" id="HVb-NO-hKa"/>
                         <segue destination="f1f-Qf-XJH" kind="show" identifier="waterRecordSegue" id="C0N-dn-sxc"/>
+                        <segue destination="JVb-sE-xsv" kind="show" identifier="otherRecordSegue" id="67j-tG-iY3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsd-A7-Jx0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4804" y="2529"/>
+            <point key="canvasLocation" x="-4804" y="3398"/>
         </scene>
         <!--湧水量-->
         <scene sceneID="N6m-CS-kyt">
@@ -482,7 +483,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVq-94-tuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4804" y="3398"/>
+            <point key="canvasLocation" x="-3772" y="4317"/>
+        </scene>
+        <!--Other Record View Controller-->
+        <scene sceneID="NnJ-Gi-NCV">
+            <objects>
+                <viewController id="JVb-sE-xsv" customClass="OtherRecordViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ZE-MG-q5n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dA5-dI-xPH">
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="XQG-cP-nIz"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="保　存"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-2I-hqN">
+                                <rect key="frame" x="10" y="108" width="394" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="KH3-Fa-Kvi"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GKp-vh-5c7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oMe-2I-hqN" firstAttribute="top" secondItem="GKp-vh-5c7" secondAttribute="top" constant="20" id="MfQ-5y-qbB"/>
+                            <constraint firstItem="GKp-vh-5c7" firstAttribute="bottom" secondItem="dA5-dI-xPH" secondAttribute="bottom" id="Rhc-pm-9nu"/>
+                            <constraint firstItem="GKp-vh-5c7" firstAttribute="trailing" secondItem="oMe-2I-hqN" secondAttribute="trailing" constant="10" id="Xdl-rp-h0Y"/>
+                            <constraint firstItem="dA5-dI-xPH" firstAttribute="leading" secondItem="GKp-vh-5c7" secondAttribute="leading" id="nbs-cj-nd8"/>
+                            <constraint firstItem="oMe-2I-hqN" firstAttribute="leading" secondItem="GKp-vh-5c7" secondAttribute="leading" constant="10" id="oVY-A7-nZI"/>
+                            <constraint firstItem="GKp-vh-5c7" firstAttribute="trailing" secondItem="dA5-dI-xPH" secondAttribute="trailing" id="yW7-0t-41v"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="v67-qK-MS1"/>
+                    <connections>
+                        <outlet property="SpecialTextView" destination="oMe-2I-hqN" id="QK7-Mh-8it"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Rv-mI-9xU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4829" y="4317"/>
         </scene>
         <!--諸元-->
         <scene sceneID="ye8-r1-Ulc">
@@ -798,7 +848,6 @@
                                     <constraint firstItem="znu-9S-EWY" firstAttribute="trailing" secondItem="eF4-4R-sSh" secondAttribute="trailing" id="wZj-gI-ccG"/>
                                     <constraint firstItem="znu-9S-EWY" firstAttribute="trailing" secondItem="Abj-vR-sjg" secondAttribute="trailing" constant="20" id="wpv-Au-TZO"/>
                                     <constraint firstItem="gBm-Aw-a1c" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" id="ziv-jT-fdR"/>
-                                    <constraint firstItem="yGZ-sC-f5b" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" constant="20" id="zyE-lO-Nvs"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="YYJ-hq-5ho"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="znu-9S-EWY"/>
@@ -928,7 +977,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6r-To-87g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2375" y="2529"/>
+            <point key="canvasLocation" x="-2507" y="2529"/>
         </scene>
         <!--諸元-->
         <scene sceneID="q4d-yC-CYS">
@@ -1211,9 +1260,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-XE-SfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-993" y="2529"/>
+            <point key="canvasLocation" x="-887" y="2529"/>
         </scene>
-        <!--Rock Type Instructions View Controller-->
+        <!--岩盤分類-->
         <scene sceneID="xcJ-Sf-XB9">
             <objects>
                 <viewController storyboardIdentifier="rockTypeInstructions" id="QUH-us-Cgl" customClass="RockTypeInstructionsViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1221,40 +1270,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩種分類表" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-iq-Y60">
-                                <rect key="frame" x="0.0" y="88" width="414" height="25"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="tQ9-aC-Vnw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uSA-dz-yEM">
-                                <rect key="frame" x="0.0" y="123" width="414" height="690"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="aeJ-A5-MyY"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HdX-Rc-jv2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uSA-dz-yEM" firstAttribute="top" secondItem="kKU-iq-Y60" secondAttribute="bottom" constant="10" id="0Fw-JG-bz3"/>
-                            <constraint firstItem="kKU-iq-Y60" firstAttribute="top" secondItem="HdX-Rc-jv2" secondAttribute="top" id="42V-3E-O8b"/>
-                            <constraint firstItem="HdX-Rc-jv2" firstAttribute="bottom" secondItem="uSA-dz-yEM" secondAttribute="bottom" id="9d0-4H-6UK"/>
-                            <constraint firstItem="HdX-Rc-jv2" firstAttribute="trailing" secondItem="kKU-iq-Y60" secondAttribute="trailing" id="KMs-VG-3Qg"/>
                             <constraint firstItem="HdX-Rc-jv2" firstAttribute="trailing" secondItem="uSA-dz-yEM" secondAttribute="trailing" id="UJH-hx-UL8"/>
-                            <constraint firstItem="kKU-iq-Y60" firstAttribute="leading" secondItem="HdX-Rc-jv2" secondAttribute="leading" id="maV-7y-dQL"/>
+                            <constraint firstItem="uSA-dz-yEM" firstAttribute="top" secondItem="HdX-Rc-jv2" secondAttribute="top" constant="20" id="jNo-wc-aD3"/>
                             <constraint firstItem="uSA-dz-yEM" firstAttribute="leading" secondItem="HdX-Rc-jv2" secondAttribute="leading" id="w3L-Oi-sWy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="HuI-gj-adR"/>
+                    <navigationItem key="navigationItem" title="岩盤分類" id="HuI-gj-adR">
+                        <barButtonItem key="rightBarButtonItem" title="要注意地山" id="hxA-84-2ec">
+                            <connections>
+                                <segue destination="ZaG-hQ-HxU" kind="show" id="Onc-be-ca4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="instructionsImageView" destination="uSA-dz-yEM" id="U6J-hA-hVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQc-gZ-b16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2517" y="1608"/>
+            <point key="canvasLocation" x="-2507.2463768115945" y="1607.8125"/>
+        </scene>
+        <!--要注意地山-->
+        <scene sceneID="DdH-Fb-4Aj">
+            <objects>
+                <viewController id="ZaG-hQ-HxU" customClass="RockTypeCautionViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J4D-hl-5kz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfb-Mx-ckw">
+                                <rect key="frame" x="0.0" y="108" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="In5-nI-3RP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MC4-IN-cbJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MC4-IN-cbJ" firstAttribute="trailing" secondItem="yfb-Mx-ckw" secondAttribute="trailing" id="fxN-XX-kOR"/>
+                            <constraint firstItem="yfb-Mx-ckw" firstAttribute="leading" secondItem="MC4-IN-cbJ" secondAttribute="leading" id="r2M-2B-MKa"/>
+                            <constraint firstItem="yfb-Mx-ckw" firstAttribute="top" secondItem="MC4-IN-cbJ" secondAttribute="top" constant="20" id="zEr-ai-goj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="要注意地山" id="geG-hE-2OW"/>
+                    <connections>
+                        <outlet property="cautionImageView" destination="yfb-Mx-ckw" id="IJi-Oz-kEA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hf1-28-GRq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3588" y="1608"/>
         </scene>
         <!--新規作成-->
         <scene sceneID="IGx-Ej-i3B">
@@ -1609,7 +1685,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMa-sL-Y2i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7901.4492753623199" y="2528.5714285714284"/>
+            <point key="canvasLocation" x="-9190" y="2529"/>
         </scene>
         <!--新規作成-->
         <scene sceneID="b6v-hj-Rde">
@@ -1898,7 +1974,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dg5-lI-w1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8988" y="2529"/>
+            <point key="canvasLocation" x="-10106" y="2529"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yvG-Mi-PCX">
@@ -2053,7 +2129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdn-KS-OWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-11306" y="2529"/>
+            <point key="canvasLocation" x="-12399" y="2529"/>
         </scene>
         <!--Item Name Change View Controller-->
         <scene sceneID="hdt-Pr-x3S">
@@ -2114,7 +2190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCp-S4-bAK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5888" y="3398"/>
+            <point key="canvasLocation" x="-7306" y="3398"/>
         </scene>
         <!--Rock Name Setting View Controller-->
         <scene sceneID="MGm-Fg-vkx">
@@ -2221,7 +2297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKW-XO-Cmf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7814" y="3398"/>
+            <point key="canvasLocation" x="-9191" y="3398"/>
         </scene>
         <!--Obs Name Change View Controller-->
         <scene sceneID="0nA-yt-uQC">
@@ -2282,7 +2358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMv-k8-Vw7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10165" y="3398"/>
+            <point key="canvasLocation" x="-11275" y="3398"/>
         </scene>
         <!--設定-->
         <scene sceneID="2Cp-YF-wFk">
@@ -2342,7 +2418,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxy-FF-x8Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10165" y="2529"/>
+            <point key="canvasLocation" x="-11275" y="2529"/>
         </scene>
         <!--トンネル一覧-->
         <scene sceneID="bP8-pv-xQd">
@@ -2405,7 +2481,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33V-Ks-CRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7814" y="1608"/>
+            <point key="canvasLocation" x="-8239" y="1608"/>
         </scene>
         <!--切羽観察-->
         <scene sceneID="Seq-og-j7V">
@@ -2704,7 +2780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zb4-3a-eZk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6859" y="2529"/>
+            <point key="canvasLocation" x="-8238" y="2529"/>
         </scene>
         <!--観察記録-->
         <scene sceneID="1p8-T2-zPo">
@@ -2777,6 +2853,7 @@
                         <outlet property="kirihaImageView" destination="igZ-tO-Pf1" id="pDr-VC-8dI"/>
                         <outlet property="tableView" destination="pDR-aw-txZ" id="zt3-Of-V8m"/>
                         <segue destination="f1f-Qf-XJH" kind="show" identifier="waterRecordSegue" id="jUl-JD-9Ob"/>
+                        <segue destination="JVb-sE-xsv" kind="show" id="gaY-XF-nsh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HS2-Wv-KVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2888,7 +2965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWO-IZ-GIc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6859" y="3398"/>
+            <point key="canvasLocation" x="-8238" y="3398"/>
         </scene>
         <!--Analysis2 View Controller-->
         <scene sceneID="4ay-qS-wcR">
@@ -2969,11 +3046,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pd-c2-ukD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1787" y="3398"/>
+            <point key="canvasLocation" x="-888" y="3398"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jUl-JD-9Ob"/>
+        <segue reference="67j-tG-iY3"/>
+        <segue reference="C0N-dn-sxc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="btn" width="300" height="40"/>

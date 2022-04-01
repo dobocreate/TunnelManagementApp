@@ -25,6 +25,8 @@
 		465983A6270B293700898FDF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A5270B293700898FDF /* SettingViewController.swift */; };
 		465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A7270B3B8D00898FDF /* PhotoViewController.swift */; };
 		465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A9270B441C00898FDF /* kirihaRecord.swift */; };
+		4661ACE527F6DA3C00F6AA95 /* RockTypeCautionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4661ACE427F6DA3C00F6AA95 /* RockTypeCautionViewController.swift */; };
+		4661ACE727F7008800F6AA95 /* OtherRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4661ACE627F7008800F6AA95 /* OtherRecordViewController.swift */; };
 		466308CA2718F67600214303 /* TunnelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* TunnelData.swift */; };
 		466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CB2718FAAB00214303 /* FirestorePathList.swift */; };
 		466308CE27196AFF00214303 /* TunnelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CD27196AFF00214303 /* TunnelSettingViewController.swift */; };
@@ -83,6 +85,8 @@
 		465983A5270B293700898FDF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		465983A7270B3B8D00898FDF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		465983A9270B441C00898FDF /* kirihaRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord.swift; sourceTree = "<group>"; };
+		4661ACE427F6DA3C00F6AA95 /* RockTypeCautionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockTypeCautionViewController.swift; sourceTree = "<group>"; };
+		4661ACE627F7008800F6AA95 /* OtherRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherRecordViewController.swift; sourceTree = "<group>"; };
 		466308C92718F67600214303 /* TunnelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelData.swift; sourceTree = "<group>"; };
 		466308CB2718FAAB00214303 /* FirestorePathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePathList.swift; sourceTree = "<group>"; };
 		466308CD27196AFF00214303 /* TunnelSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelSettingViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
+				4661ACE627F7008800F6AA95 /* OtherRecordViewController.swift */,
 				466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */,
 				465983A7270B3B8D00898FDF /* PhotoViewController.swift */,
 				46EFB8E8271112640047BF61 /* PostRockViewController.swift */,
@@ -190,6 +195,7 @@
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
 				466308DB271ABFD300214303 /* RockNameSettingViewController.swift */,
 				46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */,
+				4661ACE427F6DA3C00F6AA95 /* RockTypeCautionViewController.swift */,
 				4659838F270B26E700898FDF /* SceneDelegate.swift */,
 				465983A5270B293700898FDF /* SettingViewController.swift */,
 				46EFB8DC270FD0E70047BF61 /* TabBarController.swift */,
@@ -348,6 +354,7 @@
 				461FE21927A9E7F40085F7F6 /* rockTypeObjectDetector22.01.28.mlmodel in Sources */,
 				466330AC271E1FB80087FE24 /* TunnelCreateViewController.swift in Sources */,
 				465983A2270B28A900898FDF /* LoginViewController.swift in Sources */,
+				4661ACE727F7008800F6AA95 /* OtherRecordViewController.swift in Sources */,
 				466308CA2718F67600214303 /* TunnelData.swift in Sources */,
 				466308D0271A159000214303 /* KirihaListViewController.swift in Sources */,
 				466330AE271E416E0087FE24 /* TunnelDataDS.swift in Sources */,
@@ -373,6 +380,7 @@
 				46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */,
 				466308CE27196AFF00214303 /* TunnelSettingViewController.swift in Sources */,
 				46EFB8DF271050E00047BF61 /* TunnelListViewController.swift in Sources */,
+				4661ACE527F6DA3C00F6AA95 /* RockTypeCautionViewController.swift in Sources */,
 				46AB521C270DC09900D489DE /* KirihaRecordViewController.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,
 				46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */,

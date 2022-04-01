@@ -12,6 +12,7 @@ class RockTypeInstructionsViewController: UIViewController {
     
     @IBOutlet weak var instructionsImageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
