@@ -19,6 +19,13 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     
     var obsRecordArray  = [Int?](repeating: nil, count:13)
     
+    // 遷移先のLabelテキストを格納
+    var secTitle: String?
+    
+    // 遷移先から戻る際のデータの受け渡し用
+    var specialText: String = ""
+    var specialSec: String = ""
+    
     // セクションタイトル
     let sectionTitle: NSArray = [
         "地質構造",
@@ -298,7 +305,9 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             cellSection == 6 && cellRow == 4 || cellSection == 7 && cellRow == 4 ||
             cellSection == 8 && cellRow == 4 || cellSection == 9 && cellRow == 4
         {
-            print("\(cellSection), \(cellRow) をタップ")
+            secTitle = sectionTitle[cellSection] as? String
+            
+            print("\(sectionTitle[cellSection]), \(cellRow) をタップ")
             
             // SegueIDを指定して、特記事項の記録画面に遷移
             performSegue(withIdentifier: "otherRecordSegue", sender: nil)
@@ -350,6 +359,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     // Segueでの画面遷移時に呼ばれる。画面を閉じる前に実行される
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        // 湧水量の記入画面への遷移時に実行される
         if segue.identifier == "waterRecordSegue" {
             
             let waterRecordVC:WaterRecordViewController = segue.destination as! WaterRecordViewController
@@ -358,7 +368,13 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             waterRecordVC.waterValue = self.kirihaRecordData?.water
         }
         
+        // 特記事項の記入画面への遷移時に実行される
         if segue.identifier == "otherRecordSegue" {
+            
+            let otherRecordVC:OtherRecordViewController = segue.destination as! OtherRecordViewController
+            
+            otherRecordVC.titleLabel = self.secTitle
+            otherRecordVC.vcName = "KirihaRecordVC"
             
             print("otherRecordSegue")
         }
@@ -383,7 +399,16 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         
         // view.backgroundColor = .systemGray6
         
-        print("kirihaRecord2VC tunnelPath: \(self.tunnelData?.tunnelId)")
+        print("kirihaRecord2VC tunnelPath: \(String(describing: self.tunnelData?.tunnelId))")
     }
+    
+    //　画面遷移が行われ、表示される前に実行される。遷移先から戻ってきたときにも毎回実行される
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+ 
+        // 遷移先から受け渡されたデータを表示
+        print("special sec: \(self.specialSec), Text: \(self.specialText)")
+    }
+
     
 }

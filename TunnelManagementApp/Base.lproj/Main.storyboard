@@ -501,25 +501,53 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="保　存"/>
+                                <connections>
+                                    <action selector="SavePush:" destination="JVb-sE-xsv" eventType="touchUpInside" id="w1P-RU-Wf9"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-2I-hqN">
-                                <rect key="frame" x="10" y="108" width="394" height="300"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ここに、特記事項を記載する。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-2I-hqN">
+                                <rect key="frame" x="10" y="148" width="394" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="KH3-Fa-Kvi"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3X-J5-Oog">
+                                <rect key="frame" x="20" y="108" width="394" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aAb-oM-uhX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy8-lT-Jj8">
+                                <rect key="frame" x="0.0" y="108" width="20" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="2nM-vm-8Vm"/>
+                                    <constraint firstAttribute="height" constant="30" id="55n-bd-Jfk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GKp-vh-5c7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="oMe-2I-hqN" firstAttribute="top" secondItem="GKp-vh-5c7" secondAttribute="top" constant="20" id="MfQ-5y-qbB"/>
+                            <constraint firstItem="Jy8-lT-Jj8" firstAttribute="leading" secondItem="GKp-vh-5c7" secondAttribute="leading" id="96W-xi-bWO"/>
+                            <constraint firstItem="b3X-J5-Oog" firstAttribute="leading" secondItem="Jy8-lT-Jj8" secondAttribute="trailing" id="9R1-6t-K6E"/>
+                            <constraint firstItem="GKp-vh-5c7" firstAttribute="trailing" secondItem="b3X-J5-Oog" secondAttribute="trailing" id="AjO-x4-xd4"/>
+                            <constraint firstItem="oMe-2I-hqN" firstAttribute="top" secondItem="b3X-J5-Oog" secondAttribute="bottom" constant="10" id="IiJ-PU-HhT"/>
                             <constraint firstItem="GKp-vh-5c7" firstAttribute="bottom" secondItem="dA5-dI-xPH" secondAttribute="bottom" id="Rhc-pm-9nu"/>
+                            <constraint firstItem="Jy8-lT-Jj8" firstAttribute="top" secondItem="GKp-vh-5c7" secondAttribute="top" constant="20" id="VFG-MW-bf2"/>
                             <constraint firstItem="GKp-vh-5c7" firstAttribute="trailing" secondItem="oMe-2I-hqN" secondAttribute="trailing" constant="10" id="Xdl-rp-h0Y"/>
+                            <constraint firstItem="b3X-J5-Oog" firstAttribute="top" secondItem="GKp-vh-5c7" secondAttribute="top" constant="20" id="a10-nX-hxu"/>
                             <constraint firstItem="dA5-dI-xPH" firstAttribute="leading" secondItem="GKp-vh-5c7" secondAttribute="leading" id="nbs-cj-nd8"/>
                             <constraint firstItem="oMe-2I-hqN" firstAttribute="leading" secondItem="GKp-vh-5c7" secondAttribute="leading" constant="10" id="oVY-A7-nZI"/>
                             <constraint firstItem="GKp-vh-5c7" firstAttribute="trailing" secondItem="dA5-dI-xPH" secondAttribute="trailing" id="yW7-0t-41v"/>
@@ -527,6 +555,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="v67-qK-MS1"/>
                     <connections>
+                        <outlet property="SpecialLabel" destination="b3X-J5-Oog" id="bfm-Q4-afp"/>
                         <outlet property="SpecialTextView" destination="oMe-2I-hqN" id="QK7-Mh-8it"/>
                     </connections>
                 </viewController>
