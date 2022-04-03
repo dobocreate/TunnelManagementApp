@@ -1,15 +1,15 @@
 //
-//  KirihaRecordData.swift
+//  KirihaRecordData3.swift
 //  TunnelManagementApp
 //
-//  Created by 岸田展明 on 2021/10/16.
+//  Created by 岸田展明 on 2021/10/18.
 //
 
 import Foundation
 import Firebase
 
 // Firestoreに保存するデータを格納するクラス
-class KirihaRecordData: NSObject {
+class KirihaRecordDataDS: NSObject {
     
     // プロパティ
     var id: String                  // documentID
@@ -46,20 +46,24 @@ class KirihaRecordData: NSObject {
     
     var specialTextArray:[String?] = []   // 特記事項
     
-    
     // 初期化メソッド
-    init(document: QueryDocumentSnapshot) {
+    init(document: DocumentSnapshot) {
         
         let kirihaRecordDic = document.data()
-        let timestamp = kirihaRecordDic["date"] as? Timestamp
+        
+        let timestamp = kirihaRecordDic?["date"] as? Timestamp
         
         self.id = document.documentID
         
         self.date = timestamp?.dateValue()
         
-        self.tunnelId = kirihaRecordDic["tunnelId"] as? String
+        self.tunnelId = kirihaRecordDic?["tunnelId"] as? String
         
-        self.obsDate = kirihaRecordDic["obsDate"] as? Date
+        let obstimestamp = kirihaRecordDic?["obsDate"] as? Timestamp
+        
+        self.obsDate = obstimestamp?.dateValue()
+        
+        //self.obsDate = kirihaRecordDic?["obsDate"] as? Date
         
         // 観察者名をアカウント作成時に設定した表示名にする
         if let displayName = Auth.auth().currentUser?.displayName {
@@ -67,105 +71,103 @@ class KirihaRecordData: NSObject {
             self.obsName = displayName
         }
         
-        self.stationNo = kirihaRecordDic["stationNo"] as? Float
+        self.stationNo = kirihaRecordDic?["stationNo"] as? Float
         
-        self.distance = kirihaRecordDic["distance"] as? Float
+        self.distance = kirihaRecordDic?["distance"] as? Float
         
-        self.overburden = kirihaRecordDic["overburden"] as? Float
+        self.overburden = kirihaRecordDic?["overburden"] as? Float
         
-        self.rockType = kirihaRecordDic["rockType"] as? String
+        self.rockType = kirihaRecordDic?["rockType"] as? String
         
-        self.rockName = kirihaRecordDic["rockName"] as? String
+        self.rockName = kirihaRecordDic?["rockName"] as? String
         
-        self.geoAge = kirihaRecordDic["geoAge"] as? String
+        self.geoAge = kirihaRecordDic?["geoAge"] as? String
         
-        self.geoStructure = kirihaRecordDic["geoStructure"] as? String
+        self.geoStructure = kirihaRecordDic?["geoStructure"] as? String
         
-        if let obsRecord = kirihaRecordDic["obsRecordArray"] as? [Int] {
+        if let obsRecord = kirihaRecordDic?["obsRecordArray"] as? [Int?] {
             
             self.obsRecordArray = obsRecord
         }
         
-        self.structurePattern = kirihaRecordDic["structurePattern"] as? Int
+        self.structurePattern = kirihaRecordDic?["structurePattern"] as? Int
         
-        if let patternRate = kirihaRecordDic["patternRate"] as? [Double] {
+        if let patternRate = kirihaRecordDic?["patternRate"] as? [Double] {
             
             self.patternRate = patternRate
         }
         
-        self.water = kirihaRecordDic["water"] as? Float
+        self.water = kirihaRecordDic?["water"] as? Float
         
         // 観察記録
-        if let obsRecord00 = kirihaRecordDic["obsRecord00"] as? [Int] {     // 地質構造
+        if let obsRecord00 = kirihaRecordDic?["obsRecord00"] as? [Int?] {     // 地質構造
             
             self.obsRecord00 = obsRecord00
         }
         
-        if let obsRecord01 = kirihaRecordDic["obsRecord01"] as? [Int] {     // 切羽の安定
+        if let obsRecord01 = kirihaRecordDic?["obsRecord01"] as? [Int?] {     // 切羽の安定
             
             self.obsRecord01 = obsRecord01
         }
         
-        if let obsRecord02 = kirihaRecordDic["obsRecord02"] as? [Int] {     // 素掘面の状態
+        if let obsRecord02 = kirihaRecordDic?["obsRecord02"] as? [Int?] {     // 素掘面の状態
             
             self.obsRecord02 = obsRecord02
         }
         
-        if let obsRecord03 = kirihaRecordDic["obsRecord03"] as? [Int] {     // 圧縮強度
+        if let obsRecord03 = kirihaRecordDic?["obsRecord03"] as? [Int?] {     // 圧縮強度
             
             self.obsRecord03 = obsRecord03
         }
         
-        if let obsRecord04 = kirihaRecordDic["obsRecord04"] as? [Int] {     // 風化変質
+        if let obsRecord04 = kirihaRecordDic?["obsRecord04"] as? [Int?] {     // 風化変質
             
             self.obsRecord04 = obsRecord04
         }
         
-        if let obsRecord05 = kirihaRecordDic["obsRecord05"] as? [Int] {     // 破砕部の切羽に占める割合
+        if let obsRecord05 = kirihaRecordDic?["obsRecord05"] as? [Int?] {     // 破砕部の切羽に占める割合
             
             self.obsRecord05 = obsRecord05
         }
         
-        if let obsRecord06 = kirihaRecordDic["obsRecord06"] as? [Int] {     // 割れ目の頻度
+        if let obsRecord06 = kirihaRecordDic?["obsRecord06"] as? [Int?] {     // 割れ目の頻度
             
             self.obsRecord06 = obsRecord06
         }
         
-        if let obsRecord07 = kirihaRecordDic["obsRecord07"] as? [Int] {     // 割れ目の状態
+        if let obsRecord07 = kirihaRecordDic?["obsRecord07"] as? [Int?] {     // 割れ目の状態
             
             self.obsRecord07 = obsRecord07
         }
         
-        if let obsRecord08 = kirihaRecordDic["obsRecord08"] as? [Int] {     // 割れ目の形態
+        if let obsRecord08 = kirihaRecordDic?["obsRecord08"] as? [Int?] {     // 割れ目の形態
             
             self.obsRecord08 = obsRecord08
         }
         
-        if let obsRecord09 = kirihaRecordDic["obsRecord09"] as? [Int] {     // 湧水：目視での量
+        if let obsRecord09 = kirihaRecordDic?["obsRecord09"] as? [Int?] {     // 湧水：目視での量
             
             self.obsRecord09 = obsRecord09
         }
         
-        if let obsRecord10 = kirihaRecordDic["obsRecord10"] as? [Int] {     // 水による劣化
+        if let obsRecord10 = kirihaRecordDic?["obsRecord10"] as? [Int?] {     // 水による劣化
             
             self.obsRecord10 = obsRecord10
         }
         
-        if let obsRecord11 = kirihaRecordDic["obsRecord11"] as? [Int] {     // 割れ目の方向性：縦断方向
+        if let obsRecord11 = kirihaRecordDic?["obsRecord11"] as? [Int?] {     // 割れ目の方向性：縦断方向
             
             self.obsRecord11 = obsRecord11
         }
         
-        if let obsRecord12 = kirihaRecordDic["obsRecord12"] as? [Int] {     // 割れ目の方向性：横断方向
+        if let obsRecord12 = kirihaRecordDic?["obsRecord12"] as? [Int?] {     // 割れ目の方向性：横断方向
             
             self.obsRecord12 = obsRecord12
         }
         
-        if let specialText = kirihaRecordDic["specialTextArray"] as? [String] {     // 特記事項
+        if let specialText = kirihaRecordDic?["specialTextArray"] as? [String?] {     // 特記事項
             
             self.specialTextArray = specialText
         }
     }
 }
-
-

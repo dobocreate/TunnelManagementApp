@@ -12,27 +12,61 @@ import Firebase
 class WaterRecordViewController: UIViewController {
 
     var tunnelData: TunnelData?     // データ受け渡し用(トンネル設定データ)
-    
     var kirihaRecordData: KirihaRecordData?
-    
     var kirihaRecordDataDS: KirihaRecordDataDS?
     
-    var waterValue: Float?          // 湧水量の受け渡し
+    // 遷移元とのデータ受け渡し用
+    var vcName: String!             // 遷移元のViewController名
+    var waterValue: Float?          // 湧水量
     
     @IBOutlet weak var waterTextField: UITextField!
     
-    @IBAction func saveButton(_ sender: Any) {
+    // 保存ボタンをタップした時に実行される
+    @IBAction func SavePush(_ sender: Any) {
         
-        if waterTextField.text == "" {
+        if self.waterTextField.text == "" {
             
             SVProgressHUD.showError(withStatus: "湧水量を入力してください")
             print("強制終了")
             
             return
+        } else {
+          
+            self.waterValue = Float(self.waterTextField.text!)
+            
+            print("waterValue: \(self.waterValue)")
         }
         
-        saveFile()
+        // 遷移元へのデータを渡す
+        let nc = self.navigationController as! UINavigationController
+        let vcNum = nc.viewControllers.count
+        
+        print("vcNum: \(vcNum)")
+        
+        if self.vcName == "KirihaRecordVC" {
+            
+            let kirihaRecordvc = nc.viewControllers[vcNum - 2] as! KirihaRecordViewController
+            
+            kirihaRecordvc.waterValue = self.waterValue!
+            
+            print("遷移先vc: \(kirihaRecordvc), 湧水量: \(kirihaRecordvc.waterValue)")
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+        else if self.vcName == "KirihaRecordChangeVC" {
+            
+            let kirihaRecordChangevc = nc.viewControllers[vcNum - 2] as! KirihaRecordChangeViewController
+            
+            kirihaRecordChangevc.waterValue = self.waterValue!
+            
+            print("遷移先vc: \(kirihaRecordChangevc), 湧水量: \(kirihaRecordChangevc.waterValue)")
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        // saveFile()
     }
+    
     
     func saveFile() {
         

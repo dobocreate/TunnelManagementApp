@@ -460,7 +460,7 @@
                                 </constraints>
                                 <state key="normal" title="保　存"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="f1f-Qf-XJH" eventType="touchUpInside" id="vXw-qb-wo6"/>
+                                    <action selector="SavePush:" destination="f1f-Qf-XJH" eventType="touchUpInside" id="yqm-rp-jov"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -512,7 +512,7 @@
                                     <constraint firstAttribute="height" constant="300" id="KH3-Fa-Kvi"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3X-J5-Oog">
@@ -2882,7 +2882,7 @@
                         <outlet property="kirihaImageView" destination="igZ-tO-Pf1" id="pDr-VC-8dI"/>
                         <outlet property="tableView" destination="pDR-aw-txZ" id="zt3-Of-V8m"/>
                         <segue destination="f1f-Qf-XJH" kind="show" identifier="waterRecordSegue" id="jUl-JD-9Ob"/>
-                        <segue destination="JVb-sE-xsv" kind="show" id="gaY-XF-nsh"/>
+                        <segue destination="JVb-sE-xsv" kind="show" identifier="otherRecordSegue" id="gaY-XF-nsh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HS2-Wv-KVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3079,8 +3079,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="67j-tG-iY3"/>
-        <segue reference="C0N-dn-sxc"/>
+        <segue reference="gaY-XF-nsh"/>
+        <segue reference="jUl-JD-9Ob"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="btn" width="300" height="40"/>

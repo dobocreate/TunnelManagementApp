@@ -24,6 +24,20 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     // 切羽観察記録の選択された情報を格納する
     var obsRecordArray  = [Int?](repeating: nil, count:13)
     
+    // 遷移先のLabelテキストを格納
+    var secTitle: String?
+    
+    // 遷移先から戻る際のデータの受け渡し用
+    // var specialText: String = ""
+    var specialSec: String = ""
+    var specialSecNo: Int?
+    var waterValue: Float = 0.0
+    
+    // 切羽観察項目および特記事項を格納
+    var obsRecordArray2d = [[Int?]](repeating: [Int?](repeating:nil, count:7), count:13)
+    
+    var specialRecordData = [String?](repeating: nil, count:10)         // 特記事項をセクションごとに格納
+    
     // セクションタイトル
     let sectionTitle: NSArray = [
         "地質構造",
@@ -52,7 +66,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         ["１．d ≧ 1m", "２．1m > d ≧ 20cm", "３．20cm > d ≧ 5cm", "４．5cm > d 破砕、当初より未固結", "特記事項　"],
         ["１．密着", "２．部分的に開口", "３．開口", "４．粘土を挟む、当初より未固結", "特記事項　"],
         ["１．ランダム方形", "２．柱状", "３．層状、片状、板状", "４．土砂状、細片状、当初より未固結", "特記事項　"],
-        ["１．なし、滲水程度", "２．滴水程度", "３．集中湧水", "４．全面湧水", "湧水量の入力"],
+        ["１．なし、滲水程度", "２．滴水程度", "３．集中湧水", "４．全面湧水", "特記事項　", "湧水量の入力"],
         ["１．なし", "２．緩みを生ず", "３．軟弱化", "４．流出"],
         ["１．水平（0° < θ < １０°）", "２．さし目（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．さし目（３０° ≦ θ < ６０°）", "４．流れ目（６０° > θ ≧ ３０°）", "５．流れ目（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）", "７．なし。あるいは判断が難しい"],
         ["１．水平（0° < θ < １０°）", "２．右から左（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．右から左（３０° ≦ θ < ６０°）", "４．左から右（６０° > θ ≧ ３０°）", "５．左から右（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）", "７．なし。あるいは判断が難しい"]
@@ -67,14 +81,38 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
-    // 画面が表示される前に実行される
-    // 他の画面から遷移して戻ってきた時にも呼ばれる
-    override func viewWillAppear(_ animated: Bool) {
+    // 画面遷移が行われた時に１度だけ実行される
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // 画像を設定
+        let kirihaImage = UIImage(named: "tunnelImage.jpeg")
+        kirihaImageView.image = kirihaImage
+        
+        // 配列の初期化
+        obsRecordArray2d[0] = Array(repeating: 0, count: 7)    // 地質構造
+        obsRecordArray2d[1] = Array(repeating: 0, count: 5)    // 切羽の安定
+        obsRecordArray2d[2] = Array(repeating: 0, count: 5)    // 素掘面の状態
+        obsRecordArray2d[3] = Array(repeating: 0, count: 5)    // 圧縮強度
+        obsRecordArray2d[4] = Array(repeating: 0, count: 5)    // 風化変質
+        obsRecordArray2d[5] = Array(repeating: 0, count: 5)    // 破砕部の切羽に占める割合
+        obsRecordArray2d[6] = Array(repeating: 0, count: 5)    // 割れ目の頻度
+        obsRecordArray2d[7] = Array(repeating: 0, count: 5)    // 割れ目の状態
+        obsRecordArray2d[8] = Array(repeating: 0, count: 5)    // 割れ目の形態
+        obsRecordArray2d[9] = Array(repeating: 0, count: 6)    // 湧水：目視での量
+        obsRecordArray2d[10] = Array(repeating: 0, count: 4)    // 水による劣化
+        obsRecordArray2d[11] = Array(repeating: 0, count: 7)    // 割れ目の方向性：縦断方向
+        obsRecordArray2d[12] = Array(repeating: 0, count: 7)    // 割れ目の方向性：横断方向
+        
+        // print(obsRecordArray2d[0])
         
         // Firestoreからデータの取得
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
             
-            print("kirihaRecordChangeVC tunnelId: \(tunnelId), id: \(id)")
+            print("kirihaRecordChangeVC viewWillAppear tunnelId: \(tunnelId), id: \(id)")
             
             // データを取得するドキュメントを設定
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
@@ -102,15 +140,138 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 if let array = self.kirihaRecordFireDataDS?.obsRecordArray {
                     
                     self.obsRecordArray = array
+                    
+                    print("obsRecordArray: \(self.obsRecordArray)")
                 }
                 
-                print("FirestoreDS データを取得しました \(self.kirihaRecordFireDataDS?.water)")
+                // Firestoreから切羽観察記録を取得して、新しい２次元配列に格納する
+                if let array = self.kirihaRecordFireDataDS?.obsRecord00 {
+                    
+                    self.obsRecordArray2d[0] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord01 {
+                    
+                    self.obsRecordArray2d[1] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord02 {
+                    
+                    self.obsRecordArray2d[2] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord03 {
+                    
+                    self.obsRecordArray2d[3] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord04 {
+                    
+                    self.obsRecordArray2d[4] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord05 {
+                    
+                    self.obsRecordArray2d[5] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord06 {
+                    
+                    self.obsRecordArray2d[6] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord07 {
+                    
+                    self.obsRecordArray2d[7] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord08 {
+                    
+                    self.obsRecordArray2d[8] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord09 {
+                    
+                    self.obsRecordArray2d[9] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord10 {
+                    
+                    self.obsRecordArray2d[10] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord11 {
+                    
+                    self.obsRecordArray2d[11] = array
+                }
+                if let array = self.kirihaRecordFireDataDS?.obsRecord12 {
+                    
+                    self.obsRecordArray2d[12] = array
+                }
+                
+                // Firestoreから特記事項と湧水量を取得
+                // 特記事項
+                if let array = self.kirihaRecordFireDataDS?.specialTextArray {
+                    
+                    self.specialRecordData = array
+                }
+                // 湧水量
+                if let w = self.kirihaRecordFireDataDS?.water {
+                    
+                    self.waterValue = w
+                }
+                
+                // 特記事項の内容を設定する
+                for r in 0..<self.specialRecordData.count{
+                    
+                    if self.specialRecordData[r] != nil {
+                        
+                        // 遷移先から受け渡されたデータを表示
+                        print("special sec: \(r), Text: \(String(describing: self.specialRecordData[r]))")
+                        
+                        let specialText = self.specialRecordData[r]!
+                        
+                        if r == 0 {
+                        
+                            self.obsArray[r][6] = "特記事項：　\(String(describing: specialText))"
+                        }
+                        else {
+                            self.obsArray[r][4] = "特記事項：　\(String(describing: specialText))"
+                        }
+                        
+                    }
+                    
+                }
+                
+                // 湧水量の内容を設定
+                self.obsArray[9][5] = "湧水量：　\(self.waterValue)　L"
+                
+                print("FirestoreDS データを取得しました \(String(describing: self.kirihaRecordFireDataDS?.water))")
                 
                 // tableViewのデータをリロードする
-                self.tableView.reloadData()
+                self.tableView.reloadData()         // データ取得に時間がかかるため、ここでもTableViewを更新する
             }
         }
         
+    }
+    
+    // 画面が表示される前に実行される
+    // 他の画面から遷移して戻ってきた時にも呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // 遷移先から戻ってきた時
+        if self.specialSecNo != nil &&                                // 入力画面から戻ってきたときに実行
+            self.specialRecordData[self.specialSecNo!] != nil {       // セクションNoおよび特記事項が初期値から変更がない場合
+            
+            // 遷移先から受け渡されたデータを表示
+            print("special sec: \(self.specialSec), Text: \(String(describing: self.specialRecordData[self.specialSecNo!]!))")
+            
+            let specialText = self.specialRecordData[self.specialSecNo!]!
+            
+            if self.specialSecNo == 0 {
+            
+                self.obsArray[self.specialSecNo!][6] = "特記事項：　\(String(describing: specialText))"
+            }
+            else {
+                self.obsArray[self.specialSecNo!][4] = "特記事項：　\(String(describing: specialText))"
+            }
+        }
+        
+        print("遷移先から戻った。湧水量: \(self.waterValue)")
+        
+        // 湧水量を格納
+        self.obsArray[9][5] = "湧水量：　\(self.waterValue)　L"
+        
+        tableView.reloadData()
     }
 
     
@@ -118,6 +279,11 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     @IBAction func saveButton(_ sender: Any) {
         
         // let obsName = Auth.auth().currentUser?.displayName
+        
+        // 評価点を計算
+        
+        
+        
         
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
             
@@ -128,7 +294,22 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             
             // 更新するデータを辞書の型にまとめて、必要な箇所のみ更新する
             let postDic = [
-                "obsRecordArray": self.obsRecordArray
+                "obsRecordArray": self.obsRecordArray,
+                "obsRecord00": self.obsRecordArray2d[0],
+                "obsRecord01": self.obsRecordArray2d[1],
+                "obsRecord02": self.obsRecordArray2d[2],
+                "obsRecord03": self.obsRecordArray2d[3],
+                "obsRecord04": self.obsRecordArray2d[4],
+                "obsRecord05": self.obsRecordArray2d[5],
+                "obsRecord06": self.obsRecordArray2d[6],
+                "obsRecord07": self.obsRecordArray2d[7],
+                "obsRecord08": self.obsRecordArray2d[8],
+                "obsRecord09": self.obsRecordArray2d[9],
+                "obsRecord10": self.obsRecordArray2d[10],
+                "obsRecord11": self.obsRecordArray2d[11],
+                "obsRecord12": self.obsRecordArray2d[12],
+                "specialTextArray": self.specialRecordData,
+                "water": self.waterValue
             ] as [String: Any]
             
             kirihaRecordDataRef.updateData(postDic)
@@ -211,8 +392,20 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         let cellSection = indexPath.section
         let cellRow = indexPath.row
         
-        // print("再利用、pinkCellRow[\(cellSection)]: \(obsRecordArray[cellSection])")
+        // 選択された項目をピンク色にする（湧水量の項目以外）
+        if let n = obsRecordArray2d[cellSection][cellRow] {
+            
+            if n == 1 {
+                
+                cell.backgroundColor = MyColor.myPink
+            }
+            else {
+                cell.backgroundColor = .clear
+            }
+        }
         
+        // print("再利用、pinkCellRow[\(cellSection)]: \(obsRecordArray[cellSection])")
+        /*
         if let pinkCellRow = obsRecordArray[cellSection] {
             
             print("pinkCellRow \(pinkCellRow)")
@@ -228,73 +421,9 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         else {
             cell.backgroundColor = .clear
         }
-        
-        // cellに値を設定する
-        if indexPath.section == 0 {
-
-            let cellTitle = obsArray[0][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 1 {
-            
-            let cellTitle = obsArray[1][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 2 {
-            
-            let cellTitle = obsArray[2][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 3 {
-            
-            let cellTitle = obsArray[3][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 4 {
-            
-            let cellTitle = obsArray[4][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 5 {
-            
-            let cellTitle = obsArray[5][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 6 {
-            
-            let cellTitle = obsArray[6][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 7 {
-            
-            let cellTitle = obsArray[7][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 8 {
-            
-            let cellTitle = obsArray[8][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 9 {
-            
-            let cellTitle = obsArray[9][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 10 {
-            
-            let cellTitle = obsArray[10][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else if indexPath.section == 11 {
-            
-            let cellTitle = obsArray[11][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
-        else {
-            
-            let cellTitle = obsArray[12][indexPath.row]
-            cell.textLabel?.text = cellTitle
-        }
+        */
+        // cellに値(各観察項目の内容)を設定する
+        cell.textLabel?.text = obsArray[indexPath.section][indexPath.row]
 
         return cell
     }
@@ -307,7 +436,9 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         
         // 湧水量の入力をタップされた時
         // 色を変えずに、obsArrayに保存もしない
-        if cellSection == 9 && cellRow == 4 {
+        if cellSection == 9 && cellRow == 5 {
+            
+            print("湧水量の記入（\(cellSection), \(cellRow)）をタップ")
             
             // SegueIDを指定して、湧水量の記録画面に遷移
             performSegue(withIdentifier: "waterRecordSegue", sender: nil)
@@ -315,7 +446,28 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             return
         }
         
-        
+        // 特記事項をタップされた時
+        // 色を変えずに、obsArrayに保存もしない
+        if cellSection == 0 && cellRow == 6 || cellSection == 1 && cellRow == 4 ||
+            cellSection == 2 && cellRow == 4 || cellSection == 3 && cellRow == 4 ||
+            cellSection == 4 && cellRow == 4 || cellSection == 5 && cellRow == 4 ||
+            cellSection == 6 && cellRow == 4 || cellSection == 7 && cellRow == 4 ||
+            cellSection == 8 && cellRow == 4 || cellSection == 9 && cellRow == 4
+        {
+            secTitle = sectionTitle[cellSection] as? String
+            
+            print("\(sectionTitle[cellSection]), \(cellRow) をタップ")
+            
+            self.specialSecNo = cellSection
+            
+            // SegueIDを指定して、特記事項の記録画面に遷移
+            performSegue(withIdentifier: "otherRecordSegue", sender: nil)
+            
+            return
+        }
+
+        /*
+        //
         // セクションごとに選択されたセルのデータを格納する
         obsRecordArray[cellSection] = cellRow
         
@@ -337,21 +489,80 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .clear
             }
         }
+        */
         
+        //
+        // 選択済みあれば選択解除、選択されてなければ選択する
+        // 選択数の許容値を設定し、許容値未満の場合に選択する
+        if obsRecordArray2d[cellSection][cellRow] == 0 {
+            
+            var t = 0
+            for r in 0..<obsRecordArray2d[cellSection].count {
+                
+                t = t + obsRecordArray2d[cellSection][r]!
+            }
 
+            if t < 2 {                     // 許容する選択数未満の場合に1とする
+                obsRecordArray2d[cellSection][cellRow] = 1
+            }
+            
+        } else {
+            obsRecordArray2d[cellSection][cellRow] = 0
+        }
+        
+        // 選択したセルのセクションにおいて、同セクションのセルの数だけ繰り返して、
+        // 選択したセルの色だけピンクに変更する
+        for r in 0..<obsRecordArray2d[cellSection].count {
+            
+            // print(obsArray[cellSection][r])
+            
+            if obsRecordArray2d[cellSection][r] == 1 {       // タップしたセル
+                
+                // セルの色を変更する
+                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = MyColor.myPink
+                
+                print("section: \(cellSection), row: \(cellRow)")
+            }
+            else {
+                // セルの色を変更する
+                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .white
+            }
+        }
     }
     
     // 画面を閉じる前に実行される
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        // 湧水量の記入画面への遷移時に実行される
         if segue.identifier == "waterRecordSegue" {
             
             let waterRecordVC:WaterRecordViewController = segue.destination as! WaterRecordViewController
             
             waterRecordVC.kirihaRecordData = self.kirihaRecordData
             waterRecordVC.waterValue = self.kirihaRecordFireDataDS?.water
+            
+            waterRecordVC.vcName = "KirihaRecordChangeVC"
         }
         
+        // 特記事項の記入画面への遷移時に実行される
+        if segue.identifier == "otherRecordSegue" {
+            
+            let otherRecordVC:OtherRecordViewController = segue.destination as! OtherRecordViewController
+            
+            otherRecordVC.titleLabel = self.secTitle
+            otherRecordVC.vcName = "KirihaRecordChangeVC"
+            otherRecordVC.secNo = self.specialSecNo
+            
+            if self.specialRecordData[self.specialSecNo!] == nil {          //　初めて特記事項を記載する場合
+                
+                otherRecordVC.specialText = "ここに、特記事項を記載する。"
+            } else {
+                
+                otherRecordVC.specialText = self.specialRecordData[self.specialSecNo!]
+            }
+            
+            print("otherRecordSegueへ遷移")
+        }
     }
     
 
@@ -363,18 +574,8 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
-    
-    // 画面遷移が行われた時に１度だけ実行される
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        // 画像を設定
-        let kirihaImage = UIImage(named: "tunnelImage.jpeg")
-        kirihaImageView.image = kirihaImage
-        
-    }
+    
+    
 
 }

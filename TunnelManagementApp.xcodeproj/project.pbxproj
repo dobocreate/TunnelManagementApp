@@ -50,7 +50,7 @@
 		46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */; };
 		46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */; };
 		46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */; };
-		46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */; };
+		46C0DE49271C97E400E1E106 /* _KirihaRecordDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE48271C97E400E1E106 /* _KirihaRecordDataDS.swift */; };
 		46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */; };
 		46E3FD4B2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46E3FD4A2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel */; };
 		46EC69952726097800B081FC /* MyTabularClassifier_kiriha.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */; };
@@ -110,7 +110,7 @@
 		46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions.png; sourceTree = "<group>"; };
 		46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockTypeInstructionsViewController.swift; sourceTree = "<group>"; };
 		46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordChangeViewController.swift; sourceTree = "<group>"; };
-		46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordDataDS.swift; sourceTree = "<group>"; };
+		46C0DE48271C97E400E1E106 /* _KirihaRecordDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _KirihaRecordDataDS.swift; sourceTree = "<group>"; };
 		46DDF3A1271F98E8008B4359 /* GeoAgeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAgeSettingViewController.swift; sourceTree = "<group>"; };
 		46E3FD4A2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KirihaDataTabularClassifier_1123_33.mlmodel; sourceTree = "<group>"; };
 		46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyTabularClassifier_kiriha.mlmodel; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				465983A9270B441C00898FDF /* kirihaRecord.swift */,
 				46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */,
 				466308D7271A9FAD00214303 /* KirihaRecordData.swift */,
-				46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */,
+				46C0DE48271C97E400E1E106 /* _KirihaRecordDataDS.swift */,
 				46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */,
 				4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
@@ -361,7 +361,7 @@
 				46EFB8E9271112640047BF61 /* PostRockViewController.swift in Sources */,
 				466308D2271A5A3500214303 /* GlobalSettingViewController.swift in Sources */,
 				46EFB8DD270FD0E70047BF61 /* TabBarController.swift in Sources */,
-				46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */,
+				46C0DE49271C97E400E1E106 /* _KirihaRecordDataDS.swift in Sources */,
 				466308D4271A5D6800214303 /* ItemNameChangeViewController.swift in Sources */,
 				467CF116271FEBD600324527 /* AnalysisViewController.swift in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
