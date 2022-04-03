@@ -1359,7 +1359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hf1-28-GRq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3588" y="1608"/>
+            <point key="canvasLocation" x="-1671" y="1608"/>
         </scene>
         <!--新規作成-->
         <scene sceneID="IGx-Ej-i3B">
@@ -3079,8 +3079,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gaY-XF-nsh"/>
-        <segue reference="jUl-JD-9Ob"/>
+        <segue reference="67j-tG-iY3"/>
+        <segue reference="C0N-dn-sxc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="btn" width="300" height="40"/>

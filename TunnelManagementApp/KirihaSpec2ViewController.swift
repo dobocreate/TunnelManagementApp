@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import SwiftUI
 
 
 
@@ -63,6 +64,8 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // 形成地質年代（初期値）
     var geoAgeDataSource: [String?] = ["新生代第四紀完新世", "新生代第四紀更新世", "新生代新第三紀鮮新世", "新生代新第三紀中新世", "新生代古第三紀漸新世", "新生代古第三紀始新世", "新生代古第三紀暁新世", "中生代白亜紀", "中生代ジュラ紀", "中生代三畳紀", "古生代二畳紀", "古生代石炭紀", "古生代デボン紀", "古生代シルリア紀", "古生代オルドビス紀", "古生代カンブリア紀", "先カンブリア代原生代", "先カンブリア代始生代"]
     
+    //
+    var showAlert = false
     
     // 画面遷移が行われた時に１度だけ実行される
     override func viewDidLoad() {
@@ -379,7 +382,37 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             return
         }
         
+
+        alert_cautionJiyama()
+        
         saveFile()
+    }
+    
+    func alert_cautionJiyama() {
+        
+        let alert = UIAlertController(title: "注意が必要な地山",
+                      message: "「新生代（古第三紀以降）の泥岩類の細流砕屑岩類、同時代の凝灰岩や凝灰角礫岩等の火山砕屑岩類」に該当します",
+                      preferredStyle: .alert)
+        //ここから追加
+        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        // Type１の判定
+        let cautionGeoAgeList:[String] = ["新生代第四紀完新世", "新生代第四紀更新世", "新生代新第三紀鮮新世", "新生代新第三紀中新世", "新生代古第三紀漸新世", "新生代古第三紀始新世", "新生代古第三紀暁新世"]
+        
+        let cautionRockNameList:[String] = ["泥岩", "凝灰岩", "凝灰角礫岩"]
+        
+        let type1Index1 = cautionGeoAgeList.firstIndex(of: self.geoAgeTextField.text!)
+        let type1Index2 = cautionRockNameList.firstIndex(of: self.rockNameTextField.text!)
+
+        print("type1 index1: \(String(describing:type1Index1)), index2: \(String(describing:type1Index2))")
+        
+        if type1Index1 != nil && type1Index2 != nil {
+
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func saveFile() {
@@ -426,6 +459,9 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             // 画面遷移
             // navigationController?.popViewController(animated: true)      // 画面を閉じることで１つ前の画面に戻る
+            
+
+            
         }
     }
     

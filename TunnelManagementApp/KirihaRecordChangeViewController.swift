@@ -514,6 +514,34 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .white
             }
         }
+        
+        // Type2の判定
+        if cellSection == 4 {
+            if cellRow == 2 || cellRow == 3 {
+                
+                alert_cautionJiyama()
+            }
+        }
+    }
+    
+    func alert_cautionJiyama() {
+        
+        let alert = UIAlertController(title: "注意が必要な地山",
+                      message: "「風化や熱水変質および破砕の進行した岩石」に該当します。詳細は「岩種」選択右横の（i）で確認してください",
+                      preferredStyle: .alert)
+        //ここから追加
+        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        // Type２の判定
+        print("風化変質: \(String(describing:obsRecordArray2d[4][2])), \(String(describing:obsRecordArray2d[4][3]))")
+        
+        if obsRecordArray2d[4][2] == 1 || obsRecordArray2d[4][3] == 1 {
+
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     // 画面を閉じる前に実行される

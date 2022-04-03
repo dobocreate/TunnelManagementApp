@@ -14,7 +14,7 @@ class RockTypeCautionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let createImage = UIImage(named: "rockTypeInstructions.png")
+        let createImage = UIImage(named: "cautionJiyama.png")
 
         cautionImageView.image = createImage
         
