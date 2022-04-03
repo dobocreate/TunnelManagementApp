@@ -16,13 +16,13 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     // var tunnelData: tunInitialData?     // データ受け渡し用(トンネル設定データ)
     // var tunnelPath: String?     // トンネルID
     
-    var kirihaRecordData: KirihaRecordData?         // 遷移前のVCからデータを受け取る配列
+    var kirihaRecordData: KirihaRecordData?             // 遷移前のVCからデータを受け取る配列
     // var kirihaRecordFireData: KirihaRecordData2?     // Firestoreからデータを受け取る配列
     
     var kirihaRecordFireDataDS: KirihaRecordDataDS?     // Firestoreからデータを受け取る配列
     
     // 切羽観察記録の選択された情報を格納する
-    var obsRecordArray  = [Int?](repeating: nil, count:13)
+    var obsRecordArray  = [Float?](repeating: nil, count:13)
     
     // 遷移先のLabelテキストを格納
     var secTitle: String?
@@ -57,15 +57,15 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     
     // セクションごとのセル
     var obsArray: [[String]] = [
-        ["１．互層（層状含む）", "２．不整合", "３．岩脈貫入", "４．褶曲", "５．断層", "６．その他", "特記事項　"],
-        ["１．安定", "２．鏡面から岩塊が抜け落ちる", "３．鏡面の押出しを生じる", "４．鏡面は自立せず崩落あるいは流出", "特記事項　"],
-        ["１．自立", "２．時間が経つと緩み、肌落ちする", "３．自立困難。掘削後早期に支保する", "４．掘削に先行して山を受けておく必要有り", "特記事項　"],
-        ["１．ハンマー打撃で跳ね返る, 100MPa以上", "２．ハンマー打撃で砕ける, 100〜20MPa", "３．ハンマーの軽い打撃で砕ける, 20〜5MPa", "４．ハンマーの刃先がくい込む, 5MPa以下", "特記事項　"],
-        ["１．なし・健全", "２．岩目に沿って変色、強度やや低下", "３．全体に変色、強度相当に低下", "４．土砂状、粘土状、礫状、当初より未固結", "特記事項　"],
-        ["１．破砕 < ５％", "２．５％ ≦ 破砕 < ２０％", "３．２０％ ≦ 破砕 < ５０％", "４．切羽面の大部分が破砕されている状態", "特記事項　"],
-        ["１．d ≧ 1m", "２．1m > d ≧ 20cm", "３．20cm > d ≧ 5cm", "４．5cm > d 破砕、当初より未固結", "特記事項　"],
-        ["１．密着", "２．部分的に開口", "３．開口", "４．粘土を挟む、当初より未固結", "特記事項　"],
-        ["１．ランダム方形", "２．柱状", "３．層状、片状、板状", "４．土砂状、細片状、当初より未固結", "特記事項　"],
+        ["１．互層（層状含む）", "２．不整合", "３．岩脈貫入", "４．褶曲", "５．断層", "６．その他", "特記事項"],
+        ["１．安定", "２．鏡面から岩塊が抜け落ちる", "３．鏡面の押出しを生じる", "４．鏡面は自立せず崩落あるいは流出", "特記事項"],
+        ["１．自立", "２．時間が経つと緩み、肌落ちする", "３．自立困難。掘削後早期に支保する", "４．掘削に先行して山を受けておく必要有り", "特記事項"],
+        ["１．ハンマー打撃で跳ね返る, 100MPa以上", "２．ハンマー打撃で砕ける, 100〜20MPa", "３．ハンマーの軽い打撃で砕ける, 20〜5MPa", "４．ハンマーの刃先がくい込む, 5MPa以下", "特記事項"],
+        ["１．なし・健全", "２．岩目に沿って変色、強度やや低下", "３．全体に変色、強度相当に低下", "４．土砂状、粘土状、礫状、当初より未固結", "特記事項"],
+        ["１．破砕 < ５％", "２．５％ ≦ 破砕 < ２０％", "３．２０％ ≦ 破砕 < ５０％", "４．切羽面の大部分が破砕されている状態", "特記事項"],
+        ["１．d ≧ 1m", "２．1m > d ≧ 20cm", "３．20cm > d ≧ 5cm", "４．5cm > d 破砕、当初より未固結", "特記事項"],
+        ["１．密着", "２．部分的に開口", "３．開口", "４．粘土を挟む、当初より未固結", "特記事項"],
+        ["１．ランダム方形", "２．柱状", "３．層状、片状、板状", "４．土砂状、細片状、当初より未固結", "特記事項"],
         ["１．なし、滲水程度", "２．滴水程度", "３．集中湧水", "４．全面湧水", "特記事項　", "湧水量の入力"],
         ["１．なし", "２．緩みを生ず", "３．軟弱化", "４．流出"],
         ["１．水平（0° < θ < １０°）", "２．さし目（１０° ≦ θ < ３０°、６０° ≦ θ < ８０°）", "３．さし目（３０° ≦ θ < ６０°）", "４．流れ目（６０° > θ ≧ ３０°）", "５．流れ目（３０° > θ ≧ １０°、８０° > θ ≧ ６０°）", "６．垂直（θ ≧ ８０°）", "７．なし。あるいは判断が難しい"],
@@ -184,6 +184,14 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 if let array = self.kirihaRecordFireDataDS?.obsRecord09 {
                     
                     self.obsRecordArray2d[9] = array
+                    
+                    print("obsRecordArray2d[9]: \(self.obsRecordArray2d[9].count)")
+                    
+                    // エラー回避：当初は要素数を5としていたため、新たに開くとエラーが出るため
+                    if self.obsRecordArray2d[9].count < 6 {
+                        self.obsRecordArray2d[9].append(0)
+                        print("obsRecordArray2d[9] add: \(self.obsRecordArray2d[9].count)")
+                    }
                 }
                 if let array = self.kirihaRecordFireDataDS?.obsRecord10 {
                     
@@ -280,10 +288,30 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         
         // let obsName = Auth.auth().currentUser?.displayName
         
-        // 評価点を計算
-        
-        
-        
+        // 評価点を計算（有効数字：小数点以下第２位を四捨五入）
+        for q in 0..<sectionTitle.count {
+            
+            var t = 0
+            var cnt = 0
+            for r in 0..<obsRecordArray2d[q].count {
+                if String(obsArray[q][r].prefix(4)) != "特記事項" ||
+                    String(obsArray[q][r].prefix(3)) != "湧水量" {
+                    
+                    t = t + (obsRecordArray2d[q][r]! * (r + 1))
+                    
+                    if obsRecordArray2d[q][r] != 0 {
+                        cnt = cnt + 1
+                    }
+                    
+                    print("q: \(q), r: \(r), t: \(t), cnt: \(cnt)")
+                }
+            }
+            let s = round(Float(t) / Float(cnt) * 10)
+            obsRecordArray[q] = s / 10.0
+            
+            print("obsRecordArray[\(q)]: \(String(describing: obsRecordArray[q]))")
+        }
+
         
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
             
@@ -404,24 +432,6 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             }
         }
         
-        // print("再利用、pinkCellRow[\(cellSection)]: \(obsRecordArray[cellSection])")
-        /*
-        if let pinkCellRow = obsRecordArray[cellSection] {
-            
-            print("pinkCellRow \(pinkCellRow)")
-            
-            if cellRow == pinkCellRow {
-                
-                cell.backgroundColor = MyColor.myPink
-            }
-            else {
-                cell.backgroundColor = .clear
-            }
-        }
-        else {
-            cell.backgroundColor = .clear
-        }
-        */
         // cellに値(各観察項目の内容)を設定する
         cell.textLabel?.text = obsArray[indexPath.section][indexPath.row]
 
@@ -466,30 +476,6 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             return
         }
 
-        /*
-        //
-        // セクションごとに選択されたセルのデータを格納する
-        obsRecordArray[cellSection] = cellRow
-        
-        // 選択したセルのセクションにおいて、同セクションのセルの数だけ繰り返して、
-        // 選択したセルの色だけピンクに変更する
-        for r in 0..<obsArray[cellSection].count {
-            
-            // print(obsArray[cellSection][r])
-            
-            if r == cellRow {       // タップしたセル
-                
-                // セルの色を変更する
-                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = MyColor.myPink
-                
-                // print("section: \(cellSection), row: \(cellRow)")
-            }
-            else {
-                // セルの色を変更する
-                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .clear
-            }
-        }
-        */
         
         //
         // 選択済みあれば選択解除、選択されてなければ選択する

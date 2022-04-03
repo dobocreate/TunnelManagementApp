@@ -17,7 +17,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     
     var kirihaRecordData: KirihaRecordData?
     
-    var obsRecordArray  = [Int?](repeating: nil, count:13)
+    var obsRecordArray  = [Float?](repeating: nil, count:13)
 
     
     // 遷移先のLabelテキストを格納
@@ -161,26 +161,6 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             }
         }
         
-        /*
-        // print("再利用、pinkCellRow[\(cellSection)]: \(obsRecordArray[cellSection])")
-        
-        if let pinkCellRow = obsRecordArray[cellSection] {
-            
-            print("pinkCellRow \(pinkCellRow)")
-            
-            if cellRow == pinkCellRow {
-                
-                cell.backgroundColor = MyColor.myPink
-            }
-            else {
-                cell.backgroundColor = .white
-            }
-        }
-        else {
-            cell.backgroundColor = .white
-        }
-        */
-        
         // cellに値(各観察項目の内容)を設定する
         cell.textLabel?.text = obsArray[indexPath.section][indexPath.row]
 
@@ -225,32 +205,6 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             return
         }
         
-        /*
-        //
-        // セクションごとに選択されたセルのデータを格納する
-        obsRecordArray[cellSection] = cellRow
-        
-        // print("保存、Section: \(cellSection) row: \(cellRow)  \(obsRecordArray[cellSection])")
-        
-        // 選択したセルのセクションにおいて、同セクションのセルの数だけ繰り返して、
-        // 選択したセルの色だけピンクに変更する
-        for r in 0..<obsArray[cellSection].count {
-            
-            // print(obsArray[cellSection][r])
-            
-            if r == cellRow {       // タップしたセル
-                
-                // セルの色を変更する
-                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = MyColor.myPink
-                
-                // print("section: \(cellSection), row: \(cellRow)")
-            }
-            else {
-                // セルの色を変更する
-                tableView.cellForRow(at: [cellSection, r])?.backgroundColor = .white
-            }
-        }
-        */
         
         //
         // 選択済みあれば選択解除、選択されてなければ選択する

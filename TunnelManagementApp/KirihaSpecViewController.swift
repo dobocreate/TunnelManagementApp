@@ -27,7 +27,7 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var kirihaRecordData: KirihaRecordData?     // 切羽観察記録データを格納する配列
     
     var kirihaRecordData2: KirihaRecordData?
-    var dataArray2: [Int?] = []
+    var dataArray2: [Float?] = []
     
     var tunnelDataDS: TunnelDataDS?                 // Firestoreデータの格納用
     var kirihaRecordDataDS: KirihaRecordDataDS?     // Firestoreデータの格納用
@@ -245,8 +245,9 @@ class KirihaSpecViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     
                     self.kirihaRecordDataDS = kirihaRecordDataDS
                     
-                    let dataArray:[Int?] = document.data()?["obsRecordArray"] as! [Int?]
-                    self.dataArray2 = document.data()?["obsRecordArray"] as! [Int?]
+                    let dataArray:[Float?] = document.data()?["obsRecordArray"] as! [Float?]
+                    
+                    self.dataArray2 = document.data()?["obsRecordArray"] as! [Float?]
                     
                     self.kirihaRecordData2?.obsRecordArray = dataArray
                     

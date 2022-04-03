@@ -33,7 +33,7 @@ class TunnelCreate2ViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     
     // 岩石名の初期設定値
-    let rockName: [String?] = ["粘板岩", "砂岩", "礫岩", "チャート", "石灰岩", "花崗岩", "ひん岩", "安山岩", "流紋岩", "片岩", "千枚岩", "頁岩", "玄武岩", "泥岩", "凝灰岩", "崖錐"]
+    let rockName: [String?] = ["玄武岩", "石灰岩", "頁岩", "凝灰角礫岩", "安山岩", "安山岩・自破砕溶岩"]
     
     // 形成地質年代の初期設定値
     let geoAge: [String?] = [

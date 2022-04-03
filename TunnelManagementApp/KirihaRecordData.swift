@@ -12,22 +12,22 @@ import Firebase
 class KirihaRecordData: NSObject {
     
     // プロパティ
-    var id: String                  // documentID
-    var date: Date?                 // 保存日時
-    var tunnelId: String?           // トンネルID
-    var obsDate: Date?              // 観察日時
-    var obsName: String?            // 観察者（displayName）
-    var stationNo: Float?           // 観察測点
-    var distance: Float?            // 坑口からの距離
-    var overburden: Float?          // 土被り（m）
-    var rockType: String?           // 岩種
-    var rockName: String?           // 岩石名
-    var geoAge: String?             // 形成地質年代
-    var geoStructure: String?       // 地質構造
-    var obsRecordArray:[Int?] = []  // 観察記録
-    var structurePattern: Int?      // 地山等級
-    var patternRate:[Double?] = []   // 採用確率
-    var water: Float?              // 湧水量
+    var id: String                      // documentID
+    var date: Date?                     // 保存日時
+    var tunnelId: String?               // トンネルID
+    var obsDate: Date?                  // 観察日時
+    var obsName: String?                // 観察者（displayName）
+    var stationNo: Float?               // 観察測点
+    var distance: Float?                // 坑口からの距離
+    var overburden: Float?              // 土被り（m）
+    var rockType: String?               // 岩種
+    var rockName: String?               // 岩石名
+    var geoAge: String?                 // 形成地質年代
+    var geoStructure: String?           // 地質構造
+    var obsRecordArray:[Float?] = []    // 観察記録
+    var structurePattern: Int?          // 地山等級
+    var patternRate:[Double?] = []      // 採用確率
+    var water: Float?                   // 湧水量
     
     // 観察記録
     var obsRecord00:[Int?] = []      // 地質構造
@@ -81,7 +81,7 @@ class KirihaRecordData: NSObject {
         
         self.geoStructure = kirihaRecordDic["geoStructure"] as? String
         
-        if let obsRecord = kirihaRecordDic["obsRecordArray"] as? [Int] {
+        if let obsRecord = kirihaRecordDic["obsRecordArray"] as? [Float] {
             
             self.obsRecordArray = obsRecord
         }

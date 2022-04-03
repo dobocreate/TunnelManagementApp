@@ -21,7 +21,14 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     var tunnelData: TunnelData?
     var kirihaRecordData: KirihaRecordData?
     
-    var obsRecordArray = [Int?](repeating: nil, count:13)
+    // 受け渡しデータの格納用
+    var obsRecordArray = [Float?](repeating: nil, count:13)
+    var waterValue: Float?
+    var rockType: String?
+    var rockTypeSymbol: String?
+    var structurePattern: Int?
+    var patternRate:[Double?] = []
+    var aiSelectedNumber: Int?
     
     // 地山等級のパターン
     let supportPatterns:[String?] = [
@@ -36,9 +43,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         "特L、特S"
     ]
     
-    var patternRate:[Double?] = []
-    var structurePattern: Int?
-    
     // カラークラスを定義する
     class MyColor: UIColor {
         
@@ -48,85 +52,57 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    // 保存ボタンをタップした時に実行される
-    @IBAction func saveButton(_ sender: Any) {
-        
-        if self.structurePattern == nil {
-            
-            SVProgressHUD.showError(withStatus: "地山等級を選択してください")
-            
-            return
-        }
-        
-        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
-            
-            // データを更新するドキュメントを設定
-            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
-            
-            print("AnalysisVC postRef: \(kirihaRecordDataRef.documentID)")
-            print(self.structurePattern)
-            print(self.patternRate)
-            
-            // 更新するデータを辞書の型にまとめて、必要な箇所のみ更新する
-            let postDic = [
-                "structurePattern": self.structurePattern!,
-                "patternRate": self.patternRate
-            ] as [String: Any]
-            
-            kirihaRecordDataRef.updateData(postDic)
-            
-            print("変更を保存しました")
-            
-            // 画面遷移
-            navigationController?.popViewController(animated: true)     // 画面を閉じることで、１つ前の画面に戻る
-        }
-        
+    // 画面遷移時に１度だけ実行される
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // デリゲート
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    
-    var aiSelectedNumber: Int?
-    
     
     // 画面が表示される前に呼び出されるメソッド
     // 画面遷移後に１度呼ばれ、他の画面に遷移して戻ってきた時にも呼ばれる
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
      
-        print("AnalysisVC tunnelId: \(kirihaRecordData?.tunnelId), id: \(kirihaRecordData?.id)")
-        
+        // print("AnalysisVC tunnelId: \(kirihaRecordData?.tunnelId), id: \(kirihaRecordData?.id)")
+        /*
         if let sp = self.kirihaRecordData?.structurePattern {
             
             self.structurePattern = sp
         }
+        */
         
         // AIによる判定
-        print("AnalysisVC A: \(kirihaRecordData?.obsRecordArray[0]), rockType: \(kirihaRecordData?.rockType)")
-        // print("AnalysisVC structurePattern \(kirihaRecordData?.structurePattern)")
+        print("AnalysisVC A: \(self.obsRecordArray[0]), rockType: \(self.rockType)")
+        
         
         // let model = KirihaDataTabularClassifier_1028()
-        let model = KirihaDataTabularClassifier_1123_33()
+        let model = KirihaDataTabularClassifier_2203()
         
-        guard let rockType = kirihaRecordData?.rockType else { return }
-        guard let obsRecordArray = kirihaRecordData?.obsRecordArray else { return }
+        // guard let rockType = self.rockType else { return }
+        // guard let obsRecordArray = self.obsRecordArray else { return }
         
         guard let output = try? model.prediction(
-            rockType: rockType,
-            rockName: "Ls",
-            rockGroup: Double(obsRecordArray[0]!),
-            A: Double(obsRecordArray[1]!),
-            B: Double(obsRecordArray[2]!),
-            C: Double(obsRecordArray[3]!),
-            D: Double(obsRecordArray[4]!),
-            F: Double(obsRecordArray[6]!),
-            G: Double(obsRecordArray[7]!),
-            H: Double(obsRecordArray[8]!),
-            I_1: Double(obsRecordArray[9]!),
-            I_2: Double(0),
-            J: Double(obsRecordArray[10]!),
-            K: Double(obsRecordArray[11]!),
-            L: Double(obsRecordArray[12]!)
+            rockType: self.rockType!,
+            rockName: self.rockTypeSymbol!,
+            rockGroup: Double(self.obsRecordArray[0]!),
+            A: Double(self.obsRecordArray[1]!),
+            B: Double(self.obsRecordArray[2]!),
+            C: Double(self.obsRecordArray[3]!),
+            D: Double(self.obsRecordArray[4]!),
+            E: Double(self.obsRecordArray[5]!),
+            F: Double(self.obsRecordArray[6]!),
+            G: Double(self.obsRecordArray[7]!),
+            H: Double(self.obsRecordArray[8]!),
+            I_1: Double(self.obsRecordArray[9]!),
+            I_2: Double(self.waterValue!),
+            J: Double(self.obsRecordArray[10]!),
+            K: Double(self.obsRecordArray[11]!),
+            L: Double(self.obsRecordArray[12]!)
         )
         else {
-            
             fatalError("Unexpected runtime error.")
         }
         
@@ -191,14 +167,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         view.addSubview(self.pieChartsView)
     }
     
-    // 画面遷移時に１度だけ実行される
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // デリゲート
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
     
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -308,7 +277,40 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    
+    // 保存ボタンをタップした時に実行される
+    @IBAction func saveButton(_ sender: Any) {
+        
+        if self.structurePattern == nil {
+            
+            SVProgressHUD.showError(withStatus: "地山等級を選択してください")
+            
+            return
+        }
+        
+        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+            
+            // データを更新するドキュメントを設定
+            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
+            
+            print("AnalysisVC postRef: \(kirihaRecordDataRef.documentID)")
+            print(self.structurePattern)
+            print(self.patternRate)
+            
+            // 更新するデータを辞書の型にまとめて、必要な箇所のみ更新する
+            let postDic = [
+                "structurePattern": self.structurePattern!,
+                "patternRate": self.patternRate
+            ] as [String: Any]
+            
+            kirihaRecordDataRef.updateData(postDic)
+            
+            print("変更を保存しました")
+            
+            // 画面遷移
+            navigationController?.popViewController(animated: true)     // 画面を閉じることで、１つ前の画面に戻る
+        }
+        
+    }
     
     
     
