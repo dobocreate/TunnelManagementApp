@@ -34,7 +34,7 @@ class WaterRecordViewController: UIViewController {
           
             self.waterValue = Float(self.waterTextField.text!)
             
-            print("waterValue: \(self.waterValue)")
+            print("waterValue: \(String(describing: self.waterValue))")
         }
         
         // 遷移元へのデータを渡す

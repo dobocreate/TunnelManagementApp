@@ -42,7 +42,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // Firestoreから取得したデータを格納
     var obsRecordArray  = [Float?](repeating: nil, count:13)            // 切羽評価点を格納
     var waterValue: Float?
-    var structurePattern: String?
+    var structurePattern: Int?
     
     // datePickerViewのプロパティ
     var obsDatePickerView: UIDatePicker = UIDatePicker()
@@ -239,8 +239,12 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         // Any -> Floatにダウンキャスト（より具体的な型に変換する）
                         let d = stationNo
                         
+                        // 有効数字（小数点以下2位を四捨五入）
                         let a = floor(d / 1000)
-                        let b = d - a * 1000
+                        var b = d - a * 1000
+                        b = round(b * 100)
+                        b = b / 100
+                        
                         let c: Int = Int(a)
                         
                         self.stationKTextField.text! = String(c)
@@ -290,6 +294,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     if let structurePattern = self.kirihaRecordDataDS?.structurePattern {
                         
                         self.kirihaRecordData?.structurePattern = structurePattern
+                        self.structurePattern = structurePattern
                     }
                     
                     /*
@@ -314,6 +319,8 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 }
             }
         }
+        
+        print("StructurePattern: \(String(describing: self.structurePattern))")
     }
     
     
@@ -350,6 +357,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         saveFile()
         
+        // 分析画面に遷移する
         self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)
     }
     
@@ -446,7 +454,8 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 "rockName": rockNameTextField.text!,
                 "geoAge": geoAgeTextField.text!,
                 "distance": distance,
-                "overburden": overburden
+                "overburden": overburden,
+                "structurePattern":self.structurePattern
             ] as [String: Any]
             
             // 既存のDocumentIDの保存場所を取得
@@ -488,6 +497,10 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             AnalysisVC.waterValue = self.waterValue
             AnalysisVC.rockType = self.rockTypeTextField.text
             AnalysisVC.rockTypeSymbol = conv_rockName(self.rockNameTextField.text!)
+            AnalysisVC.structurePattern = self.structurePattern
+            
+            AnalysisVC.tunnelData = self.tunnelData
+            AnalysisVC.kirihaRecordData = self.kirihaRecordData
             
             // self.kirihaRecordData?.rockType = rockTypeTextField.text
             

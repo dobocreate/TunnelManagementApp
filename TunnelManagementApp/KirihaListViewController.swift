@@ -121,7 +121,12 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
             
             // ダウンキャスト（より具体的な型に変換する）
             let a = floor(stationNo / 1000)
-            let b = stationNo - a * 1000
+            var b = stationNo - a * 1000
+            
+            // 有効数字（小数点以下2位を四捨五入）
+            b = round(b * 100)
+            b = b / 100
+            
             let c: Int = Int(a)
             
             if let sP = kirihaRecordDataArray[indexPath.row].structurePattern, let sPN = self.structurePatternsName[sP] {

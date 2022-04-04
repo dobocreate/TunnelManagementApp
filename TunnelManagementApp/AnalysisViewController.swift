@@ -287,13 +287,32 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
+        print(self.structurePattern!)
+        
+        // 遷移元へのデータを渡す
+        let nc = self.navigationController!
+        let vcNum = nc.viewControllers.count
+        
+        print("vcNum: \(vcNum)")
+        
+        let kirihaSpec2vc = nc.viewControllers[vcNum - 2] as! KirihaSpec2ViewController
+        
+        kirihaSpec2vc.structurePattern = self.structurePattern!
+        
+        print("遷移先vc: \(String(describing: kirihaSpec2vc)), 支保パターン: \(String(describing: kirihaSpec2vc))")
+        
+        // self.navigationController?.popViewController(animated: true)
+        
+        
+        
+        
         if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
             
             // データを更新するドキュメントを設定
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
             
             print("AnalysisVC postRef: \(kirihaRecordDataRef.documentID)")
-            print(self.structurePattern)
+            print(self.structurePattern!)
             print(self.patternRate)
             
             // 更新するデータを辞書の型にまとめて、必要な箇所のみ更新する
@@ -309,6 +328,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             // 画面遷移
             navigationController?.popViewController(animated: true)     // 画面を閉じることで、１つ前の画面に戻る
         }
+        
         
     }
     
