@@ -301,7 +301,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             let waterRecordVC:WaterRecordViewController = segue.destination as! WaterRecordViewController
             
             waterRecordVC.kirihaRecordData = self.kirihaRecordData
-            waterRecordVC.waterValue = self.kirihaRecordData?.water
+            waterRecordVC.waterValue = self.waterValue
             
             waterRecordVC.vcName = "KirihaRecordVC"
         }

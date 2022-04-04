@@ -433,14 +433,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnn-4Z-MJt">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnn-4Z-MJt" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="200" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="BZZ-6j-vEe"/>
                                     <constraint firstAttribute="height" constant="35" id="hIh-uv-PrB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cag-p3-Q6V">
                                 <rect key="frame" x="240" y="108" width="20" height="35"/>
@@ -506,10 +506,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ここに、特記事項を記載する。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-2I-hqN">
-                                <rect key="frame" x="10" y="148" width="394" height="300"/>
+                                <rect key="frame" x="10" y="148" width="394" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="KH3-Fa-Kvi"/>
+                                    <constraint firstAttribute="height" constant="250" id="KH3-Fa-Kvi"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1291,7 +1291,7 @@
             </objects>
             <point key="canvasLocation" x="-887" y="2529"/>
         </scene>
-        <!--岩盤分類-->
+        <!--岩種分類表-->
         <scene sceneID="xcJ-Sf-XB9">
             <objects>
                 <viewController storyboardIdentifier="rockTypeInstructions" id="QUH-us-Cgl" customClass="RockTypeInstructionsViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1300,9 +1300,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uSA-dz-yEM">
-                                <rect key="frame" x="0.0" y="108" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="523.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="aeJ-A5-MyY"/>
+                                    <constraint firstAttribute="width" secondItem="uSA-dz-yEM" secondAttribute="height" multiplier="174:220" id="UDj-Oc-KkN"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -1314,7 +1314,7 @@
                             <constraint firstItem="uSA-dz-yEM" firstAttribute="leading" secondItem="HdX-Rc-jv2" secondAttribute="leading" id="w3L-Oi-sWy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="岩盤分類" id="HuI-gj-adR">
+                    <navigationItem key="navigationItem" title="岩種分類表" id="HuI-gj-adR">
                         <barButtonItem key="rightBarButtonItem" title="要注意地山" id="hxA-84-2ec">
                             <connections>
                                 <segue destination="ZaG-hQ-HxU" kind="show" id="Onc-be-ca4"/>
@@ -1338,9 +1338,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfb-Mx-ckw">
-                                <rect key="frame" x="0.0" y="108" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="159.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="In5-nI-3RP"/>
+                                    <constraint firstAttribute="width" secondItem="yfb-Mx-ckw" secondAttribute="height" multiplier="174:67" id="ejd-8p-sFz"/>
                                 </constraints>
                             </imageView>
                         </subviews>

@@ -16,7 +16,7 @@ class RockTypeInstructionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let createImage = UIImage(named: "rockTypeInstructions.png")
+        let createImage = UIImage(named: "rockTypeInstructions3.png")
 
         instructionsImageView.image = createImage
     }

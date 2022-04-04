@@ -553,7 +553,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             let waterRecordVC:WaterRecordViewController = segue.destination as! WaterRecordViewController
             
             waterRecordVC.kirihaRecordData = self.kirihaRecordData
-            waterRecordVC.waterValue = self.kirihaRecordFireDataDS?.water
+            waterRecordVC.waterValue = self.waterValue
             
             waterRecordVC.vcName = "KirihaRecordChangeVC"
         }

@@ -28,7 +28,6 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBOutlet weak var overburdenTextField: UITextField!    // 土被り高さ
     
-    
     // データ受け渡し用
     var tunnelData: TunnelData?                 // トンネルデータを格納する配列
     var kirihaRecordData: KirihaRecordData?     // 切羽観察記録データを格納する配列
@@ -46,7 +45,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     // datePickerViewのプロパティ
     var obsDatePickerView: UIDatePicker = UIDatePicker()
-
+    
     // PickerViewのプロパティ
     var rockTypePickerView: UIPickerView = UIPickerView()
     var rockNamePickerView: UIPickerView = UIPickerView()
@@ -64,8 +63,8 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // 形成地質年代（初期値）
     var geoAgeDataSource: [String?] = ["新生代第四紀完新世", "新生代第四紀更新世", "新生代新第三紀鮮新世", "新生代新第三紀中新世", "新生代古第三紀漸新世", "新生代古第三紀始新世", "新生代古第三紀暁新世", "中生代白亜紀", "中生代ジュラ紀", "中生代三畳紀", "古生代二畳紀", "古生代石炭紀", "古生代デボン紀", "古生代シルリア紀", "古生代オルドビス紀", "古生代カンブリア紀", "先カンブリア代原生代", "先カンブリア代始生代"]
     
-    //
-    var showAlert = false
+    // ダイアログのフラグ
+    // var showAlert = false
     
     // 画面遷移が行われた時に１度だけ実行される
     override func viewDidLoad() {
@@ -347,8 +346,18 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // 切羽観察項目の有無
         if self.kirihaRecordDataDS?.obsRecordArray.firstIndex(of: nil) != nil {
             
-            SVProgressHUD.showError(withStatus: "切羽観察記録の入力を確認してください")
-            print("強制終了")
+            // SVProgressHUD.showError(withStatus: "切羽観察記録の入力を確認してください")
+            print("記載漏れチェック：切羽観察記録")
+            
+            let alert = UIAlertController(title: "記載漏れチェック",
+                          message: "切羽観察記録に記載漏れがあります",
+                          preferredStyle: .alert)
+
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
             
             return
         }
@@ -368,31 +377,65 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // 切羽位置
         if stationKTextField.text == "" || stationMTextField.text == "" {
             
-            SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
-            print("強制終了")
+            // SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
+            
+            print("記載漏れチェック：切羽位置")
+            
+            let alert = UIAlertController(title: "記載漏れチェック",
+                          message: "切羽位置を記載してください",
+                          preferredStyle: .alert)
+
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
             
             return
         }
         // 坑口からの距離
         if distanceTextField.text == "" {
             
-            SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
-            print("強制終了")
+            // SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
+            
+            print("記載漏れチェック：坑口からの距離")
+            
+            let alert = UIAlertController(title: "記載漏れチェック",
+                          message: "坑口からの距離を記載してください",
+                          preferredStyle: .alert)
+
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
             
             return
         }
         // 土被り高さ
         if overburdenTextField.text == "" {
             
-            SVProgressHUD.showError(withStatus: "土被り高さを入力してください")
-            print("強制終了")
+            // SVProgressHUD.showError(withStatus: "土被り高さを入力してください")
+            
+            print("記載漏れチェック：土被り高さ")
+            
+            let alert = UIAlertController(title: "記載漏れチェック",
+                          message: "土被り高さを記載してください",
+                          preferredStyle: .alert)
+
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
             
             return
         }
         
-
+        // 要注意地山の該当チェック
         alert_cautionJiyama()
         
+        // データの保存
         saveFile()
     }
     

@@ -42,6 +42,9 @@
 		466D150A27FA4A3D000A1329 /* cautionJiyama.png in Resources */ = {isa = PBXBuildFile; fileRef = 466D150927FA4A3D000A1329 /* cautionJiyama.png */; };
 		466F0716279992BE006367E9 /* TouchOnScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F0715279992BD006367E9 /* TouchOnScrollView.swift */; };
 		467CF116271FEBD600324527 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467CF115271FEBD600324527 /* AnalysisViewController.swift */; };
+		46838F8227FB1402009AFE9D /* rockTypeInstructions2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46838F8127FB1402009AFE9D /* rockTypeInstructions2.png */; };
+		46883F1E27FB8A8900541C0D /* cautionJiyama3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46883F1D27FB8A8900541C0D /* cautionJiyama3.png */; };
+		46883F2027FB8A9000541C0D /* rockTypeInstructions3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46883F1F27FB8A9000541C0D /* rockTypeInstructions3.png */; };
 		46AB521C270DC09900D489DE /* KirihaRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */; };
 		46AB521F270E85FC00D489DE /* RemarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */; };
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
@@ -104,6 +107,9 @@
 		466D150927FA4A3D000A1329 /* cautionJiyama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cautionJiyama.png; sourceTree = "<group>"; };
 		466F0715279992BD006367E9 /* TouchOnScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchOnScrollView.swift; sourceTree = "<group>"; };
 		467CF115271FEBD600324527 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		46838F8127FB1402009AFE9D /* rockTypeInstructions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions2.png; sourceTree = "<group>"; };
+		46883F1D27FB8A8900541C0D /* cautionJiyama3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cautionJiyama3.png; sourceTree = "<group>"; };
+		46883F1F27FB8A9000541C0D /* rockTypeInstructions3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions3.png; sourceTree = "<group>"; };
 		46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordViewController.swift; sourceTree = "<group>"; };
 		46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksTableViewCell.swift; sourceTree = "<group>"; };
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
@@ -169,8 +175,11 @@
 				461FE21827A9E7F40085F7F6 /* rockTypeObjectDetector22.01.28.mlmodel */,
 				46EFB8DA270FCDEC0047BF61 /* GoogleService-Info.plist */,
 				4659839B270B26E800898FDF /* Info.plist */,
-				46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */,
 				466D150927FA4A3D000A1329 /* cautionJiyama.png */,
+				46883F1D27FB8A8900541C0D /* cautionJiyama3.png */,
+				46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */,
+				46838F8127FB1402009AFE9D /* rockTypeInstructions2.png */,
+				46883F1F27FB8A9000541C0D /* rockTypeInstructions3.png */,
 				46EC69962726814C00B081FC /* Analysis2ViewController.swift */,
 				467CF115271FEBD600324527 /* AnalysisViewController.swift */,
 				4659838D270B26E700898FDF /* AppDelegate.swift */,
@@ -298,9 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4659839A270B26E800898FDF /* LaunchScreen.storyboard in Resources */,
+				46838F8227FB1402009AFE9D /* rockTypeInstructions2.png in Resources */,
+				46883F1E27FB8A8900541C0D /* cautionJiyama3.png in Resources */,
 				46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */,
 				466D150A27FA4A3D000A1329 /* cautionJiyama.png in Resources */,
 				4656C47027350E3D0088A83B /* tunnelImage.jpeg in Resources */,
+				46883F2027FB8A9000541C0D /* rockTypeInstructions3.png in Resources */,
 				46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */,
 				46EFB8DB270FCDEC0047BF61 /* GoogleService-Info.plist in Resources */,
 				46598397270B26E800898FDF /* Assets.xcassets in Resources */,
@@ -552,7 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = LF8SJYTSUY;
 				INFOPLIST_FILE = TunnelManagementApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,7 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = LF8SJYTSUY;
 				INFOPLIST_FILE = TunnelManagementApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

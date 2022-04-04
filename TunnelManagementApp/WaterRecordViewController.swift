@@ -85,7 +85,7 @@ class WaterRecordViewController: UIViewController {
             
             print("更新しました")
             
-            SVProgressHUD.showSuccess(withStatus: "湧水量を保存しました")
+            // SVProgressHUD.showSuccess(withStatus: "湧水量を保存しました")
             
             // 画面遷移
             navigationController?.popViewController(animated: true)     // 画面を閉じることで、１つ前の画面に戻る

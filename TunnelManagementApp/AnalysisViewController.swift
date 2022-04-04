@@ -328,10 +328,5 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             // 画面遷移
             navigationController?.popViewController(animated: true)     // 画面を閉じることで、１つ前の画面に戻る
         }
-        
-        
     }
-    
-    
-    
 }
