@@ -217,8 +217,16 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
                 t = t + obsRecordArray2d[cellSection][r]!
             }
 
-            if t < 2 {                     // 許容する選択数未満の場合に1とする
+            // --- 2022.7.19 追加 ---
+            if t < 1 {
                 obsRecordArray2d[cellSection][cellRow] = 1
+                
+            } else if t < 2 {                     // 許容する選択数未満の場合に1とする
+                
+                if cellSection != 5 {       // 「破砕部の切羽に占める割合」以外の場合は１にして色を変更する
+                    obsRecordArray2d[cellSection][cellRow] = 1
+                }
+                
             }
             
         } else {
