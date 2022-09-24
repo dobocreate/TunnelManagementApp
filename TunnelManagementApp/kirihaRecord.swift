@@ -5,6 +5,7 @@
 //  Created by 岸田展明 on 2021/10/04.
 //
 
+/*
 import RealmSwift
 
 class kirihaRecord: Object{
@@ -28,3 +29,4 @@ class kirihaRecord: Object{
     }
     
 }
+*/

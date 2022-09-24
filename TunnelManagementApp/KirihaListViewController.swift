@@ -157,32 +157,53 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
+        // 保存するか確認するアラートを出して、保存ボタンがタップされたら保存して遷移する
+        let alert = UIAlertController(title: nil,
+                                      message: "本当に削除してもよろしいでしょうか？",
+                                      preferredStyle: .alert)
+
+        let alOk = UIAlertAction(title: "はい", style: .default, handler: {
+            (action:UIAlertAction!) in
             
-            // let removed = self.kirihaRecordDataArray.remove(at: indexPath.row)
-            
-            // print("\(removed)が削除されました, \(indexPath.row)")
-            
-            // 削除されたドキュメントのIDを取得する
-            
-            let documentId = self.kirihaRecordDataArray[indexPath.row].id
-            
-            print("ドキュメントID \(documentId)")
-            
-            if let tunnelId = self.tunnelData?.tunnelId {
+            // 切羽観察記録の削除
+            if editingStyle == .delete {
                 
-                Firestore.firestore().collection(tunnelId).document(documentId).delete() { err in
-                    if let err = err {
-                        print("Error removing document: \(err)")
-                    } else {
-                        print("Document successfully removed")
-                    }
+                // let removed = self.kirihaRecordDataArray.remove(at: indexPath.row)
+                
+                // print("\(removed)が削除されました, \(indexPath.row)")
+                
+                let documentId = self.kirihaRecordDataArray[indexPath.row].id           // 削除するドキュメントのIDを取得する
+                
+                print("ドキュメントID \(documentId)")
+                
+                if let tunnelId = self.tunnelData?.tunnelId {
                     
+                    Firestore.firestore().collection(tunnelId).document(documentId).delete() { err in
+                        if let err = err {
+                            print("Error removing document: \(err)")
+                        } else {
+                            print("Document successfully removed")
+                        }
+                        
+                    }
                 }
             }
+            
+            tableView.reloadData()
+        })
+
+        let alCancel = UIAlertAction(title: "いいえ", style: .default) {
+            (action) in
+            
+            // 処理の内容をここに記載
+            
+            self.dismiss(animated: true, completion: nil)           // ダイアログを閉じる
         }
-        
-        tableView.reloadData()
+
+        alert.addAction(alOk)
+        alert.addAction(alCancel)
+
+        present(alert, animated: true, completion: nil)
     }
     
     // 各セルを選択した時に実行されるメソッド
@@ -216,6 +237,20 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
             // kirihaSpecVC.tunnelData = self.tunnelData
         }
     }
+    
+    // ソートする
+    @IBAction func sortKirihaRecord(_ sender: Any) {
+        
+        // ソート
+        self.kirihaRecordDataArray.sort(by:{
+            // 坑口からの距離：降順、日付：降順にソート
+            ($0.distance ?? 0.0, $0.date!) > ($1.distance ?? 0.0, $1.date!)
+        })
+        
+        // TableViewの表示を更新する
+        self.tableView.reloadData()
+    }
+    
     
     /*
     // 諸元の画面から戻る

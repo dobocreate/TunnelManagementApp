@@ -31,12 +31,12 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     // var specialText: String = ""
     var specialSec: String = ""
     var specialSecNo: Int?
-    var waterValue: Float = 0.0
+    var waterValue: Float?
     
     // 切羽観察項目および特記事項を格納
     var obsRecordArray2d = [[Int?]](repeating: [Int?](repeating:nil, count:7), count:13)
     
-    var specialRecordData = [String?](repeating: nil, count:10)         // 特記事項をセクションごとに格納
+    var specialRecordData = [String?](repeating: nil, count:15)         // 特記事項をセクションごとに格納
     
     // セクションタイトル
     let sectionTitle: NSArray = [
@@ -224,11 +224,13 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                     if self.specialRecordData[r] != nil {
                         
                         // 遷移先から受け渡されたデータを表示
-                        print("special sec: \(r), Text: \(String(describing: self.specialRecordData[r]))")
+                        print("special sec1: \(r), Text: \(String(describing: self.specialRecordData[r]))")
                         
                         let specialText = self.specialRecordData[r]!
                         
-                        if r == 0 {
+                        if r == 14 {            // 記事の場合
+                            
+                        } else if r == 0 {      // 地質構造の場合
                         
                             self.obsArray[r][6] = "特記事項：　\(String(describing: specialText))"
                         }
@@ -241,7 +243,12 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                 }
                 
                 // 湧水量の内容を設定
-                self.obsArray[9][5] = "湧水量：　\(self.waterValue)　L"
+                // print("湧水量: \(self.waterValue!)")
+                
+                // 湧水量を格納
+                if self.waterValue != nil {
+                    self.obsArray[9][5] = "湧水量：　\(self.waterValue!)　L"        // TableViewの要素を更新
+                }
                 
                 print("FirestoreDS データを取得しました \(String(describing: self.kirihaRecordFireDataDS?.water))")
                 
@@ -261,11 +268,14 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             self.specialRecordData[self.specialSecNo!] != nil {       // セクションNoおよび特記事項が初期値から変更がない場合
             
             // 遷移先から受け渡されたデータを表示
-            print("special sec: \(self.specialSec), Text: \(String(describing: self.specialRecordData[self.specialSecNo!]!))")
+            print("special sec2: \(self.specialSec), Text: \(String(describing: self.specialRecordData[self.specialSecNo!]!))")
             
             let specialText = self.specialRecordData[self.specialSecNo!]!
             
-            if self.specialSecNo == 0 {
+            if self.specialSecNo == 14 {            // 記事の場合
+                
+            }
+            else if self.specialSecNo == 0 {        // 地質構造の場合
             
                 self.obsArray[self.specialSecNo!][6] = "特記事項：　\(String(describing: specialText))"
             }
@@ -274,15 +284,30 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             }
         }
         
-        print("遷移先から戻った。湧水量: \(self.waterValue)")
+        // print("遷移先から戻った。湧水量: \(self.waterValue!)")
         
         // 湧水量を格納
-        self.obsArray[9][5] = "湧水量：　\(self.waterValue)　L"
+        if self.waterValue != nil {
+            obsArray[9][5] = "湧水量：　\(self.waterValue!)　L"        // TableViewの要素を更新
+        }
         
         tableView.reloadData()
     }
-
     
+    // 記事ボタンがタップされた時に実行される
+    @IBAction func articleButton(_ sender: Any) {
+        
+        secTitle = "記事"
+        
+        print("記事をタップ")
+        
+        self.specialSecNo = 14         // セクションNoを代入
+        
+        // SegueIDを指定して、特記事項の記録画面に遷移
+        self.performSegue(withIdentifier: "otherRecordSegue", sender: nil)
+    }
+    
+
     // 保存ボタンがタップされた時に実行される
     @IBAction func saveButton(_ sender: Any) {
         
@@ -293,9 +318,10 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             
             var t = 0
             var cnt = 0
+            
             for r in 0..<obsRecordArray2d[q].count {
                 if String(obsArray[q][r].prefix(4)) != "特記事項" ||
-                    String(obsArray[q][r].prefix(3)) != "湧水量" {
+                        String(obsArray[q][r].prefix(3)) != "湧水量" {
                     
                     t = t + (obsRecordArray2d[q][r]! * (r + 1))
                     
@@ -306,8 +332,13 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                     print("q: \(q), r: \(r), t: \(t), cnt: \(cnt)")
                 }
             }
-            let s = round(Float(t) / Float(cnt) * 10)
-            obsRecordArray[q] = s / 10.0
+            
+            if cnt == 0 {                   // いずれも選択されていない場合
+                obsRecordArray[q] = 0
+            }
+            else {
+                obsRecordArray[q] = round(Float(t) / Float(cnt) * 10) / 10.0
+            }
             
             print("obsRecordArray[\(q)]: \(String(describing: obsRecordArray[q]))")
         }
@@ -342,10 +373,30 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             
             kirihaRecordDataRef.updateData(postDic)
             
-            print("変更を保存しました")
+            // 保存アラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
+
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
+            })
             
-            // 画面遷移
-            navigationController?.popViewController(animated: true)     // 画面を閉じることで、１つ前の画面に戻る
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // ２秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
+            }
+
+            print("変更を保存しました")
         }
     }
     
@@ -423,7 +474,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         // 選択された項目をピンク色にする（湧水量の項目以外）
         if let n = obsRecordArray2d[cellSection][cellRow] {
             
-            if n == 1 {
+            if n == 1 {         // 項目が選択されている場合（１）
                 
                 cell.backgroundColor = MyColor.myPink
             }
@@ -468,7 +519,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             
             print("\(sectionTitle[cellSection]), \(cellRow) をタップ")
             
-            self.specialSecNo = cellSection
+            self.specialSecNo = cellSection         // セクションNoを代入
             
             // SegueIDを指定して、特記事項の記録画面に遷移
             performSegue(withIdentifier: "otherRecordSegue", sender: nil)
@@ -476,7 +527,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             return
         }
 
-        //
+        
         // 選択済みあれば選択解除、選択されてなければ選択する
         // 選択数の許容値を設定し、許容値未満の場合に選択する
         if obsRecordArray2d[cellSection][cellRow] == 0 {
@@ -551,7 +602,7 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
-    // 画面を閉じる前に実行される
+    // Segueでの画面遷移時に呼ばれる。画面を閉じる前に実行される
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // 湧水量の記入画面への遷移時に実行される
@@ -595,8 +646,4 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
-
-    
-    
-
 }

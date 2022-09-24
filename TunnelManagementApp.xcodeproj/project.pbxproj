@@ -38,6 +38,7 @@
 		466308DC271ABFD300214303 /* RockNameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308DB271ABFD300214303 /* RockNameSettingViewController.swift */; };
 		466330AC271E1FB80087FE24 /* TunnelCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */; };
 		466330AE271E416E0087FE24 /* TunnelDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466330AD271E416E0087FE24 /* TunnelDataDS.swift */; };
+		466C15F828CD085D0045FBDB /* rockTypeObjectDetector22.09.05.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 466C15F728CD085C0045FBDB /* rockTypeObjectDetector22.09.05.mlmodel */; };
 		466D150827F937F7000A1329 /* KirihaDataTabularClassifier_2203.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 466D150727F937F7000A1329 /* KirihaDataTabularClassifier_2203.mlmodel */; };
 		466D150A27FA4A3D000A1329 /* cautionJiyama.png in Resources */ = {isa = PBXBuildFile; fileRef = 466D150927FA4A3D000A1329 /* cautionJiyama.png */; };
 		466F0716279992BE006367E9 /* TouchOnScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F0715279992BD006367E9 /* TouchOnScrollView.swift */; };
@@ -103,6 +104,7 @@
 		466308DB271ABFD300214303 /* RockNameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockNameSettingViewController.swift; sourceTree = "<group>"; };
 		466330AB271E1FB80087FE24 /* TunnelCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelCreateViewController.swift; sourceTree = "<group>"; };
 		466330AD271E416E0087FE24 /* TunnelDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelDataDS.swift; sourceTree = "<group>"; };
+		466C15F728CD085C0045FBDB /* rockTypeObjectDetector22.09.05.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = rockTypeObjectDetector22.09.05.mlmodel; sourceTree = "<group>"; };
 		466D150727F937F7000A1329 /* KirihaDataTabularClassifier_2203.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KirihaDataTabularClassifier_2203.mlmodel; sourceTree = "<group>"; };
 		466D150927FA4A3D000A1329 /* cautionJiyama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cautionJiyama.png; sourceTree = "<group>"; };
 		466F0715279992BD006367E9 /* TouchOnScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchOnScrollView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				4656C46F27350E3C0088A83B /* tunnelImage.jpeg */,
 				46E3FD4A2794E0140045CA26 /* KirihaDataTabularClassifier_1123_33.mlmodel */,
 				466D150727F937F7000A1329 /* KirihaDataTabularClassifier_2203.mlmodel */,
+				466C15F728CD085C0045FBDB /* rockTypeObjectDetector22.09.05.mlmodel */,
 				46EC69942726097800B081FC /* MyTabularClassifier_kiriha.mlmodel */,
 				46EC699827268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel */,
 				461FE21827A9E7F40085F7F6 /* rockTypeObjectDetector22.01.28.mlmodel */,
@@ -383,6 +386,7 @@
 				46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */,
 				466308D4271A5D6800214303 /* ItemNameChangeViewController.swift in Sources */,
 				467CF116271FEBD600324527 /* AnalysisViewController.swift in Sources */,
+				466C15F828CD085D0045FBDB /* rockTypeObjectDetector22.09.05.mlmodel in Sources */,
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
@@ -564,14 +568,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = LF8SJYTSUY;
 				INFOPLIST_FILE = TunnelManagementApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -586,14 +590,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = LF8SJYTSUY;
 				INFOPLIST_FILE = TunnelManagementApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -6,8 +6,8 @@ target 'TunnelManagementApp' do
   use_frameworks!
 
   # Pods for TunnelManagementApp
-  pod 'RealmSwift', '~> 10.16'
-  pod 'Charts', '~> 3.6'
+  # pod 'RealmSwift', '~> 10.29.0'
+  pod 'Charts', '~> 4.1.0'
   pod 'Firebase', '8.4.0'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'

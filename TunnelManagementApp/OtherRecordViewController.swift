@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OtherRecordViewController: UIViewController {
+class OtherRecordViewController: UIViewController, UITextViewDelegate {
 
     
     @IBOutlet weak var SpecialTextView: UITextView!
@@ -29,8 +29,23 @@ class OtherRecordViewController: UIViewController {
         self.navigationItem.title = "特記事項"        // Navigation Barのタイトルの設定
         self.SpecialLabel.text = titleLabel         //　Labelのテキストの設定
         
+        // プレースホルダーの設定
+        SpecialTextView.delegate = self
+        
         // TextViewの設定
-        if self.specialText != nil {
+        if self.specialText == "ここに、特記事項を記載する。" {
+            
+            self.SpecialTextView.text = self.specialText
+            
+            SpecialTextView.textColor = UIColor.lightGray
+        }
+        else if self.specialText == "" {
+            
+            self.SpecialTextView.text = "ここに、特記事項を記載する。"
+            
+            SpecialTextView.textColor = UIColor.lightGray
+        }
+        else if self.specialText != nil {
             self.SpecialTextView.text = self.specialText
         }
         
@@ -68,6 +83,26 @@ class OtherRecordViewController: UIViewController {
         self.SpecialTextView.keyboardType = .default
     }
     
+    // SpecialTextViewがフォーカスされたら、プレースホルダーを非表示
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if SpecialTextView.textColor == UIColor.lightGray {
+            
+            SpecialTextView.text = nil
+            SpecialTextView.textColor = UIColor.black
+        }
+    }
+    
+    // SpecialTextViewに文字列が入力されていない場合の処理
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if SpecialTextView.text.isEmpty {
+            
+            SpecialTextView.text = "ここに、特記事項を記載する。"
+            SpecialTextView.textColor = UIColor.lightGray
+        }
+    }
+    
     //完了ボタンを押した時の処理
     @objc func didTapDoneButton() {
         self.SpecialTextView.resignFirstResponder()
@@ -91,7 +126,14 @@ class OtherRecordViewController: UIViewController {
             kirihaRecordvc.specialSec = titleLabel
 
             kirihaRecordvc.specialSecNo = secNo
-            kirihaRecordvc.specialRecordData[secNo] = SpecialTextView.text
+            
+            if SpecialTextView.text == "ここに、特記事項を記載する。" {
+                
+                kirihaRecordvc.specialRecordData[secNo] = ""
+            }
+            else {
+                kirihaRecordvc.specialRecordData[secNo] = SpecialTextView.text
+            }
             
             print("遷移先vc: \(kirihaRecordvc), text: \(String(describing: kirihaRecordvc.specialRecordData[secNo]))")
             
@@ -102,7 +144,14 @@ class OtherRecordViewController: UIViewController {
             let kirihaRecordChangevc = nc.viewControllers[vcNum - 2] as! KirihaRecordChangeViewController
             
             kirihaRecordChangevc.specialSec = titleLabel
-            kirihaRecordChangevc.specialRecordData[secNo] = SpecialTextView.text
+            
+            if SpecialTextView.text == "ここに、特記事項を記載する。" {
+                
+                kirihaRecordChangevc.specialRecordData[secNo] = ""
+            }
+            else {
+                kirihaRecordChangevc.specialRecordData[secNo] = SpecialTextView.text
+            }
             
             print("遷移先vc: \(kirihaRecordChangevc), text: \(String(describing: kirihaRecordChangevc.specialRecordData[secNo]))")
             

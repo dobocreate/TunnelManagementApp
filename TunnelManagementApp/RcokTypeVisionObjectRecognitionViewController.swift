@@ -29,7 +29,7 @@ class RcokTypeVisionObjectRecognitionViewController: RockTypeViewController {
         
         // モデルの読み込み
         //guard let modelURL = Bundle.main.url(forResource: "ObjectDetector", withExtension: "mlmodelc")
-        guard let modelURL = Bundle.main.url(forResource: "rockTypeObjectDetector22.01.28", withExtension: "mlmodelc") else {
+        guard let modelURL = Bundle.main.url(forResource: "rockTypeObjectDetector22.09.05", withExtension: "mlmodelc") else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
         do {
@@ -169,10 +169,27 @@ class RcokTypeVisionObjectRecognitionViewController: RockTypeViewController {
         
         var rockLabel: String?
         
-        if identifier == "lava" {
-            rockLabel = "自破砕溶岩"
-        } else {
-            rockLabel = "凝灰角礫岩"
+        if identifier == "Tuff_breccia" {
+            rockLabel = "フレベシ凝灰角礫岩"
+        }
+        else if identifier == "Lava_Ab" {
+            rockLabel = "フレベシ自破砕溶岩"
+        }
+        else if identifier == "Chert" {
+            
+            rockLabel = "チャート"
+        }
+        else if identifier == "Chert_WR" {
+            
+            rockLabel = "チャート（風化）"
+        }
+        else if identifier == "Tuff" {
+            
+            rockLabel = "凝灰岩"
+        }
+        else if identifier == "Shale" {
+            
+            rockLabel = "頁岩"
         }
         
         // \nは、改行

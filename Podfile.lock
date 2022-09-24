@@ -218,9 +218,10 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - Charts (3.6.0):
-    - Charts/Core (= 3.6.0)
-  - Charts/Core (3.6.0)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
   - CLImageEditor (0.2.4):
     - CLImageEditor/Core (= 0.2.4)
   - CLImageEditor/Core (0.2.4)
@@ -367,18 +368,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
-  - Realm (10.16.0):
-    - Realm/Headers (= 10.16.0)
-  - Realm/Headers (10.16.0)
-  - RealmSwift (10.16.0):
-    - Realm (= 10.16.0)
   - SDWebImage (5.12.0):
     - SDWebImage/Core (= 5.12.0)
   - SDWebImage/Core (5.12.0)
   - SVProgressHUD (2.2.5)
+  - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
-  - Charts (~> 3.6)
+  - Charts (~> 4.1.0)
   - CLImageEditor (~> 0.2)
   - Firebase (= 8.4.0)
   - Firebase/Analytics
@@ -386,7 +383,6 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseUI/Storage
-  - RealmSwift (~> 10.16)
   - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
@@ -414,15 +410,14 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - Realm
-    - RealmSwift
     - SDWebImage
     - SVProgressHUD
+    - SwiftAlgorithms
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   CLImageEditor: dc3e5358f641368da3a76fc1c744a4c2ceb270ad
   Firebase: 54cdc8bc9c9b3de54f43dab86e62f5a76b47034f
   FirebaseAnalytics: 4751d6a49598a2b58da678cc07df696bcd809ab9
@@ -443,11 +438,10 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Realm: b6027801398f3743fc222f096faa85281b506e6c
-  RealmSwift: b02a3d0e4947955da960b642c98ad3a461fc4e70
   SDWebImage: 4ea20cca2986adc5aacde07aa686742fd4c67a37
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: b96515090002e3878f4f3b95957e551985c6e226
+PODFILE CHECKSUM: 7a149232955bdfecc406a84e5a84c6c06210091a
 
 COCOAPODS: 1.11.2

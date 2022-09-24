@@ -157,6 +157,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     
                     self.distanceLabel.text = itemName[0]
                 }
+                
             }
         }
         
@@ -322,52 +323,207 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         print("StructurePattern: \(String(describing: self.structurePattern))")
     }
     
-    
-    // 分析ボタンがタップされた時に実行
-    @IBAction func analysisButton(_ sender: Any) {
+    // 坑口からの距離の自動計算
+    @IBAction func autoCalc_kirihaDistance(_ sender: Any) {
         
-        
-//        if stationKTextField.text == "" || stationMTextField.text == "" {
-//
-//            SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
-//            print("強制終了")
-//
-//            return
-//        }
-//
-//        if distanceTextField.text == "" {
-//
-//            SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
-//            print("強制終了")
-//
-//            return
-//        }
-        
-        // 切羽観察項目の有無
-        if self.kirihaRecordDataDS?.obsRecordArray.firstIndex(of: nil) != nil {
+        // 切羽位置の入力漏れチェック
+        if stationKTextField.text == "" || stationMTextField.text == "" {
             
-            // SVProgressHUD.showError(withStatus: "切羽観察記録の入力を確認してください")
-            print("記載漏れチェック：切羽観察記録")
+            print("記載漏れチェック：切羽位置")
             
-            let alert = UIAlertController(title: "記載漏れチェック",
-                          message: "切羽観察記録に記載漏れがあります",
-                          preferredStyle: .alert)
+            // 記載漏れアラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "切羽位置を記載してください", preferredStyle: .alert)
 
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.dismiss(animated: true, completion: nil)
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
             }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
             
             return
         }
         
-        // print("obs[2] \(self.kirihaRecordData?.obsRecordArray[2])")
+        // 測点を距離に換算する
+        let stationNo = Float(stationKTextField.text!)! * 1000 + Float(stationMTextField.text!)!
         
-        saveFile()
+        // 開始測点の取得
+        let stationNo1 = self.tunnelDataDS?.stationNo1
         
-        // 分析画面に遷移する
-        self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)
+        var kirihaDistance = stationNo - Float(stationNo1!)
+        
+        self.distanceTextField.text! = String(kirihaDistance)
+        
+        print("autoCal_Distance: \(String(describing:kirihaDistance))")
+        
+    }
+    
+    
+    
+    // 切羽観察ボタンがタップされた時に実行
+    @IBAction func kirihaRecordButton(_ sender: Any) {
+        
+        // 保存するか確認するアラートを出して、保存ボタンがタップされたら保存して遷移する
+        let alert = UIAlertController(title: nil,
+                                      message: "諸元の保存を行いますか？",
+                                      preferredStyle: .alert)
+
+        let alOk = UIAlertAction(title: "保存", style: .default, handler: {
+            (action:UIAlertAction!) in
+            
+            // 未入力項目のチェック
+            // 切羽位置
+            if self.stationKTextField.text == "" || self.stationMTextField.text == "" {
+                
+                print("記載漏れチェック：切羽位置")
+                
+                // 記載漏れアラートを表示する処理
+                let alert = UIAlertController(title: nil, message: "切羽位置を記載してください", preferredStyle: .alert)
+
+                let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                    (action:UIAlertAction!) -> Void in
+
+                    // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+                })
+                
+                alert.addAction(alClose)
+                
+                self.present(alert, animated: true, completion: nil)
+
+                // 秒後に自動で閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    
+                    // 秒後の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+                }
+                
+                return
+            }
+            
+            // 坑口からの距離
+            if self.distanceTextField.text == "" {
+                
+                print("記載漏れチェック：坑口からの距離")
+                
+                // 記載漏れアラートを表示する処理
+                let alert = UIAlertController(title: nil, message: "坑口からの距離を記載してください", preferredStyle: .alert)
+
+                let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                    (action:UIAlertAction!) -> Void in
+
+                    // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+                })
+                
+                alert.addAction(alClose)
+                
+                self.present(alert, animated: true, completion: nil)
+
+                // 秒後に自動で閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    
+                    // 秒後の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+                }
+                
+                return
+            }
+            // 土被り高さ
+            if self.overburdenTextField.text == "" {
+                
+                print("記載漏れチェック：土被り高さ")
+                
+                // 記載漏れアラートを表示する処理
+                let alert = UIAlertController(title: nil, message: "土被り高さを記載してください", preferredStyle: .alert)
+
+                let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                    (action:UIAlertAction!) -> Void in
+
+                    // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+                })
+                
+                alert.addAction(alClose)
+                
+                self.present(alert, animated: true, completion: nil)
+
+                // 秒後に自動で閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    
+                    // 秒後の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+                }
+                
+                return
+            }
+
+            self.saveFile(3)
+        })
+
+        let alCancel = UIAlertAction(title: "キャンセル", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+
+            self.performSegue(withIdentifier: "KirihaRecordChangeSegue", sender: nil)     // 切羽観察記録の画面に遷移
+        }
+
+        alert.addAction(alOk)
+        alert.addAction(alCancel)
+
+        present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    // 分析ボタンがタップされた時に実行
+    @IBAction func analysisButton(_ sender: Any) {
+        
+        // 切羽観察項目の有無
+        let checkZero = self.kirihaRecordDataDS?.obsRecordArray.firstIndex(of: 0)
+        
+        print("check nil: \(checkZero)")
+        
+        if checkZero == 0 {         // obsRecordArrayの要素内に、0がある場合
+            
+            print("記載漏れチェック：切羽観察記録")
+            
+            // 記載漏れアラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "切羽観察記録にチェック漏れがあります", preferredStyle: .alert)
+
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            }
+            
+            return
+        }
+        
+        self.saveFile(2)         // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
     }
     
     // 保存ボタンがタップされた時に実行
@@ -377,66 +533,90 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // 切羽位置
         if stationKTextField.text == "" || stationMTextField.text == "" {
             
-            // SVProgressHUD.showError(withStatus: "切羽位置を入力してください")
-            
             print("記載漏れチェック：切羽位置")
             
-            let alert = UIAlertController(title: "記載漏れチェック",
-                          message: "切羽位置を記載してください",
-                          preferredStyle: .alert)
+            // 記載漏れアラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "切羽位置を記載してください", preferredStyle: .alert)
 
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.dismiss(animated: true, completion: nil)
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
             }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
             
             return
         }
         // 坑口からの距離
         if distanceTextField.text == "" {
             
-            // SVProgressHUD.showError(withStatus: "\(self.distanceLabel.text!)を入力してください")
-            
             print("記載漏れチェック：坑口からの距離")
             
-            let alert = UIAlertController(title: "記載漏れチェック",
-                          message: "坑口からの距離を記載してください",
-                          preferredStyle: .alert)
+            // 記載漏れアラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "坑口からの距離を記載してください", preferredStyle: .alert)
 
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.dismiss(animated: true, completion: nil)
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
             }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
             
             return
         }
         // 土被り高さ
         if overburdenTextField.text == "" {
             
-            // SVProgressHUD.showError(withStatus: "土被り高さを入力してください")
-            
             print("記載漏れチェック：土被り高さ")
             
-            let alert = UIAlertController(title: "記載漏れチェック",
-                          message: "土被り高さを記載してください",
-                          preferredStyle: .alert)
+            // 記載漏れアラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "土被り高さを記載してください", preferredStyle: .alert)
 
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.dismiss(animated: true, completion: nil)
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
             }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
             
             return
         }
         
         // 要注意地山の該当チェック
         alert_cautionJiyama()
-        
-        // データの保存
-        saveFile()
     }
     
     func alert_cautionJiyama() {
@@ -445,9 +625,13 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                       message: "「新生代（古第三紀以降）の泥岩類の細流砕屑岩類、同時代の凝灰岩や凝灰角礫岩等の火山砕屑岩類」に該当します",
                       preferredStyle: .alert)
         //ここから追加
-        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                        (action:UIAlertAction!) -> Void in
+
+            // 閉じるボタンがプッシュされた際の処理内容をここに記載
+            alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            // self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
+        })
         
         // Type１の判定
         let cautionGeoAgeList:[String] = ["新生代第四紀完新世", "新生代第四紀更新世", "新生代新第三紀鮮新世", "新生代新第三紀中新世", "新生代古第三紀漸新世", "新生代古第三紀始新世", "新生代古第三紀暁新世"]
@@ -461,12 +645,23 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         if type1Index1 != nil && type1Index2 != nil {
 
-            alert.addAction(ok)
+            alert.addAction(alClose)
             present(alert, animated: true, completion: nil)
+            
+            // 2.5秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+               
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)           // アラートを閉じる
+                self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
+            }
+        }
+        else {
+            self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
         }
     }
     
-    func saveFile() {
+    func saveFile(_ i:Int) {
 
         // 観察日を文字列から日付に変換する
         let dateFormatter = DateFormatter()
@@ -509,10 +704,43 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             print("更新しました")
             
-            // 画面遷移
-            // navigationController?.popViewController(animated: true)      // 画面を閉じることで１つ前の画面に戻る
-            
+            // 保存アラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
 
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                
+//                if i == 1 {
+//                    self.navigationController?.popViewController(animated: true)        // 画面を閉じることで、１つ前の画面に戻る
+//                }
+//                else if i == 2 {
+//                    self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)     // 分析画面に遷移
+//                }
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                
+                if i == 1 {
+                    self.navigationController?.popViewController(animated: true)        // 画面を閉じることで、１つ前の画面に戻る
+                }
+                else if i == 2 {
+                    self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)     // 分析画面に遷移
+                }
+                else if i == 3 {
+                    self.performSegue(withIdentifier: "KirihaRecordChangeSegue", sender: nil)     // 切羽観察記録の画面に遷移
+                }
+            }
             
         }
     }
@@ -521,12 +749,13 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // 画面遷移時に値を渡すときはここで記載する
-        if segue.identifier == "kirihaRecordChangeSegue" {              // 切羽観察へ
+        if segue.identifier == "KirihaRecordChangeSegue" {              // 切羽観察へ
             
-            print("KirihaSpecVC prepare: kirihaRecordChangeSegue")
+            print("KirihaSpecVC prepare: KirihaRecordChangeSegue")
             
             let KirihaRecordChangeVC = segue.destination as! KirihaRecordChangeViewController
             
+            // データの受け渡し
             KirihaRecordChangeVC.kirihaRecordData = self.kirihaRecordData
         }
         
@@ -536,6 +765,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             let AnalysisVC = segue.destination as! AnalysisViewController
             
+            // データの受け渡し
             AnalysisVC.obsRecordArray = self.obsRecordArray
             AnalysisVC.waterValue = self.waterValue
             AnalysisVC.rockType = self.rockTypeTextField.text
