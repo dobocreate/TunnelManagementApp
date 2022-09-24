@@ -29,6 +29,8 @@ class KirihaRecordDataDS: NSObject {
     var patternRate:[Double?] = []      // 採用確率
     var water: Float?                   // 湧水量
     
+    var stationNo2:[Float?] = []        // 観察測点、kとmを別々に保存
+    
     // 観察記録
     var obsRecord00:[Int?] = []      // 地質構造
     var obsRecord01:[Int?] = []      // 切羽の状態
@@ -98,6 +100,11 @@ class KirihaRecordDataDS: NSObject {
         }
         
         self.water = kirihaRecordDic?["water"] as? Float
+        
+        if let stationNo2 = kirihaRecordDic?["stationNo2"] as? [Float] {
+            
+            self.stationNo2 = stationNo2
+        }
         
         // 観察記録
         if let obsRecord00 = kirihaRecordDic?["obsRecord00"] as? [Int?] {     // 地質構造

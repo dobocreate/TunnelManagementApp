@@ -43,6 +43,8 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var waterValue: Float?
     var structurePattern: Int?
     
+    var stationNo2: [Float?] = Array(repeating: nil, count: 2)
+    
     // datePickerViewのプロパティ
     var obsDatePickerView: UIDatePicker = UIDatePicker()
     
@@ -234,7 +236,14 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     }
                     
                     // 切羽位置
-                    if let stationNo = self.kirihaRecordDataDS?.stationNo {
+                    print("切羽位置：\(self.kirihaRecordDataDS?.stationNo2[0])")
+                    
+                    if self.kirihaRecordDataDS?.stationNo2[0] != nil && self.kirihaRecordDataDS?.stationNo2[1] != nil {
+                        
+                        self.stationKTextField.text! = String((self.kirihaRecordDataDS?.stationNo2[0])!)
+                        self.stationMTextField.text! = String((self.kirihaRecordDataDS?.stationNo2[1])!)
+                    }
+                    else if let stationNo = self.kirihaRecordDataDS?.stationNo {
                         
                         // Any -> Floatにダウンキャスト（より具体的な型に変換する）
                         let d = stationNo
@@ -674,6 +683,10 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // 測点を距離に換算する
         let stationNo = Float(stationKTextField.text!)! * 1000 + Float(stationMTextField.text!)!
         
+        // 測点を配列に格納する
+        self.stationNo2[0] = Float(stationKTextField.text!)
+        self.stationNo2[1] = Float(stationMTextField.text!)
+        
         // 坑口からの距離
         // Float()はオプショナル型のFloat型に変換するので、アンラップしてFloat型に代入する
         let distance = Float(distanceTextField.text!)!
@@ -693,7 +706,8 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 "geoAge": geoAgeTextField.text!,
                 "distance": distance,
                 "overburden": overburden,
-                "structurePattern":self.structurePattern
+                "structurePattern":self.structurePattern,
+                "stationNo2":self.stationNo2
             ] as [String: Any]
             
             // 既存のDocumentIDの保存場所を取得

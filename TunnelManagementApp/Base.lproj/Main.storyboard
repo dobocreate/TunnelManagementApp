@@ -57,15 +57,12 @@
                                     <segue destination="Jyx-ZY-Skk" kind="show" identifier="kirihaRecordSegue" id="rv5-6t-x5B"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="search" id="SrV-72-k6g">
-                                <connections>
-                                    <action selector="sortKirihaRecord:" destination="xCK-pn-AOY" id="gDA-Yv-fpd"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="SrV-72-k6g"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="kia-li-19a" id="Pdf-BI-yVk"/>
+                        <outlet property="sortButton" destination="SrV-72-k6g" id="vSY-qz-Tss"/>
+                        <outlet property="tableView" destination="kia-li-19a" id="XnJ-uT-vvk"/>
                         <segue destination="4Iq-ec-vMV" kind="show" identifier="kirihaSpec2Segue" id="Hwk-ne-jQn"/>
                     </connections>
                 </viewController>
@@ -3110,6 +3107,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pd-c2-ukD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-888" y="3398"/>
+        </scene>
+        <!--記録一覧-->
+        <scene sceneID="EC7-Fd-TQB">
+            <objects>
+                <viewController storyboardIdentifier="kirihaList_copy" id="9xG-Nv-NGN" customClass="KirihaList2ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LOG-R1-EKr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n4b-a9-qnu">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Gg8-FT-Io3" style="IBUITableViewCellStyleDefault" id="W8E-cB-oK8">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W8E-cB-oK8" id="m46-WP-qBA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gg8-FT-Io3">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Amd-Vl-Agm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n4b-a9-qnu" firstAttribute="top" secondItem="Amd-Vl-Agm" secondAttribute="top" id="EiA-xA-opJ"/>
+                            <constraint firstItem="Amd-Vl-Agm" firstAttribute="trailing" secondItem="n4b-a9-qnu" secondAttribute="trailing" id="ab2-6C-ULb"/>
+                            <constraint firstItem="n4b-a9-qnu" firstAttribute="leading" secondItem="Amd-Vl-Agm" secondAttribute="leading" id="iw7-ut-Yv5"/>
+                            <constraint firstItem="Amd-Vl-Agm" firstAttribute="bottom" secondItem="n4b-a9-qnu" secondAttribute="bottom" id="tTu-CH-BnC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="記録一覧" id="rQx-Sa-6Va">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="YnI-uw-ktM"/>
+                            <barButtonItem systemItem="search" id="1aS-Jj-F0h">
+                                <connections>
+                                    <action selector="sortKirihaRecord:" destination="9xG-Nv-NGN" id="Bnd-ZN-YZZ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="n4b-a9-qnu" id="6c7-22-nLk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rri-x1-EYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4945" y="1608"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

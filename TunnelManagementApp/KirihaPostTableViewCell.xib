@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="92" id="KGk-i7-Jjw" customClass="KirihaPostTableViewCell" customModule="TunnelManagementApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="470" height="92"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tow-X2-eve">
+                        <rect key="frame" x="10" y="10" width="120" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="6IF-N0-HUy"/>
+                            <constraint firstAttribute="height" constant="25" id="SZr-Sv-ttN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RR5-my-rJy">
+                        <rect key="frame" x="260" y="10" width="200" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="iSs-ZW-wCc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqC-Tp-vYd">
+                        <rect key="frame" x="140" y="10" width="110" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="AQb-1z-Jly"/>
+                            <constraint firstAttribute="width" constant="110" id="qmf-fA-PYY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JqC-Tp-vYd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5hS-rF-H24"/>
+                    <constraint firstItem="tow-X2-eve" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5i3-BS-y6k"/>
+                    <constraint firstItem="tow-X2-eve" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Fsx-jr-PD0"/>
+                    <constraint firstAttribute="trailing" secondItem="RR5-my-rJy" secondAttribute="trailing" constant="10" id="KMs-9X-n5v"/>
+                    <constraint firstItem="RR5-my-rJy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="df9-br-8Cz"/>
+                    <constraint firstAttribute="bottom" secondItem="tow-X2-eve" secondAttribute="bottom" constant="10" id="dhl-w4-7Dv"/>
+                    <constraint firstItem="JqC-Tp-vYd" firstAttribute="leading" secondItem="tow-X2-eve" secondAttribute="trailing" constant="10" id="yyd-bW-kdd"/>
+                    <constraint firstItem="RR5-my-rJy" firstAttribute="leading" secondItem="JqC-Tp-vYd" secondAttribute="trailing" constant="10" id="zzu-Sd-fPn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="noteLabel" destination="RR5-my-rJy" id="8sO-Jp-0gw"/>
+                <outlet property="patternLabel" destination="JqC-Tp-vYd" id="ure-eB-wYg"/>
+                <outlet property="stationLabel" destination="tow-X2-eve" id="MyO-f7-nkl"/>
+            </connections>
+            <point key="canvasLocation" x="175" y="-244"/>
+        </tableViewCell>
+    </objects>
+</document>

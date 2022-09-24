@@ -1,19 +1,16 @@
 //
-//  KirihaListViewController.swift
+//  KirihaList2ViewController.swift
 //  TunnelManagementApp
 //
-//  Created by 岸田展明 on 2021/10/16.
+//  Created by 岸田展明 on 2022/09/25.
 //
 
 import UIKit
 import Firebase
 
-// UIViewControllerを継承するとともに、UITableViewDelegateとUITableViewDataSourceのプロトコルに準拠する
-class KirihaListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class KirihaList2ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var sortButton: UIBarButtonItem!
-    
     
     // 地山等級のパターン
     let structurePatternsName:[String?] = [
@@ -27,7 +24,6 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         "Ⅰ S",
         "特L、特S"
     ]
-    
     
     var listener: ListenerRegistration?
     
@@ -46,19 +42,15 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     // 画面遷移後に１度呼ばれる
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // デリゲートの指定。ここで、selfとはViewController
         tableView.delegate = self
         tableView.dataSource = self
         
-        // カスタムセルを登録する
-        let nib = UINib(nibName: "KirihaPostTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
-        
         print("KirihaListVC tunnelPath: \(tunnelData?.tunnelId)")
     }
     
-    
+
     // 画面が表示される前に呼び出され、他の画面から戻ってきた場合にも呼ばれる
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -97,39 +89,8 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         print("kirihaRecordDataArray.count : \(kirihaRecordDataArray.count)")
-        
-        // ソート（BarBottunItem）にドロップダウンメニューを設定
-        let items = UIMenu(options: .displayInline, children: [
-            UIAction(title: "測点順（降順）に並び替え", handler: { _ in
-                print("メニュー測点が押されました")
-                
-                // ソート
-                self.kirihaRecordDataArray.sort(by:{
-                    // 坑口からの距離：降順、日付：降順にソート
-                    ($0.distance ?? 0.0, $0.date!) > ($1.distance ?? 0.0, $1.date!)
-                })
-                
-                // TableViewの表示を更新する
-                self.tableView.reloadData()
-            }),
-            UIAction(title: "日付順（降順）に並び替え", handler: { _ in
-                print("メニュー日付が押されました")
-                
-                // ソート
-                self.kirihaRecordDataArray.sort(by:{
-                    // 日付：降順, 坑口からの距離：降順にソート
-                    ($0.date!, $0.distance ?? 0.0) > ($1.date!, $1.distance ?? 0.0)
-                })
-                
-                // TableViewの表示を更新する
-                self.tableView.reloadData()
-            }),
-        ])
-
-        self.sortButton.menu = UIMenu(title: "並び替えメニュー", children: [items])
-        // button.showsMenuAsPrimaryAction = true
     }
-
+    
     // 画面が消える前に実行される
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -138,7 +99,6 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         // listenerを削除して監視を停止する
         listener?.remove()
     }
-    
     
     // デリゲートメソッド：データ数を返す関数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,49 +110,6 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     // デリゲートメソッド：セルの表示内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        // セルを取得してデータを設定する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! KirihaPostTableViewCell
-        
-        // 日付のフォーマット
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-
-        // 値を設定する
-        if let stationNo = kirihaRecordDataArray[indexPath.row].stationNo, let date =  kirihaRecordDataArray[indexPath.row].date {
-            
-            // ダウンキャスト（より具体的な型に変換する）
-            let a = floor(stationNo / 1000)
-            var b = stationNo - a * 1000
-            
-            // 有効数字（小数点以下2位を四捨五入）
-            b = round(b * 100)
-            b = b / 100
-            
-            let c: Int = Int(a)
-            
-            if let sP = kirihaRecordDataArray[indexPath.row].structurePattern, let sPN = self.structurePatternsName[sP] {
-
-                cell.stationLabel!.text = "測点 : " + String(format:"%4d", c) + "k " + String(format:"%5.1f", b) + "m"
-                cell.patternLabel!.text = "地山等級 : " + String(sPN)
-                cell.noteLabel!.text = "日付 : " + formatter.string(from: date)
-            }
-            else {          // 支保パターンが設定されていない場合
-                cell.stationLabel!.text = "測点 : " + String(format:"%4d", c) + "k " + String(format:"%5.1f", b) + "m"
-                cell.patternLabel!.text = "地山等級 : 未設定"
-                cell.noteLabel!.text = "日付 : " + formatter.string(from: date)
-            }
-        }
-        else if let date =  kirihaRecordDataArray[indexPath.row].date {     // 測点が設定されていない場合
-            
-            cell.stationLabel!.text = "測点 : 未設定"
-            cell.patternLabel!.text = "地山等級 : 未設定"
-            cell.noteLabel!.text = "日付 : " + formatter.string(from: date)
-        }
-        
-        return cell
-        
-        
-        /*
         // 再利用可能な cell を得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
@@ -227,8 +144,6 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 
         return cell
-        */
-        
     }
     
     // セルが削除が可能なことを伝えるメソッド
@@ -320,7 +235,6 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    /*
     // ソートする
     @IBAction func sortKirihaRecord(_ sender: Any) {
         
@@ -333,15 +247,5 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         // TableViewの表示を更新する
         self.tableView.reloadData()
     }
-    */
     
-    /*
-    // 諸元の画面から戻る
-    @IBAction func unwind(_ segue: UIStoryboardSegue) {
-        
-        
-    }
-    */
-    
-
 }
