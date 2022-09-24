@@ -57,7 +57,6 @@
 		46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */; };
 		46C0DE45271C67A900E1E106 /* KirihaRecordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */; };
 		46C0DE49271C97E400E1E106 /* KirihaRecordDataDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */; };
-		46C2802F28DF5CC10001C9C6 /* KirihaPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2802E28DF5CC10001C9C6 /* KirihaPostData.swift */; };
 		46C2803228DF5E0F0001C9C6 /* KirihaPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2803028DF5E0F0001C9C6 /* KirihaPostTableViewCell.swift */; };
 		46C2803328DF5E0F0001C9C6 /* KirihaPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46C2803128DF5E0F0001C9C6 /* KirihaPostTableViewCell.xib */; };
 		46C2803528DF6E610001C9C6 /* KirihaList2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2803428DF6E610001C9C6 /* KirihaList2ViewController.swift */; };
@@ -127,7 +126,6 @@
 		46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockTypeInstructionsViewController.swift; sourceTree = "<group>"; };
 		46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordChangeViewController.swift; sourceTree = "<group>"; };
 		46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaRecordDataDS.swift; sourceTree = "<group>"; };
-		46C2802E28DF5CC10001C9C6 /* KirihaPostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaPostData.swift; sourceTree = "<group>"; };
 		46C2803028DF5E0F0001C9C6 /* KirihaPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaPostTableViewCell.swift; sourceTree = "<group>"; };
 		46C2803128DF5E0F0001C9C6 /* KirihaPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KirihaPostTableViewCell.xib; sourceTree = "<group>"; };
 		46C2803428DF6E610001C9C6 /* KirihaList2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaList2ViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				46EC69962726814C00B081FC /* Analysis2ViewController.swift */,
 				467CF115271FEBD600324527 /* AnalysisViewController.swift */,
 				4659838D270B26E700898FDF /* AppDelegate.swift */,
-				46C2802E28DF5CC10001C9C6 /* KirihaPostData.swift */,
 				46C2803028DF5E0F0001C9C6 /* KirihaPostTableViewCell.swift */,
 				46C2803128DF5E0F0001C9C6 /* KirihaPostTableViewCell.xib */,
 				46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */,
@@ -403,7 +400,6 @@
 				46598392270B26E700898FDF /* ViewController.swift in Sources */,
 				46EC699927268CAD00B081FC /* MyTabularClassifierKiriha.mlmodel in Sources */,
 				466308D8271A9FAD00214303 /* KirihaRecordData.swift in Sources */,
-				46C2802F28DF5CC10001C9C6 /* KirihaPostData.swift in Sources */,
 				46C2803228DF5E0F0001C9C6 /* KirihaPostTableViewCell.swift in Sources */,
 				46C2803528DF6E610001C9C6 /* KirihaList2ViewController.swift in Sources */,
 				46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */,
