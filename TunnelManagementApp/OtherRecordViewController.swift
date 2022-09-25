@@ -26,14 +26,22 @@ class OtherRecordViewController: UIViewController, UITextViewDelegate {
         print("遷移元vc: \(String(describing: self.vcName))")
         
         // 初期設定
-        self.navigationItem.title = "特記事項"        // Navigation Barのタイトルの設定
+        // self.navigationItem.title = "特記事項"        // Navigation Barのタイトルの設定
+        self.navigationItem.title = titleLabel
         self.SpecialLabel.text = titleLabel         //　Labelのテキストの設定
         
         // プレースホルダーの設定
         SpecialTextView.delegate = self
         
         // TextViewの設定
+        print("titleLabel : \(titleLabel)")
         if self.specialText == "ここに、特記事項を記載する。" {
+            
+            self.SpecialTextView.text = self.specialText
+            
+            SpecialTextView.textColor = UIColor.lightGray
+        }
+        else if self.specialText == "ここに、記事を記載する。" {
             
             self.SpecialTextView.text = self.specialText
             

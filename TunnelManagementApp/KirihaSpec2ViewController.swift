@@ -236,14 +236,17 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     }
                     
                     // 切羽位置
-                    print("切羽位置：\(self.kirihaRecordDataDS?.stationNo2[0])")
+                    // print("切羽位置：\(self.kirihaRecordDataDS?.stationNo2[0])")
                     
-                    if self.kirihaRecordDataDS?.stationNo2[0] != nil && self.kirihaRecordDataDS?.stationNo2[1] != nil {
+                    if self.kirihaRecordDataDS?.stationNo2.isEmpty == false {           // 測点が一度は設定され、配列が空でない場合
                         
-                        self.stationKTextField.text! = String((self.kirihaRecordDataDS?.stationNo2[0])!)
-                        self.stationMTextField.text! = String((self.kirihaRecordDataDS?.stationNo2[1])!)
+                        let stationNo20 = self.kirihaRecordDataDS?.stationNo2[0]
+                        let stationNo21 = self.kirihaRecordDataDS?.stationNo2[1]
+                        
+                        self.stationKTextField.text! = String(Int(stationNo20!))
+                        self.stationMTextField.text! = String(stationNo21!)
                     }
-                    else if let stationNo = self.kirihaRecordDataDS?.stationNo {
+                    else if let stationNo = self.kirihaRecordDataDS?.stationNo {        // 更新されておらず、測点の配列が空の場合
                         
                         // Any -> Floatにダウンキャスト（より具体的な型に変換する）
                         let d = stationNo
@@ -379,7 +382,6 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     
-    
     // 切羽観察ボタンがタップされた時に実行
     @IBAction func kirihaRecordButton(_ sender: Any) {
         
@@ -491,8 +493,6 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         alert.addAction(alCancel)
 
         present(alert, animated: true, completion: nil)
-        
-        
     }
     
     
@@ -510,6 +510,35 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             // 記載漏れアラートを表示する処理
             let alert = UIAlertController(title: nil, message: "切羽観察記録にチェック漏れがあります", preferredStyle: .alert)
+
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // 秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)          // アラートを閉じる
+            }
+            
+            return
+        }
+        
+        // 湧水量のチェック
+        if self.waterValue == nil {         // obsRecordArrayの要素内に、0がある場合
+            
+            print("記載漏れチェック：湧水量")
+            
+            // 記載漏れアラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "湧水量が記載されていません", preferredStyle: .alert)
 
             let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
                 (action:UIAlertAction!) -> Void in

@@ -218,6 +218,23 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
                     self.waterValue = w
                 }
                 
+                // 特記事項の配列の要素が14未満の場合（古いデータの場合）
+                let aCount = self.specialRecordData.count
+                
+                print("特記事項配列：\(aCount)")
+                
+                if 0 < aCount && aCount <= 14 {
+                    
+                    let u = Int(self.specialRecordData.count)
+
+                    for x in u...14 {
+                        
+                        self.specialRecordData.append(nil)
+                        
+                        print("x : \(x)")
+                    }
+                }
+                
                 // 特記事項の内容を設定する
                 for r in 0..<self.specialRecordData.count{
                     
@@ -627,7 +644,12 @@ class KirihaRecordChangeViewController: UIViewController, UITableViewDelegate, U
             
             if self.specialRecordData[self.specialSecNo!] == nil {          //　初めて特記事項を記載する場合
                 
-                otherRecordVC.specialText = "ここに、特記事項を記載する。"
+                if self.specialSecNo! == 14 {           // 記事の場合
+                    otherRecordVC.specialText = "ここに、記事を記載する。"
+                } else {
+                    otherRecordVC.specialText = "ここに、特記事項を記載する。"
+                }
+                
             } else {
                 
                 otherRecordVC.specialText = self.specialRecordData[self.specialSecNo!]

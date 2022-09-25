@@ -106,7 +106,7 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
                 // ソート
                 self.kirihaRecordDataArray.sort(by:{
                     // 坑口からの距離：降順、日付：降順にソート
-                    ($0.distance ?? 0.0, $0.date!) > ($1.distance ?? 0.0, $1.date!)
+                    ($0.stationNo ?? 0.0, $0.date!) > ($1.stationNo ?? 0.0, $1.date!)
                 })
                 
                 // TableViewの表示を更新する

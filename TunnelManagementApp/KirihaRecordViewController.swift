@@ -486,7 +486,13 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             otherRecordVC.secNo = self.specialSecNo
             
             if self.specialRecordData[self.specialSecNo!] == nil {          //　初めて特記事項を記載する場合
-                otherRecordVC.specialText = "ここに、特記事項を記載する。"
+                
+                if self.specialSecNo! == 14 {           // 記事の場合
+                    otherRecordVC.specialText = "ここに、記事を記載する。"
+                } else {
+                    otherRecordVC.specialText = "ここに、特記事項を記載する。"
+                }
+                
             } else {
                 
                 otherRecordVC.specialText = self.specialRecordData[self.specialSecNo!]
