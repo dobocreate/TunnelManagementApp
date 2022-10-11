@@ -1,8 +1,8 @@
 //
-//  KirihaSpec2ViewController.swift
+//  KirihaSpec1ViewController.swift
 //  TunnelManagementApp
 //
-//  Created by 岸田展明 on 2021/11/04.
+//  Created by 岸田展明 on 2022/10/11.
 //
 
 import UIKit
@@ -10,8 +10,7 @@ import Firebase
 import SVProgressHUD
 import SwiftUI
 
-class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
-
+class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var obsDateTextField: UITextField!       // 観察日ボタン
     @IBOutlet weak var rockTypeTextField: UITextField!      // 岩種ボタン
@@ -29,8 +28,9 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // データ受け渡し用
     var tunnelData: TunnelData?                 // トンネルデータを格納する配列
     var kirihaRecordData: KirihaRecordData?     // 切羽観察記録データを格納する配列
-    var id2: String?                             // 切羽観察記録データのid
-    var tunnelId2: String?                       // トンネルid
+    var id1: String?                            // 切羽観察記録データのid
+//    var tunnelId1: String?                      // トンネルid
+//    var date1: Date?                            // 日付
     
     var kirihaRecordData2: KirihaRecordData?
     var dataArray2: [Float?] = []
@@ -163,225 +163,15 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             }
         }
         
-        // Firestoreから切羽観察記録データの取得
-        // tunnelIdとidのnilでない時（データの受け渡しに成功した場合）
-        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
-            
-            print("KirihaSpec2VC tunnleId \(tunnelId), id \(id)")
-            
-            // データを取得するドキュメントを設定
-            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
-            
-            // Firestoreのdocumentを取得する
-            kirihaRecordDataRef.getDocument { (documentSnapshot, error) in
-                if let document = documentSnapshot, document.exists {
-                    
-                    if let error = error {
-                        print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
-                        return
-                    }
-                    
-                    guard let document = documentSnapshot else { return }
-                    
-                    let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
-                    
-                    self.kirihaRecordDataDS = kirihaRecordDataDS
-                    
-                    // Firestoreから取得したデータを格納する
-                    // 切羽評価点
-                    if let array = self.kirihaRecordDataDS?.obsRecordArray {
-                        
-                        self.obsRecordArray = array
-                        
-                        print("obsRecordArray: \(self.obsRecordArray)")
-                    }
-                    // 湧水量
-                    if let w = self.kirihaRecordDataDS?.water {
-                        
-                        self.waterValue = w
-                        
-                        print("waterValue: \(String(describing: self.waterValue))")
-                    }
-                    
-                    
-                    /*
-                    let dataArray:[Float?] = document.data()?["obsRecordArray"] as! [Float?]
-                    
-                    self.dataArray2 = document.data()?["obsRecordArray"] as! [Float?]
-                    
-                    self.kirihaRecordData2?.obsRecordArray = dataArray
-                    */
-                    
-                    // 自分で定義したクラス内の配列には、値を代入することができない
-                    // print("obsRecordArray[0] : \(self.kirihaRecordData2?.obsRecordArray[0])")
-                
-                    // テキストフィールドに値を代入する
-                    // 観察日
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy年MM月dd日"
-                    
-                    print("obsDate: \(String(describing: kirihaRecordDataDS.obsDate))")
-                    
-                    if let obsDate = kirihaRecordDataDS.obsDate {
-                        
-                        self.obsDateTextField.text! = formatter.string(from: obsDate)
-                        
-                        print("obsDate input: \(obsDate)")
-                    }
-                    else if let date = kirihaRecordDataDS.date {
-                        
-                        self.obsDateTextField.text! = formatter.string(from: date)
-                        
-                        print("Date input")
-                    }
-                    
-                    // 切羽位置
-                    // print("切羽位置：\(self.kirihaRecordDataDS?.stationNo2[0])")
-                    
-                    if self.kirihaRecordDataDS?.stationNo2.isEmpty == false {           // 測点が一度は設定され、配列が空でない場合
-                        
-                        let stationNo20 = self.kirihaRecordDataDS?.stationNo2[0]
-                        let stationNo21 = self.kirihaRecordDataDS?.stationNo2[1]
-                        
-                        self.stationKTextField.text! = String(Int(stationNo20!))
-                        self.stationMTextField.text! = String(stationNo21!)
-                    }
-                    else if let stationNo = self.kirihaRecordDataDS?.stationNo {        // 更新されておらず、測点の配列が空の場合
-                        
-                        // Any -> Floatにダウンキャスト（より具体的な型に変換する）
-                        let d = stationNo
-                        
-                        // 有効数字（小数点以下2位を四捨五入）
-                        let a = floor(d / 1000)
-                        var b = d - a * 1000
-                        b = round(b * 100)
-                        b = b / 100
-                        
-                        let c: Int = Int(a)
-                        
-                        self.stationKTextField.text! = String(c)
-                        self.stationMTextField.text! = String(b)
-                    }
-                    
-                    // 坑口からの距離
-                    if let distance = self.kirihaRecordDataDS?.distance {
-                        
-                        self.distanceTextField.text! = String(distance)
-                    }
-                    
-                    // 土被り高さ
-                    if let overburden = self.kirihaRecordDataDS?.overburden {
-                        
-                        self.overburdenTextField.text! = String(overburden)
-                    }
-                    
-                    // 岩種
-                    if let rockType = self.kirihaRecordDataDS?.rockType {
-                        
-                        self.rockTypeTextField.text! = rockType
-                    }
-                    else {
-                        self.rockTypeTextField.text! = self.rockTypeDataSource[0]
-                    }
-                    
-                    // 岩石名
-                    if let rockName = self.kirihaRecordDataDS?.rockName {
-                        
-                        self.rockNameTextField.text! = rockName
-                    }
-                    else {
-                        self.rockNameTextField.text! = self.rockNameDataSource[0]!
-                    }
-                    
-                    // 形成地質年代
-                    if let geoAge = self.kirihaRecordDataDS?.geoAge {
-                        
-                        self.geoAgeTextField.text! = geoAge
-                    }
-                    else {
-                        self.geoAgeTextField.text! = self.geoAgeDataSource[0]!
-                    }
-                    
-                    // 地山等級
-                    if let structurePattern = self.kirihaRecordDataDS?.structurePattern {
-                        
-                        self.kirihaRecordData?.structurePattern = structurePattern
-                        self.structurePattern = structurePattern
-                    }
-                    
-                    /*
-                    // 切羽観察記録
-                    self.kirihaRecordData?.obsRecordArray = kirihaRecordDataDS.obsRecordArray
-                    
-                    /*
-                    if let obsRecordArray:[Int?] = kirihaRecordDataDS.obsRecordArray {
-                        
-                        self.kirihaRecordData?.obsRecordArray = obsRecordArray
-                    }
-                    */
-                    
-                    // 湧水量の取得
-                    self.kirihaRecordData?.water = kirihaRecordDataDS.water
-                    */
-                    
-                    print("KirihaSpec2VC water \(String(describing: self.waterValue))")
-                }
-                else {
-                    print("Document does not exist")
-                }
-            }
-        }
-        else if let tunnelId2 = self.tunnelId2, let id2 = self.id2 {
-            
-            let tunnelId3:String = tunnelId2
-            let id3:String = id2
-            
-            print("kirihaRecordData tunnelId3: \(tunnelId3), id3: \(id3)")
-            
-            // データを取得するドキュメントを設定
-            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId2).document(id2)
-            
-            // Firestoreのdocumentを取得する
-            kirihaRecordDataRef.getDocument { (documentSnapshot, error) in
-                if let document = documentSnapshot, document.exists {
-                    
-                    if let error = error {
-                        print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
-                        return
-                    }
-                    
-                    guard let document = documentSnapshot else { return }
-                    
-                    let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
-                    
-                    self.kirihaRecordDataDS = kirihaRecordDataDS
-                    
-                    // Firestoreから取得したデータを格納する
-                    // テキストフィールドに値を代入する
-                    // 観察日
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy年MM月dd日"
-                    
-                    print("obsDate: \(String(describing: kirihaRecordDataDS.obsDate))")
-                    print("Date: \(String(describing: kirihaRecordDataDS.date))")
-                    
-                    if let obsDate = kirihaRecordDataDS.obsDate {
-                        
-                        self.obsDateTextField.text! = formatter.string(from: obsDate)
-                        
-                        print("obsDate input: \(obsDate)")
-                    }
-                    else if let date = kirihaRecordDataDS.date {
-                        
-                        self.obsDateTextField.text! = formatter.string(from: date)
-                        
-                        print("Date input")
-                    }
-                }
-            }
-        }
+        // 観察日
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
         
-        print("StructurePattern: \(String(describing: self.structurePattern))")
+        let date = Date()
+        
+        self.obsDateTextField.text! = formatter.string(from: date)
+        
+        print("Date: \(date)")
     }
     
     // 坑口からの距離の自動計算
@@ -772,22 +562,20 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // 土被り高さ
         let overburden = Float(overburdenTextField.text!)!
         
-        var tunnelId:String? = nil
-        var id:String? = nil
-        
-        if self.kirihaRecordData != nil {
+//        var tunnelId:String? = nil
+//        var id:String? = nil
+//
+//        if self.kirihaRecordData != nil {
+//
+//            tunnelId = self.kirihaRecordData?.tunnelId
+//            id = self.kirihaRecordData?.id
+//        }
+
+        // Firebaseの操作
+        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+            // 既にIDが発行されており、データを更新する場合
             
-            tunnelId = self.kirihaRecordData?.tunnelId
-            id = self.kirihaRecordData?.id
-        }
-        else {
-            tunnelId = self.tunnelId2
-            id = self.id2
-        }
-        
-        print("save tunnelId: \(tunnelId), id: \(id)")
-        
-        if tunnelId != nil && id != nil {
+            print("save tunnelId: \(tunnelId), id: \(id)")
             
             // 保存するデータを辞書の型にまとめる
             let kirihaRecordDic = [
@@ -804,7 +592,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             ] as [String: Any]
             
             // 既存のDocumentIDの保存場所を取得
-            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId!).document(id!)
+            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
             
             // データを更新する
             kirihaRecordDataRef.updateData(kirihaRecordDic)
@@ -820,12 +608,6 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 // 閉じるボタンがプッシュされた際の処理内容をここに記載
                 alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
                 
-//                if i == 1 {
-//                    self.navigationController?.popViewController(animated: true)        // 画面を閉じることで、１つ前の画面に戻る
-//                }
-//                else if i == 2 {
-//                    self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)     // 分析画面に遷移
-//                }
             })
             
             alert.addAction(alClose)
@@ -848,30 +630,93 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     self.performSegue(withIdentifier: "KirihaRecordChangeSegue", sender: nil)     // 切羽観察記録の画面に遷移
                 }
             }
+        } else {        // 新規でデータを保存する場合
+            
+            let obsName = Auth.auth().currentUser?.displayName
+            
+            if let tunnelId = self.tunnelData?.tunnelId {
+                
+                // 画像と投稿データの保存場所を定義する
+                // 自動生成されたIDを持つドキュメントリファレンスを作成する
+                // この段階でDocumentIDが自動生成される
+                let postRef = Firestore.firestore().collection(tunnelId).document()
+                
+                print("kirihaRecordVC postRef: \(postRef.documentID)")
+                
+                // 保存するデータを辞書の型にまとめる
+                let postDic = [
+                    "id": postRef.documentID,
+                    "date": FieldValue.serverTimestamp(),
+                    "tunnelId": tunnelId,
+                    "obsName": obsName!,
+                    "stationNo": stationNo,
+                    "obsDate": obsDate,
+                    "rockType": rockTypeTextField.text!,
+                    "rockName": rockNameTextField.text!,
+                    "geoAge": geoAgeTextField.text!,
+                    "distance": distance,
+                    "overburden": overburden,
+                    "structurePattern":self.structurePattern,
+                    "stationNo2":self.stationNo2
+                ] as [String: Any]
+                
+                postRef.setData(postDic)
+                
+                self.id1 = postRef.documentID               // データの受け渡し用
+                
+                // 保存アラートを表示する処理
+                let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
+                
+                let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                    (action:UIAlertAction!) -> Void in
+                    
+                    // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                    alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                    // self.performSegue(withIdentifier: "KirihaRecordSegue", sender: nil)     // 切羽観察記録の画面に遷移
+                })
+                
+                alert.addAction(alClose)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+                // ２秒後に自動で閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    
+                    // 秒後の処理内容をここに記載
+
+                    alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                    self.performSegue(withIdentifier: "KirihaRecordSegue", sender: nil)     // 切羽観察記録の画面に遷移
+                }
+                
+                print("新規保存しました")
+            }
         }
+        
     }
     
     // 画面遷移前に実行される
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // 画面遷移時に値を渡すときはここで記載する
-        if segue.identifier == "KirihaRecordChangeSegue" {              // 切羽観察へ
+        if segue.identifier == "KirihaRecordSegue" {              // 切羽観察へ
             
-            print("KirihaSpecVC prepare: KirihaRecordChangeSegue")
-            
-            let KirihaRecordChangeVC = segue.destination as! KirihaRecordChangeViewController
+            print("KirihaSpecVC prepare: KirihaRecordSegue")
             
             // データの受け渡し
-            KirihaRecordChangeVC.kirihaRecordData = self.kirihaRecordData
+            let KirihaRecordVC = segue.destination as! KirihaRecordViewController
+            
+            KirihaRecordVC.tunnelData = self.tunnelData
+            KirihaRecordVC.kirihaRecordData = self.kirihaRecordData
+            KirihaRecordVC.id1 = self.id1
         }
         
         if segue.identifier == "AnalysisSegue" {                        // 分析へ
             
             print("KirihaSpecVC prepare: AnalysisSegue")
             
+            // データの受け渡し
             let AnalysisVC = segue.destination as! AnalysisViewController
             
-            // データの受け渡し
             AnalysisVC.obsRecordArray = self.obsRecordArray
             AnalysisVC.waterValue = self.waterValue
             AnalysisVC.rockType = self.rockTypeTextField.text
@@ -975,7 +820,3 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         self.view.endEditing(true)
     }
 }
-
-
-
-

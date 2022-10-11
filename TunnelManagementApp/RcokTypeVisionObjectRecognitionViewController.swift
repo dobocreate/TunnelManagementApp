@@ -170,25 +170,23 @@ class RcokTypeVisionObjectRecognitionViewController: RockTypeViewController {
         var rockLabel: String?
         
         if identifier == "Tuff_breccia" {
-            rockLabel = "フレベシ凝灰角礫岩"
+            // rockLabel = "フレベシ凝灰角礫岩"
+            rockLabel = "凝灰角礫岩"
         }
         else if identifier == "Lava_Ab" {
-            rockLabel = "フレベシ自破砕溶岩"
+            // rockLabel = "フレベシ自破砕溶岩"
+            rockLabel = "自破砕溶岩"
         }
         else if identifier == "Chert" {
-            
             rockLabel = "チャート"
         }
         else if identifier == "Chert_WR" {
-            
             rockLabel = "チャート（風化）"
         }
         else if identifier == "Tuff" {
-            
             rockLabel = "凝灰岩"
         }
         else if identifier == "Shale" {
-            
             rockLabel = "頁岩"
         }
         

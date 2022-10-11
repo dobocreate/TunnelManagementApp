@@ -51,6 +51,7 @@
 		46AB5220270E85FC00D489DE /* RemarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */; };
 		46AB5222270E8D1900D489DE /* RemarksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB5221270E8D1900D489DE /* RemarksData.swift */; };
 		46AB5224270EC37B00D489DE /* RemarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB5223270EC37B00D489DE /* RemarksViewController.swift */; };
+		46B6EB2628F5300A00C2809C /* KirihaSpec1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6EB2528F5300A00C2809C /* KirihaSpec1ViewController.swift */; };
 		46C0DE3D271B826F00E1E106 /* KirihaSpecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */; };
 		46C0DE3F271BBA9800E1E106 /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */; };
 		46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */; };
@@ -120,6 +121,7 @@
 		46AB521E270E85FC00D489DE /* RemarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarksTableViewCell.xib; sourceTree = "<group>"; };
 		46AB5221270E8D1900D489DE /* RemarksData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksData.swift; sourceTree = "<group>"; };
 		46AB5223270EC37B00D489DE /* RemarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarksViewController.swift; sourceTree = "<group>"; };
+		46B6EB2528F5300A00C2809C /* KirihaSpec1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaSpec1ViewController.swift; sourceTree = "<group>"; };
 		46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirihaSpecViewController.swift; sourceTree = "<group>"; };
 		46C0DE3E271BBA9800E1E106 /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
 		46C0DE40271BBCAA00E1E106 /* rockTypeInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions.png; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */,
 				46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */,
 				4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */,
+				46B6EB2528F5300A00C2809C /* KirihaSpec1ViewController.swift */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
 				466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */,
@@ -418,6 +421,7 @@
 				4661ACE527F6DA3C00F6AA95 /* RockTypeCautionViewController.swift in Sources */,
 				46AB521C270DC09900D489DE /* KirihaRecordViewController.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,
+				46B6EB2628F5300A00C2809C /* KirihaSpec1ViewController.swift in Sources */,
 				46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */,
 				4637568F2733C29A008FFB28 /* TunnelCreate2ViewController.swift in Sources */,
 				461FE21B27A9E8D60085F7F6 /* RcokTypeVisionObjectRecognitionViewController.swift in Sources */,

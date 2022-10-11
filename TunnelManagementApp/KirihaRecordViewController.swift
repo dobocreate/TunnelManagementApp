@@ -16,6 +16,9 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     // var tunnelPath: String?     // トンネルID
     
     var kirihaRecordData: KirihaRecordData?         // 遷移前のVCからデータを受け取る配列
+    var id1: String?                // documentID
+    
+    var kirihaRecordDataDS: KirihaRecordDataDS?     // Firestoreデータの格納用
     
     // 切羽観察記録の選択された情報を格納する
     var obsRecordArray  = [Float?](repeating: nil, count:13)
@@ -110,6 +113,42 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // データの受け渡しテスト
+        print("KirihaRecordVC: \(self.id1)")
+        
+        if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
+            
+            print("KirihaSpecVC 2 kirihaRecordData tunnleId \(tunnelId), id \(id)")
+            
+            // データを取得するドキュメントを設定
+            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
+            
+            // Firestoreのdocumentを取得する
+            kirihaRecordDataRef.getDocument { (documentSnapshot, error) in
+                if let document = documentSnapshot, document.exists {
+                    
+                    if let error = error {
+                        print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
+                        return
+                    }
+                    
+                    guard let document = documentSnapshot else { return }
+                    
+                    let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
+                    
+                    self.kirihaRecordDataDS = kirihaRecordDataDS
+                    
+                    // Firestoreから取得したデータを格納する
+                    // 切羽評価点
+                    if let overBurden = self.kirihaRecordDataDS?.overburden {
+                        
+                        print("overBurden: \(overBurden)")
+                    }
+                }
+            }
+        }
+        // テストここまで
+        
         if self.specialSecNo != nil &&                                  // 入力画面から戻ってきたときに実行
             self.specialRecordData[self.specialSecNo!] != nil {         // セクションNoおよび特記事項が初期値から変更がない場合
             
@@ -195,23 +234,10 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     // データをfirestoreに保存するメソッド
     func saveKirihaData() {
         
-        let obsName = Auth.auth().currentUser?.displayName
-        
-        if let tunnelId = self.tunnelData?.tunnelId {
-            
-            // 画像と投稿データの保存場所を定義する
-            // 自動生成されたIDを持つドキュメントリファレンスを作成する
-            // この段階でDocumentIDが自動生成される
-            let postRef = Firestore.firestore().collection(tunnelId).document()
-            
-            print("kirihaRecord2VC postRef: \(postRef.documentID)")
+        if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
             
             // 保存するデータを辞書の型にまとめる
-            let postDic = [
-                "id": postRef.documentID,
-                "date": FieldValue.serverTimestamp(),
-                "tunnelId": tunnelId,
-                "obsName": obsName!,
+            let kirihaRecordDic = [
                 "obsRecordArray": self.obsRecordArray,
                 "obsRecord00": self.obsRecordArray2d[0],
                 "obsRecord01": self.obsRecordArray2d[1],
@@ -230,7 +256,13 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
                 "water": self.waterValue
             ] as [String: Any]
             
-            postRef.setData(postDic)
+            // 既存のDocumentIDの保存場所を取得
+            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
+            
+            // データを更新する
+            kirihaRecordDataRef.updateData(kirihaRecordDic)
+            
+            print("更新しました")
             
             // 保存アラートを表示する処理
             let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
@@ -240,7 +272,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
 
                 // 閉じるボタンがプッシュされた際の処理内容をここに記載
                 alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
-                self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
+                // self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
             })
             
             alert.addAction(alClose)
@@ -254,8 +286,6 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
                 alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
                 self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
             }
-
-            print("新規保存しました")
         }
     }
     

@@ -39,6 +39,7 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // データ受け渡し用の切羽観察記録
     var kirihaRecordData: KirihaRecordData?
+    var kirihaRecordData2: KirihaRecordData?
     
     // トンネルID
     var tunnelPath: String?
@@ -139,6 +140,7 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         listener?.remove()
     }
     
+    // kirihaRecordSegue
     
     // デリゲートメソッド：データ数を返す関数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -300,21 +302,38 @@ class KirihaListViewController: UIViewController, UITableViewDelegate, UITableVi
         performSegue(withIdentifier: "kirihaSpec2Segue",sender: nil)
     }
     
+    // 新規作成ボタン「＋」をタップした時に実行されるメソッド
+    @IBAction func newBarButton(_ sender: Any) {
+        
+        
+        // Segue IDを指定して画面遷移させる
+        performSegue(withIdentifier: "kirihaSpec1Segue",sender: nil)
+        
+    }
+    
     // 画面を閉じる前に実行される
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "kirihaRecordSegue" {
+        
+        if segue.identifier == "kirihaSpec1Segue" {        // ナビゲーションバー「＋」をタップしたときの画面遷移
             
-            let kirihaRecordVC:KirihaRecordViewController = segue.destination as! KirihaRecordViewController
+            // 切羽観察に遷移する場合の処理
+            // let kirihaRecordVC:KirihaRecordViewController = segue.destination as! KirihaRecordViewController
+            // kirihaRecordVC.tunnelData = self.tunnelData
             
-            kirihaRecordVC.tunnelData = self.tunnelData
+            // 設定に遷移する場合の処理
+            let kirihaSpec1VC: KirihaSpec1ViewController = segue.destination as! KirihaSpec1ViewController
+            
+            kirihaSpec1VC.tunnelData = self.tunnelData
+            
+            
         }
-        else if segue.identifier == "kirihaSpec2Segue" {
+        else if segue.identifier == "kirihaSpec2Segue" {        // テーブルのセルをタップしたときの画面遷移
             
-            let kirihaSpecVC: KirihaSpec2ViewController = segue.destination as! KirihaSpec2ViewController
+            let kirihaSpec2VC: KirihaSpec2ViewController = segue.destination as! KirihaSpec2ViewController
             
-            kirihaSpecVC.kirihaRecordData = self.kirihaRecordData
-            kirihaSpecVC.tunnelData = self.tunnelData
+            kirihaSpec2VC.kirihaRecordData = self.kirihaRecordData
+            kirihaSpec2VC.tunnelData = self.tunnelData
             
             // kirihaSpecVC.tunnelData = self.tunnelData
         }
