@@ -163,15 +163,185 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             }
         }
         
-        // 観察日
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年MM月dd日"
-        
-        let date = Date()
-        
-        self.obsDateTextField.text! = formatter.string(from: date)
-        
-        print("Date: \(date)")
+        // Firestoreから切羽観察記録データの取得
+        // tunnelIdとidのnilでない時（データの受け渡しに成功した場合）
+        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+            
+            print("KirihaSpec1VC tunnleId \(tunnelId), id \(id)")
+            
+            // データを取得するドキュメントを設定
+            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
+            
+            // Firestoreのdocumentを取得する
+            kirihaRecordDataRef.getDocument { (documentSnapshot, error) in
+                if let document = documentSnapshot, document.exists {
+                    
+                    if let error = error {
+                        print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
+                        return
+                    }
+                    
+                    guard let document = documentSnapshot else { return }
+                    
+                    let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
+                    
+                    self.kirihaRecordDataDS = kirihaRecordDataDS
+                    
+                    // Firestoreから取得したデータを格納する
+                    // 切羽評価点
+                    if let array = self.kirihaRecordDataDS?.obsRecordArray {
+                        
+                        self.obsRecordArray = array
+                        
+                        print("obsRecordArray: \(self.obsRecordArray)")
+                    }
+                    // 湧水量
+                    if let w = self.kirihaRecordDataDS?.water {
+                        
+                        self.waterValue = w
+                        
+                        print("waterValue: \(String(describing: self.waterValue))")
+                    }
+                    
+                    
+                    /*
+                    let dataArray:[Float?] = document.data()?["obsRecordArray"] as! [Float?]
+                    
+                    self.dataArray2 = document.data()?["obsRecordArray"] as! [Float?]
+                    
+                    self.kirihaRecordData2?.obsRecordArray = dataArray
+                    */
+                    
+                    // 自分で定義したクラス内の配列には、値を代入することができない
+                    // print("obsRecordArray[0] : \(self.kirihaRecordData2?.obsRecordArray[0])")
+                
+                    // テキストフィールドに値を代入する
+                    // 観察日
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy年MM月dd日"
+                    
+                    print("obsDate: \(String(describing: kirihaRecordDataDS.obsDate))")
+                    
+                    if let obsDate = kirihaRecordDataDS.obsDate {
+                        
+                        self.obsDateTextField.text! = formatter.string(from: obsDate)
+                        
+                        print("obsDate input: \(obsDate)")
+                    }
+                    else if let date = kirihaRecordDataDS.date {
+                        
+                        self.obsDateTextField.text! = formatter.string(from: date)
+                        
+                        print("Date input")
+                    }
+                    
+                    // 切羽位置
+                    // print("切羽位置：\(self.kirihaRecordDataDS?.stationNo2[0])")
+                    
+                    if self.kirihaRecordDataDS?.stationNo2.isEmpty == false {           // 測点が一度は設定され、配列が空でない場合
+                        
+                        let stationNo20 = self.kirihaRecordDataDS?.stationNo2[0]
+                        let stationNo21 = self.kirihaRecordDataDS?.stationNo2[1]
+                        
+                        self.stationKTextField.text! = String(Int(stationNo20!))
+                        self.stationMTextField.text! = String(stationNo21!)
+                    }
+                    else if let stationNo = self.kirihaRecordDataDS?.stationNo {        // 更新されておらず、測点の配列が空の場合
+                        
+                        // Any -> Floatにダウンキャスト（より具体的な型に変換する）
+                        let d = stationNo
+                        
+                        // 有効数字（小数点以下2位を四捨五入）
+                        let a = floor(d / 1000)
+                        var b = d - a * 1000
+                        b = round(b * 100)
+                        b = b / 100
+                        
+                        let c: Int = Int(a)
+                        
+                        self.stationKTextField.text! = String(c)
+                        self.stationMTextField.text! = String(b)
+                    }
+                    
+                    // 坑口からの距離
+                    if let distance = self.kirihaRecordDataDS?.distance {
+                        
+                        self.distanceTextField.text! = String(distance)
+                    }
+                    
+                    // 土被り高さ
+                    if let overburden = self.kirihaRecordDataDS?.overburden {
+                        
+                        self.overburdenTextField.text! = String(overburden)
+                    }
+                    
+                    // 岩種
+                    if let rockType = self.kirihaRecordDataDS?.rockType {
+                        
+                        self.rockTypeTextField.text! = rockType
+                    }
+                    else {
+                        self.rockTypeTextField.text! = self.rockTypeDataSource[0]
+                    }
+                    
+                    // 岩石名
+                    if let rockName = self.kirihaRecordDataDS?.rockName {
+                        
+                        self.rockNameTextField.text! = rockName
+                    }
+                    else {
+                        self.rockNameTextField.text! = self.rockNameDataSource[0]!
+                    }
+                    
+                    // 形成地質年代
+                    if let geoAge = self.kirihaRecordDataDS?.geoAge {
+                        
+                        self.geoAgeTextField.text! = geoAge
+                    }
+                    else {
+                        self.geoAgeTextField.text! = self.geoAgeDataSource[0]!
+                    }
+                    
+                    // 地山等級
+                    if let structurePattern = self.kirihaRecordDataDS?.structurePattern {
+                        
+                        self.kirihaRecordData?.structurePattern = structurePattern
+                        self.structurePattern = structurePattern
+                    }
+                    
+                    /*
+                    // 切羽観察記録
+                    self.kirihaRecordData?.obsRecordArray = kirihaRecordDataDS.obsRecordArray
+                    
+                    /*
+                    if let obsRecordArray:[Int?] = kirihaRecordDataDS.obsRecordArray {
+                        
+                        self.kirihaRecordData?.obsRecordArray = obsRecordArray
+                    }
+                    */
+                    
+                    // 湧水量の取得
+                    self.kirihaRecordData?.water = kirihaRecordDataDS.water
+                    */
+                    
+                    print("KirihaSpec1VC water \(String(describing: self.waterValue))")
+                }
+                else {
+                    print("Document does not exist")
+                }
+            }
+        } else {
+            // 観察日
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy年MM月dd日"
+            
+            let date = Date()
+            
+            self.obsDateTextField.text! = formatter.string(from: date)
+            
+            print("Date: \(date)")
+            
+        }
     }
     
     // 坑口からの距離の自動計算
@@ -325,7 +495,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let alCancel = UIAlertAction(title: "キャンセル", style: .default) { (action) in
             self.dismiss(animated: true, completion: nil)
 
-            self.performSegue(withIdentifier: "KirihaRecordChangeSegue", sender: nil)     // 切羽観察記録の画面に遷移
+            self.performSegue(withIdentifier: "KirihaRecordSegue", sender: nil)     // 切羽観察記録の画面に遷移
         }
 
         alert.addAction(alOk)
@@ -530,11 +700,11 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                
                 // 秒後の処理内容をここに記載
                 alert.dismiss(animated: true, completion: nil)           // アラートを閉じる
-                self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
+                self.saveFile(0)          // データの保存, 0：保存して遷移しない、1：保存して前の画面に遷移
             }
         }
         else {
-            self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
+            self.saveFile(0)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
         }
     }
     
@@ -571,8 +741,31 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
 //            id = self.kirihaRecordData?.id
 //        }
 
+        // tunnelIdの取得
+        var tunnelid2: String? = nil
+        
+        if self.kirihaRecordData?.tunnelId != nil {
+            tunnelid2 = self.kirihaRecordData?.tunnelId
+        }
+        else if self.tunnelData?.tunnelId != nil {
+            
+            tunnelid2 = self.tunnelData?.tunnelId
+        }
+    
+        // idの取得
+        var id2: String? = nil
+        
+        if self.kirihaRecordData?.id != nil {
+            id2 = self.kirihaRecordData?.id
+        }
+        else if self.id1 != nil {
+            
+            id2 = self.id1
+        }
+
+
         // Firebaseの操作
-        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+        if let tunnelId = tunnelid2, let id = id2 {
             // 既にIDが発行されており、データを更新する場合
             
             print("save tunnelId: \(tunnelId), id: \(id)")
@@ -627,7 +820,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)     // 分析画面に遷移
                 }
                 else if i == 3 {
-                    self.performSegue(withIdentifier: "KirihaRecordChangeSegue", sender: nil)     // 切羽観察記録の画面に遷移
+                    self.performSegue(withIdentifier: "KirihaRecordSegue", sender: nil)     // 切羽観察記録の画面に遷移
                 }
             }
         } else {        // 新規でデータを保存する場合
@@ -685,7 +878,16 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     // 秒後の処理内容をここに記載
 
                     alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
-                    self.performSegue(withIdentifier: "KirihaRecordSegue", sender: nil)     // 切羽観察記録の画面に遷移
+                    
+                    if i == 1 {
+                        self.navigationController?.popViewController(animated: true)        // 画面を閉じることで、１つ前の画面に戻る
+                    }
+                    else if i == 2 {
+                        self.performSegue(withIdentifier: "AnalysisSegue", sender: nil)     // 分析画面に遷移
+                    }
+                    else if i == 3 {
+                        self.performSegue(withIdentifier: "KirihaRecordSegue", sender: nil)     // 切羽観察記録の画面に遷移
+                    }
                 }
                 
                 print("新規保存しました")

@@ -3168,7 +3168,7 @@
             </objects>
             <point key="canvasLocation" x="-4804" y="1608"/>
         </scene>
-        <!--諸元1-->
+        <!--諸元-->
         <scene sceneID="2ue-Kk-bob">
             <objects>
                 <viewController storyboardIdentifier="kirihaSpec1" id="YhZ-jy-Gzc" customClass="KirihaSpec1ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -3539,7 +3539,7 @@
                             <constraint firstItem="XEh-PS-fsD" firstAttribute="trailing" secondItem="WvQ-1A-s5M" secondAttribute="trailing" id="vQh-OT-8Yp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="諸元1" id="Vm3-Xo-zc3">
+                    <navigationItem key="navigationItem" title="諸元" id="Vm3-Xo-zc3">
                         <barButtonItem key="rightBarButtonItem" title="切羽観察" id="yDz-83-fUJ">
                             <connections>
                                 <action selector="kirihaRecordButton:" destination="YhZ-jy-Gzc" id="Iy1-J7-0UW"/>

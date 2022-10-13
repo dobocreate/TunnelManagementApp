@@ -20,6 +20,8 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     
     var kirihaRecordDataDS: KirihaRecordDataDS?     // Firestoreデータの格納用
     
+    var kirihaRecordFireDataDS: KirihaRecordDataDS?     // Firestoreからデータを受け取る配列
+    
     // 切羽観察記録の選択された情報を格納する
     var obsRecordArray  = [Float?](repeating: nil, count:13)
 
@@ -107,6 +109,179 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         obsRecordArray2d[12] = Array(repeating: 0, count: 7)    // 割れ目の方向性：横断方向
         
         // print(obsRecordArray2d[0])
+        
+        // Firestoreからデータの取得
+        if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
+            
+            print("kirihaRecordVC viewWillAppear tunnelId: \(tunnelId), id: \(id)")
+            
+            // データを取得するドキュメントを設定
+            let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
+            
+            // データを取得する
+            kirihaRecordDataRef.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("DEBUG_PRINT: documentSnapshotの取得に失敗しました。 \(error)")
+                    return
+                }
+                
+                guard let document = documentSnapshot, let dic = documentSnapshot?.data() else { return }
+                
+                print("Firestore document.id \(document.documentID)")
+                
+                let kirihaRecordDataDS = KirihaRecordDataDS(document: document)
+                
+                // print("Firestore document.data \(document.data())")
+                
+                self.kirihaRecordFireDataDS = kirihaRecordDataDS
+                
+                // print("FirestoreDS obsRecordArray \(self.kirihaRecordFireDataDS?.obsRecordArray)")
+                
+                // Firestoreにデータがなくてもエラーにならないので、空かどうかで判断する
+                if self.kirihaRecordFireDataDS?.obsRecordArray.isEmpty != true {
+                    
+                    // Firestoreから取得したデータを代入する
+                    if let array = self.kirihaRecordFireDataDS?.obsRecordArray {
+                        
+                        self.obsRecordArray = array
+                        
+                        print("array: \(array)")
+                        print("obsRecordArray: \(self.obsRecordArray)")
+                    }
+                    
+                    // Firestoreから切羽観察記録を取得して、新しい２次元配列に格納する
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord00 {
+                        
+                        self.obsRecordArray2d[0] = array
+                        
+                        print("obsRecordArray2d[0]: \(self.obsRecordArray2d[0])")
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord01 {
+                        
+                        self.obsRecordArray2d[1] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord02 {
+                        
+                        self.obsRecordArray2d[2] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord03 {
+                        
+                        self.obsRecordArray2d[3] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord04 {
+                        
+                        self.obsRecordArray2d[4] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord05 {
+                        
+                        self.obsRecordArray2d[5] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord06 {
+                        
+                        self.obsRecordArray2d[6] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord07 {
+                        
+                        self.obsRecordArray2d[7] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord08 {
+                        
+                        self.obsRecordArray2d[8] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord09 {
+                        
+                        self.obsRecordArray2d[9] = array
+                        
+                        print("obsRecordArray2d[9]: \(self.obsRecordArray2d[9].count)")
+                        
+                        // エラー回避：当初は要素数を5としていたため、新たに開くとエラーが出るため
+                        if self.obsRecordArray2d[9].count < 6 {
+                            self.obsRecordArray2d[9].append(0)
+                            print("obsRecordArray2d[9] add: \(self.obsRecordArray2d[9].count)")
+                        }
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord10 {
+                        
+                        self.obsRecordArray2d[10] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord11 {
+                        
+                        self.obsRecordArray2d[11] = array
+                    }
+                    if let array = self.kirihaRecordFireDataDS?.obsRecord12 {
+                        
+                        self.obsRecordArray2d[12] = array
+                    }
+                    
+                    // Firestoreから特記事項と湧水量を取得
+                    // 特記事項
+                    if let array = self.kirihaRecordFireDataDS?.specialTextArray {
+                        
+                        self.specialRecordData = array
+                    }
+                    // 湧水量
+                    if let w = self.kirihaRecordFireDataDS?.water {
+                        
+                        self.waterValue = w
+                    }
+                    
+                    // 特記事項の配列の要素が14未満の場合（古いデータの場合）
+                    let aCount = self.specialRecordData.count
+                    
+                    print("特記事項配列：\(aCount)")
+                    
+                    if 0 < aCount && aCount <= 14 {
+                        
+                        let u = Int(self.specialRecordData.count)
+
+                        for x in u...14 {
+                            
+                            self.specialRecordData.append(nil)
+                            
+                            print("x : \(x)")
+                        }
+                    }
+                    
+                    // 特記事項の内容を設定する
+                    for r in 0..<self.specialRecordData.count{
+                        
+                        if self.specialRecordData[r] != nil {
+                            
+                            // 遷移先から受け渡されたデータを表示
+                            print("special sec1: \(r), Text: \(String(describing: self.specialRecordData[r]))")
+                            
+                            let specialText = self.specialRecordData[r]!
+                            
+                            if r == 14 {            // 記事の場合
+                                
+                            } else if r == 0 {      // 地質構造の場合
+                            
+                                self.obsArray[r][6] = "特記事項：　\(String(describing: specialText))"
+                            }
+                            else {
+                                self.obsArray[r][4] = "特記事項：　\(String(describing: specialText))"
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    // 湧水量の内容を設定
+                    // print("湧水量: \(self.waterValue!)")
+                    
+                    // 湧水量を格納
+                    if self.waterValue != nil {
+                        self.obsArray[9][5] = "湧水量：　\(self.waterValue!)　L"        // TableViewの要素を更新
+                    }
+                    
+                    print("FirestoreDS データを取得しました \(String(describing: self.kirihaRecordFireDataDS?.water))")
+                    
+                    // tableViewのデータをリロードする
+                    self.tableView.reloadData()         // データ取得に時間がかかるため、ここでもTableViewを更新する
+                    
+                }
+            }
+        }
     }
     
     //　画面遷移が行われ、表示される前に実行される。遷移先から戻ってきたときにも毎回実行される
@@ -114,7 +289,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         super.viewWillAppear(animated)
         
         // データの受け渡しテスト
-        print("KirihaRecordVC: \(self.id1)")
+        print("KirihaRecordVC id1: \(self.id1)")
         
         if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
             
@@ -287,6 +462,80 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
                 self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
             }
         }
+        else if let tunnelId = self.tunnelData?.tunnelId {
+            
+            // 画像と投稿データの保存場所を定義する
+            // 自動生成されたIDを持つドキュメントリファレンスを作成する
+            // この段階でDocumentIDが自動生成される
+            let postRef = Firestore.firestore().collection(tunnelId).document()
+            
+            print("kirihaRecord2VC postRef: \(postRef.documentID)")
+            
+            self.id1 = postRef.documentID
+            
+            let obsName = Auth.auth().currentUser?.displayName
+            
+            // 保存するデータを辞書の型にまとめる
+            let postDic = [
+                "id": postRef.documentID,
+                "date": FieldValue.serverTimestamp(),
+                "tunnelId": tunnelId,
+                "obsName": obsName!,
+                "obsRecordArray": self.obsRecordArray,
+                "obsRecord00": self.obsRecordArray2d[0],
+                "obsRecord01": self.obsRecordArray2d[1],
+                "obsRecord02": self.obsRecordArray2d[2],
+                "obsRecord03": self.obsRecordArray2d[3],
+                "obsRecord04": self.obsRecordArray2d[4],
+                "obsRecord05": self.obsRecordArray2d[5],
+                "obsRecord06": self.obsRecordArray2d[6],
+                "obsRecord07": self.obsRecordArray2d[7],
+                "obsRecord08": self.obsRecordArray2d[8],
+                "obsRecord09": self.obsRecordArray2d[9],
+                "obsRecord10": self.obsRecordArray2d[10],
+                "obsRecord11": self.obsRecordArray2d[11],
+                "obsRecord12": self.obsRecordArray2d[12],
+                "specialTextArray": self.specialRecordData,
+                "water": self.waterValue
+            ] as [String: Any]
+            
+            postRef.setData(postDic)
+            
+            // データの受け渡し
+//            let KirihaRecordVC = self.presentingViewController as! KirihaSpec1ViewController
+//            KirihaRecordVC.id1 = self.id1
+            
+            // let KirihaRecordNC = self.presentingViewController as! UINavigationController
+            let KirihaRecordNC = self.navigationController as! UINavigationController
+            let KirihaRecordVC = KirihaRecordNC.viewControllers[KirihaRecordNC.viewControllers.count - 2] as! KirihaSpec1ViewController
+            KirihaRecordVC.id1 = self.id1  //ここで値渡し
+            
+            // 保存アラートを表示する処理
+            let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
+
+            let alClose = UIAlertAction(title: "閉じる", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+
+                // 閉じるボタンがプッシュされた際の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
+            })
+            
+            alert.addAction(alClose)
+            
+            self.present(alert, animated: true, completion: nil)
+
+            // ２秒後に自動で閉じる
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                
+                // 秒後の処理内容をここに記載
+                alert.dismiss(animated: true, completion: nil)                  // アラートを閉じる
+                self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
+            }
+
+            print("新規保存しました")
+        }
+        
     }
     
     // セクション数
