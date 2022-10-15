@@ -48,6 +48,8 @@ class KirihaRecordData: NSObject {
     
     var specialTextArray:[String?] = []   // 特記事項
     
+    var rockNameSet1: [String?] = []     // 0: 地層名、1: 岩石名、2: 形成地質年代
+    var rockNameSet2: [String?] = []     // 0: 地層名、1: 岩石名、2: 形成地質年代
     
     // 初期化メソッド
     init(document: QueryDocumentSnapshot) {
@@ -171,6 +173,16 @@ class KirihaRecordData: NSObject {
         if let specialText = kirihaRecordDic["specialTextArray"] as? [String] {     // 特記事項
             
             self.specialTextArray = specialText
+        }
+        
+        if let rockNameSet1 = kirihaRecordDic["rockNameSet1"] as? [String?] {     // 岩石名１
+            
+            self.rockNameSet1 = rockNameSet1
+        }
+
+        if let rockNameSet2 = kirihaRecordDic["rockNameSet2"] as? [String?] {     // 岩石名２
+            
+            self.rockNameSet2 = rockNameSet2
         }
     }
 }

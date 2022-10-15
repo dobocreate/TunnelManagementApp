@@ -19,8 +19,12 @@ class TunnelDataDS: NSObject {
     var stationNo2: Float?          // 完了測点
     var tunnelType: Int?            // 記録様式
     var date: Date?                 // 保存日時
+    
+    var layerName: [String?] = []   // 地層名
     var rockName: [String?] = []    // 岩石名
+    var dispRockName:[String?] = [] // 判定に使用する岩石名
     var geoAge: [String?] = []      // 形成地質年代
+    
     var itemName: [String?] = []    // 表示項目名（坑口からの距離）
     
     // 初期化メソッド
@@ -40,9 +44,19 @@ class TunnelDataDS: NSObject {
         let timestamp = tunnelDataDic?["date"] as? Timestamp
         self.date = timestamp?.dateValue()
         
+        if let layerName = tunnelDataDic?["layerName"] as? [String] {
+            
+            self.layerName = layerName
+        }
+        
         if let rockName = tunnelDataDic?["rockName"] as? [String] {
             
             self.rockName = rockName
+        }
+        
+        if let dispRockName = tunnelDataDic?["dispRockName"] as? [String] {
+            
+            self.dispRockName = dispRockName
         }
         
         if let geoAge = tunnelDataDic?["geoAge"] as? [String] {

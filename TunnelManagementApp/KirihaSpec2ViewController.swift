@@ -740,11 +740,11 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                
                 // 秒後の処理内容をここに記載
                 alert.dismiss(animated: true, completion: nil)           // アラートを閉じる
-                self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
+                self.saveFile(0)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
             }
         }
         else {
-            self.saveFile(1)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
+            self.saveFile(0)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
         }
     }
     

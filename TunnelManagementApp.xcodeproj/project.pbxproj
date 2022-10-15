@@ -27,6 +27,8 @@
 		465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465983A9270B441C00898FDF /* kirihaRecord.swift */; };
 		4661ACE527F6DA3C00F6AA95 /* RockTypeCautionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4661ACE427F6DA3C00F6AA95 /* RockTypeCautionViewController.swift */; };
 		4661ACE727F7008800F6AA95 /* OtherRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4661ACE627F7008800F6AA95 /* OtherRecordViewController.swift */; };
+		4662742928F8B64D00D98D65 /* RockNameSetting2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662742828F8B64D00D98D65 /* RockNameSetting2ViewController.swift */; };
+		4662742B28F8DD6400D98D65 /* RockNameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662742A28F8DD6400D98D65 /* RockNameEditViewController.swift */; };
 		466308CA2718F67600214303 /* TunnelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308C92718F67600214303 /* TunnelData.swift */; };
 		466308CC2718FAAB00214303 /* FirestorePathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CB2718FAAB00214303 /* FirestorePathList.swift */; };
 		466308CE27196AFF00214303 /* TunnelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466308CD27196AFF00214303 /* TunnelSettingViewController.swift */; };
@@ -43,6 +45,9 @@
 		466D150A27FA4A3D000A1329 /* cautionJiyama.png in Resources */ = {isa = PBXBuildFile; fileRef = 466D150927FA4A3D000A1329 /* cautionJiyama.png */; };
 		466F0716279992BE006367E9 /* TouchOnScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F0715279992BD006367E9 /* TouchOnScrollView.swift */; };
 		467CF116271FEBD600324527 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467CF115271FEBD600324527 /* AnalysisViewController.swift */; };
+		4680C61328F97E3C002BBB08 /* RockListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680C61128F97E3C002BBB08 /* RockListTableViewCell.swift */; };
+		4680C61428F97E3C002BBB08 /* RockListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4680C61228F97E3C002BBB08 /* RockListTableViewCell.xib */; };
+		4680C61628F9848C002BBB08 /* RockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680C61528F9848C002BBB08 /* RockListViewController.swift */; };
 		46838F8227FB1402009AFE9D /* rockTypeInstructions2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46838F8127FB1402009AFE9D /* rockTypeInstructions2.png */; };
 		46883F1E27FB8A8900541C0D /* cautionJiyama3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46883F1D27FB8A8900541C0D /* cautionJiyama3.png */; };
 		46883F2027FB8A9000541C0D /* rockTypeInstructions3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46883F1F27FB8A9000541C0D /* rockTypeInstructions3.png */; };
@@ -97,6 +102,8 @@
 		465983A9270B441C00898FDF /* kirihaRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kirihaRecord.swift; sourceTree = "<group>"; };
 		4661ACE427F6DA3C00F6AA95 /* RockTypeCautionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockTypeCautionViewController.swift; sourceTree = "<group>"; };
 		4661ACE627F7008800F6AA95 /* OtherRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherRecordViewController.swift; sourceTree = "<group>"; };
+		4662742828F8B64D00D98D65 /* RockNameSetting2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockNameSetting2ViewController.swift; sourceTree = "<group>"; };
+		4662742A28F8DD6400D98D65 /* RockNameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockNameEditViewController.swift; sourceTree = "<group>"; };
 		466308C92718F67600214303 /* TunnelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelData.swift; sourceTree = "<group>"; };
 		466308CB2718FAAB00214303 /* FirestorePathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePathList.swift; sourceTree = "<group>"; };
 		466308CD27196AFF00214303 /* TunnelSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelSettingViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +120,9 @@
 		466D150927FA4A3D000A1329 /* cautionJiyama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cautionJiyama.png; sourceTree = "<group>"; };
 		466F0715279992BD006367E9 /* TouchOnScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchOnScrollView.swift; sourceTree = "<group>"; };
 		467CF115271FEBD600324527 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		4680C61128F97E3C002BBB08 /* RockListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockListTableViewCell.swift; sourceTree = "<group>"; };
+		4680C61228F97E3C002BBB08 /* RockListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RockListTableViewCell.xib; sourceTree = "<group>"; };
+		4680C61528F9848C002BBB08 /* RockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockListViewController.swift; sourceTree = "<group>"; };
 		46838F8127FB1402009AFE9D /* rockTypeInstructions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions2.png; sourceTree = "<group>"; };
 		46883F1D27FB8A8900541C0D /* cautionJiyama3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cautionJiyama3.png; sourceTree = "<group>"; };
 		46883F1F27FB8A9000541C0D /* rockTypeInstructions3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockTypeInstructions3.png; sourceTree = "<group>"; };
@@ -208,10 +218,14 @@
 				46C0DE44271C67A900E1E106 /* KirihaRecordChangeViewController.swift */,
 				466308D7271A9FAD00214303 /* KirihaRecordData.swift */,
 				46C0DE48271C97E400E1E106 /* KirihaRecordDataDS.swift */,
+				4680C61528F9848C002BBB08 /* RockListViewController.swift */,
 				46AB521B270DC09900D489DE /* KirihaRecordViewController.swift */,
 				4637568A27334749008FFB28 /* KirihaSpec2ViewController.swift */,
 				46B6EB2528F5300A00C2809C /* KirihaSpec1ViewController.swift */,
+				4680C61128F97E3C002BBB08 /* RockListTableViewCell.swift */,
+				4680C61228F97E3C002BBB08 /* RockListTableViewCell.xib */,
 				46C0DE3C271B826F00E1E106 /* KirihaSpecViewController.swift */,
+				4662742A28F8DD6400D98D65 /* RockNameEditViewController.swift */,
 				465983A1270B28A900898FDF /* LoginViewController.swift */,
 				466308D5271A5D7E00214303 /* ObsNameChangeViewController.swift */,
 				4661ACE627F7008800F6AA95 /* OtherRecordViewController.swift */,
@@ -222,6 +236,7 @@
 				46AB521D270E85FC00D489DE /* RemarksTableViewCell.swift */,
 				46AB5223270EC37B00D489DE /* RemarksViewController.swift */,
 				466308DB271ABFD300214303 /* RockNameSettingViewController.swift */,
+				4662742828F8B64D00D98D65 /* RockNameSetting2ViewController.swift */,
 				4661ACE427F6DA3C00F6AA95 /* RockTypeCautionViewController.swift */,
 				46C0DE42271BC04C00E1E106 /* RockTypeInstructionsViewController.swift */,
 				461FE21C27A9E8DF0085F7F6 /* RockTypeViewController.swift */,
@@ -323,6 +338,7 @@
 			files = (
 				4659839A270B26E800898FDF /* LaunchScreen.storyboard in Resources */,
 				46838F8227FB1402009AFE9D /* rockTypeInstructions2.png in Resources */,
+				4680C61428F97E3C002BBB08 /* RockListTableViewCell.xib in Resources */,
 				46883F1E27FB8A8900541C0D /* cautionJiyama3.png in Resources */,
 				46C0DE41271BBCAB00E1E106 /* rockTypeInstructions.png in Resources */,
 				466D150A27FA4A3D000A1329 /* cautionJiyama.png in Resources */,
@@ -416,17 +432,21 @@
 				465983AA270B441C00898FDF /* kirihaRecord.swift in Sources */,
 				466F0716279992BE006367E9 /* TouchOnScrollView.swift in Sources */,
 				46C0DE43271BC04C00E1E106 /* RockTypeInstructionsViewController.swift in Sources */,
+				4662742B28F8DD6400D98D65 /* RockNameEditViewController.swift in Sources */,
 				466308CE27196AFF00214303 /* TunnelSettingViewController.swift in Sources */,
 				46EFB8DF271050E00047BF61 /* TunnelListViewController.swift in Sources */,
+				4680C61328F97E3C002BBB08 /* RockListTableViewCell.swift in Sources */,
 				4661ACE527F6DA3C00F6AA95 /* RockTypeCautionViewController.swift in Sources */,
 				46AB521C270DC09900D489DE /* KirihaRecordViewController.swift in Sources */,
 				465983A8270B3B8D00898FDF /* PhotoViewController.swift in Sources */,
 				46B6EB2628F5300A00C2809C /* KirihaSpec1ViewController.swift in Sources */,
 				46DDF3A2271F98E8008B4359 /* GeoAgeSettingViewController.swift in Sources */,
+				4680C61628F9848C002BBB08 /* RockListViewController.swift in Sources */,
 				4637568F2733C29A008FFB28 /* TunnelCreate2ViewController.swift in Sources */,
 				461FE21B27A9E8D60085F7F6 /* RcokTypeVisionObjectRecognitionViewController.swift in Sources */,
 				466308D6271A5D7E00214303 /* ObsNameChangeViewController.swift in Sources */,
 				46598390270B26E700898FDF /* SceneDelegate.swift in Sources */,
+				4662742928F8B64D00D98D65 /* RockNameSetting2ViewController.swift in Sources */,
 				465983A6270B293700898FDF /* SettingViewController.swift in Sources */,
 				466D150827F937F7000A1329 /* KirihaDataTabularClassifier_2203.mlmodel in Sources */,
 				46EC69972726814C00B081FC /* Analysis2ViewController.swift in Sources */,
@@ -584,14 +604,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LF8SJYTSUY;
 				INFOPLIST_FILE = TunnelManagementApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -606,14 +627,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LF8SJYTSUY;
 				INFOPLIST_FILE = TunnelManagementApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.noriaki.kishida.TunnelManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

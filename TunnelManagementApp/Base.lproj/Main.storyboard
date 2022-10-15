@@ -574,7 +574,74 @@
             </objects>
             <point key="canvasLocation" x="-4804" y="4317"/>
         </scene>
-        <!--諸元-->
+        <!--Rock List View Controller-->
+        <scene sceneID="iwK-cK-kvi">
+            <objects>
+                <viewController storyboardIdentifier="rockList" id="p58-ad-T3D" customClass="RockListViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j0H-V3-NUN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Og-5e-V3h">
+                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地層名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7l-M5-mZn">
+                                <rect key="frame" x="30" y="97" width="130" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="hMs-of-x04"/>
+                                    <constraint firstAttribute="height" constant="25" id="sah-Ff-LSl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqU-7q-4wh">
+                                <rect key="frame" x="160" y="97" width="115" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KUg-3R-xeY"/>
+                                    <constraint firstAttribute="width" constant="115" id="PEx-CG-j7d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-SQ-H7T">
+                                <rect key="frame" x="275" y="97" width="139" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="nvy-oa-R5A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eMv-3e-EhG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="R7l-M5-mZn" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="05n-Mo-j7F"/>
+                            <constraint firstItem="R7l-M5-mZn" firstAttribute="leading" secondItem="eMv-3e-EhG" secondAttribute="leading" constant="30" id="4fs-Zz-ZAB"/>
+                            <constraint firstItem="Be1-SQ-H7T" firstAttribute="leading" secondItem="MqU-7q-4wh" secondAttribute="trailing" id="QqV-ez-vIV"/>
+                            <constraint firstItem="eMv-3e-EhG" firstAttribute="trailing" secondItem="6Og-5e-V3h" secondAttribute="trailing" id="RZY-RX-D2j"/>
+                            <constraint firstItem="6Og-5e-V3h" firstAttribute="leading" secondItem="eMv-3e-EhG" secondAttribute="leading" id="XKT-1V-k7X"/>
+                            <constraint firstItem="MqU-7q-4wh" firstAttribute="leading" secondItem="R7l-M5-mZn" secondAttribute="trailing" id="ds9-K9-P5F"/>
+                            <constraint firstItem="MqU-7q-4wh" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="g6T-r9-TpU"/>
+                            <constraint firstItem="eMv-3e-EhG" firstAttribute="trailing" secondItem="Be1-SQ-H7T" secondAttribute="trailing" id="mYv-Y0-csz"/>
+                            <constraint firstItem="eMv-3e-EhG" firstAttribute="bottom" secondItem="6Og-5e-V3h" secondAttribute="bottom" id="mfZ-3c-58O"/>
+                            <constraint firstItem="6Og-5e-V3h" firstAttribute="top" secondItem="R7l-M5-mZn" secondAttribute="bottom" constant="10" id="vj9-6v-BoT"/>
+                            <constraint firstItem="Be1-SQ-H7T" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="whP-cH-S5G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="w56-UE-km4"/>
+                    <connections>
+                        <outlet property="tableView" destination="6Og-5e-V3h" id="rn7-VC-RXK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AhV-CY-D78" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5981.1594202898559" y="2528.5714285714284"/>
+        </scene>
+        <!--諸元 更新-->
         <scene sceneID="ye8-r1-Ulc">
             <objects>
                 <viewController storyboardIdentifier="kirihaSpec2" id="4Iq-ec-vMV" customClass="KirihaSpec2ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -685,7 +752,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBm-Aw-a1c">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名１" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBm-Aw-a1c">
                                         <rect key="frame" x="0.0" y="449" width="414" height="25"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
@@ -703,7 +770,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-0l-eBD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名２（必要に応じて記載）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-0l-eBD">
                                         <rect key="frame" x="0.0" y="539" width="414" height="25"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
@@ -714,7 +781,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yGZ-sC-f5b" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="574" width="374" height="35"/>
+                                        <rect key="frame" x="20" y="574" width="324" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Db3-kg-Jdx"/>
                                         </constraints>
@@ -842,6 +909,15 @@
                                             <action selector="autoCalc_kirihaDistance:" destination="4Iq-ec-vMV" eventType="touchUpInside" id="skj-Bg-VYQ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-xL-84U">
+                                        <rect key="frame" x="364" y="574" width="30" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="8vi-yJ-HRH"/>
+                                            <constraint firstAttribute="width" constant="30" id="cb8-N9-xSb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="camera" catalog="system"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="YbM-2G-2K6" firstAttribute="top" secondItem="6UA-N7-lYJ" secondAttribute="bottom" constant="10" id="06k-VD-wfN"/>
@@ -861,7 +937,6 @@
                                     <constraint firstItem="fdo-67-0b8" firstAttribute="leading" secondItem="6Vv-h6-EGh" secondAttribute="trailing" constant="10" id="Evg-3d-dxk"/>
                                     <constraint firstItem="caQ-5x-aVA" firstAttribute="top" secondItem="YYJ-hq-5ho" secondAttribute="top" id="FCc-E8-BHe"/>
                                     <constraint firstItem="c4o-JC-nTY" firstAttribute="leading" secondItem="YbM-2G-2K6" secondAttribute="trailing" constant="20" id="FZ2-rN-gto"/>
-                                    <constraint firstItem="znu-9S-EWY" firstAttribute="trailing" secondItem="yGZ-sC-f5b" secondAttribute="trailing" constant="20" id="HyE-E9-fFB"/>
                                     <constraint firstItem="ekp-P9-wbh" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" constant="20" id="I4k-f8-Cmc"/>
                                     <constraint firstItem="gBm-Aw-a1c" firstAttribute="top" secondItem="YbM-2G-2K6" secondAttribute="bottom" constant="20" id="J67-7A-lgR"/>
                                     <constraint firstItem="aYA-VO-7OC" firstAttribute="top" secondItem="caQ-5x-aVA" secondAttribute="bottom" constant="10" id="JEG-iK-sCo"/>
@@ -871,11 +946,13 @@
                                     <constraint firstItem="Q8s-qY-d7W" firstAttribute="leading" secondItem="fdo-67-0b8" secondAttribute="trailing" constant="20" id="MhB-R2-nTJ"/>
                                     <constraint firstItem="m4h-Z9-4QY" firstAttribute="top" secondItem="YYJ-hq-5ho" secondAttribute="top" id="N2C-W4-3Rh"/>
                                     <constraint firstItem="caQ-5x-aVA" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" id="NSp-gd-SYo"/>
+                                    <constraint firstItem="AaH-xL-84U" firstAttribute="leading" secondItem="yGZ-sC-f5b" secondAttribute="trailing" constant="20" id="O2b-4H-3gT"/>
                                     <constraint firstItem="6Vv-h6-EGh" firstAttribute="top" secondItem="eF4-4R-sSh" secondAttribute="bottom" constant="10" id="Obw-pT-kHb"/>
                                     <constraint firstItem="YbM-2G-2K6" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" constant="20" id="PUG-tm-Kd9"/>
                                     <constraint firstItem="m4h-Z9-4QY" firstAttribute="width" secondItem="znu-9S-EWY" secondAttribute="width" id="QhQ-pW-aBg"/>
                                     <constraint firstItem="vQk-Qn-eQ0" firstAttribute="leading" secondItem="i83-fj-8u0" secondAttribute="trailing" constant="20" id="QmS-Se-Rf7"/>
                                     <constraint firstItem="fdo-67-0b8" firstAttribute="top" secondItem="eF4-4R-sSh" secondAttribute="bottom" constant="10" id="SC9-TA-cp3"/>
+                                    <constraint firstItem="znu-9S-EWY" firstAttribute="trailing" secondItem="AaH-xL-84U" secondAttribute="trailing" constant="20" id="SwN-X2-Q4O"/>
                                     <constraint firstItem="m4h-Z9-4QY" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" id="TNF-rl-0VC"/>
                                     <constraint firstItem="c4o-JC-nTY" firstAttribute="top" secondItem="6UA-N7-lYJ" secondAttribute="bottom" constant="10" id="WM0-O9-mG2"/>
                                     <constraint firstItem="i83-fj-8u0" firstAttribute="top" secondItem="Gdf-qD-QxK" secondAttribute="bottom" constant="10" id="YYA-e7-AEp"/>
@@ -891,6 +968,7 @@
                                     <constraint firstItem="znu-9S-EWY" firstAttribute="trailing" secondItem="Gdf-qD-QxK" secondAttribute="trailing" id="kA9-vq-bP2"/>
                                     <constraint firstItem="6UA-N7-lYJ" firstAttribute="top" secondItem="xAT-cd-piM" secondAttribute="bottom" constant="20" id="nBz-jc-5UA"/>
                                     <constraint firstItem="Q8s-qY-d7W" firstAttribute="top" secondItem="eF4-4R-sSh" secondAttribute="bottom" constant="10" id="pOP-8D-trR"/>
+                                    <constraint firstItem="AaH-xL-84U" firstAttribute="top" secondItem="Cut-0l-eBD" secondAttribute="bottom" constant="10" id="rtM-5y-hIh"/>
                                     <constraint firstItem="Gdf-qD-QxK" firstAttribute="top" secondItem="6Vv-h6-EGh" secondAttribute="bottom" constant="20" id="sOg-FU-UnB"/>
                                     <constraint firstItem="Gdf-qD-QxK" firstAttribute="leading" secondItem="znu-9S-EWY" secondAttribute="leading" id="sQS-nW-wy6"/>
                                     <constraint firstItem="yGZ-sC-f5b" firstAttribute="top" secondItem="Cut-0l-eBD" secondAttribute="bottom" constant="10" id="sdH-AA-x7m"/>
@@ -945,7 +1023,7 @@
                             <constraint firstItem="WtC-7D-dKD" firstAttribute="trailing" secondItem="m9W-9N-9Lu" secondAttribute="trailing" id="xTr-7J-vln"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="諸元" id="Wpa-os-8k0">
+                    <navigationItem key="navigationItem" title="諸元 更新" id="Wpa-os-8k0">
                         <barButtonItem key="rightBarButtonItem" title="切羽観察" id="LnP-J3-RDd">
                             <connections>
                                 <action selector="kirihaRecordButton:" destination="4Iq-ec-vMV" id="UQV-UV-71T"/>
@@ -1013,7 +1091,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQP-Aq-SFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7814" y="4317"/>
+            <point key="canvasLocation" x="-8239" y="4264"/>
         </scene>
         <!--Rcok Type Vision Object Recognition View Controller-->
         <scene sceneID="ePt-IA-KBi">
@@ -2247,15 +2325,15 @@
             </objects>
             <point key="canvasLocation" x="-7306" y="3398"/>
         </scene>
-        <!--Rock Name Setting View Controller-->
+        <!--岩石名の設定-->
         <scene sceneID="MGm-Fg-vkx">
             <objects>
-                <viewController storyboardIdentifier="rockNameSetting" id="0IV-AT-EJT" customClass="RockNameSettingViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rockNameSetting2" id="0IV-AT-EJT" customClass="RockNameSetting2ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JRa-HR-jz2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩種名の設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-PU-952">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名の設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-PU-952">
                                 <rect key="frame" x="0.0" y="92" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -2265,7 +2343,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩種名リスト" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOR-DG-x6H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩石名リスト" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOR-DG-x6H">
                                 <rect key="frame" x="0.0" y="182" width="414" height="25"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -2344,15 +2422,153 @@
                             <constraint firstItem="DPx-pX-q2E" firstAttribute="top" secondItem="cOR-DG-x6H" secondAttribute="bottom" id="ybI-Zc-QvL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WAO-eJ-jng"/>
+                    <navigationItem key="navigationItem" title="岩石名の設定" id="WAO-eJ-jng"/>
                     <connections>
                         <outlet property="addRockNameTextField" destination="gIm-ks-V1P" id="1bA-bX-8cU"/>
                         <outlet property="tableView" destination="DPx-pX-q2E" id="6Wa-sF-x5l"/>
+                        <segue destination="Vkl-35-88h" kind="show" identifier="rockNameEditSegue" id="1qM-vL-TOf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKW-XO-Cmf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9191" y="3398"/>
+        </scene>
+        <!--Rock Name Edit View Controller-->
+        <scene sceneID="D0s-TD-1qL">
+            <objects>
+                <viewController storyboardIdentifier="rockNameEdit" id="Vkl-35-88h" customClass="RockNameEditViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="txI-Do-Nat">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　地層名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLr-qW-nnB">
+                                <rect key="frame" x="0.0" y="92" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Nhe-NX-UIn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7EO-eJ-BMw" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="127" width="394" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Kmp-5S-8ri"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZs-cq-wbu">
+                                <rect key="frame" x="0.0" y="182" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="zMz-EK-4zt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJT-3T-X8D" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="217" width="394" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dK2-eZ-iic"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　判定岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdg-k4-ufi">
+                                <rect key="frame" x="0.0" y="272" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="wZW-ei-us9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WyF-ld-R2S" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="307" width="394" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Agu-ki-Tq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgK-7y-RQq">
+                                <rect key="frame" x="0.0" y="362" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Rzt-tO-tvQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uyk-gH-F0R" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="397" width="394" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dxx-Lk-ET0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PX-du-YMv">
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="o97-L5-1X7"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="更　新"/>
+                                <connections>
+                                    <action selector="addButton:" destination="Vkl-35-88h" eventType="touchUpInside" id="2FG-VH-oGk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="t05-VA-h6L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="tZs-cq-wbu" secondAttribute="trailing" id="0iZ-oE-Yne"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="GgK-7y-RQq" secondAttribute="trailing" id="B2J-h9-B8Z"/>
+                            <constraint firstItem="WyF-ld-R2S" firstAttribute="top" secondItem="wdg-k4-ufi" secondAttribute="bottom" constant="10" id="ExK-Ch-7nJ"/>
+                            <constraint firstItem="7EO-eJ-BMw" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" constant="10" id="Eyk-GY-PKL"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="WyF-ld-R2S" secondAttribute="trailing" constant="10" id="GMo-R6-Yb0"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="pJT-3T-X8D" secondAttribute="trailing" constant="10" id="JKy-kx-XpV"/>
+                            <constraint firstItem="pJT-3T-X8D" firstAttribute="top" secondItem="tZs-cq-wbu" secondAttribute="bottom" constant="10" id="KU8-h5-tfE"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="uyk-gH-F0R" secondAttribute="trailing" constant="10" id="LLe-o9-Uca"/>
+                            <constraint firstItem="0PX-du-YMv" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" id="MFF-Gk-S9N"/>
+                            <constraint firstItem="wdg-k4-ufi" firstAttribute="top" secondItem="pJT-3T-X8D" secondAttribute="bottom" constant="20" id="MZk-JF-2NO"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="wdg-k4-ufi" secondAttribute="trailing" id="Nd5-UQ-clm"/>
+                            <constraint firstItem="pJT-3T-X8D" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" constant="10" id="Ps1-Ud-rdu"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="0PX-du-YMv" secondAttribute="trailing" id="ROh-Y1-53o"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="7EO-eJ-BMw" secondAttribute="trailing" constant="10" id="Squ-YF-b94"/>
+                            <constraint firstItem="tZs-cq-wbu" firstAttribute="top" secondItem="7EO-eJ-BMw" secondAttribute="bottom" constant="20" id="U3t-Fw-gxd"/>
+                            <constraint firstItem="WyF-ld-R2S" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" constant="10" id="VCx-c9-ExB"/>
+                            <constraint firstItem="uyk-gH-F0R" firstAttribute="top" secondItem="GgK-7y-RQq" secondAttribute="bottom" constant="10" id="Wbf-Oe-iR3"/>
+                            <constraint firstItem="wdg-k4-ufi" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" id="ftR-Q0-gAU"/>
+                            <constraint firstItem="7EO-eJ-BMw" firstAttribute="top" secondItem="XLr-qW-nnB" secondAttribute="bottom" constant="10" id="jeN-Uk-MhD"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="trailing" secondItem="XLr-qW-nnB" secondAttribute="trailing" id="jsm-Je-4B8"/>
+                            <constraint firstItem="uyk-gH-F0R" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" constant="10" id="n42-Kc-pd3"/>
+                            <constraint firstItem="GgK-7y-RQq" firstAttribute="top" secondItem="WyF-ld-R2S" secondAttribute="bottom" constant="20" id="nxd-GR-cco"/>
+                            <constraint firstItem="GgK-7y-RQq" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" id="qPB-Fd-OFX"/>
+                            <constraint firstItem="XLr-qW-nnB" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" id="ro4-sO-qEr"/>
+                            <constraint firstItem="tZs-cq-wbu" firstAttribute="leading" secondItem="t05-VA-h6L" secondAttribute="leading" id="s3B-rL-9qT"/>
+                            <constraint firstItem="XLr-qW-nnB" firstAttribute="top" secondItem="t05-VA-h6L" secondAttribute="top" id="wdm-8F-YiX"/>
+                            <constraint firstItem="t05-VA-h6L" firstAttribute="bottom" secondItem="0PX-du-YMv" secondAttribute="bottom" id="xDv-lb-8fg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dRx-gR-fEn"/>
+                    <connections>
+                        <outlet property="dispRockNameTextField" destination="WyF-ld-R2S" id="yrg-DQ-oeR"/>
+                        <outlet property="geoAgeTextField" destination="uyk-gH-F0R" id="IW5-46-DQT"/>
+                        <outlet property="layerNameTextField" destination="7EO-eJ-BMw" id="uqd-Bn-YSP"/>
+                        <outlet property="rockNameTextField" destination="pJT-3T-X8D" id="urM-cN-EDH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZaB-IM-kHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-9191" y="4264"/>
         </scene>
         <!--Obs Name Change View Controller-->
         <scene sceneID="0nA-yt-uQC">
@@ -2737,7 +2953,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cgy-52-g3x"/>
                                 </constraints>
-                                <state key="normal" title="　岩種名リスト">
+                                <state key="normal" title="　地層名、岩種名リスト">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
@@ -2752,9 +2968,6 @@
                                 <state key="normal" title="　形成地質年代リスト">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
-                                <connections>
-                                    <action selector="geoAgeSettingButton:" destination="6m4-Ud-hqa" eventType="touchUpInside" id="Th8-mw-sLF"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-3b-TyV">
                                 <rect key="frame" x="0.0" y="487" width="414" height="35"/>
@@ -3168,7 +3381,7 @@
             </objects>
             <point key="canvasLocation" x="-4804" y="1608"/>
         </scene>
-        <!--諸元-->
+        <!--諸元 新規-->
         <scene sceneID="2ue-Kk-bob">
             <objects>
                 <viewController storyboardIdentifier="kirihaSpec1" id="YhZ-jy-Gzc" customClass="KirihaSpec1ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -3279,7 +3492,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAr-UY-8O4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名１" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAr-UY-8O4">
                                         <rect key="frame" x="0.0" y="449" width="414" height="25"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
@@ -3289,15 +3502,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-di-scT" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-di-scT">
                                         <rect key="frame" x="20" y="484" width="324" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fAs-Sq-9qw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="rockName1TFAction:" destination="YhZ-jy-Gzc" eventType="editingDidBegin" id="Jvn-Y2-6EB"/>
+                                        </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54s-el-NoL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名２（必要に応じて記載）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54s-el-NoL">
                                         <rect key="frame" x="0.0" y="539" width="414" height="25"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
@@ -3308,12 +3524,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p49-la-2Nq" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="574" width="374" height="35"/>
+                                        <rect key="frame" x="20" y="574" width="324" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="4vn-Ad-ioC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="rockName2TFAction:" destination="YhZ-jy-Gzc" eventType="editingDidBegin" id="o0w-4I-d6E"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXa-xi-aND">
                                         <rect key="frame" x="364" y="394" width="30" height="35"/>
@@ -3436,8 +3655,18 @@
                                             <action selector="autoCalc_kirihaDistance:" destination="YhZ-jy-Gzc" eventType="touchUpInside" id="zcG-0p-iJf"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgY-wm-WWa">
+                                        <rect key="frame" x="364" y="574" width="30" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="FO6-0T-Qrl"/>
+                                            <constraint firstAttribute="height" constant="35" id="M3L-Fr-GFH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="camera" catalog="system"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="kgY-wm-WWa" firstAttribute="top" secondItem="54s-el-NoL" secondAttribute="bottom" constant="10" id="3Mc-Zu-Qye"/>
                                     <constraint firstItem="viv-cZ-oRP" firstAttribute="bottom" secondItem="QWN-eC-jZE" secondAttribute="bottom" id="4VB-HQ-F2g"/>
                                     <constraint firstItem="4pH-6S-viv" firstAttribute="leading" secondItem="O0n-di-scT" secondAttribute="trailing" constant="20" id="5XW-1E-6xT"/>
                                     <constraint firstItem="y51-U4-W9Y" firstAttribute="leading" secondItem="TNG-U4-Z5H" secondAttribute="leading" id="7MP-D7-WmT"/>
@@ -3460,6 +3689,7 @@
                                     <constraint firstItem="viv-cZ-oRP" firstAttribute="leading" secondItem="TNG-U4-Z5H" secondAttribute="leading" id="XwB-lZ-FBG"/>
                                     <constraint firstItem="O0n-di-scT" firstAttribute="top" secondItem="nAr-UY-8O4" secondAttribute="bottom" constant="10" id="ZF9-51-MOP"/>
                                     <constraint firstItem="hrx-9N-aT6" firstAttribute="leading" secondItem="HOs-sc-QRF" secondAttribute="trailing" constant="20" id="Zpl-jD-YcP"/>
+                                    <constraint firstItem="TNG-U4-Z5H" firstAttribute="trailing" secondItem="kgY-wm-WWa" secondAttribute="trailing" constant="20" id="aEx-gD-yED"/>
                                     <constraint firstItem="viv-cZ-oRP" firstAttribute="leading" secondItem="QWN-eC-jZE" secondAttribute="leading" id="aql-L8-eUO"/>
                                     <constraint firstItem="54s-el-NoL" firstAttribute="leading" secondItem="TNG-U4-Z5H" secondAttribute="leading" id="blb-jY-cU0"/>
                                     <constraint firstItem="TNG-U4-Z5H" firstAttribute="trailing" secondItem="3eu-U7-UNL" secondAttribute="trailing" id="c5k-Fv-CSF"/>
@@ -3481,9 +3711,9 @@
                                     <constraint firstItem="wNk-rJ-gVI" firstAttribute="leading" secondItem="P03-r0-OgT" secondAttribute="trailing" constant="20" id="mcS-bQ-C0D"/>
                                     <constraint firstItem="viv-cZ-oRP" firstAttribute="top" secondItem="QWN-eC-jZE" secondAttribute="top" id="n3x-fV-SpX"/>
                                     <constraint firstItem="P03-r0-OgT" firstAttribute="leading" secondItem="Ewy-Ov-eHj" secondAttribute="trailing" constant="10" id="nAE-Vz-8q8"/>
-                                    <constraint firstItem="TNG-U4-Z5H" firstAttribute="trailing" secondItem="p49-la-2Nq" secondAttribute="trailing" constant="20" id="oRM-uQ-uDj"/>
                                     <constraint firstItem="8XE-xA-YUt" firstAttribute="leading" secondItem="TNG-U4-Z5H" secondAttribute="leading" constant="20" id="psW-Qa-66W"/>
                                     <constraint firstItem="viv-cZ-oRP" firstAttribute="width" secondItem="TNG-U4-Z5H" secondAttribute="width" id="qh0-0M-Mcx"/>
+                                    <constraint firstItem="kgY-wm-WWa" firstAttribute="leading" secondItem="p49-la-2Nq" secondAttribute="trailing" constant="20" id="qhE-EF-Dk6"/>
                                     <constraint firstItem="P03-r0-OgT" firstAttribute="top" secondItem="Grk-pv-jlC" secondAttribute="bottom" constant="10" id="rF9-uJ-ZyD"/>
                                     <constraint firstItem="54s-el-NoL" firstAttribute="top" secondItem="O0n-di-scT" secondAttribute="bottom" constant="20" id="raC-jV-Iny"/>
                                     <constraint firstItem="JXa-xi-aND" firstAttribute="leading" secondItem="j3K-ej-Np7" secondAttribute="trailing" constant="20" id="rne-7v-KFy"/>
@@ -3539,7 +3769,7 @@
                             <constraint firstItem="XEh-PS-fsD" firstAttribute="trailing" secondItem="WvQ-1A-s5M" secondAttribute="trailing" id="vQh-OT-8Yp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="諸元" id="Vm3-Xo-zc3">
+                    <navigationItem key="navigationItem" title="諸元 新規" id="Vm3-Xo-zc3">
                         <barButtonItem key="rightBarButtonItem" title="切羽観察" id="yDz-83-fUJ">
                             <connections>
                                 <action selector="kirihaRecordButton:" destination="YhZ-jy-Gzc" id="Iy1-J7-0UW"/>
@@ -3549,20 +3779,128 @@
                     <connections>
                         <outlet property="distanceLabel" destination="V38-Y8-Ozf" id="kKZ-qr-56S"/>
                         <outlet property="distanceTextField" destination="Ewy-Ov-eHj" id="5cn-5w-tJ4"/>
-                        <outlet property="geoAgeTextField" destination="p49-la-2Nq" id="RF9-tp-SfQ"/>
                         <outlet property="obsDateTextField" destination="8XE-xA-YUt" id="btj-xJ-Utf"/>
                         <outlet property="overburdenTextField" destination="x7J-de-s6J" id="fIs-X7-bkJ"/>
-                        <outlet property="rockNameTextField" destination="O0n-di-scT" id="CB8-9v-C8j"/>
+                        <outlet property="rockName1TextField" destination="O0n-di-scT" id="L1j-Og-dqH"/>
+                        <outlet property="rockName2TextField" destination="p49-la-2Nq" id="nBc-Kg-5nW"/>
                         <outlet property="rockTypeTextField" destination="j3K-ej-Np7" id="mom-Oe-T97"/>
                         <outlet property="stationKTextField" destination="6ju-9m-BI4" id="nn2-cR-9p9"/>
                         <outlet property="stationMTextField" destination="4iD-EO-nEi" id="FOA-V3-aQb"/>
                         <segue destination="Jyx-ZY-Skk" kind="show" identifier="KirihaRecordSegue" id="YhV-4B-Nzz"/>
                         <segue destination="1Dq-Ow-JgK" kind="show" identifier="AnalysisSegue" id="7ab-xW-ycQ"/>
+                        <segue destination="p58-ad-T3D" kind="show" identifier="RockListSegue" id="shu-0G-VeF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBg-n4-l4S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4804" y="2529"/>
+        </scene>
+        <!--Rock Name Setting View Controller-->
+        <scene sceneID="a00-n0-QFE">
+            <objects>
+                <viewController storyboardIdentifier="rockNameSetting" id="xRK-Aa-ZaZ" customClass="RockNameSettingViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G1y-ni-F4X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩種名の設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXr-Dw-h3q">
+                                <rect key="frame" x="0.0" y="48" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="z6t-v9-eCF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩種名リスト" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6I-M4-cUv">
+                                <rect key="frame" x="0.0" y="138" width="414" height="25"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Aer-ig-Tsi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dZ-tv-pXO">
+                                <rect key="frame" x="354" y="83" width="50" height="35"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="YuG-R9-WiJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="f6u-8z-lXe"/>
+                                </constraints>
+                                <state key="normal" title="追加"/>
+                                <connections>
+                                    <action selector="addButton:" destination="xRK-Aa-ZaZ" eventType="touchUpInside" id="sc0-Ga-173"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CqH-zf-z4O">
+                                <rect key="frame" x="0.0" y="163" width="414" height="659"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Z4N-B6-mhS">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z4N-B6-mhS" id="VrO-7W-drN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tC-zc-ggC" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="83" width="324" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="hcR-GU-wmB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13h-1M-267">
+                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pgV-Y5-WKr"/>
+                                </constraints>
+                                <state key="normal" title="更　新"/>
+                                <connections>
+                                    <action selector="updateButton:" destination="xRK-Aa-ZaZ" eventType="touchUpInside" id="ZN5-YF-mBC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CFX-sI-GPu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CFX-sI-GPu" firstAttribute="trailing" secondItem="13h-1M-267" secondAttribute="trailing" id="0yL-U5-akt"/>
+                            <constraint firstItem="7tC-zc-ggC" firstAttribute="leading" secondItem="CFX-sI-GPu" secondAttribute="leading" constant="20" id="1s0-Dj-MNj"/>
+                            <constraint firstItem="CqH-zf-z4O" firstAttribute="leading" secondItem="CFX-sI-GPu" secondAttribute="leading" id="3XX-Rp-SXs"/>
+                            <constraint firstItem="CFX-sI-GPu" firstAttribute="trailing" secondItem="3dZ-tv-pXO" secondAttribute="trailing" constant="10" id="7XX-BN-xVr"/>
+                            <constraint firstItem="U6I-M4-cUv" firstAttribute="leading" secondItem="CFX-sI-GPu" secondAttribute="leading" id="Akf-GO-mcd"/>
+                            <constraint firstItem="CqH-zf-z4O" firstAttribute="top" secondItem="U6I-M4-cUv" secondAttribute="bottom" id="LLd-NG-x32"/>
+                            <constraint firstItem="3dZ-tv-pXO" firstAttribute="top" secondItem="BXr-Dw-h3q" secondAttribute="bottom" constant="10" id="OgU-nB-gWJ"/>
+                            <constraint firstItem="U6I-M4-cUv" firstAttribute="top" secondItem="7tC-zc-ggC" secondAttribute="bottom" constant="20" id="QUo-co-Vrt"/>
+                            <constraint firstItem="CFX-sI-GPu" firstAttribute="bottom" secondItem="13h-1M-267" secondAttribute="bottom" id="RI8-Ke-VQc"/>
+                            <constraint firstItem="13h-1M-267" firstAttribute="leading" secondItem="CFX-sI-GPu" secondAttribute="leading" id="dAt-wN-QKV"/>
+                            <constraint firstItem="7tC-zc-ggC" firstAttribute="top" secondItem="BXr-Dw-h3q" secondAttribute="bottom" constant="10" id="hBf-vO-Up1"/>
+                            <constraint firstItem="CFX-sI-GPu" firstAttribute="trailing" secondItem="BXr-Dw-h3q" secondAttribute="trailing" id="hOe-03-LlP"/>
+                            <constraint firstItem="CFX-sI-GPu" firstAttribute="trailing" secondItem="U6I-M4-cUv" secondAttribute="trailing" id="ig6-hJ-awl"/>
+                            <constraint firstItem="3dZ-tv-pXO" firstAttribute="leading" secondItem="7tC-zc-ggC" secondAttribute="trailing" constant="10" id="me2-QZ-2eQ"/>
+                            <constraint firstItem="BXr-Dw-h3q" firstAttribute="leading" secondItem="CFX-sI-GPu" secondAttribute="leading" id="miI-AW-pUy"/>
+                            <constraint firstItem="BXr-Dw-h3q" firstAttribute="top" secondItem="CFX-sI-GPu" secondAttribute="top" id="pXx-Nv-qPV"/>
+                            <constraint firstItem="CFX-sI-GPu" firstAttribute="trailing" secondItem="CqH-zf-z4O" secondAttribute="trailing" id="s1S-JQ-Kct"/>
+                            <constraint firstItem="13h-1M-267" firstAttribute="top" secondItem="CqH-zf-z4O" secondAttribute="bottom" id="xyJ-ln-P7u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YUs-LS-w7g"/>
+                    <connections>
+                        <outlet property="addRockNameTextField" destination="7tC-zc-ggC" id="00J-Mu-v38"/>
+                        <outlet property="tableView" destination="CqH-zf-z4O" id="fxH-gS-4dN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Paa-Ab-SYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10107" y="3398"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
