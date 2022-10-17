@@ -20,6 +20,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     
     var tunnelData: TunnelData?
     var kirihaRecordData: KirihaRecordData?
+    var kirihaRecordDataDS: KirihaRecordDataDS?
     
     // 受け渡しデータの格納用
     var obsRecordArray = [Float?](repeating: nil, count:13)

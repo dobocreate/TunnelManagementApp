@@ -111,7 +111,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         // print(obsRecordArray2d[0])
         
         // Firestoreからデータの取得
-        if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
+        if let tunnelId = self.tunnelData?.tunnelId, let id = self.kirihaRecordDataDS?.id {
             
             print("kirihaRecordVC viewWillAppear tunnelId: \(tunnelId), id: \(id)")
             
@@ -291,7 +291,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         // データの受け渡しテスト
         print("KirihaRecordVC id1: \(self.id1)")
         
-        if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
+        if let tunnelId = self.tunnelData?.tunnelId, let id = self.kirihaRecordDataDS?.id {
             
             print("KirihaSpecVC 2 kirihaRecordData tunnleId \(tunnelId), id \(id)")
             
@@ -409,7 +409,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     // データをfirestoreに保存するメソッド
     func saveKirihaData() {
         
-        if let tunnelId = self.tunnelData?.tunnelId, let id = self.id1 {
+        if let tunnelId = self.tunnelData?.tunnelId, let id = self.kirihaRecordDataDS?.id {
             
             // 保存するデータを辞書の型にまとめる
             let kirihaRecordDic = [
@@ -437,7 +437,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             // データを更新する
             kirihaRecordDataRef.updateData(kirihaRecordDic)
             
-            print("更新しました")
+            print("更新しました。tunnedId: \(tunnelId)、id: \(id)")
             
             // 保存アラートを表示する処理
             let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
@@ -471,7 +471,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             
             print("kirihaRecord2VC postRef: \(postRef.documentID)")
             
-            self.id1 = postRef.documentID
+            // self.id1 = postRef.documentID
             
             let obsName = Auth.auth().currentUser?.displayName
             
@@ -508,7 +508,9 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             // let KirihaRecordNC = self.presentingViewController as! UINavigationController
             let KirihaRecordNC = self.navigationController as! UINavigationController
             let KirihaRecordVC = KirihaRecordNC.viewControllers[KirihaRecordNC.viewControllers.count - 2] as! KirihaSpec1ViewController
-            KirihaRecordVC.id1 = self.id1  //ここで値渡し
+            // KirihaRecordVC.id1 = self.id1  //ここで値渡し
+            KirihaRecordVC.kirihaRecordDataDS = self.kirihaRecordDataDS
+            
             
             // 保存アラートを表示する処理
             let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)

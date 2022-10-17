@@ -583,11 +583,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Og-5e-V3h">
-                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
+                                <rect key="frame" x="0.0" y="167" width="414" height="646"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地層名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7l-M5-mZn">
-                                <rect key="frame" x="30" y="97" width="130" height="25"/>
+                                <rect key="frame" x="28" y="132" width="130" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="hMs-of-x04"/>
                                     <constraint firstAttribute="height" constant="25" id="sah-Ff-LSl"/>
@@ -597,17 +597,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岩石名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqU-7q-4wh">
-                                <rect key="frame" x="160" y="97" width="115" height="25"/>
+                                <rect key="frame" x="158" y="132" width="120" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KUg-3R-xeY"/>
-                                    <constraint firstAttribute="width" constant="115" id="PEx-CG-j7d"/>
+                                    <constraint firstAttribute="width" constant="120" id="PEx-CG-j7d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="形成地質年代" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-SQ-H7T">
-                                <rect key="frame" x="275" y="97" width="139" height="25"/>
+                                <rect key="frame" x="278" y="132" width="136" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="nvy-oa-R5A"/>
                                 </constraints>
@@ -615,21 +615,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※ 選択項目はトンネルごとの設定で変更できます。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QD-BI-Htg">
+                                <rect key="frame" x="10" y="97" width="394" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="drC-zO-I7h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eMv-3e-EhG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="R7l-M5-mZn" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="05n-Mo-j7F"/>
-                            <constraint firstItem="R7l-M5-mZn" firstAttribute="leading" secondItem="eMv-3e-EhG" secondAttribute="leading" constant="30" id="4fs-Zz-ZAB"/>
-                            <constraint firstItem="Be1-SQ-H7T" firstAttribute="leading" secondItem="MqU-7q-4wh" secondAttribute="trailing" id="QqV-ez-vIV"/>
+                            <constraint firstItem="5QD-BI-Htg" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="8fq-kD-ECe"/>
+                            <constraint firstItem="eMv-3e-EhG" firstAttribute="trailing" secondItem="5QD-BI-Htg" secondAttribute="trailing" constant="10" id="A5b-lY-0LT"/>
+                            <constraint firstItem="MqU-7q-4wh" firstAttribute="top" secondItem="5QD-BI-Htg" secondAttribute="bottom" constant="10" id="CXa-N2-kZk"/>
+                            <constraint firstItem="5QD-BI-Htg" firstAttribute="leading" secondItem="eMv-3e-EhG" secondAttribute="leading" constant="10" id="JXV-eW-2nE"/>
                             <constraint firstItem="eMv-3e-EhG" firstAttribute="trailing" secondItem="6Og-5e-V3h" secondAttribute="trailing" id="RZY-RX-D2j"/>
+                            <constraint firstItem="Be1-SQ-H7T" firstAttribute="leading" secondItem="MqU-7q-4wh" secondAttribute="trailing" id="Rwu-u3-CtL"/>
+                            <constraint firstItem="MqU-7q-4wh" firstAttribute="leading" secondItem="R7l-M5-mZn" secondAttribute="trailing" id="Ucw-NJ-qpg"/>
                             <constraint firstItem="6Og-5e-V3h" firstAttribute="leading" secondItem="eMv-3e-EhG" secondAttribute="leading" id="XKT-1V-k7X"/>
-                            <constraint firstItem="MqU-7q-4wh" firstAttribute="leading" secondItem="R7l-M5-mZn" secondAttribute="trailing" id="ds9-K9-P5F"/>
-                            <constraint firstItem="MqU-7q-4wh" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="g6T-r9-TpU"/>
+                            <constraint firstItem="6Og-5e-V3h" firstAttribute="top" secondItem="R7l-M5-mZn" secondAttribute="bottom" constant="10" id="fIu-xl-7dr"/>
                             <constraint firstItem="eMv-3e-EhG" firstAttribute="trailing" secondItem="Be1-SQ-H7T" secondAttribute="trailing" id="mYv-Y0-csz"/>
                             <constraint firstItem="eMv-3e-EhG" firstAttribute="bottom" secondItem="6Og-5e-V3h" secondAttribute="bottom" id="mfZ-3c-58O"/>
-                            <constraint firstItem="6Og-5e-V3h" firstAttribute="top" secondItem="R7l-M5-mZn" secondAttribute="bottom" constant="10" id="vj9-6v-BoT"/>
-                            <constraint firstItem="Be1-SQ-H7T" firstAttribute="top" secondItem="eMv-3e-EhG" secondAttribute="top" constant="5" id="whP-cH-S5G"/>
+                            <constraint firstItem="R7l-M5-mZn" firstAttribute="leading" secondItem="eMv-3e-EhG" secondAttribute="leading" constant="28" id="nlt-JK-Y9u"/>
+                            <constraint firstItem="Be1-SQ-H7T" firstAttribute="top" secondItem="5QD-BI-Htg" secondAttribute="bottom" constant="10" id="olk-1P-az2"/>
+                            <constraint firstItem="R7l-M5-mZn" firstAttribute="top" secondItem="5QD-BI-Htg" secondAttribute="bottom" constant="10" id="wSb-Ue-kgP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w56-UE-km4"/>
@@ -641,7 +653,7 @@
             </objects>
             <point key="canvasLocation" x="-5981.1594202898559" y="2528.5714285714284"/>
         </scene>
-        <!--諸元 更新-->
+        <!--諸元-->
         <scene sceneID="ye8-r1-Ulc">
             <objects>
                 <viewController storyboardIdentifier="kirihaSpec2" id="4Iq-ec-vMV" customClass="KirihaSpec2ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -769,6 +781,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="rockName1TFAction:" destination="4Iq-ec-vMV" eventType="editingDidBegin" id="O4Y-o8-caf"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　岩石名２（必要に応じて記載）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-0l-eBD">
                                         <rect key="frame" x="0.0" y="539" width="414" height="25"/>
@@ -787,6 +802,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="rockName2TFAction:" destination="4Iq-ec-vMV" eventType="editingDidBegin" id="k5C-pW-d8D"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4o-JC-nTY">
                                         <rect key="frame" x="364" y="394" width="30" height="35"/>
@@ -1023,7 +1041,7 @@
                             <constraint firstItem="WtC-7D-dKD" firstAttribute="trailing" secondItem="m9W-9N-9Lu" secondAttribute="trailing" id="xTr-7J-vln"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="諸元 更新" id="Wpa-os-8k0">
+                    <navigationItem key="navigationItem" title="諸元" id="Wpa-os-8k0">
                         <barButtonItem key="rightBarButtonItem" title="切羽観察" id="LnP-J3-RDd">
                             <connections>
                                 <action selector="kirihaRecordButton:" destination="4Iq-ec-vMV" id="UQV-UV-71T"/>
@@ -1033,15 +1051,16 @@
                     <connections>
                         <outlet property="distanceLabel" destination="n9r-a1-wHS" id="Xak-4v-diF"/>
                         <outlet property="distanceTextField" destination="6Vv-h6-EGh" id="Kcy-Lx-kHD"/>
-                        <outlet property="geoAgeTextField" destination="yGZ-sC-f5b" id="W8N-n0-oAj"/>
                         <outlet property="obsDateTextField" destination="aYA-VO-7OC" id="0X0-ba-rvg"/>
                         <outlet property="overburdenTextField" destination="xAT-cd-piM" id="kcb-aX-29y"/>
-                        <outlet property="rockNameTextField" destination="dXi-Yw-wyW" id="Xld-Gt-9QP"/>
+                        <outlet property="rockName1TextField" destination="dXi-Yw-wyW" id="o5N-UA-Puk"/>
+                        <outlet property="rockName2TextField" destination="yGZ-sC-f5b" id="oRa-z4-36m"/>
                         <outlet property="rockTypeTextField" destination="YbM-2G-2K6" id="i4h-Kp-6lT"/>
                         <outlet property="stationKTextField" destination="SaB-mC-AfX" id="ykZ-MU-Cdv"/>
                         <outlet property="stationMTextField" destination="uoN-Ff-pBn" id="SeV-Bd-0Uh"/>
                         <segue destination="1Dq-Ow-JgK" kind="show" identifier="AnalysisSegue" id="o1T-wZ-9Xq"/>
                         <segue destination="e36-yH-474" kind="show" identifier="KirihaRecordChangeSegue" id="dXd-0x-SmG"/>
+                        <segue destination="p58-ad-T3D" kind="show" identifier="RockListSegue" id="5Cf-NS-8da"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vou-3D-54N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2700,7 +2719,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Myh-gt-o0D">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="hKL-z9-d9I" style="IBUITableViewCellStyleDefault" id="d1w-l4-UTi">
@@ -2722,14 +2741,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※ 左にスライドすると設定ボタンが表示されます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtp-X3-RDy">
+                                <rect key="frame" x="10" y="102" width="394" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Gyl-8U-Ecg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lYt-Mw-YeA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lYt-Mw-YeA" firstAttribute="trailing" secondItem="Myh-gt-o0D" secondAttribute="trailing" id="8ZE-vM-r0m"/>
-                            <constraint firstItem="Myh-gt-o0D" firstAttribute="top" secondItem="lYt-Mw-YeA" secondAttribute="top" id="IRW-y3-vgr"/>
+                            <constraint firstItem="rtp-X3-RDy" firstAttribute="top" secondItem="lYt-Mw-YeA" secondAttribute="top" constant="10" id="Kej-zb-Tiv"/>
+                            <constraint firstItem="Myh-gt-o0D" firstAttribute="top" secondItem="rtp-X3-RDy" secondAttribute="bottom" constant="10" id="LrZ-mL-Xsc"/>
+                            <constraint firstItem="rtp-X3-RDy" firstAttribute="leading" secondItem="lYt-Mw-YeA" secondAttribute="leading" constant="10" id="VZb-f0-1uz"/>
                             <constraint firstItem="lYt-Mw-YeA" firstAttribute="bottom" secondItem="Myh-gt-o0D" secondAttribute="bottom" id="jcY-0g-agm"/>
                             <constraint firstItem="Myh-gt-o0D" firstAttribute="leading" secondItem="lYt-Mw-YeA" secondAttribute="leading" id="mdg-TQ-LG0"/>
+                            <constraint firstItem="lYt-Mw-YeA" firstAttribute="trailing" secondItem="rtp-X3-RDy" secondAttribute="trailing" constant="10" id="oy7-1F-Qd3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="トンネル一覧" id="0VR-Ks-Hvn">
@@ -2752,7 +2783,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33V-Ks-CRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8239" y="1608"/>
+            <point key="canvasLocation" x="-8239.1304347826099" y="1607.8125"/>
         </scene>
         <!--切羽観察-->
         <scene sceneID="Seq-og-j7V">
@@ -2965,9 +2996,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="CZn-1g-grD"/>
                                 </constraints>
-                                <state key="normal" title="　形成地質年代リスト">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
+                                <state key="normal" title="　形成地質年代リスト"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-3b-TyV">
                                 <rect key="frame" x="0.0" y="487" width="414" height="35"/>
@@ -3381,7 +3410,7 @@
             </objects>
             <point key="canvasLocation" x="-4804" y="1608"/>
         </scene>
-        <!--諸元 新規-->
+        <!--諸元-->
         <scene sceneID="2ue-Kk-bob">
             <objects>
                 <viewController storyboardIdentifier="kirihaSpec1" id="YhZ-jy-Gzc" customClass="KirihaSpec1ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -3769,7 +3798,7 @@
                             <constraint firstItem="XEh-PS-fsD" firstAttribute="trailing" secondItem="WvQ-1A-s5M" secondAttribute="trailing" id="vQh-OT-8Yp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="諸元 新規" id="Vm3-Xo-zc3">
+                    <navigationItem key="navigationItem" title="諸元" id="Vm3-Xo-zc3">
                         <barButtonItem key="rightBarButtonItem" title="切羽観察" id="yDz-83-fUJ">
                             <connections>
                                 <action selector="kirihaRecordButton:" destination="YhZ-jy-Gzc" id="Iy1-J7-0UW"/>
@@ -3906,6 +3935,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="QN4-jB-cfR"/>
         <segue reference="2aK-jv-rBy"/>
+        <segue reference="shu-0G-VeF"/>
         <segue reference="67j-tG-iY3"/>
         <segue reference="C0N-dn-sxc"/>
         <segue reference="7ab-xW-ycQ"/>

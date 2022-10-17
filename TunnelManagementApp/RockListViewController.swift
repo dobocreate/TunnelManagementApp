@@ -63,9 +63,23 @@ class RockListViewController: UIViewController, UITableViewDataSource, UITableVi
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RockListTableViewCell
         
-        cell.layerNameLabel.text = layerName[indexPath.row]
         cell.rockNameLabel.text = rockName[indexPath.row]
-        cell.geoAgeLabel.text = geoAge[indexPath.row]
+        
+        if self.layerName.isEmpty != true {
+            
+            cell.layerNameLabel.text = layerName[indexPath.row]
+        } else {
+            
+            cell.layerNameLabel.text = ""
+        }
+        
+        if self.geoAge.isEmpty != true {
+            
+            cell.geoAgeLabel.text = geoAge[indexPath.row]
+        } else {
+            
+            cell.geoAgeLabel.text = ""
+        }
         
         return cell
     }
@@ -91,6 +105,18 @@ class RockListViewController: UIViewController, UITableViewDataSource, UITableVi
             self.navigationController?.popViewController(animated: true)
         }
         
+        if vcName == "KirihaSpec2VC" {
+            
+            let nc = self.navigationController as! UINavigationController
+            let KirihaSpec2VC = nc.viewControllers[nc.viewControllers.count - 2] as! KirihaSpec2ViewController
+            
+            KirihaSpec2VC.rockListRow = self.row
+            KirihaSpec2VC.rockNum = self.rockNum
+            
+            print("遷移先vc: \(KirihaSpec2VC), row: \(self.row)")
+            print("RockListVC 2 rockNum: \(self.rockNum)")
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
-
 }

@@ -20,27 +20,6 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     // トンネルデータを格納する配列
     var tunnelDataArray:[TunnelData] = []
     
-    /*
-    // 画面遷移する際の処理 -> indexPathがうまく取得できない。なぜ？
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "updateTunSettingSegue" {
-            
-            let updateTunSettingViewController:UpdateTunSettingViewController = segue.destination as! UpdateTunSettingViewController
-     
-            // let indexPath = self.tableView.indexPathForSelectedRow
-            
-            //print("indexPath.row: \(indexPath.row!)")
-            
-            updateTunSettingViewController.tunnelData = tunnelDataArray[0]
-        }
-    }
-    */
-    
-    
-    
-    
-    
     
     // 画面が表示される前に呼び出され、他の画面から戻ってきた場合にも呼ばれる
     override func viewWillAppear(_ animated: Bool) {
@@ -129,7 +108,7 @@ class TunnelListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         // 編集処理
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
+        let editAction = UIContextualAction(style: .normal, title: "設定") { (action, view, completionHandler) in
             
             // 編集処理を記述
             print("Editがタップされた")
