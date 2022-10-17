@@ -88,20 +88,6 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         rockTypeTextField.inputView = rockTypePickerView
         rockTypeTextField.delegate = self
         
-//        // rockNamePickerViewをキーボードにする設定
-//        rockNamePickerView.tag = 2
-//        rockNamePickerView.delegate = self
-//
-//        rockNameTextField.inputView = rockNamePickerView
-//        rockNameTextField.delegate = self
-        
-//        // geoAgePickerViewをキーボードにする設定
-//        geoAgePickerView.tag = 3
-//        geoAgePickerView.delegate = self
-//
-//        geoAgeTextField.inputView = geoAgePickerView
-//        geoAgeTextField.delegate = self
-        
         // 日付ピッカーをキーボードにする設定
         obsDatePickerView.datePickerMode = UIDatePicker.Mode.date
         obsDatePickerView.timeZone = TimeZone(identifier: "Asia/Tokyo")
@@ -138,8 +124,6 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 let tunnelDataDS = TunnelDataDS(document: document)
                 
                 self.tunnelDataDS = tunnelDataDS
-                
-                // print("FirestoreDS tunnelName: \(tunnelDataDS.tunnelName)")
                 
                 // 坑口からの距離（名称の置き換え）
                 if let itemName = self.tunnelDataDS?.itemName {
@@ -266,13 +250,27 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                                 
                                 if self.rockListRow != nil {
                                     
-                                    self.rockNameSet1[0] = layerName[rockListRow]!
+                                    var layerName1 = ""
+                                    
+                                    if layerName.isEmpty != true && layerName.count >= rockListRow {
+                                        
+                                        layerName1 = layerName[rockListRow]!
+                                    }
+                                    
+                                    self.rockNameSet1[0] = layerName1
                                     self.rockNameSet1[1] = rockName[rockListRow]!
                                     self.rockNameSet1[2] = geoAge[rockListRow]!
                                     
-                                    self.rockName1TextField.text = layerName[rockListRow]!
-                                        + " " + rockName[rockListRow]!
-                                        + " (" + geoAge[rockListRow]! + ")"
+                                    if layerName1 != "" {
+                                        
+                                        self.rockName1TextField.text = layerName1
+                                            + " " + rockName[rockListRow]!
+                                            + "（\(geoAge[rockListRow]!)）"
+                                    } else {
+                                        
+                                        self.rockName1TextField.text = layerName1
+                                            + " " + rockName[rockListRow]!
+                                    }
                                 }
                             }
                         }
@@ -282,35 +280,63 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         if let rockNameSet1 = self.kirihaRecordDataDS?.rockNameSet1 {
                             print("rockNameSet1: \(rockNameSet1)")
 
-                            let rockNameStr = rockNameSet1[0]! + rockNameSet1[1]!
-                                            + "(\(rockNameSet1[2]!))"
-
-                            self.rockName1TextField.text! = rockNameStr
-
+                            if rockNameSet1[0] == "" && rockNameSet1[1] == "" && rockNameSet1[2] == "" {
+                                
+                                if let rockName = self.kirihaRecordDataDS?.rockName {
+                                    // Firebaseに古いデータしかない場合
+                                    
+                                    self.rockName1TextField.text! = rockName + "　※ 再選択してください！"
+                                }
+                                
+                            } else if rockNameSet1[2]! != "" {
+                                
+                                let rockNameStr = rockNameSet1[0]! + rockNameSet1[1]!
+                                                + "（\(rockNameSet1[2]!)）"
+                                
+                                self.rockName1TextField.text! = rockNameStr
+                            } else {
+                                let rockNameStr = rockNameSet1[0]! + rockNameSet1[1]!
+                                
+                                self.rockName1TextField.text! = rockNameStr
+                            }
                             self.rockNameSet1 = rockNameSet1
                         }
                     }
                     else if let rockName = self.kirihaRecordDataDS?.rockName {
                         // Firebaseに古いデータしかない場合
                         
-                        self.rockName1TextField.text! = rockName
+                        self.rockName1TextField.text! = rockName + "　※ 再選択してください！"
                     }
                     
                     // 岩石名２
                     if self.rockNum == 2 {          // 岩石名２をタップして岩石名を選択されて戻ってきた場合
                         if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge {
-                            
+
                             if let rockListRow = self.rockListRow {
                                 
                                 if self.rockListRow != nil {
                                     
-                                    self.rockNameSet2[0] = layerName[rockListRow]!
+                                    var layerName2 = ""
+                                    
+                                    if layerName.isEmpty != true && layerName.count >= rockListRow {
+                                        
+                                        layerName2 = layerName[rockListRow]!
+                                    }
+                                    
+                                    self.rockNameSet2[0] = layerName2
                                     self.rockNameSet2[1] = rockName[rockListRow]!
                                     self.rockNameSet2[2] = geoAge[rockListRow]!
                                     
-                                    self.rockName2TextField.text = layerName[rockListRow]!
-                                        + " " + rockName[rockListRow]!
-                                        + " (" + geoAge[rockListRow]! + ")"
+                                    if layerName2 != "" {
+                                        
+                                        self.rockName2TextField.text = layerName2
+                                            + " " + rockName[rockListRow]!
+                                            + "（\(geoAge[rockListRow]!)）"
+                                    } else {
+                                        
+                                        self.rockName2TextField.text = layerName2
+                                            + " " + rockName[rockListRow]!
+                                    }
                                 }
                             }
                         }
@@ -319,10 +345,18 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         
                         if let rockNameSet2 = self.kirihaRecordDataDS?.rockNameSet2 {
                             
-                            let rockNameStr = rockNameSet2[0]! + rockNameSet2[1]!
-                                            + " (\(rockNameSet2[2]!))"
-                            
-                            self.rockName2TextField.text! = rockNameStr
+                            if rockNameSet2[2]! != "" {
+                                
+                                let rockNameStr = rockNameSet2[0]! + rockNameSet2[1]!
+                                                + "（\(rockNameSet2[2]!)）"
+                                
+                                self.rockName2TextField.text! = rockNameStr
+                            } else {
+                                
+                                let rockNameStr = rockNameSet2[0]! + rockNameSet2[1]!
+                                
+                                self.rockName2TextField.text! = rockNameStr
+                            }
                             
                             self.rockNameSet2 = rockNameSet2
                         }
@@ -740,16 +774,15 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         let cautionRockNameList:[String] = ["泥岩", "凝灰岩", "凝灰角礫岩"]
         
-//        let type1Index1 = 1
-//        let type1Index2 = 1
-        
         print("rockNameSet1: \(self.rockNameSet1)")
 
         // 岩石名１についてチェックする
         if self.rockNameSet1[0] != "" {
+            
+            print("check!")
 
-            if let type1Index1 = cautionGeoAgeList.firstIndex(of: rockNameSet1[2]!),
-               let type1Index2 = cautionRockNameList.firstIndex(of: rockNameSet1[1]!) {
+            if let type1Index1 = cautionGeoAgeList.firstIndex(of: self.rockNameSet1[2]!),
+               let type1Index2 = cautionRockNameList.firstIndex(of: self.rockNameSet1[1]!) {
 
                 print("type1 index1: \(String(describing:type1Index1)), index2: \(String(describing:type1Index2))")
                 
@@ -763,13 +796,8 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                        
                         // 秒後の処理内容をここに記載
                         alert.dismiss(animated: true, completion: nil)           // アラートを閉じる
-                        self.saveFile(0)          // データの保存, 0：保存して遷移しない、1：保存して前の画面に遷移
                     }
                 }
-                else {
-                    self.saveFile(0)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
-                }
-                
             }
         }
         // 岩石１ここまで
@@ -792,16 +820,13 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                        
                         // 秒後の処理内容をここに記載
                         alert.dismiss(animated: true, completion: nil)           // アラートを閉じる
-                        self.saveFile(0)          // データの保存, 0：保存して遷移しない、1：保存して前の画面に遷移
                     }
                 }
-                else {
-                    self.saveFile(0)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
-                }
-                
             }
         }
         // 岩石２ここまで
+        
+        self.saveFile(0)          // データの保存, 1：保存して前の画面に遷移、2：保存して分析画面に遷移
     }
     
     func saveFile(_ i:Int) {
@@ -979,7 +1004,6 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 print("新規保存しました")
             }
         }
-        
     }
     
     
@@ -1010,7 +1034,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.performSegue(withIdentifier: "RockListSegue", sender: nil)     // 岩石名を選択する画面に遷移
         })
 
-        let alClear = UIAlertAction(title: "クリア", style: .default, handler: {
+        let alClear = UIAlertAction(title: "初期化", style: .default, handler: {
             (action: UIAlertAction!) in
             
             self.rockName2TextField.text = ""
@@ -1020,11 +1044,16 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             // self.dismiss(animated: true, completion: nil)
         })
 
-
         alert.addAction(alSelect)
         alert.addAction(alClear)
 
-        present(alert, animated: true, completion: nil)
+        if self.rockName2TextField.text != "" {
+            
+            present(alert, animated: true, completion: nil)
+        } else {
+            
+            self.performSegue(withIdentifier: "RockListSegue", sender: nil)     // 岩石名を選択する画面に遷移
+        }
         
         self.rockName2TextField.resignFirstResponder()          // キーボードを閉じる
     }
