@@ -18,7 +18,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     @IBOutlet weak var rockName1TextField: UITextField!     // 岩石名１
     @IBOutlet weak var rockName2TextField: UITextField!     // 岩石名２
-    
+        
     @IBOutlet weak var stationKTextField: DoneTextFierd!    // 測点K
     @IBOutlet weak var stationMTextField: DoneTextFierd!    // 測点M
     
@@ -88,6 +88,9 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         rockTypeTextField.inputView = rockTypePickerView
         rockTypeTextField.delegate = self
+        
+        //rockName1TextField.minimumFontSize = 1
+        //rockName1TextField.adjustsFontSizeToFitWidth = true
         
 //        // rockNamePickerViewをキーボードにする設定
 //        rockNamePickerView.tag = 2
@@ -1025,7 +1028,7 @@ class KirihaSpec2ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             AnalysisVC.obsRecordArray = self.obsRecordArray
             AnalysisVC.waterValue = self.waterValue
             AnalysisVC.rockType = self.rockTypeTextField.text
-            AnalysisVC.rockTypeSymbol = conv_rockName(self.rockName1TextField.text!)
+            AnalysisVC.rockType1Symbol = conv_rockName(self.rockName1TextField.text!)
             AnalysisVC.structurePattern = self.structurePattern
             
             AnalysisVC.tunnelData = self.tunnelData

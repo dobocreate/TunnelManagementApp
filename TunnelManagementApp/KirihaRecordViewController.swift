@@ -113,7 +113,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
         // Firestoreからデータの取得
         if let tunnelId = self.tunnelData?.tunnelId, let id = self.kirihaRecordDataDS?.id {
             
-            print("kirihaRecordVC viewWillAppear tunnelId: \(tunnelId), id: \(id)")
+            print("kirihaRecordVC viewDidLoad tunnelId: \(tunnelId), id: \(id)")
             
             // データを取得するドキュメントを設定
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
@@ -409,6 +409,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
     // データをfirestoreに保存するメソッド
     func saveKirihaData() {
         
+        // トンネルidと切羽観察記録idがある場合はデータを更新する
         if let tunnelId = self.tunnelData?.tunnelId, let id = self.kirihaRecordDataDS?.id {
             
             // 保存するデータを辞書の型にまとめる
@@ -462,7 +463,9 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
                 self.navigationController?.popViewController(animated: true)    // 画面を閉じることで、１つ前の画面に戻る
             }
         }
+            // トンネルidだけがある場合はデータを新規作成する
         else if let tunnelId = self.tunnelData?.tunnelId {
+            
             
             // 画像と投稿データの保存場所を定義する
             // 自動生成されたIDを持つドキュメントリファレンスを作成する

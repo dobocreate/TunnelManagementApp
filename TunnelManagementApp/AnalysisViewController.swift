@@ -26,10 +26,13 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     var obsRecordArray = [Float?](repeating: nil, count:13)
     var waterValue: Float?
     var rockType: String?
-    var rockTypeSymbol: String?
+    
     var structurePattern: Int?
     var patternRate:[Double?] = []
     var aiSelectedNumber: Int?
+    
+    var rockType1Symbol: String?
+    var rockType2Symbol: String?
     
     // 地山等級のパターン
     let supportPatterns:[String?] = [
@@ -80,15 +83,19 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         // let model = KirihaDataTabularClassifier_1028()
-        let model = KirihaDataTabularClassifier_2203()
+        // let model = KirihaDataTabularClassifier_2203()
+        let model = KirihaDataTabularClassifier_2301()
         
         // guard let rockType = self.rockType else { return }
         // guard let obsRecordArray = self.obsRecordArray else { return }
         
         guard let output = try? model.prediction(
-            rockType: self.rockType!,
-            rockName: self.rockTypeSymbol!,
-            rockGroup: Double(self.obsRecordArray[0]!),
+            rockType1: self.rockType!,
+            rockName1: self.rockType1Symbol!,
+            rockGroup1: Double(self.obsRecordArray[0]!),
+            rockType2: self.rockType!,
+            rockName2: self.rockType2Symbol!,
+            rockGroup2: Double(self.obsRecordArray[0]!),
             A: Double(self.obsRecordArray[1]!),
             B: Double(self.obsRecordArray[2]!),
             C: Double(self.obsRecordArray[3]!),
@@ -97,17 +104,19 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             F: Double(self.obsRecordArray[6]!),
             G: Double(self.obsRecordArray[7]!),
             H: Double(self.obsRecordArray[8]!),
-            I_1: Double(self.obsRecordArray[9]!),
-            I_2: Double(self.waterValue!),
+            I1: Double(self.obsRecordArray[9]!),
+            I2: Double(self.waterValue!),
             J: Double(self.obsRecordArray[10]!),
-            K: Double(self.obsRecordArray[11]!),
-            L: Double(self.obsRecordArray[12]!)
+            K1: Double(self.obsRecordArray[11]!),
+            K2: Double(self.obsRecordArray[11]!),
+            L1: Double(self.obsRecordArray[12]!),
+            L2: Double(self.obsRecordArray[12]!)
         )
         else {
             fatalError("Unexpected runtime error.")
         }
         
-        print(output.patternProbability[4])
+        print("output.patternProbability: \(output.patternProbability[4])")
         
         let aiPattern = output.pattern
         aiSelectedNumber = Int(aiPattern)
@@ -239,22 +248,29 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    // 各セルを選択した時に実行されるメソッド
+    // 各セルをタップした時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.structurePattern = indexPath.row
         
         print("AnalysisVC structurePattern1 \(self.structurePattern)")
         
-        tableView.reloadData()
+        if tableView.cellForRow(at: indexPath)?.backgroundColor == MyColor.myPink {
+            
+            self.structurePattern = nil
+            
+            tableView.cellForRow(at: indexPath)?.backgroundColor = .clear
+        }
         
-        // tableView.cellForRow(at: indexPath)?.backgroundColor = MyColor.myPink
+        tableView.reloadData()
     }
     
     // 各セルの選択を解除したときに実行されるメソッド
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         // tableView.cellForRow(at: indexPath)?.backgroundColor = .white
+        
+        print("Cell Cancel")
     }
     
  
@@ -267,8 +283,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
-
-
     // テキストフィールド以外をタップした時に実行される
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -281,14 +295,14 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     // 保存ボタンをタップした時に実行される
     @IBAction func saveButton(_ sender: Any) {
         
-        if self.structurePattern == nil {
-            
-            SVProgressHUD.showError(withStatus: "地山等級を選択してください")
-            
-            return
-        }
+//        if self.structurePattern == nil {
+//
+//            SVProgressHUD.showError(withStatus: "地山等級を選択してください")
+//
+//            return
+//        }
         
-        print(self.structurePattern!)
+        print(self.structurePattern)
         
         // 遷移元へのデータを渡す
         let nc = self.navigationController!
@@ -296,29 +310,26 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         
         print("vcNum: \(vcNum)")
         
-        let kirihaSpec2vc = nc.viewControllers[vcNum - 2] as! KirihaSpec2ViewController
+        let kirihaSpec1vc = nc.viewControllers[vcNum - 2] as! KirihaSpec1ViewController
         
-        kirihaSpec2vc.structurePattern = self.structurePattern!
+        kirihaSpec1vc.structurePattern = self.structurePattern
         
-        print("遷移先vc: \(String(describing: kirihaSpec2vc)), 支保パターン: \(String(describing: kirihaSpec2vc))")
+        print("遷移先vc: \(String(describing: kirihaSpec1vc)), 支保パターン: \(String(describing: kirihaSpec1vc))")
         
         // self.navigationController?.popViewController(animated: true)
         
-        
-        
-        
-        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+        if let tunnelId = self.kirihaRecordDataDS?.tunnelId, let id = self.kirihaRecordDataDS?.id {
             
             // データを更新するドキュメントを設定
             let kirihaRecordDataRef = Firestore.firestore().collection(tunnelId).document(id)
             
             print("AnalysisVC postRef: \(kirihaRecordDataRef.documentID)")
-            print(self.structurePattern!)
+            print(self.structurePattern)
             print(self.patternRate)
             
             // 更新するデータを辞書の型にまとめて、必要な箇所のみ更新する
             let postDic = [
-                "structurePattern": self.structurePattern!,
+                "structurePattern": self.structurePattern,
                 "patternRate": self.patternRate
             ] as [String: Any]
             

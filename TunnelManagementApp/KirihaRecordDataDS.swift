@@ -51,6 +51,11 @@ class KirihaRecordDataDS: NSObject {
     var rockNameSet1: [String?] = []     // 0: 地層名、1: 岩石名、2: 形成地質年代
     var rockNameSet2: [String?] = []     // 0: 地層名、1: 岩石名、2: 形成地質年代
     
+    override init() {
+        self.id = ""
+    }
+    
+    
     // 初期化メソッド
     init(document: DocumentSnapshot) {
         
@@ -191,4 +196,5 @@ class KirihaRecordDataDS: NSObject {
         }
         
     }
+
 }

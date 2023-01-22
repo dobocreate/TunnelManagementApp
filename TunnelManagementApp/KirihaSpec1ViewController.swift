@@ -35,8 +35,8 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
 //    var tunnelId1: String?                      // トンネルid
 //    var date1: Date?                            // 日付
     
-    var rockNameSet1: [String?] = ["", "", ""]            // 0: 地層名、1: 岩石名、2: 形成地質年代
-    var rockNameSet2: [String?] = ["", "", ""]
+    var rockNameSet1: [String?] = ["", "", "", ""]            // 0: 地層名、1: 岩石名、2: 形成地質年代、3: 判定岩石名
+    var rockNameSet2: [String?] = ["", "", "", ""]
     
     var kirihaRecordData2: KirihaRecordData?
     var dataArray2: [Float?] = []
@@ -244,7 +244,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     
                     // 岩石名１
                     if self.rockNum == 1 {          // 岩石名１をタップして岩石名を選択されて戻ってきた場合
-                        if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge {
+                        if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge, let dispRockName = self.tunnelDataDS?.dispRockName {
                             
                             if let rockListRow = self.rockListRow {
                                 
@@ -257,9 +257,12 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                                         layerName1 = layerName[rockListRow]!
                                     }
                                     
+                                    print("dispRockName: \(dispRockName[rockListRow])")
+                                    
                                     self.rockNameSet1[0] = layerName1
                                     self.rockNameSet1[1] = rockName[rockListRow]!
                                     self.rockNameSet1[2] = geoAge[rockListRow]!
+                                    self.rockNameSet1[3] = dispRockName[rockListRow]!
                                     
                                     if layerName1 != "" {
                                         
@@ -278,6 +281,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         // FirebaseにrockNameSet1が記録されている場合
                         
                         if let rockNameSet1 = self.kirihaRecordDataDS?.rockNameSet1 {
+                            
                             print("rockNameSet1: \(rockNameSet1)")
 
                             if rockNameSet1[0] == "" && rockNameSet1[1] == "" && rockNameSet1[2] == "" {
@@ -299,7 +303,15 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                                 
                                 self.rockName1TextField.text! = rockNameStr
                             }
+                            
                             self.rockNameSet1 = rockNameSet1
+                            
+                            // 古いデータで要素が３つしかない場合は追加する
+                            if rockNameSet1.count < 4 {
+                                
+                                self.rockNameSet1.append("")
+                            }
+                            
                         }
                     }
                     else if let rockName = self.kirihaRecordDataDS?.rockName {
@@ -310,7 +322,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     
                     // 岩石名２
                     if self.rockNum == 2 {          // 岩石名２をタップして岩石名を選択されて戻ってきた場合
-                        if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge {
+                        if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge, let dispRockName = self.tunnelDataDS?.dispRockName {
 
                             if let rockListRow = self.rockListRow {
                                 
@@ -326,6 +338,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                                     self.rockNameSet2[0] = layerName2
                                     self.rockNameSet2[1] = rockName[rockListRow]!
                                     self.rockNameSet2[2] = geoAge[rockListRow]!
+                                    self.rockNameSet2[3] = dispRockName[rockListRow]!
                                     
                                     if layerName2 != "" {
                                         
@@ -359,6 +372,12 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                             }
                             
                             self.rockNameSet2 = rockNameSet2
+                            
+                            // 古いデータで要素が３つしかない場合は追加する
+                            if rockNameSet2.count < 4 {
+                                
+                                self.rockNameSet2.append("")
+                            }
                         }
                     }
 
@@ -388,7 +407,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             // 岩石名１
             if self.rockNum == 1 {          // 岩石名１をタップして岩石名を選択されて戻ってきた場合
-                if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge {
+                if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge, let dispRockName = self.tunnelDataDS?.dispRockName {
                     
                     if let rockListRow = self.rockListRow {
                         
@@ -397,6 +416,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                             self.rockNameSet1[0] = layerName[rockListRow]!
                             self.rockNameSet1[1] = rockName[rockListRow]!
                             self.rockNameSet1[2] = geoAge[rockListRow]!
+                            self.rockNameSet1[3] = dispRockName[rockListRow]!
                             
                             self.rockName1TextField.text = layerName[rockListRow]!
                                 + " " + rockName[rockListRow]!
@@ -410,7 +430,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             // 岩石名２
             if self.rockNum == 2 {          // 岩石名２をタップして岩石名を選択されて戻ってきた場合
-                if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge {
+                if let rockName = self.tunnelDataDS?.rockName, let layerName = self.tunnelDataDS?.layerName, let geoAge = self.tunnelDataDS?.geoAge, let dispRockName = self.tunnelDataDS?.dispRockName {
                     
                     if let rockListRow = self.rockListRow {
                         
@@ -419,6 +439,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                             self.rockNameSet2[0] = layerName[rockListRow]!
                             self.rockNameSet2[1] = rockName[rockListRow]!
                             self.rockNameSet2[2] = geoAge[rockListRow]!
+                            self.rockNameSet2[3] = dispRockName[rockListRow]!
                             
                             self.rockName2TextField.text = layerName[rockListRow]!
                                 + " " + rockName[rockListRow]!
@@ -966,7 +987,16 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 
                 postRef.setData(postDic)
                 
-                self.id1 = postRef.documentID               // データの受け渡し用
+                // データの受け渡し
+                self.id1 = postRef.documentID
+                
+                // インスタンス化して、新規で切羽観察記録idをデータを受け渡すkirihaRecordDataDSに格納する
+                let kirihaRecordDataDS = KirihaRecordDataDS()      // インスタンス化
+                
+                kirihaRecordDataDS.id = self.id1!
+                
+                self.kirihaRecordDataDS = kirihaRecordDataDS
+                
                 
                 // 保存アラートを表示する処理
                 let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
@@ -1039,7 +1069,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             self.rockName2TextField.text = ""
             
-            self.rockNameSet2 = ["", "", ""]
+            self.rockNameSet2 = ["", "", "", ""]
             
             // self.dismiss(animated: true, completion: nil)
         })
@@ -1085,7 +1115,10 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
             AnalysisVC.obsRecordArray = self.obsRecordArray
             AnalysisVC.waterValue = self.waterValue
             AnalysisVC.rockType = self.rockTypeTextField.text
-            AnalysisVC.rockTypeSymbol = conv_rockName(self.rockName1TextField.text!)
+            
+            AnalysisVC.rockType1Symbol = conv_rockName(self.rockNameSet1[3]!)
+            AnalysisVC.rockType2Symbol = conv_rockName(self.rockNameSet2[3]!)
+            
             AnalysisVC.structurePattern = self.structurePattern
             
             AnalysisVC.tunnelData = self.tunnelData
@@ -1116,7 +1149,9 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         var nameSymbol:String = "Ls"
         // var result: Int?
         
-        let nameList:[[String]] = [["玄武岩", "石灰岩", "頁岩", "凝灰角礫岩", "安山岩", "安山岩・自破砕溶岩"], ["Ba", "Ls", "Sh", "Tb", "An", "An3Abl"]]
+        let nameList:[[String]] =
+            [["火山岩", "古第三紀砂岩", "古第三紀頁岩", "新第三紀頁岩", "洪積礫質土", "自破砕溶岩", "新生代凝灰角礫岩", "中生代凝灰角礫岩", "深成岩", "中生代凝灰岩", "玄武岩", "石灰岩", "頁岩", "凝灰角礫岩", "安山岩", "安山岩・自破砕溶岩"],
+             ["Vr", "Ss3-1", "Sh3-1", "Sh3-2", "GF", "Abl", "Tb3", "Tb2", "Pr", "Tf2", "Ba", "Ls", "Sh", "Tb", "An", "An3Abl"]]
         
         print("nameList: \(nameList[0])")
         

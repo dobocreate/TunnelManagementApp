@@ -653,7 +653,7 @@
             </objects>
             <point key="canvasLocation" x="-5981.1594202898559" y="2528.5714285714284"/>
         </scene>
-        <!--諸元-->
+        <!--諸元 Spec2-->
         <scene sceneID="ye8-r1-Ulc">
             <objects>
                 <viewController storyboardIdentifier="kirihaSpec2" id="4Iq-ec-vMV" customClass="KirihaSpec2ViewController" customModule="TunnelManagementApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -774,7 +774,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXi-Yw-wyW" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="dXi-Yw-wyW" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                         <rect key="frame" x="20" y="484" width="324" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="4J7-mm-Mec"/>
@@ -1041,7 +1041,7 @@
                             <constraint firstItem="WtC-7D-dKD" firstAttribute="trailing" secondItem="m9W-9N-9Lu" secondAttribute="trailing" id="xTr-7J-vln"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="諸元" id="Wpa-os-8k0">
+                    <navigationItem key="navigationItem" title="諸元 Spec2" id="Wpa-os-8k0">
                         <barButtonItem key="rightBarButtonItem" title="切羽観察" id="LnP-J3-RDd">
                             <connections>
                                 <action selector="kirihaRecordButton:" destination="4Iq-ec-vMV" id="UQV-UV-71T"/>
@@ -3531,7 +3531,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-di-scT">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-di-scT">
                                         <rect key="frame" x="20" y="484" width="324" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fAs-Sq-9qw"/>
@@ -3552,7 +3552,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p49-la-2Nq" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="p49-la-2Nq" customClass="DoneTextFierd" customModule="TunnelManagementApp" customModuleProvider="target">
                                         <rect key="frame" x="20" y="574" width="324" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="4vn-Ad-ioC"/>
