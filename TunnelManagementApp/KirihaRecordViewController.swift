@@ -440,6 +440,28 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             
             print("更新しました。tunnedId: \(tunnelId)、id: \(id)")
             
+            // データの受け渡し
+            let nc = self.navigationController!
+            let vcNum = nc.viewControllers.count
+            
+            print("vcNum: \(vcNum)")
+            
+            let kirihaSpec1VC = nc.viewControllers[vcNum-2] as! KirihaSpec1ViewController
+            
+            kirihaSpec1VC.tunId = tunnelId       //ここで値渡し
+            kirihaSpec1VC.krrId = id             //ここで値渡し
+            
+            print("KirihaRecordVC tunnleId \(tunnelId), id \(id)")
+            
+//            self.kirihaRecordData?.tunnelId = tunnelId
+//            self.kirihaRecordData?.id = id
+//            
+//            print("KirihaRecordVC kirihaRecordData tunnleId \(self.kirihaRecordData?.tunnelId), id \(self.kirihaRecordData?.id)")
+//
+//            kirihaSpec1VC.kirihaRecordData = self.kirihaRecordData
+            
+            print("データの受け渡しを行いました")
+            
             // 保存アラートを表示する処理
             let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
 
@@ -474,7 +496,7 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             
             print("kirihaRecord2VC postRef: \(postRef.documentID)")
             
-            // self.id1 = postRef.documentID
+            self.id1 = postRef.documentID
             
             let obsName = Auth.auth().currentUser?.displayName
             
@@ -504,17 +526,6 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
             
             postRef.setData(postDic)
             
-            // データの受け渡し
-//            let KirihaRecordVC = self.presentingViewController as! KirihaSpec1ViewController
-//            KirihaRecordVC.id1 = self.id1
-            
-            // let KirihaRecordNC = self.presentingViewController as! UINavigationController
-            let KirihaRecordNC = self.navigationController as! UINavigationController
-            let KirihaRecordVC = KirihaRecordNC.viewControllers[KirihaRecordNC.viewControllers.count - 2] as! KirihaSpec1ViewController
-            // KirihaRecordVC.id1 = self.id1  //ここで値渡し
-            KirihaRecordVC.kirihaRecordDataDS = self.kirihaRecordDataDS
-            
-            
             // 保存アラートを表示する処理
             let alert = UIAlertController(title: nil, message: "保存しました", preferredStyle: .alert)
 
@@ -540,6 +551,19 @@ class KirihaRecordViewController: UIViewController, UITableViewDataSource, UITab
 
             print("新規保存しました")
         }
+        
+//        // データの受け渡し
+//        let nc = self.navigationController!
+//        let vcNum = nc.viewControllers.count
+//        
+//        print("vcNum: \(vcNum)")
+//        
+//        let kirihaSpec1VC = nc.viewControllers[vcNum-2] as! KirihaSpec1ViewController
+//        
+//        kirihaSpec1VC.TestData = self.id1  //ここで値渡し
+//        
+//        kirihaSpec1VC.kirihaRecordData?.tunnelId = self.tunnelData?.tunnelId
+//        kirihaSpec1VC.kirihaRecordData?.id = self.kirihaRecordDataDS!.id
         
     }
     

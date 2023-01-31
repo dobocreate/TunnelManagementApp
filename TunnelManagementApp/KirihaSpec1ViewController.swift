@@ -32,6 +32,9 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var rockListRow: Int?                       // 選択された岩石名の番号
     var rockNum: Int?                           // 岩石名１か２のどちらのケースか示す
     
+    var krrId: String?
+    var tunId: String?
+    
 //    var tunnelId1: String?                      // トンネルid
 //    var date1: Date?                            // 日付
     
@@ -135,7 +138,26 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         // Firestoreから切羽観察記録データの取得
         // tunnelIdとidのnilでない時（データの受け渡しに成功した場合）
-        if let tunnelId = self.kirihaRecordData?.tunnelId, let id = self.kirihaRecordData?.id {
+        
+        var tunId1: String?
+        var krrId1: String?
+        
+        if self.kirihaRecordData?.tunnelId != nil {
+            tunId1 = self.kirihaRecordData?.tunnelId
+        } else {
+            tunId1 = self.tunId
+        }
+        
+        if self.kirihaRecordData?.id != nil {
+            krrId1 = self.kirihaRecordData?.id
+        } else {
+            krrId1 = self.krrId
+        }
+        
+       
+        print("KirihaSpec1VC tunnleId \(tunId1), id \(krrId1)")
+        
+        if let tunnelId = tunId1, let id = krrId1 {
             
             print("KirihaSpec1VC tunnleId \(tunnelId), id \(id)")
             
@@ -621,6 +643,8 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // 切羽観察項目の有無
         let checkZero = self.kirihaRecordDataDS?.obsRecordArray.firstIndex(of: 0)
         
+        
+        
         print("check nil: \(checkZero)")
         
         if checkZero == 0 {         // obsRecordArrayの要素内に、0がある場合
@@ -1038,6 +1062,8 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     
     @IBAction func rockName1TFAction(_ sender: Any) {
+        
+
         
         self.rockNum = 1    // 岩石名１が選択されたことを示す
         
