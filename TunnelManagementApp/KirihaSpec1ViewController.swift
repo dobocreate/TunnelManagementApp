@@ -5,6 +5,8 @@
 //  Created by 岸田展明 on 2022/10/11.
 //
 
+// importを行う
+
 import UIKit
 import SwiftUI
 import Firebase
