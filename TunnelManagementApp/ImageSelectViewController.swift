@@ -7,6 +7,7 @@
 
 import UIKit
 import CLImageEditor
+import FirebaseCore
 
 class ImageSelectViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLImageEditorDelegate {
 
@@ -106,3 +107,4 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
         self.dismiss(animated: true, completion: nil)
     }
 }
+
