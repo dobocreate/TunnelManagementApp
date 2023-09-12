@@ -5,9 +5,10 @@
 //  Created by 岸田展明 on 2022/10/11.
 //
 
-import UIKit
+
 import SwiftUI
 import Firebase
+import UIKit
 
 class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
