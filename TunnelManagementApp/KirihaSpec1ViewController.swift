@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Firebase
 import SwiftUI
+import Firebase
 
 class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -24,7 +24,7 @@ class KirihaSpec1ViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var distanceTextField: UITextField!      // 坑口からの距離
     
     @IBOutlet weak var overburdenTextField: UITextField!    // 土被り高さ
-    
+
     // データ受け渡し用
     var tunnelData: TunnelData?                 // トンネルデータを格納する配列
     var kirihaRecordData: KirihaRecordData?     // 切羽観察記録データを格納する配列
